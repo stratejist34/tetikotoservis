@@ -1,113 +1,142 @@
 ---
-import Header from '../components/Header.astro';
-import { ViewTransitions } from 'astro:transitions';
+import Header from "../components/Header.astro";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = 'Hyundai, Kia, Toyota, Nissan Özel Servis - Tetik Otomotiv' } = Astro.props;
+const {
+  title,
+  description = "Hyundai, Kia, Toyota, Nissan Özel Servis - Tetik Otomotiv",
+} = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content={description}>
-  <title>{title}</title>
-  <ViewTransitions />
-  
-  <!-- Google Fonts - Optimized Loading -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Saira+Semi+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Favicons -->
-  <link rel="icon" type="image/jpeg" sizes="16x16" href="/images/favicon/16x16-hyundailogoikon.jpg">
-  <link rel="icon" type="image/jpeg" sizes="32x32" href="/images/favicon/32x32-hyundailogoikon.jpg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/180x180-hyundailogoikon.jpg">
-  <link rel="icon" type="image/jpeg" sizes="192x192" href="/images/favicon/192x192-hyundailogoikon.jpg">
-  <link rel="icon" type="image/jpeg" sizes="512x512" href="/images/favicon/512x512-hyundailogoikon.jpg">
-</head>
-<body class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-orange-500 selection:text-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <ViewTransitions />
 
-  <Header />
-  <main transition:animate="slide">
-    <slot />
-  </main>
-  
-  <script>
-    import Lenis from 'lenis';
-    import { gsap } from "gsap";
-    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    <!-- Google Fonts - Optimized Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    // Global Lenis instance
-    let lenis: Lenis | null = null;
+    <!-- Favicons -->
+    <link
+      rel="icon"
+      type="image/jpeg"
+      sizes="16x16"
+      href="/images/favicon/16x16-hyundailogoikon.jpg"
+    />
+    <link
+      rel="icon"
+      type="image/jpeg"
+      sizes="32x32"
+      href="/images/favicon/32x32-hyundailogoikon.jpg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/images/favicon/180x180-hyundailogoikon.jpg"
+    />
+    <link
+      rel="icon"
+      type="image/jpeg"
+      sizes="192x192"
+      href="/images/favicon/192x192-hyundailogoikon.jpg"
+    />
+    <link
+      rel="icon"
+      type="image/jpeg"
+      sizes="512x512"
+      href="/images/favicon/512x512-hyundailogoikon.jpg"
+    />
+  </head>
+  <body
+    class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-orange-500 selection:text-white"
+  >
+    <Header />
+    <main transition:animate="slide">
+      <slot />
+    </main>
 
-    function initLenis() {
-      if (lenis) {
-        lenis.destroy();
+    <script>
+      import Lenis from "lenis";
+      import { gsap } from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      // Global Lenis instance
+      let lenis: Lenis | null = null;
+
+      function initLenis() {
+        if (lenis) {
+          lenis.destroy();
+        }
+
+        lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: "vertical",
+          gestureOrientation: "vertical",
+          smoothWheel: true,
+          wheelMultiplier: 1,
+          touchMultiplier: 2,
+        });
+
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on("scroll", ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+          lenis?.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
       }
 
-      lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
-      });
+      function initAnimations() {
+        ScrollTrigger.config({
+          ignoreMobileResize: true,
+          autoRefreshEvents: "visibilitychange,DOMContentLoaded,load",
+        });
 
-      gsap.registerPlugin(ScrollTrigger);
-      lenis.on('scroll', ScrollTrigger.update);
+        const revealElements = document.querySelectorAll("[data-reveal]");
 
-      gsap.ticker.add((time) => {
-        lenis?.raf(time * 1000);
-      });
+        if (revealElements.length > 0) {
+          revealElements.forEach((element, index) => {
+            const delay = element.getAttribute("data-delay") || index * 30;
+            const revealType = element.getAttribute("data-reveal") || "fade-up";
 
-      gsap.ticker.lagSmoothing(0);
-    }
+            let fromVars: gsap.TweenVars = {};
+            switch (revealType) {
+              case "fade-up":
+                fromVars = { y: 10, opacity: 0 };
+                break;
+              case "fade-down":
+                fromVars = { y: -10, opacity: 0 };
+                break;
+              case "fade-left":
+                fromVars = { x: -15, opacity: 0 };
+                break;
+              case "fade-right":
+                fromVars = { x: 15, opacity: 0 };
+                break;
+              case "bottom":
+                fromVars = { y: 20, opacity: 0 };
+                break;
+              default:
+                fromVars = { y: 10, opacity: 0 };
+            }
 
-    function initAnimations() {
-      ScrollTrigger.config({
-        ignoreMobileResize: true,
-        autoRefreshEvents: "visibilitychange,DOMContentLoaded,load"
-      });
-
-      const revealElements = document.querySelectorAll('[data-reveal]');
-      
-      if (revealElements.length > 0) {
-        revealElements.forEach((element, index) => {
-          const delay = element.getAttribute('data-delay') || index * 30;
-          const revealType = element.getAttribute('data-reveal') || 'fade-up';
-          
-          let fromVars: gsap.TweenVars = {};
-          switch (revealType) {
-            case 'fade-up':
-              fromVars = { y: 10, opacity: 0 };
-              break;
-            case 'fade-down':
-              fromVars = { y: -10, opacity: 0 };
-              break;
-            case 'fade-left':
-              fromVars = { x: -15, opacity: 0 };
-              break;
-            case 'fade-right':
-              fromVars = { x: 15, opacity: 0 };
-              break;
-            case 'bottom':
-              fromVars = { y: 20, opacity: 0 };
-              break;
-            default:
-              fromVars = { y: 10, opacity: 0 };
-          }
-          
-          gsap.fromTo(element,
-            fromVars,
-            {
+            gsap.fromTo(element, fromVars, {
               y: 0,
               x: 0,
               opacity: 1,
@@ -117,144 +146,146 @@ const { title, description = 'Hyundai, Kia, Toyota, Nissan Özel Servis - Tetik 
               immediateRender: false,
               scrollTrigger: {
                 trigger: element,
-                start: "top 100%",
+                start: "top 95%",
                 end: "bottom 10%",
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
                 once: true,
-                markers: false
-              }
-            }
-          );
-        });
+                markers: false,
+                fastScrollEnd: true,
+                preventOverlaps: true,
+              },
+            });
+          });
+        }
+
+        ScrollTrigger.refresh();
       }
 
-      ScrollTrigger.refresh();
-    }
+      function init() {
+        initLenis();
+        initAnimations();
+      }
 
-    function init() {
-      initLenis();
-      initAnimations();
-    }
-
-    // İlk yükleme
-    init();
-
-    // ViewTransitions: Sayfa tamamen yüklendiğinde
-    document.addEventListener('astro:page-load', () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      // İlk yükleme
       init();
-      
-      // Scroll'u en üste al
-      window.scrollTo(0, 0);
-    });
 
-    // Sayfa değişmeden önce temizlik
-    document.addEventListener('astro:before-swap', () => {
-      if (lenis) {
-        lenis.destroy();
-        lenis = null;
+      // ViewTransitions: Sayfa tamamen yüklendiğinde
+      document.addEventListener("astro:page-load", () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+        init();
+
+        // Scroll'u en üste al
+        window.scrollTo(0, 0);
+      });
+
+      // Sayfa değişmeden önce temizlik
+      document.addEventListener("astro:before-swap", () => {
+        if (lenis) {
+          lenis.destroy();
+          lenis = null;
+        }
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      });
+    </script>
+
+    <style is:global>
+      /* Smooth Page Transitions */
+      @keyframes fadeSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    });
-  </script>
 
-  <style is:global>
-    /* Smooth Page Transitions */
-    @keyframes fadeSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
+      @keyframes fadeSlideOut {
+        from {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: translateY(-8px);
+        }
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+
+      /* ViewTransitions Custom Animations */
+      ::view-transition-old(root) {
+        animation: fadeSlideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
-    }
 
-    @keyframes fadeSlideOut {
-      from {
-        opacity: 1;
-        transform: translateY(0);
+      ::view-transition-new(root) {
+        animation: fadeSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
-      to {
-        opacity: 0;
-        transform: translateY(-8px);
+
+      /* Smooth transition for all elements */
+      ::view-transition-group(*) {
+        animation-duration: 0.4s;
+        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       }
-    }
 
-    /* ViewTransitions Custom Animations */
-    ::view-transition-old(root) {
-      animation: fadeSlideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
+      /* Lenis temel stilleri */
+      html.lenis,
+      html.lenis body {
+        height: auto;
+      }
 
-    ::view-transition-new(root) {
-      animation: fadeSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
+      .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+      }
 
-    /* Smooth transition for all elements */
-    ::view-transition-group(*) {
-      animation-duration: 0.4s;
-      animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    }
+      .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+      }
 
-    /* Lenis temel stilleri */
-    html.lenis, html.lenis body {
-      height: auto;
-    }
+      .lenis.lenis-stopped {
+        overflow: hidden;
+      }
 
-    .lenis.lenis-smooth {
-      scroll-behavior: auto !important;
-    }
+      .lenis.lenis-scrolling iframe {
+        pointer-events: none;
+      }
 
-    .lenis.lenis-smooth [data-lenis-prevent] {
-      overscroll-behavior: contain;
-    }
-
-    .lenis.lenis-stopped {
-      overflow: hidden;
-    }
-
-    .lenis.lenis-scrolling iframe {
-      pointer-events: none;
-    }
-
-    /* Initial state for smooth animations - hidden by default */
-    [data-reveal] {
-      opacity: 0;
-      transform: translateY(10px);
-      will-change: transform, opacity;
-      transition: none;
-    }
-
-    [data-reveal="fade-down"] {
-      transform: translateY(-10px);
-    }
-    
-    [data-reveal="fade-left"] {
-      transform: translateX(-15px);
-    }
-    
-    [data-reveal="fade-right"] {
-      transform: translateX(15px);
-    }
-    
-    [data-reveal="bottom"] {
-      transform: translateY(20px);
-    }
-
-    .no-js [data-reveal] {
-      opacity: 1;
-      transform: none;
-    }
-  </style>
-
-  <noscript>
-    <style>
+      /* Initial state for smooth animations - hidden by default */
       [data-reveal] {
-        opacity: 1 !important;
-        transform: none !important;
+        opacity: 0;
+        transform: translateY(10px);
+        will-change: transform, opacity;
+        transition: none;
+      }
+
+      [data-reveal="fade-down"] {
+        transform: translateY(-10px);
+      }
+
+      [data-reveal="fade-left"] {
+        transform: translateX(-15px);
+      }
+
+      [data-reveal="fade-right"] {
+        transform: translateX(15px);
+      }
+
+      [data-reveal="bottom"] {
+        transform: translateY(20px);
+      }
+
+      .no-js [data-reveal] {
+        opacity: 1;
+        transform: none;
       }
     </style>
-  </noscript>
-</body>
+
+    <noscript>
+      <style>
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </body>
 </html>

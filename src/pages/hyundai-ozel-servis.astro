@@ -1,302 +1,616 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
-import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
-import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
-import FAQSchema from '../components/FAQSchema.astro';
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import LocalBusinessSchema from "../components/LocalBusinessSchema.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import FAQSchema from "../components/FAQSchema.astro";
 
 const brand = "Hyundai";
-const pageTitle = "Hyundai Özel Servis | Gebze, Tuzla, Pendik, Kurtköy | Tetik Otomotiv";
-const pageDescription = "Gebze ve Tuzla Hyundai özel servisi ihtiyaçlarınız için doğru adres. i10, i20, Accent ve Tucson modellerine, Kurtköy ve Pendik'ten kolay ulaşımla garantili bakım ve onarım hizmeti.";
+const pageTitle =
+    "Hyundai Özel Servis | Gebze, Tuzla, Pendik, Kurtköy | Tetik Otomotiv";
+const pageDescription =
+    "Gebze ve Tuzla Hyundai özel servisi ihtiyaçlarınız için doğru adres. i10, i20, Accent ve Tucson modellerine, Kurtköy ve Pendik'ten kolay ulaşımla garantili bakım ve onarım hizmeti.";
 
 // SEO Schemas
 const breadcrumbItems = [
-  { name: 'Anasayfa', url: '/' },
-  { name: 'Hizmetlerimiz', url: '#' },
-  { name: 'Hyundai Servis', url: '/hyundai-ozel-servis' }
+    { name: "Anasayfa", url: "/" },
+    { name: "Hizmetlerimiz", url: "#" },
+    { name: "Hyundai Servis", url: "/hyundai-ozel-servis" },
 ];
 
 const faqs = [
-  { question: "Hyundai periyodik bakım kaç km'de yapılır?", answer: "Hyundai araçlarda periyodik bakım genellikle her 15.000 km'de veya yılda bir (hangisi önce dolarsa) yapılmalıdır." },
-  { question: "Servisinizde orijinal parça kullanılıyor mu?", answer: "Evet, tüm onarım ve bakım işlemlerinde orijinal Hyundai yedek parçaları veya OEM onaylı eşdeğer parçalar kullanmaktayız." },
-  { question: "Garanti süresi ne kadar?", answer: "Yaptığımız işçilik ve değiştirdiğimiz parçalar için 1 yıl / 10.000 km garanti vermekteyiz." },
-  { question: "Randevu almadan gelebilir miyim?", answer: "Acil durumlar haricinde, size daha iyi hizmet verebilmek ve bekletmemek için randevu almanızı öneririz." }
+    {
+        question: "Hyundai periyodik bakım kaç km'de yapılır?",
+        answer: "Hyundai araçlarda periyodik bakım genellikle her 15.000 km'de veya yılda bir (hangisi önce dolarsa) yapılmalıdır.",
+    },
+    {
+        question: "Servisinizde orijinal parça kullanılıyor mu?",
+        answer: "Evet, tüm onarım ve bakım işlemlerinde orijinal Hyundai yedek parçaları veya OEM onaylı eşdeğer parçalar kullanmaktayız.",
+    },
+    {
+        question: "Garanti süresi ne kadar?",
+        answer: "Yaptığımız işçilik ve değiştirdiğimiz parçalar için 1 yıl / 10.000 km garanti vermekteyiz.",
+    },
+    {
+        question: "Randevu almadan gelebilir miyim?",
+        answer: "Acil durumlar haricinde, size daha iyi hizmet verebilmek ve bekletmemek için randevu almanızı öneririz.",
+    },
 ];
 
 const services = [
-  { title: 'Periyodik Bakım', icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z' },
-  { title: 'Fren Sistemi', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-  { title: 'Motor Mekanik', icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z' },
-  { title: 'Elektrik/Elektronik', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
-  { title: 'Şanzıman Tamiri', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
-  { title: 'Klima Servisi', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
+    {
+        title: "Periyodik Bakım",
+        icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+    },
+    {
+        title: "Fren Sistemi",
+        icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+    },
+    {
+        title: "Motor Mekanik",
+        icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
+    },
+    { title: "Elektrik/Elektronik", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+    {
+        title: "Şanzıman Tamiri",
+        icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+    },
+    {
+        title: "Klima Servisi",
+        icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+    },
 ];
 
 const models = [
-  { name: 'i10', slug: '/modeller/hyundai-i10', image: '/images/Hyundai-i10-Ozel-Servis-e1751888118271.jpg' }, 
-  { name: 'i20', slug: '/modeller/hyundai-i20', image: '/images/hyundai-i20-servis.avif' }, 
-  { name: 'i30', slug: '/modeller/hyundai-i30', image: '/images/hyundai-i30-servis.webp' },
-  { name: 'Bayon', slug: '/modeller/hyundai-bayon', image: '/images/hyundai-bayon-servis.jpg' },
-  { name: 'Tucson', slug: '/modeller/hyundai-tucson', image: '/images/hyundai-tucson-servis.jpg' }, 
-  { name: 'Kona', slug: '/modeller/hyundai-kona', image: '/images/hyundai-kona-servis.jpg' },
-  { name: 'Santa Fe', slug: '/modeller/hyundai-santa-fe', image: '/images/hyundai-santa-fe-servis.webp' },
-  { name: 'Elantra', slug: '/modeller/hyundai-elantra', image: '/images/Hyundai_elantra_servis.jpg' },
-  { name: 'Accent', slug: '/modeller/hyundai-accent-blue', image: '/images/Hyundai-accent-servis.jpg' },
-  { name: 'IX35', slug: '/modeller/hyundai-ix35', image: '/images/hyundai-ix35-servis.jpg' }
+    {
+        name: "i10",
+        slug: "/modeller/hyundai-i10",
+        image: "/images/Hyundai-i10-Ozel-Servis-e1751888118271.jpg",
+    },
+    {
+        name: "i20",
+        slug: "/modeller/hyundai-i20",
+        image: "/images/hyundai-i20-servis.avif",
+    },
+    {
+        name: "i30",
+        slug: "/modeller/hyundai-i30",
+        image: "/images/hyundai-i30-servis.webp",
+    },
+    {
+        name: "Bayon",
+        slug: "/modeller/hyundai-bayon",
+        image: "/images/avifs/hyundai-bayon-servis.avif",
+    },
+    {
+        name: "Tucson",
+        slug: "/modeller/hyundai-tucson",
+        image: "/images/avifs/hyundai-tucson-servis.avif",
+    },
+    {
+        name: "Kona",
+        slug: "/modeller/hyundai-kona",
+        image: "/images/avifs/hyundai-kona-servis.avif",
+    },
+    {
+        name: "Santa Fe",
+        slug: "/modeller/hyundai-santa-fe",
+        image: "/images/hyundai-santa-fe-servis.webp",
+    },
+    {
+        name: "Elantra",
+        slug: "/modeller/hyundai-elantra",
+        image: "/images/Hyundai_elantra_servis.jpg",
+    },
+    {
+        name: "Accent",
+        slug: "/modeller/hyundai-accent-blue",
+        image: "/images/Hyundai-accent-servis.jpg",
+    },
+    {
+        name: "IX35",
+        slug: "/modeller/hyundai-ix35",
+        image: "/images/hyundai-ix35-servis.jpg",
+    },
 ];
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <LocalBusinessSchema title={pageTitle} description={pageDescription} url="https://hyundaiservisim.com/hyundai-ozel-servis" />
-  <BreadcrumbSchema items={breadcrumbItems} />
-  <FAQSchema faqs={faqs} />
+    <LocalBusinessSchema
+        title={pageTitle}
+        description={pageDescription}
+        url="https://hyundaiservisim.com/hyundai-ozel-servis"
+    />
+    <BreadcrumbSchema items={breadcrumbItems} />
+    <FAQSchema faqs={faqs} />
 
-  <!-- Brand Hero -->
-  <section class="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-slate-900">
-    <!-- Background Image with Improved Visibility -->
-    <div class="absolute inset-0 z-0">
-        <img 
-            src="/images/Gebze Hyundai Servis.webp" 
-            alt="Hyundai Servis" 
-            class="w-full h-full object-cover object-center scale-105 opacity-60 animate-slow-pan" 
-        />
-        <!-- Gradient Overlay: Dark to Light -->
-        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-    </div>
-    
-    <!-- Animated Particles/Glow -->
-    <div class="absolute inset-0 z-0 opacity-30">
-        <div class="absolute top-20 right-20 w-96 h-96 bg-blue-600/30 rounded-full blur-[100px] animate-pulse-slow"></div>
-        <div class="absolute bottom-20 left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-[80px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-    </div>
-
-    <!-- Brand Logo Watermark -->
-    <div class="absolute bottom-0 right-0 z-0 opacity-20 select-none pointer-events-none p-10">
-        <img src="/images/logolar/hyundai.webp" alt="Hyundai Logo" class="w-64 h-auto grayscale invert" />
-    </div>
-    
-    <div class="container mx-auto px-4 relative z-10">
-        <div class="max-w-4xl">
-            <!-- Badge -->
-            <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-8 hover:bg-white/20 transition-colors cursor-default">
-                <span class="relative flex h-3 w-3">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
-                </span>
-                <span class="font-bold tracking-wider text-sm uppercase">Gebze & Tuzla 1.Sınıf Premium Özel Servis</span>
+    <!-- Brand Hero -->
+    <section
+        class="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-slate-900"
+    >
+        <!-- Background Image with Improved Visibility -->
+        <div class="absolute inset-0 z-0">
+            <img
+                src="/images/Gebze Hyundai Servis.webp"
+                alt="Hyundai Servis"
+                class="w-full h-full object-cover object-center scale-105 opacity-60 animate-slow-pan"
+            />
+            <!-- Gradient Overlay: Dark to Light -->
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/60 to-transparent"
+            >
             </div>
-
-            <!-- Main Heading -->
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[1.1] tracking-tight drop-shadow-2xl">
-                HYUNDAI <br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-white">UZMANI</span>
-            </h1>
-
-            <!-- Description -->
-            <p class="text-xl text-blue-100 mb-12 leading-relaxed max-w-2xl border-l-4 border-blue-500 pl-6">
-                Aracınızın değerini koruyan, üretici standartlarında bakım ve onarım hizmeti. 
-                <span class="text-white font-bold">17 yıllık tecrübe</span> ile güvenli ellerdesiniz.
-            </p>
-
-            <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row gap-5">
-                <a href="tel:05336157835" class="group relative flex items-center justify-center gap-4 bg-blue-600 hover:bg-blue-500 text-white px-8 py-5 rounded-2xl font-bold text-lg transition-all shadow-[0_0_40px_rgba(37,99,235,0.3)] hover:shadow-[0_0_60px_rgba(37,99,235,0.5)] overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
-                    <svg class="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    <span>Hemen Randevu Al</span>
-                </a>
-                <a href="#services" class="group flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 text-white px-8 py-5 rounded-2xl font-bold text-lg transition-all backdrop-blur-sm border border-white/10">
-                    <span>Hizmetleri Keşfet</span>
-                    <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </a>
+            <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"
+            >
             </div>
         </div>
-    </div>
-  </section>
 
-  <!-- Premium Stats Bar -->
-  <section class="relative z-20 -mt-12 container mx-auto px-4">
-    <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-slate-100">
-        <div class="text-center group">
-            <div class="text-5xl md:text-6xl lg:text-7xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors" style="font-family: 'Saira Semi Condensed', sans-serif; font-weight: 300;">15+</div>
-            <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Yıl Deneyim</div>
-        </div>
-        <div class="text-center group">
-            <div class="text-5xl md:text-6xl lg:text-7xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors" style="font-family: 'Saira Semi Condensed', sans-serif; font-weight: 300;">%100</div>
-            <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Garanti</div>
-        </div>
-        <div class="text-center group">
-            <div class="text-5xl md:text-6xl lg:text-7xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors" style="font-family: 'Saira Semi Condensed', sans-serif; font-weight: 300;">5K+</div>
-            <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Mutlu Müşteri</div>
-        </div>
-        <div class="text-center group">
-            <div class="text-5xl md:text-6xl lg:text-7xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors" style="font-family: 'Saira Semi Condensed', sans-serif; font-weight: 300;">7/24</div>
-            <div class="text-xs font-bold text-slate-400 uppercase tracking-widest">Destek</div>
-        </div>
-    </div>
-  </section>
-
-  <!-- Services Grid (Improved Interactivity) -->
-  <section id="services" class="py-24 bg-slate-50">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-20">
-            <span class="text-blue-600 font-bold tracking-widest uppercase text-sm">Uzmanlık Alanlarımız</span>
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mt-3 mb-6">Hyundai Servis Hizmetleri</h2>
-            <p class="text-slate-600 max-w-2xl mx-auto text-lg">
-                Aracınızın ihtiyacı olan tüm bakım ve onarım işlemleri, Hyundai teknolojisine hakim uzman kadromuz tarafından titizlikle yapılır.
-            </p>
+        <!-- Animated Particles/Glow -->
+        <div class="absolute inset-0 z-0 opacity-30">
+            <div
+                class="absolute top-20 right-20 w-96 h-96 bg-blue-600/30 rounded-full blur-[100px] animate-pulse-slow"
+            >
+            </div>
+            <div
+                class="absolute bottom-20 left-20 w-72 h-72 bg-blue-500/20 rounded-full blur-[80px] animate-pulse-slow"
+                style="animation-delay: 2s;"
+            >
+            </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map(service => (
-                <div class="group bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-[100%] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                    
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform duration-500">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon}></path>
-                            </svg>
+        <!-- Brand Logo Watermark -->
+        <div
+            class="absolute bottom-0 right-0 z-0 opacity-20 select-none pointer-events-none p-10"
+        >
+            <img
+                src="/images/logolar/hyundai.webp"
+                alt="Hyundai Logo"
+                class="w-64 h-auto grayscale invert"
+            />
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl">
+                <!-- Badge -->
+                <div
+                    class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-8 hover:bg-white/20 transition-colors cursor-default"
+                >
+                    <span class="relative flex h-3 w-3">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"
+                        ></span>
+                        <span
+                            class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"
+                        ></span>
+                    </span>
+                    <span class="font-bold tracking-wider text-sm uppercase"
+                        >Gebze & Tuzla 1.Sınıf Premium Özel Servis</span
+                    >
+                </div>
+
+                <!-- Main Heading -->
+                <h1
+                    class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 leading-[1.1] tracking-tight drop-shadow-2xl"
+                >
+                    HYUNDAI <br />
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-white"
+                        >UZMANI</span
+                    >
+                </h1>
+
+                <!-- Description -->
+                <p
+                    class="text-xl text-blue-100 mb-12 leading-relaxed max-w-2xl border-l-4 border-blue-500 pl-6"
+                >
+                    Aracınızın değerini koruyan, üretici standartlarında bakım
+                    ve onarım hizmeti.
+                    <span class="text-white font-bold">17 yıllık tecrübe</span> ile
+                    güvenli ellerdesiniz.
+                </p>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a
+                        href="tel:05336157835"
+                        class="group relative flex items-center justify-center gap-4 bg-blue-600 hover:bg-blue-500 text-white px-8 py-5 rounded-2xl font-bold text-lg transition-all shadow-[0_0_40px_rgba(37,99,235,0.3)] hover:shadow-[0_0_60px_rgba(37,99,235,0.5)] overflow-hidden"
+                    >
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"
+                        >
                         </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{service.title}</h3>
-                        <p class="text-slate-500 leading-relaxed mb-6">
-                            Hyundai standartlarına uygun ekipman ve prosedürlerle {service.title.toLowerCase()} işlemlerinde en iyi sonuç.
-                        </p>
-                        <span class="inline-flex items-center text-sm font-bold text-blue-600 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                            Detaylı Bilgi <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </span>
+                        <svg
+                            class="w-6 h-6 group-hover:rotate-12 transition-transform"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                            ></path></svg
+                        >
+                        <span>Hemen Randevu Al</span>
+                    </a>
+                    <a
+                        href="#services"
+                        class="group flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 text-white px-8 py-5 rounded-2xl font-bold text-lg transition-all backdrop-blur-sm border border-white/10"
+                    >
+                        <span>Hizmetleri Keşfet</span>
+                        <svg
+                            class="w-5 h-5 group-hover:translate-y-1 transition-transform"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg
+                        >
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Stats Bar -->
+    <section class="relative z-20 -mt-12 container mx-auto px-4">
+        <div
+            class="bg-white rounded-3xl shadow-2xl border border-slate-100 p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-slate-100"
+        >
+            <div class="text-center group">
+                <div
+                    class="text-5xl md:text-6xl lg:text-7xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors"
+                    style="font-family: 'Saira Semi Condensed', sans-serif; font-weight: 300;"
+                >
+                    15+
+                </div>
+                <div
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest"
+                >
+                    Yıl Deneyim
+                </div>
+            </div>
+            <div class="text-center group">
+                <div
+                    class="text-5xl md:text-6xl lg:text-7xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors"
+                    style="font-family: 'Saira Semi Condensed', sans-serif; font-weight: 300;"
+                >
+                    %100
+                </div>
+                <div
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest"
+                >
+                    Garanti
+                </div>
+            </div>
+            <div class="text-center group">
+                <div
+                    class="text-5xl md:text-6xl lg:text-7xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors"
+                    style="font-family: 'Saira Semi Condensed', sans-serif; font-weight: 300;"
+                >
+                    5K+
+                </div>
+                <div
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest"
+                >
+                    Mutlu Müşteri
+                </div>
+            </div>
+            <div class="text-center group">
+                <div
+                    class="text-5xl md:text-6xl lg:text-7xl text-slate-900 mb-2 group-hover:text-blue-600 transition-colors"
+                    style="font-family: 'Saira Semi Condensed', sans-serif; font-weight: 300;"
+                >
+                    7/24
+                </div>
+                <div
+                    class="text-xs font-bold text-slate-400 uppercase tracking-widest"
+                >
+                    Destek
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid (Improved Interactivity) -->
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <span
+                    class="text-blue-600 font-bold tracking-widest uppercase text-sm"
+                    >Uzmanlık Alanlarımız</span
+                >
+                <h2
+                    class="text-3xl md:text-5xl font-black text-slate-900 mt-3 mb-6"
+                >
+                    Hyundai Servis Hizmetleri
+                </h2>
+                <p class="text-slate-600 max-w-2xl mx-auto text-lg">
+                    Aracınızın ihtiyacı olan tüm bakım ve onarım işlemleri,
+                    Hyundai teknolojisine hakim uzman kadromuz tarafından
+                    titizlikle yapılır.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {
+                    services.map((service) => (
+                        <div class="group bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-[100%] -mr-8 -mt-8 transition-transform group-hover:scale-110" />
+
+                            <div class="relative z-10">
+                                <div class="w-16 h-16 bg-blue-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform duration-500">
+                                    <svg
+                                        class="w-8 h-8"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d={service.icon}
+                                        />
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
+                                    {service.title}
+                                </h3>
+                                <p class="text-slate-500 leading-relaxed mb-6">
+                                    Hyundai standartlarına uygun ekipman ve
+                                    prosedürlerle {service.title.toLowerCase()}{" "}
+                                    işlemlerinde en iyi sonuç.
+                                </p>
+                                <span class="inline-flex items-center text-sm font-bold text-blue-600 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                                    Detaylı Bilgi{" "}
+                                    <svg
+                                        class="w-4 h-4 ml-2"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                        />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Models (Dark & Interactive) -->
+    <section class="py-24 bg-slate-900 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5">
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div
+                class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+            >
+                <div>
+                    <span
+                        class="text-blue-500 font-bold tracking-widest uppercase text-sm"
+                        >Modeller</span
+                    >
+                    <h2 class="text-3xl md:text-5xl font-black text-white mt-3">
+                        Hizmet Verdiğimiz Araçlar
+                    </h2>
+                </div>
+                <p class="text-slate-400 max-w-md text-right md:text-right">
+                    Eski veya yeni, binek ve SUV modellerinde uzmanız.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {
+                    models.map((model) => (
+                        <a
+                            href={model.slug !== "#" ? model.slug : undefined}
+                            class={`group relative bg-slate-800 rounded-2xl overflow-hidden transition-all duration-300 border border-slate-700 ${model.slug !== "#" ? "hover:border-blue-600 cursor-pointer" : "opacity-70 cursor-default"}`}
+                        >
+                            <div class="aspect-video w-full bg-slate-900 relative">
+                                <img
+                                    src={model.image}
+                                    alt={model.name}
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-700/50 via-slate-800/25 to-transparent opacity-50" />
+                                <div class="absolute bottom-0 left-0 p-4 w-full">
+                                    <h3 class="text-xl font-bold text-white mb-1">
+                                        {model.name}
+                                    </h3>
+                                    <p class="text-xs text-blue-400 uppercase tracking-wider flex items-center gap-1">
+                                        {model.slug !== "#"
+                                            ? "İncele"
+                                            : "Özel Servis"}
+                                        {model.slug !== "#" && (
+                                            <svg
+                                                class="w-3 h-3"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M9 5l7 7-7 7"
+                                                />
+                                            </svg>
+                                        )}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+                    Sıkça Sorulan Sorular
+                </h2>
+                <p class="text-slate-500 text-lg">
+                    Aklınıza takılanları sizin için cevapladık.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                {
+                    faqs.map((faq) => (
+                        <div class="bg-slate-50 rounded-2xl p-1 transition-all hover:bg-white hover:shadow-lg border border-slate-100">
+                            <details class="group">
+                                <summary class="flex items-center justify-between p-6 font-bold text-slate-900 cursor-pointer list-none text-lg">
+                                    <span>{faq.question}</span>
+                                    <span class="transition-transform duration-300 group-open:rotate-180 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm text-blue-600">
+                                        <svg
+                                            fill="none"
+                                            height="24"
+                                            stroke="currentColor"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            viewBox="0 0 24 24"
+                                            width="24"
+                                        >
+                                            <path d="M6 9l6 6 6-6" />
+                                        </svg>
+                                    </span>
+                                </summary>
+                                <div class="px-6 pb-6 pt-0">
+                                    <p class="text-slate-600 leading-relaxed border-t border-slate-200 pt-4">
+                                        {faq.answer}
+                                    </p>
+                                </div>
+                            </details>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-slate-50">
+        <div class="container mx-auto px-4">
+            <div
+                class="max-w-5xl mx-auto bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl shadow-blue-900/20"
+            >
+                <!-- Background Effects -->
+                <div
+                    class="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern.svg')] opacity-10"
+                >
+                </div>
+                <div
+                    class="absolute top-[-50%] right-[-50%] w-full h-full bg-blue-500/20 blur-[120px] rounded-full"
+                >
+                </div>
+
+                <div class="relative z-10">
+                    <h2
+                        class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight"
+                    >
+                        Aracınızın Değerini Biliyoruz
+                    </h2>
+                    <p
+                        class="text-blue-100 text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
+                    >
+                        Tetik Otomotiv güvencesiyle tanışın. Uygun fiyat,
+                        kaliteli hizmet ve güleryüzlü personelimizle sizi
+                        bekliyoruz.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-6">
+                        <a
+                            href="tel:05336157835"
+                            class="group inline-flex items-center justify-center gap-3 bg-white text-blue-900 px-10 py-5 rounded-2xl font-black text-lg hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                        >
+                            <svg
+                                class="w-6 h-6 group-hover:rotate-12 transition-transform"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                                ><path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                                ></path></svg
+                            >
+                            Hemen Ara
+                        </a>
+                        <a
+                            href="/iletisim"
+                            class="inline-flex items-center justify-center gap-3 bg-blue-800/50 text-white border-2 border-blue-400/30 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-800 hover:border-blue-400 transition-all backdrop-blur-sm"
+                        >
+                            Konum Al
+                        </a>
                     </div>
                 </div>
-            ))}
-        </div>
-    </div>
-  </section>
-
-  <!-- Models (Dark & Interactive) -->
-  <section class="py-24 bg-slate-900 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5"></div>
-    
-    <div class="container mx-auto px-4 relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-            <div>
-                <span class="text-blue-500 font-bold tracking-widest uppercase text-sm">Modeller</span>
-                <h2 class="text-3xl md:text-5xl font-black text-white mt-3">Hizmet Verdiğimiz Araçlar</h2>
-            </div>
-            <p class="text-slate-400 max-w-md text-right md:text-right">
-                Eski veya yeni, binek ve SUV modellerinde uzmanız.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {models.map(model => (
-                <a href={model.slug !== '#' ? model.slug : undefined} class={`group relative bg-slate-800 rounded-2xl overflow-hidden transition-all duration-300 border border-slate-700 ${model.slug !== '#' ? 'hover:border-blue-600 cursor-pointer' : 'opacity-70 cursor-default'}`}>
-                    <div class="aspect-video w-full bg-slate-900 relative">
-                        <img 
-                            src={model.image} 
-                            alt={model.name} 
-                            class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" 
-                        />
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-700/50 via-slate-800/25 to-transparent opacity-50"></div>
-                        <div class="absolute bottom-0 left-0 p-4 w-full">
-                            <h3 class="text-xl font-bold text-white mb-1">{model.name}</h3>
-                            <p class="text-xs text-blue-400 uppercase tracking-wider flex items-center gap-1">
-                                {model.slug !== '#' ? 'İncele' : 'Özel Servis'} 
-                                {model.slug !== '#' && <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>}
-                            </p>
-                        </div>
-                    </div>
-                </a>
-            ))}
-        </div>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="py-24 bg-white">
-    <div class="container mx-auto px-4 max-w-3xl">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">Sıkça Sorulan Sorular</h2>
-            <p class="text-slate-500 text-lg">Aklınıza takılanları sizin için cevapladık.</p>
-        </div>
-
-        <div class="space-y-4">
-            {faqs.map(faq => (
-                <div class="bg-slate-50 rounded-2xl p-1 transition-all hover:bg-white hover:shadow-lg border border-slate-100">
-                    <details class="group">
-                        <summary class="flex items-center justify-between p-6 font-bold text-slate-900 cursor-pointer list-none text-lg">
-                            <span>{faq.question}</span>
-                            <span class="transition-transform duration-300 group-open:rotate-180 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm text-blue-600">
-                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                            </span>
-                        </summary>
-                        <div class="px-6 pb-6 pt-0">
-                            <p class="text-slate-600 leading-relaxed border-t border-slate-200 pt-4">
-                                {faq.answer}
-                            </p>
-                        </div>
-                    </details>
-                </div>
-            ))}
-        </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-24 bg-slate-50">
-    <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden shadow-2xl shadow-blue-900/20">
-        <!-- Background Effects -->
-        <div class="absolute top-0 left-0 w-full h-full bg-[url('/images/pattern.svg')] opacity-10"></div>
-        <div class="absolute top-[-50%] right-[-50%] w-full h-full bg-blue-500/20 blur-[120px] rounded-full"></div>
-        
-        <div class="relative z-10">
-            <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">
-              Aracınızın Değerini Biliyoruz
-            </h2>
-            <p class="text-blue-100 text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-              Tetik Otomotiv güvencesiyle tanışın. Uygun fiyat, kaliteli hizmet ve güleryüzlü personelimizle sizi bekliyoruz.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="tel:05336157835" class="group inline-flex items-center justify-center gap-3 bg-white text-blue-900 px-10 py-5 rounded-2xl font-black text-lg hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                    <svg class="w-6 h-6 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    Hemen Ara
-                </a>
-                <a href="/iletisim" class="inline-flex items-center justify-center gap-3 bg-blue-800/50 text-white border-2 border-blue-400/30 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-blue-800 hover:border-blue-400 transition-all backdrop-blur-sm">
-                    Konum Al
-                </a>
             </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <Footer />
+    <Footer />
 </Layout>
 
 <style>
-  @keyframes slow-pan {
-    0% { transform: scale(1.05); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1.05); }
-  }
-  .animate-slow-pan {
-    animation: slow-pan 20s infinite ease-in-out;
-  }
-  
-  details[open] summary ~ * {
-    animation: sweep .3s ease-in-out;
-  }
-  @keyframes sweep {
-    0%    {opacity: 0; transform: translateY(-10px)}
-    100%  {opacity: 1; transform: translateY(0)}
-  }
-  @keyframes pulse-slow {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.1); }
-  }
-  .animate-pulse-slow {
-    animation: pulse-slow 4s infinite ease-in-out;
-  }
-</style>
+    @keyframes slow-pan {
+        0% {
+            transform: scale(1.05);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1.05);
+        }
+    }
+    .animate-slow-pan {
+        animation: slow-pan 20s infinite ease-in-out;
+    }
 
+    details[open] summary ~ * {
+        animation: sweep 0.3s ease-in-out;
+    }
+    @keyframes sweep {
+        0% {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    @keyframes pulse-slow {
+        0%,
+        100% {
+            opacity: 0.3;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+    }
+    .animate-pulse-slow {
+        animation: pulse-slow 4s infinite ease-in-out;
+    }
+</style>
