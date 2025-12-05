@@ -242,200 +242,177 @@ const menuItems = [
       </div>
     </div>
   </div>
-
-  <!-- Mobile Menu Overlay - Full Screen -->
-  <div
-    id="mobile-menu"
-    class="lg:hidden fixed inset-0 z-[9998] pointer-events-none"
-  >
-    <!-- Dark Backdrop -->
-    <div
-      id="mobile-menu-backdrop"
-      class="absolute inset-0 bg-slate-950 opacity-0 transition-opacity duration-300"
-    >
-    </div>
-
-    <!-- Menu Content -->
-    <div
-      id="mobile-menu-content"
-      class="absolute top-0 right-0 w-full h-full bg-slate-950 transform translate-x-full transition-transform duration-300 ease-out overflow-y-auto"
-    >
-      <!-- Header Space -->
-      <div class="h-24"></div>
-
-      <!-- Menu Items -->
-      <nav class="px-6 py-8">
-        <ul class="space-y-1">
-          {
-            menuItems.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  class="mobile-link block py-4 text-2xl font-bold text-white hover:text-orange-500 transition-colors border-b border-slate-800"
-                >
-                  {item.text}
-                </a>
-                {item.hasDropdown && (
-                  <div class="py-2 pl-4 space-y-1 border-b border-slate-800">
-                    {item.dropdownItems.map((subItem) => (
-                      <a
-                        href={subItem.href}
-                        class="mobile-link block py-2 text-lg text-slate-300 hover:text-orange-500 transition-colors"
-                      >
-                        → {subItem.text}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </li>
-            ))
-          }
-        </ul>
-
-        <!-- Call Button -->
-        <div class="mt-8">
-          <a
-            href="tel:05336157835"
-            class="flex items-center justify-center gap-3 bg-orange-600 hover:bg-orange-700 text-white py-4 rounded-xl font-bold text-lg w-full transition-colors"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              ></path>
-            </svg>
-            0533 615 78 35
-          </a>
-        </div>
-
-        <!-- 7/24 Yol Yardım -->
-        <div class="mt-4">
-          <a
-            href="/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv"
-            class="flex items-center justify-center gap-3 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-bold text-lg w-full transition-colors"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-            7/24 YOL YARDIM
-          </a>
-        </div>
-      </nav>
-    </div>
-  </div>
 </header>
 
+<!-- Mobile Menu - OUTSIDE HEADER -->
+<div
+  id="mobile-menu"
+  class="lg:hidden fixed top-0 left-0 w-full h-full z-[9998] hidden"
+  style="background-color: #020617;"
+>
+  <!-- Close Button -->
+  <button
+    id="mobile-menu-close"
+    class="absolute top-6 right-4 w-14 h-14 flex items-center justify-center bg-orange-600 rounded-xl z-10"
+    aria-label="Menüyü Kapat"
+  >
+    <svg
+      class="w-8 h-8 text-white"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Menu Content -->
+  <div class="pt-24 px-6 pb-8 h-full overflow-y-auto">
+    <nav>
+      <ul class="space-y-0">
+        {
+          menuItems.map((item) => (
+            <li class="border-b border-slate-800">
+              <a
+                href={item.href}
+                class="mobile-link block py-5 text-xl font-bold text-white hover:text-orange-500 transition-colors"
+              >
+                {item.text}
+              </a>
+              {item.hasDropdown && (
+                <div class="pb-4 pl-4 space-y-2">
+                  {item.dropdownItems.map((subItem) => (
+                    <a
+                      href={subItem.href}
+                      class="mobile-link block py-2 text-base text-slate-400 hover:text-orange-500 transition-colors"
+                    >
+                      → {subItem.text}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Call Button -->
+      <div class="mt-8">
+        <a
+          href="tel:05336157835"
+          class="mobile-link flex items-center justify-center gap-3 bg-orange-600 hover:bg-orange-700 text-white py-4 rounded-xl font-bold text-lg w-full transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+            ></path>
+          </svg>
+          0533 615 78 35
+        </a>
+      </div>
+
+      <!-- 7/24 Yol Yardım -->
+      <div class="mt-4">
+        <a
+          href="/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv"
+          class="mobile-link flex items-center justify-center gap-3 bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-bold text-lg w-full transition-colors"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          7/24 YOL YARDIM
+        </a>
+      </div>
+    </nav>
+  </div>
+</div>
+
 <script is:inline>
-  // Mobile Menu - Simple and Reliable
-  function initMobileMenu() {
-    const menuBtn = document.getElementById("mobile-menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    const backdrop = document.getElementById("mobile-menu-backdrop");
-    const content = document.getElementById("mobile-menu-content");
+  // Simple Mobile Menu Toggle
+  (function () {
+    function setupMobileMenu() {
+      var menuBtn = document.getElementById("mobile-menu-btn");
+      var closeBtn = document.getElementById("mobile-menu-close");
+      var mobileMenu = document.getElementById("mobile-menu");
+      var links = document.querySelectorAll(".mobile-link");
 
-    if (!menuBtn || !mobileMenu || !backdrop || !content) return;
-    if (menuBtn.dataset.initialized === "true") return;
+      if (!menuBtn || !mobileMenu) {
+        console.log("Mobile menu elements not found");
+        return;
+      }
 
-    menuBtn.dataset.initialized = "true";
-    let isOpen = false;
+      function openMenu() {
+        mobileMenu.classList.remove("hidden");
+        mobileMenu.classList.add("block");
+        menuBtn.classList.add("is-active");
+        document.body.style.overflow = "hidden";
+      }
 
-    function openMenu() {
-      isOpen = true;
-      menuBtn.classList.add("is-active");
-      mobileMenu.classList.remove("pointer-events-none");
-      mobileMenu.classList.add("pointer-events-auto");
-      backdrop.classList.remove("opacity-0");
-      backdrop.classList.add("opacity-100");
-      content.classList.remove("translate-x-full");
-      content.classList.add("translate-x-0");
-      document.body.style.overflow = "hidden";
-    }
+      function closeMenu() {
+        mobileMenu.classList.add("hidden");
+        mobileMenu.classList.remove("block");
+        menuBtn.classList.remove("is-active");
+        document.body.style.overflow = "";
+      }
 
-    function closeMenu() {
-      isOpen = false;
-      menuBtn.classList.remove("is-active");
-      mobileMenu.classList.add("pointer-events-none");
-      mobileMenu.classList.remove("pointer-events-auto");
-      backdrop.classList.add("opacity-0");
-      backdrop.classList.remove("opacity-100");
-      content.classList.add("translate-x-full");
-      content.classList.remove("translate-x-0");
-      document.body.style.overflow = "";
-    }
-
-    menuBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (isOpen) {
-        closeMenu();
-      } else {
+      // Open button
+      menuBtn.onclick = function (e) {
+        e.preventDefault();
         openMenu();
+      };
+
+      // Close button
+      if (closeBtn) {
+        closeBtn.onclick = function (e) {
+          e.preventDefault();
+          closeMenu();
+        };
       }
-    });
 
-    // Close on backdrop click
-    backdrop.addEventListener("click", closeMenu);
-
-    // Close on link click
-    const links = content.querySelectorAll("a");
-    links.forEach(function (link) {
-      link.addEventListener("click", closeMenu);
-    });
-
-    // Close on escape key
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && isOpen) {
-        closeMenu();
+      // Close on link click
+      for (var i = 0; i < links.length; i++) {
+        links[i].onclick = function () {
+          closeMenu();
+        };
       }
-    });
-  }
 
-  // Header Scroll Effect
-  function initHeaderScroll() {
-    const header = document.getElementById("main-header");
-    if (!header) return;
-
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 50) {
-        header.classList.add("shadow-lg", "bg-slate-950/95");
-        header.classList.remove("bg-slate-950/80");
-      } else {
-        header.classList.remove("shadow-lg", "bg-slate-950/95");
-        header.classList.add("bg-slate-950/80");
-      }
-    });
-  }
-
-  // Initialize on DOM ready
-  document.addEventListener("DOMContentLoaded", function () {
-    initMobileMenu();
-    initHeaderScroll();
-  });
-
-  // Re-initialize on Astro page navigation
-  document.addEventListener("astro:page-load", function () {
-    // Reset initialized flag for new page
-    const menuBtn = document.getElementById("mobile-menu-btn");
-    if (menuBtn) {
-      menuBtn.dataset.initialized = "false";
+      // Close on escape
+      document.onkeydown = function (e) {
+        if (e.key === "Escape") {
+          closeMenu();
+        }
+      };
     }
-    initMobileMenu();
-    initHeaderScroll();
-  });
+
+    // Run on load
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupMobileMenu);
+    } else {
+      setupMobileMenu();
+    }
+
+    // Run on Astro navigation
+    document.addEventListener("astro:page-load", setupMobileMenu);
+  })();
 </script>
