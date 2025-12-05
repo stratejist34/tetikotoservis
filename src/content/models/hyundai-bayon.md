@@ -3,7 +3,7 @@ brand: 'Hyundai'
 model: 'Bayon'
 metaTitle: 'Gebze Hyundai Bayon Servisi | Bakım & Onarım'
 metaDescription: 'Hyundai Bayon periyodik bakım ve servis hizmetleri. 1.0 T-GDI ve 1.4 MPI motorlar için uzman teknik destek.'
-image: '/images/hyundai-bayon-servis.jpg'
+image: '/images/avifs/hyundai-bayon-servis.avif'
 color: 'blue'
 features:
   - '1.0 T-GDI Bakımı'

@@ -3,7 +3,7 @@ brand: 'Hyundai'
 model: 'Accent Blue'
 metaTitle: 'Gebze Hyundai Accent Blue Servisi | Periyodik Bakım'
 metaDescription: 'Gebze Hyundai Accent Blue özel servisi. 1.6 CRDi dizel ve 1.4 benzinli motor bakımı, DCT şanzıman onarımı ve orijinal yedek parça.'
-image: '/images/Hyundai-accent-servis.jpg'
+image: '/images/avifs/Hyundai-accent-servis.avif'
 color: 'blue'
 features:
   - '1.6 CRDi Motor Uzmanlığı'

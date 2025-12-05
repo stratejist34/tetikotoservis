@@ -3,7 +3,7 @@ brand: 'Hyundai'
 model: 'IX35'
 metaTitle: 'Gebze Hyundai IX35 Servisi | SUV Özel Bakım'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Hyundai IX35 bakım ve onarım servisi. SUV modelleri için uzman servis çözümleri.'
-image: '/images/hyundai-ix35-servis.jpg'
+image: '/images/avifs/hyundai-ix35-servis.avif'
 color: 'blue'
 features:
   - 'SUV Özel Bakım'

@@ -3,7 +3,7 @@ brand: 'Kia'
 model: 'Sportage'
 metaTitle: 'Gebze Kia Sportage Servisi | GDI & CRDi Motor Uzmanı'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Kia Sportage araçlarınız için garantili özel servis. GDI motor, LPG bakımı, 4x4 sistem ve periyodik bakım hizmeti.'
-image: '/images/kia-sportage-ozel-servis-1.jpg'
+image: '/images/avifs/kia-sportage-ozel-servis-1.avif'
 color: 'red'
 features:
   - 'GDI Motor Uzmanlığı'
@@ -27,16 +27,16 @@ Kia'nın en çok tercih edilen SUV modeli **Sportage**, güçlü motoru ve konfo
 
 ### Sportage İçin Özel Hizmetlerimiz
 
-*   **GDI Motor Bakımı:** Direkt enjeksiyonlu motorlarda zamanla oluşan kurumlanma ve enjektör kirliliği için özel temizlik işlemleri yapıyoruz.
-*   **Dizel (CRDi) Sistem:** Turbo, EGR ve DPF sistemlerinin periyodik temizliği ile motorunuzun performansını koruyoruz.
-*   **4x4 (AWD) Sistem:** Arazi vitesi, şaft ve diferansiyel bakımlarını yaparak 4 çeker sisteminin sorunsuz çalışmasını sağlıyoruz.
-*   **Alt Takım:** Ağır gövde yapısı nedeniyle yorulan süspansiyon ve rot sistemlerini orijinal parçalarla yeniliyoruz.
+* **GDI Motor Bakımı:** Direkt enjeksiyonlu motorlarda zamanla oluşan kurumlanma ve enjektör kirliliği için özel temizlik işlemleri yapıyoruz.
+* **Dizel (CRDi) Sistem:** Turbo, EGR ve DPF sistemlerinin periyodik temizliği ile motorunuzun performansını koruyoruz.
+* **4x4 (AWD) Sistem:** Arazi vitesi, şaft ve diferansiyel bakımlarını yaparak 4 çeker sisteminin sorunsuz çalışmasını sağlıyoruz.
+* **Alt Takım:** Ağır gövde yapısı nedeniyle yorulan süspansiyon ve rot sistemlerini orijinal parçalarla yeniliyoruz.
 
 ### Neden Bizi Tercih Etmelisiniz?
 
-1.  **Model Uzmanlığı:** Sportage'ın SL, QL ve NQ5 kasa kodlu tüm nesillerine hakimiz.
-2.  **Orijinal Parça:** Kia logolu veya OEM (Mando, Mobis) parçalar kullanıyoruz.
-3.  **Garantili İşçilik:** Yaptığımız onarımlara 1 yıl garanti veriyoruz.
-4.  **Hızlı Çözüm:** Arıza tespit cihazlarımızla sorunu nokta atışı bulup, gereksiz parça değişimini önlüyoruz.
+1. **Model Uzmanlığı:** Sportage'ın SL, QL ve NQ5 kasa kodlu tüm nesillerine hakimiz.
+2. **Orijinal Parça:** Kia logolu veya OEM (Mando, Mobis) parçalar kullanıyoruz.
+3. **Garantili İşçilik:** Yaptığımız onarımlara 1 yıl garanti veriyoruz.
+4. **Hızlı Çözüm:** Arıza tespit cihazlarımızla sorunu nokta atışı bulup, gereksiz parça değişimini önlüyoruz.
 
 Sportage'ınızın keyfini sürmek size, bakımı bize kalsın.

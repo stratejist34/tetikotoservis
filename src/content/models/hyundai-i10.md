@@ -3,7 +3,7 @@ brand: 'Hyundai'
 model: 'i10'
 metaTitle: 'Gebze Hyundai i10 Servisi | Periyodik Bakım & Tamir'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Hyundai i10 araçlarınız için garantili özel servis. AMT şanzıman robotu, baskı balata ve periyodik bakım uzmanlığı.'
-image: '/images/Hyundai-i10-Ozel-Servis-e1751888118271.jpg'
+image: '/images/avifs/Hyundai-i10-Ozel-Servis-e1751888118271.avif'
 color: 'blue'
 features:
   - 'AMT Şanzıman Robotu Tamiri'

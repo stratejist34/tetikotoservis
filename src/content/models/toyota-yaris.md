@@ -3,7 +3,7 @@ brand: 'Toyota'
 model: 'Yaris'
 metaTitle: 'Gebze Toyota Yaris Servisi | Hibrit & Benzinli'
 metaDescription: 'Toyota Yaris ve Yaris Hybrid modelleri için uzman servis. Hibrit batarya testi ve periyodik bakım hizmetleri.'
-image: '/images/toyota-yaris-servis.jpg'
+image: '/images/avifs/toyota-yaris-servis.avif'
 color: 'red'
 features:
   - 'Hibrit Sistem Kontrolü'

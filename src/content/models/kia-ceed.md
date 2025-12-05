@@ -3,7 +3,7 @@ brand: 'Kia'
 model: 'Ceed'
 metaTitle: 'Gebze Kia Ceed Servisi | Dizel & Benzinli'
 metaDescription: 'Kia Ceed CRDi ve benzinli modeller için detaylı bakım. Triger seti, turbo revizyonu ve DCT şanzıman uzmanlığı.'
-image: '/images/kia-ceed-servis.jpg'
+image: '/images/avifs/kia-ceed-servis.avif'
 color: 'orange'
 features:
   - 'CRDi Dizel Bakımı'

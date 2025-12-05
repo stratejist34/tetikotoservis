@@ -3,7 +3,7 @@ brand: 'Hyundai'
 model: 'Elantra'
 metaTitle: 'Gebze Hyundai Elantra Servisi | LPG & Motor Bakımı'
 metaDescription: 'Gebze Hyundai Elantra özel servisi. Benzinli ve LPG li Elantra modelleri için supap ayarı, motor bakımı ve şanzıman onarımı.'
-image: '/images/Hyundai_elantra_servis.jpg'
+image: '/images/avifs/Hyundai_elantra_servis.avif'
 color: 'blue'
 features:
   - 'LPG Uyumlu Bakım'

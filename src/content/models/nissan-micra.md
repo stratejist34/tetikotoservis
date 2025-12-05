@@ -3,7 +3,7 @@ brand: 'Nissan'
 model: 'Micra'
 metaTitle: 'Gebze Nissan Micra Servisi | Otomatik Şanzıman'
 metaDescription: 'Nissan Micra şehir içi bakım ve onarım servisi. CVT şanzıman, motor yağı değişimi ve fren bakımı.'
-image: '/images/nissan-micra-servis.jpg'
+image: '/images/avifs/nissan-micra-servis.avif'
 color: 'red'
 features:
   - 'CVT Şanzıman Bakımı'

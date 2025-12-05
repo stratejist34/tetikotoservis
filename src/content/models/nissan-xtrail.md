@@ -3,7 +3,7 @@ brand: 'Nissan'
 model: 'X-Trail'
 metaTitle: 'Gebze Nissan X-Trail Servisi | 4x4 & SUV'
 metaDescription: 'Nissan X-Trail dCi ve benzinli SUV modelleri için tam donanımlı servis. 4x4 sistem, şanzıman ve motor ağır bakımları.'
-image: '/images/nissan-x-trail-ozel-servis.jpg'
+image: '/images/avifs/nissan-x-trail-ozel-servis.avif'
 color: 'red'
 features:
   - '4x4 Diferansiyel Bakımı'

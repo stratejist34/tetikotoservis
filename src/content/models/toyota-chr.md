@@ -3,7 +3,7 @@ brand: 'Toyota'
 model: 'C-HR'
 metaTitle: 'Gebze Toyota C-HR Servisi | Hibrit Uzmanı'
 metaDescription: 'Toyota C-HR Hybrid ve Turbo modelleri için yetkili servis kalitesinde hizmet. Batarya, motor ve kaporta onarımı.'
-image: '/images/toyota-c-hr-ozel-servis.jpg'
+image: '/images/avifs/toyota-c-hr-ozel-servis.avif'
 color: 'red'
 features:
   - 'Hibrit Batarya Testi'

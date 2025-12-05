@@ -3,7 +3,7 @@ brand: 'Kia'
 model: 'Stonic'
 metaTitle: 'Gebze Kia Stonic Servisi | Crossover Bakım'
 metaDescription: 'Kia Stonic 1.4 ve 1.0 Turbo modelleri için özel servis hizmeti. DCT şanzıman ve motor bakımlarında uzman kadro.'
-image: '/images/kia-stonic-servis.jpg'
+image: '/images/avifs/kia-stonic-servis.avif'
 color: 'orange'
 features:
   - 'Crossover Periyodik Bakım'

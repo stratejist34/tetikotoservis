@@ -3,7 +3,7 @@ brand: 'Toyota'
 model: 'Avensis'
 metaTitle: 'Gebze Toyota Avensis Servisi | Dizel & Benzinli Uzman'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Toyota Avensis bakım ve onarım servisi. Dizel D-4D motor, şanzıman ve elektronik sistem uzmanlığı.'
-image: '/images/toyota-avensis-servis.jpg'
+image: '/images/avifs/toyota-avensis-servis.avif'
 color: 'red'
 features:
   - 'Dizel Motor Uzmanlığı'

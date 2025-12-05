@@ -3,7 +3,7 @@ brand: 'Toyota'
 model: 'Hilux'
 metaTitle: 'Gebze Toyota Hilux Servisi | Pick-up Özel Bakım'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Toyota Hilux bakım ve onarım servisi. Pick-up segmenti için özel servis çözümleri.'
-image: '/images/toyota-hilux-servis.jpg'
+image: '/images/avifs/toyota-hilux-servis.avif'
 color: 'red'
 features:
   - 'Pick-up Özel Bakım'

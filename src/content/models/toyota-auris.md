@@ -3,7 +3,7 @@ brand: 'Toyota'
 model: 'Auris'
 metaTitle: 'Gebze Toyota Auris Servisi | Özel Bakım ve Onarım'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Toyota Auris bakım ve onarım servisi. Motor, şanzıman ve elektronik sistem uzmanlığı.'
-image: '/images/toyota-auris-servis.jpg'
+image: '/images/avifs/toyota-auris-servis.avif'
 color: 'red'
 features:
   - 'Periyodik Bakım'

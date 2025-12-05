@@ -3,7 +3,7 @@ brand: 'Toyota'
 model: 'RAV4'
 metaTitle: 'Gebze Toyota RAV4 Servisi | SUV Bakım'
 metaDescription: 'Toyota RAV4 Hybrid ve benzinli SUV modelleri için tam kapsamlı servis. 4x4 sistem ve hibrit batarya bakımı.'
-image: '/images/toyota-rav4-servis.jpg'
+image: '/images/avifs/toyota-rav4-servis.avif'
 color: 'red'
 features:
   - '4x4 Sistem Bakımı'

@@ -3,7 +3,7 @@ brand: 'Toyota'
 model: 'Verso'
 metaTitle: 'Gebze Toyota Verso Servisi | MPV Özel Bakım'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Toyota Verso bakım ve onarım servisi. MPV segmenti için özel servis çözümleri.'
-image: '/images/toyota-verso-servis.jpg'
+image: '/images/avifs/toyota-verso-servis.avif'
 color: 'red'
 features:
   - 'MPV Özel Bakım'

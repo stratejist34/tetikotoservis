@@ -3,7 +3,7 @@ brand: 'Hyundai'
 model: 'Kona'
 metaTitle: 'Gebze Hyundai Kona Servisi | SUV & Elektrikli Özel Bakım'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Hyundai Kona bakım ve onarım servisi. SUV ve elektrikli modeller için uzman servis çözümleri.'
-image: '/images/hyundai-kona-servis.jpg'
+image: '/images/avifs/hyundai-kona-servis.avif'
 color: 'blue'
 features:
   - 'SUV Özel Bakım'
@@ -27,12 +27,11 @@ faqs:
 
 ### Kona İçin Uzman Çözümler
 
-*   **Elektrikli Sistem:** Kona Electric modellerde batarya sağlığı testi ve şarj sistemi kontrolü.
-*   **Periyodik Bakım:** 15.000 km ve 30.000 km periyotlarında tam bakım paketi.
-*   **4x4 Sistem:** Aktarma organları ve diferansiyel bakımı.
-*   **Motor Mekanik:** Tüm motor revizyonu ve performans optimizasyonu.
+* **Elektrikli Sistem:** Kona Electric modellerde batarya sağlığı testi ve şarj sistemi kontrolü.
+* **Periyodik Bakım:** 15.000 km ve 30.000 km periyotlarında tam bakım paketi.
+* **4x4 Sistem:** Aktarma organları ve diferansiyel bakımı.
+* **Motor Mekanik:** Tüm motor revizyonu ve performans optimizasyonu.
 
 ### Orijinal Hyundai Kalitesi
 
 Servisimizde Hyundai'nin onayladığı orijinal parçalar kullanılır. Tuzla, Gebze, Pendik ve Kurtköy'de Kona'nızı güvenle emanet edebileceğiniz adres.
-

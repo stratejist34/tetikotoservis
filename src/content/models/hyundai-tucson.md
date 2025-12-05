@@ -3,7 +3,7 @@ brand: 'Hyundai'
 model: 'Tucson'
 metaTitle: 'Gebze Hyundai Tucson Servisi | Periyodik Bakım & Mekanik'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Hyundai Tucson (ix35) araçlarınız için garantili özel servis. GDI Turbo, CRDi motor, 4x4 sistem ve DCT şanzıman uzmanlığı.'
-image: '/images/hyundai-tucson-servis.jpg'
+image: '/images/avifs/hyundai-tucson-servis.avif'
 color: 'blue'
 features:
   - '1.6 T-GDI & CRDi Uzmanlığı'

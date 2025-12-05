@@ -3,7 +3,7 @@ brand: 'Kia'
 model: 'Picanto'
 metaTitle: 'Gebze Kia Picanto Servisi | Periyodik Bakım'
 metaDescription: 'Kia Picanto şehir içi aracınız için hızlı ve ekonomik bakım paketleri. Fren, balata ve yağ değişimi işlemleri.'
-image: '/images/kia-picanto-ozel-servis.jpg'
+image: '/images/avifs/kia-picanto-ozel-servis.avif'
 color: 'orange'
 features:
   - 'Ekonomik Bakım Paketleri'

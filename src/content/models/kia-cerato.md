@@ -3,7 +3,7 @@ brand: 'Kia'
 model: 'Cerato'
 metaTitle: 'Gebze Kia Cerato Servisi | Motor & Şanzıman'
 metaDescription: 'Kia Cerato dizel ve benzinli sedan araçlarınız için güvenilir servis. Otomatik şanzıman ve motor mekanik onarımları.'
-image: '/images/kia-cerato-servis.jpg'
+image: '/images/avifs/kia-cerato-servis.avif'
 color: 'orange'
 features:
   - 'Dizel Enjektör Bakımı'
