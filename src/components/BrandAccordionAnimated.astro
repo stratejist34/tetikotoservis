@@ -1,0 +1,271 @@
+---
+// Örnek BrandAccordion komponenti - Animasyonlar eklenmiş
+const brands = [
+  {
+    name: 'Hyundai',
+    logo: '/images/logolar/hyundai.webp',
+    image: '/images/hyundai-servis.jpg',
+    services: [
+      'Periyodik Bakım',
+      'Motor Tamiri',
+      'Yedek Parça Değişimi',
+      'Diagnosiz Cihaz'
+    ],
+    description: 'Hyundai araçlarınız için orijinal yedek parça ve uzman servis hizmeti.'
+  },
+  {
+    name: 'Kia',
+    logo: '/images/logolar/kia.webp',
+    image: '/images/kia-sportage-ozel-servis-1.jpg',
+    services: [
+      'Kia Bakım Programı',
+      'Garanti İçi Onarım',
+      'Yaz-Kış Lastik Değişimi',
+      'Klima Bakımı'
+    ],
+    description: 'Kia marka araçlarınızın tüm bakım ve onarım ihtiyaçları.'
+  },
+  {
+    name: 'Toyota',
+    logo: '/images/logolar/toyota.webp',
+    image: '/images/Toyota-ozel-servis-tuzla-gebze.png',
+    services: [
+      'Toyota Hybrid Bakım',
+      'Otokorkulon Kontrolü',
+      'Fren Sistemi Bakımı',
+      'Şanzıman Yağ Değişimi'
+    ],
+    description: 'Toyota hybrid ve konvansiyonel araçlar için uzman bakım.'
+  },
+  {
+    name: 'Nissan',
+    logo: '/images/logolar/nissan.webp',
+    image: '/images/Gebze Nissan Servis.jpg',
+    services: [
+      'Nissan Programlı Bakım',
+      'Elektronik Sistem Kontrolü',
+      'Süspansiyon Ayarı',
+      'Yakıt Sistemi Temizliği'
+    ],
+    description: 'Nissan araçlarınız için teknoloji destekli bakım hizmeti.'
+  }
+];
+
+let activeBrand = null;
+---
+
+<div class="py-16 bg-gradient-to-br from-slate-50 via-white to-orange-50">
+  <div class="container mx-auto px-4">
+    <!-- Başlık -->
+    <div class="text-center mb-16" data-reveal="fade-in-up">
+      <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">
+        MARKA SERVİSLERİ
+      </h2>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+        Her marka için uzman teknisyenler ve orijinal yedek parçalarla
+        %100 memnuniyet garantisinde servis hizmeti.
+      </p>
+    </div>
+
+    <!-- Akordeon Konteyneri -->
+    <div class="max-w-4xl mx-auto space-y-6">
+      {brands.map((brand, index) => (
+        <div 
+          class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100"
+          data-reveal="slide-up"
+          data-delay={index * 150}
+        >
+          <!-- Başlık -->
+          <button
+            class="w-full px-8 py-6 text-left flex items-center justify-between group hover:bg-orange-50/50 transition-all duration-300"
+            onClick={() => {
+              activeBrand = activeBrand === brand.name ? null : brand.name;
+            }}
+          >
+            <!-- Logo ve Başlık -->
+            <div class="flex items-center gap-4">
+              <div class="relative group-hover:scale-110 transition-transform duration-300">
+                <img
+                  src={brand.logo}
+                  alt={`${brand.name} Logo`}
+                  class="h-12 w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                />
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors duration-300">
+                {brand.name}
+              </h3>
+            </div>
+
+            <!-- Aç/Kapa İkonu -->
+            <div class="flex items-center gap-2">
+              <span class="text-slate-500 group-hover:text-orange-600 transition-colors duration-300 text-sm">
+                {activeBrand === brand.name ? 'Kapat' : 'Aç'}
+              </span>
+              <div class={`w-6 h-6 relative ${activeBrand === brand.name ? 'rotate-180' : ''} transition-transform duration-300`}>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <svg class="w-4 h-4 text-slate-500 group-hover:text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </button>
+
+          <!-- İçerik -->
+          <div 
+            class={`overflow-hidden transition-all duration-500 ease-in-out ${
+              activeBrand === brand.name 
+                ? 'max-h-[1000px] opacity-100 pb-8' 
+                : 'max-h-0 opacity-0 pb-0'
+            }`}
+          >
+            <div class="px-8">
+              <!-- Görsel ve Açıklama -->
+              <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="relative group">
+                  <img
+                    src={brand.image}
+                    alt={`${brand.name} Servis`}
+                    class="w-full h-64 object-cover rounded-lg"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <div>
+                  <p class="text-slate-600 leading-relaxed mb-6 animate-fade-in">
+                    {brand.description}
+                  </p>
+                  
+                  <!-- Hizmet Listesi -->
+                  <div class="space-y-3">
+                    <h4 class="font-semibold text-slate-900 mb-4">Hizmetler:</h4>
+                    {brand.services.map((service, serviceIndex) => (
+                      <div 
+                        class="flex items-center gap-3 group/service animate-slide-left"
+                        style={`animation-delay: ${serviceIndex * 100}ms`}
+                      >
+                        <div class="w-2 h-2 bg-orange-600 rounded-full group-hover/service:scale-150 transition-transform duration-300"></div>
+                        <span class="text-slate-700 group-hover/service:text-orange-600 transition-colors duration-300">
+                          {service}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Eylem Butonu -->
+              <div class="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="/iletisim"
+                  class="group relative px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                >
+                  <span class="relative z-10">Ücretsiz Danışma</span>
+                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                </a>
+                
+                <a
+                  href={`tel:05336157835`}
+                  class="px-6 py-3 bg-white text-orange-600 font-bold rounded-lg border-2 border-orange-600 hover:bg-orange-600 hover:text-white transition-all duration-300"
+                >
+                  Hemen Ara: 0533 615 78 35
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Prefers Reduced Motion Desteği */
+  @media (prefers-reduced-motion: reduce) {
+    .transition-all,
+    .transition-transform,
+    .transition-colors,
+    .transition-opacity,
+    .animate-fade-in,
+    .animate-slide-left,
+    .animate-slide-up {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+
+  /* Stagger Animasyonları */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  [data-reveal="fade-in-up"] {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  [data-reveal="slide-up"] {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slide-left 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+
+  /* Animasyon gecikmeleri */
+  [data-delay] {
+    animation-delay: var(--delay) !important;
+  }
+
+  /* Performance iyileştirmeleri */
+  .group img,
+  .group svg {
+    will-change: transform;
+  }
+
+  /* Hover efektlerinin daha akıcı olması */
+  .group:hover [class*="transition"] {
+    transform: var(--transform);
+  }
+</style>
+
+<script>
+  // Intersection Observer ile animasyonların tetiklenmesi
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const element = entry.target;
+          const revealType = element.dataset.reveal;
+          const delay = element.dataset.delay || 0;
+          
+          element.style.animationDelay = `${delay}ms`;
+          element.style.opacity = '1';
+          
+          // Mobil cihazlar için daha hızlı animasyon
+          if (window.innerWidth < 768) {
+            element.style.animationDuration = '0.3s';
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Animasyon elementlerini gözlemle
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      observer.observe(el);
+    });
+  });
+</script>

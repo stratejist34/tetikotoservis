@@ -1,0 +1,160 @@
+---
+const testimonials = [
+  {
+    name: 'İSMAİL DİNÇ',
+    date: '13/09/2022',
+    rating: 5,
+    text: 'Usta deneyimli ve ilgili. İletişimi fevkalâde. Aracımın sorununu kısa sürede tespit edip uygun fiyata çözdüler. Kesinlikle tavsiye ederim.',
+    avatar: 'İ',
+    color: 'orange'
+  },
+  {
+    name: 'Azim Özmen',
+    date: '27/07/2022',
+    rating: 5,
+    text: 'Senelerdir gidiyorum usta işini iyi yapan biri ne zaman gitsem yardımcı olmuştur. Hem Hyundai hem Kia araçlarım için tek adresim.',
+    avatar: 'A',
+    color: 'blue'
+  },
+  {
+    name: 'Müjdat DÖNE',
+    date: '06/06/2022',
+    rating: 5,
+    text: 'İsah usta işini iyi yapan biri ne zaman gitsem yardımcı olmuştur. Dürüst esnaf bulmak zor bu devirde, gözünüz kapalı güvenebilirsiniz.',
+    avatar: 'M',
+    color: 'slate'
+  },
+  {
+    name: 'Soner Kurban',
+    date: 'Bir ay önce',
+    rating: 5,
+    text: 'Hemen müşterilerle ilgileniyorlar. Yaptıkları işi biliyorlar. Gayet güzel ve kaliteli çalışıyorlar. Fiyat olarak uygun bir işletme.',
+    avatar: 'S',
+    color: 'red'
+  },
+  {
+    name: 'Metehan Aydoğan',
+    date: 'Bir ay önce',
+    rating: 5,
+    text: 'Her şey için çok teşekkür ederim İsah ustam eline emeğine sağlık sizleri tanıdığıma çok memnun oldum kral adamsın saygılar sunarım.',
+    avatar: 'M',
+    color: 'slate'
+  }
+];
+---
+
+<section class="relative py-24 bg-slate-950" id="testimonials-section">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-24">
+      
+      <!-- STICKY LEFT PANEL -->
+      <div class="lg:w-5/12 lg:h-[calc(100vh-6rem)] lg:sticky lg:top-24 flex flex-col justify-center mb-12 lg:mb-0">
+        <div class="relative z-10" data-reveal="fade-up">
+          <span class="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">Müşteri Deneyimi</span>
+          <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight font-heading">
+            SİZDEN GELEN <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">GÜZEL SÖZLER</span>
+          </h2>
+          
+          <!-- Google Rating Card -->
+          <div class="bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-800 inline-block max-w-sm">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="https://cdn.cdnlogo.com/logos/g/35/google-icon.svg" alt="Google" class="w-8 h-8" />
+              <span class="text-white font-bold text-lg">Google Yorumları</span>
+            </div>
+            <div class="flex items-baseline gap-2 mb-2">
+              <span class="text-5xl font-black text-white">4.4</span>
+              <span class="text-slate-400 text-sm font-medium">/ 5.0</span>
+            </div>
+            <div class="flex gap-1 mb-4">
+              {[...Array(5)].map(() => (
+                <svg class="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                  <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="text-slate-400 text-sm">
+              <strong class="text-white">40+</strong> gerçek müşteri değerlendirmesiyle Gebze'nin en güvenilir özel servisi.
+            </p>
+            
+            <a 
+              href="https://g.page/r/CZuq_JcIFA4TEAE/review" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 text-orange-500 font-bold text-sm hover:underline"
+            >
+              Bizi Değerlendirin
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Background Decoration -->
+        <div class="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-orange-500/10 to-blue-500/10 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      </div>
+
+      <!-- SCROLLABLE RIGHT PANEL (Testimonial Cards) -->
+      <div class="lg:w-7/12 space-y-8 lg:py-24">
+        {testimonials.map((item, index) => (
+          <div class="testimonial-card group relative bg-blue-950 rounded-3xl p-8 md:p-10 shadow-lg hover:shadow-2xl transition-all duration-500 border border-blue-900/50 opacity-50 scale-95 hover:scale-100 hover:opacity-100">
+            <div class="flex items-start justify-between gap-4 mb-6">
+              <div class="flex items-center gap-4">
+                <div class={`w-14 h-14 rounded-full bg-${item.color}-500/20 text-${item.color}-400 flex items-center justify-center text-xl font-black`}>
+                  {item.avatar}
+                </div>
+                <div>
+                  <h4 class="font-bold text-white text-lg">{item.name}</h4>
+                  <span class="text-slate-500 text-xs block">{item.date}</span>
+                </div>
+              </div>
+              <div class="flex gap-0.5">
+                {[...Array(item.rating)].map(() => (
+                  <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                  </svg>
+                ))}
+              </div>
+            </div>
+            
+            <p class="text-slate-300 text-lg leading-relaxed italic">
+              "{item.text}"
+            </p>
+            
+            <!-- Verified Badge -->
+            <div class="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center gap-1 text-green-400 bg-green-500/10 px-3 py-1 rounded-full text-xs font-bold border border-green-500/20">
+              <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              Onaylı Yorum
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const cards = document.querySelectorAll('.testimonial-card');
+
+  cards.forEach((card) => {
+    gsap.to(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: "top 75%", // Kart ekranın %75'ine geldiğinde başla
+        end: "top 25%", // Kart ekranın %25'ine geldiğinde bitir
+        toggleActions: "play reverse play reverse", // Aşağı/yukarı scroll'da animasyonu oynat/geri al
+        scrub: true, // Scroll ile senkronize et
+      },
+      opacity: 1,
+      scale: 1,
+      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
+      borderColor: "rgba(249, 115, 22, 0.3)", // Orange border on active
+      duration: 0.5
+    });
+  });
+</script>

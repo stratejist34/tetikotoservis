@@ -1,0 +1,178 @@
+/* BrandAccordion Mobile Optimizations */
+.brand-accordion-mobile {
+  /* Container adjustments */
+  .accordion-container {
+    @media (max-width: 768px) {
+      flex-direction: column;
+      height: auto;
+      gap: 16px;
+    }
+    
+    @media (max-width: 480px) {
+      gap: 12px;
+    }
+  }
+
+  /* Kart boyutları ve yerleşimi */
+  .brand-card {
+    flex: 1 1 auto;
+    
+    @media (max-width: 768px) {
+      height: 280px;
+      min-height: 250px;
+    }
+    
+    @media (max-width: 480px) {
+      height: 240px;
+      min-height: 220px;
+    }
+  }
+
+  /* Dokunmatik hedef alanları */
+  .brand-card-link {
+    /* Minimum 48x48px dokunmatik hedef */
+    min-height: 48px;
+    min-width: 48px;
+    
+    /* Genişletilmiş tıklanabilir alan */
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      z-index: -1;
+    }
+    
+    /* Buton boyutları */
+    .action-button {
+      width: 48px;
+      height: 48px;
+      
+      @media (max-width: 480px) {
+        width: 56px;
+        height: 56px;
+      }
+    }
+  }
+
+  /* Tipografi ayarları */
+  .brand-title {
+    /* Mobilde döndürülmüş metin kaldır */
+    @media (max-width: 1024px) {
+      transform: none !important;
+      position: static;
+      writing-mode: horizontal-tb;
+      text-align: center;
+      padding: 16px;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+  }
+
+  .expanded-title {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    line-height: 1.2;
+    
+    @media (max-width: 480px) {
+      font-size: clamp(1.125rem, 3.5vw, 1.5rem);
+    }
+  }
+
+  .description-text {
+    font-size: clamp(0.875rem, 3vw, 1rem);
+    line-height: 1.4;
+    max-width: 100%;
+    
+    @media (max-width: 480px) {
+      font-size: clamp(0.75rem, 2.5vw, 0.875rem);
+    }
+  }
+
+  /* Görünürlük ve kontrast iyileştirmeleri */
+  .gradient-overlay {
+    @media (max-width: 768px) {
+      opacity: 0.85; /* Biraz daha şeffaf */
+    }
+    
+    @media (max-width: 480px) {
+      opacity: 0.8;
+    }
+  }
+
+  /* Animasyon optimizasyonları */
+  .transition-optimized {
+    /* Mobilde daha hızlı animasyonlar */
+    @media (max-width: 768px) {
+      transition-duration: 0.6s;
+    }
+    
+    @media (max-width: 480px) {
+      transition-duration: 0.4s;
+    }
+  }
+
+  /* Padding ve margin ayarları */
+  .content-padding {
+    @media (max-width: 768px) {
+      padding: 16px;
+    }
+    
+    @media (max-width: 480px) {
+      padding: 12px;
+    }
+  }
+
+  /* Hover efekti yerine touch uyumlu efektler */
+  .touch-friendly {
+    /* Mobil cihazlarda hover kaldır, active eklenmeli */
+    @media (hover: none) and (pointer: coarse) {
+      &:hover {
+        flex: 1; /* Hover efekti azaltıldı */
+      }
+      
+      &:active {
+        flex: 2;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+}
+
+/* Erişilebilirlik iyileştirmeleri */
+.brand-accordion-accessibility {
+  /* Keyboard navigasyon */
+  .brand-card-link:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  /* Screen reader desteği */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  /* Kontrast iyileştirmeleri */
+  .high-contrast {
+    @media (prefers-contrast: high) {
+      filter: contrast(1.2);
+    }
+  }
+  
+  /* Azalan hareket etkileri */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

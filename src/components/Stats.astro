@@ -1,0 +1,227 @@
+---
+// Ultra Modern Stats Component
+
+const stats = [
+  { value: 39, suffix: '+', label1: 'FARKLI', label2: 'Model Tamiri', icon: 'car', color: 'orange' },
+  { value: 14, suffix: '+', label1: 'ARAÇ', label2: 'Günlük Kapasite', icon: 'calendar', color: 'blue' },
+  { value: 25, suffix: '', label1: 'YIL', label2: 'Tecrübe', icon: 'star', color: 'red' },
+  { value: 94, suffix: '%', label1: 'ORAN', label2: 'Müşteri Memnuniyeti', icon: 'heart', color: 'slate' },
+  { value: 2.5, suffix: '', label1: 'SAAT', label2: 'Ortalama Teslim', icon: 'clock', color: 'cyan' }
+];
+---
+
+<section class="relative py-24 overflow-hidden">
+  <!-- Ultra Premium Background -->
+  <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(249,115,22,0.1),transparent_50%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.1),transparent_50%)]"></div>
+  </div>
+
+  <!-- Animated Mesh Pattern -->
+  <div class="absolute inset-0 opacity-[0.03]">
+    <div class="absolute inset-0 animate-mesh-flow" style="background-image: radial-gradient(circle, rgba(30,58,138,0.4) 1px, transparent 1px); background-size: 50px 50px;"></div>
+  </div>
+
+  <div class="relative z-10 container mx-auto px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="stats-grid">
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap');
+          
+          .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            justify-items: center;
+          }
+          
+          /* Tablet - 2 columns */
+          @media (min-width: 640px) {
+            .stats-grid {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 2rem;
+            }
+          }
+          
+          /* Desktop - 5 columns */
+          @media (min-width: 1024px) {
+            .stats-grid {
+              grid-template-columns: repeat(5, 1fr);
+              gap: 2rem;
+            }
+          }
+          
+          .stats-card {
+            width: 100%;
+            max-width: 280px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Space Grotesk', -apple-system, sans-serif;
+          }
+          
+          @media (min-width: 1024px) {
+            .stats-card {
+              max-width: 100%;
+            }
+          }
+
+          @keyframes mesh-flow {
+            0% {
+              transform: translate(0, 0);
+            }
+            100% {
+              transform: translate(50px, 50px);
+            }
+          }
+
+          .animate-mesh-flow {
+            animation: mesh-flow 20s linear infinite;
+          }
+
+          @keyframes stat-float {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+
+          @keyframes icon-pulse {
+            0%, 100% {
+              transform: scale(1);
+              opacity: 0.8;
+            }
+            50% {
+              transform: scale(1.1);
+              opacity: 1;
+            }
+          }
+        </style>
+        {stats.map((stat, index) => {
+          const colorMap = {
+            orange: { from: 'from-orange-500/20', to: 'to-orange-600/10', text: 'text-orange-500', glow: 'group-hover:shadow-orange-500/50' },
+            blue: { from: 'from-blue-500/20', to: 'to-blue-600/10', text: 'text-blue-500', glow: 'group-hover:shadow-blue-500/50' },
+            red: { from: 'from-red-500/20', to: 'to-red-600/10', text: 'text-red-500', glow: 'group-hover:shadow-red-500/50' },
+            slate: { from: 'from-slate-500/20', to: 'to-slate-600/10', text: 'text-slate-600', glow: 'group-hover:shadow-slate-500/50' },
+            cyan: { from: 'from-cyan-500/20', to: 'to-cyan-600/10', text: 'text-cyan-500', glow: 'group-hover:shadow-cyan-500/50' }
+          };
+          const colors = colorMap[stat.color];
+          return (
+            <div 
+              data-reveal="bottom" 
+              data-target={stat.value} 
+              data-suffix={stat.suffix} 
+              class={`stats-card group relative bg-white/80 backdrop-blur-xl border-2 border-white/60 rounded-3xl p-8 hover:bg-white hover:border-white hover:scale-110 hover:-translate-y-3 transition-all duration-500 shadow-xl ${colors.glow} cursor-pointer`}
+              style="animation: stat-float 3s ease-in-out infinite; animation-delay: ${index * 0.2}s;"
+            >
+              <!-- Gradient Glow Background -->
+              <div class={`absolute inset-0 bg-gradient-to-br ${colors.from} ${colors.to} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`}></div>
+              
+              <!-- Content -->
+              <div class="relative z-10 text-center space-y-4">
+                <!-- Animated Icon -->
+                <div class="flex justify-center mb-4">
+                  <div class="relative">
+                    <div class={`absolute inset-0 bg-gradient-to-br ${colors.from} ${colors.to} rounded-2xl blur-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                    <div class={`relative w-16 h-16 rounded-2xl bg-gradient-to-br ${colors.from} ${colors.to} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`} style="animation: icon-pulse 2s ease-in-out infinite;">
+                      <svg class={`w-8 h-8 ${colors.text}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        {stat.icon === 'car' && <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />}
+                        {stat.icon === 'calendar' && <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />}
+                        {stat.icon === 'star' && <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />}
+                        {stat.icon === 'heart' && <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />}
+                        {stat.icon === 'clock' && <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />}
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Counter Number -->
+                <div class="counter-number text-6xl font-black text-gray-900 group-hover:scale-110 transition-transform duration-500" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em;">
+                  {stat.suffix === '%' ? stat.suffix + '0' : '0' + stat.suffix}
+                </div>
+
+                <!-- Labels -->
+                <div class="space-y-1">
+                  <div class={`text-sm font-bold ${colors.text} uppercase tracking-wider group-hover:scale-105 transition-transform duration-300`}>
+                    {stat.label1}
+                  </div>
+                  <div class="text-xs font-medium text-gray-600 uppercase tracking-wide">
+                    {stat.label2}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hover Border Effect -->
+              <div class={`absolute inset-0 border-2 border-transparent group-hover:border-${stat.color}-500/30 rounded-3xl transition-all duration-500 pointer-events-none`}></div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function animateCounter(element, targetValue, suffix, duration = 2000, delay = 0) {
+    setTimeout(() => {
+      const startTime = Date.now();
+      const endTime = startTime + duration;
+      
+      const updateCounter = () => {
+        const now = Date.now();
+        const progress = Math.min((now - startTime) / duration, 1);
+        
+        // Easing function (ease out)
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        
+        // Handle decimal values
+        let currentValue;
+        if (targetValue % 1 !== 0) {
+          currentValue = (targetValue * easeOut).toFixed(1);
+        } else {
+          currentValue = Math.floor(targetValue * easeOut);
+        }
+        
+        // Format based on suffix
+        if (suffix === '%') {
+          element.textContent = '%' + currentValue;
+        } else if (suffix === '+') {
+          element.textContent = currentValue + '+';
+        } else {
+          element.textContent = currentValue + suffix;
+        }
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          // Final value
+          if (suffix === '%') {
+            element.textContent = '%' + targetValue;
+          } else if (suffix === '+') {
+            element.textContent = targetValue + '+';
+          } else {
+            element.textContent = targetValue + suffix;
+          }
+        }
+      };
+      
+      updateCounter();
+    }, delay);
+  }
+  
+  // Start counter animations when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    const statCards = document.querySelectorAll('.stats-card');
+    statCards.forEach((card, index) => {
+      const targetValue = parseFloat(card.getAttribute('data-target') || '0');
+      const suffix = card.getAttribute('data-suffix') || '';
+      const counterElement = card.querySelector('.counter-number');
+      
+      if (counterElement) {
+        animateCounter(counterElement, targetValue, suffix, 2000, index * 200);
+      }
+    });
+  });
+</script>
+

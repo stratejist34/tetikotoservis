@@ -1,0 +1,312 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import BrandLogos from '../components/BrandLogos.astro';
+import BrandCards from '../components/BrandCards.astro';
+import BlogPosts from '../components/BlogPosts.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Services from '../components/Services.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+
+// Marka verileri - BrandCards için
+const brands = [
+  {
+    name: 'Hyundai',
+    icon: '/images/logos/hyundai-logo.svg',
+    color: 'bg-gradient-to-br from-blue-600 to-blue-800',
+    services: [
+      'Periyodik Bakım',
+      'Motor Servisi',
+      'Şanzıman Tamiri',
+      'Klima Servisi',
+      'Fren Sistemi',
+      'Elektrik Elektronik',
+      'Orijinal Yedek Parça',
+      '7/24 Yol Yardım'
+    ],
+    link: '/gebze-hyundai-servis',
+    description: 'Tüm Hyundai modelleri için özel servis çözümleri'
+  },
+  {
+    name: 'Kia',
+    icon: '/images/logos/kia-logo.svg',
+    color: 'bg-gradient-to-br from-red-600 to-orange-600',
+    services: [
+      'Kia Özel Servis',
+      'Periyodik Bakım',
+      'Motor Check-up',
+      'Fren Sistemi',
+      'Klima Bakımı',
+      'Lastik Servisi',
+      'Orijinal Parça',
+      'Garanti Hizmeti'
+    ],
+    link: '/kia-ozel-servis-gebze-tuzla',
+    description: 'Kia araçlarınız için uzman teknik servis'
+  },
+  {
+    name: 'Toyota',
+    icon: '/images/logos/toyota-logo.svg',
+    color: 'bg-gradient-to-br from-red-700 to-red-900',
+    services: [
+      'Toyota Servis',
+      'Bakım Programı',
+      'Hybrid Servis',
+      'Motor Diagnostik',
+      'Fren Balance',
+      'Klima Filtrasyon',
+      'Orijinal Parça',
+      'Toyota Garanti'
+    ],
+    link: '/gebze-toyota-servis',
+    description: 'Toyota kalitesiyle özel servis hizmeti'
+  },
+  {
+    name: 'Nissan',
+    icon: '/images/logos/nissan-logo.svg',
+    color: 'bg-gradient-to-br from-gray-700 to-gray-900',
+    services: [
+      'Nissan Özel Servis',
+      'Periyodik Bakım',
+      'CVT Şanzıman',
+      'Motor Servisi',
+      'Fren Sistemi',
+      'Klima Tamiri',
+      'Orijinal Parça',
+      'Nissan Garanti'
+    ],
+    link: '/gebze-nissan-servis',
+    description: 'Nissan teknolojisi için uzman ekip'
+  }
+];
+---
+
+<Layout title="Hyundai - Kia - Toyota - Nissan Özel Servis | Tetik Otomotiv">
+
+  <main style="background-color: white;">
+    <Hero />
+
+    <!-- Stats - Social proof right after hero -->
+    <div data-reveal="bottom">
+      <Stats />
+    </div>
+
+    <!-- Services - Main offering -->
+    <div data-reveal="left">
+      <Services />
+    </div>
+
+    <!-- BrandLogos - Specialized brands in prominent position -->
+    <div data-reveal="bottom">
+      <BrandLogos />
+    </div>
+
+    <!-- 🎨 YENİ: Modern Brand Cards Section -->
+    <section data-reveal="right" class="py-16 bg-gradient-to-br from-slate-50 to-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">Marka Servislerimiz</h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Her markanın teknolojisi ve özellikleri için özel olarak eğitilmiş teknik ekibimizle hizmetinizdeyiz
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {brands.map((brand) => (
+            <div class="brand-card group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
+              
+              <!-- Gradient Background -->
+              <div class={`absolute inset-0 bg-gradient-to-br ${brand.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+              
+              <!-- Kart Header -->
+              <div class="relative p-6 pb-4">
+                <div class={`w-20 h-20 ${brand.color} rounded-2xl flex items-center justify-center mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-3`}>
+                  <!-- Marka İkonu (placeholder) -->
+                  <div class="text-white text-2xl font-bold">
+                    {brand.name.charAt(0)}
+                  </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">{brand.name}</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">{brand.description}</p>
+              </div>
+              
+              <!-- Hizmetler -->
+              <div class="px-6 pb-4">
+                <div class="flex flex-wrap gap-2">
+                  {brand.services.slice(0, 3).map((service) => (
+                    <span class="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                      {service}
+                    </span>
+                  ))}
+                  {brand.services.length > 3 && (
+                    <span class="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-semibold">
+                      +{brand.services.length - 3} hizmet
+                    </span>
+                  )}
+                </div>
+              </div>
+              
+              <!-- Hover Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                <h4 class="text-white font-bold text-lg mb-3">Tüm Hizmetlerimiz</h4>
+                <ul class="space-y-2 mb-4 max-h-32 overflow-y-auto">
+                  {brand.services.map((service) => (
+                    <li class="flex items-center gap-2 text-white/90 text-sm">
+                      <svg class="w-3 h-3 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                      </svg>
+                      {service}
+                    </li>
+                  ))}
+                </ul>
+                
+                <div class="flex gap-2">
+                  <a 
+                    href={brand.link}
+                    class="flex-1 bg-white text-gray-900 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors text-center text-sm"
+                  >
+                    Detaylar
+                  </a>
+                  <a 
+                    href="tel:+905336157835"
+                    class="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-green-700 transition-colors text-center text-sm"
+                  >
+                    Ara
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Shine Efekt -->
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 pointer-events-none"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials - Social proof before conversion -->
+    <div data-reveal="bottom">
+      <Testimonials />
+    </div>
+
+    <!-- Contact - CTA for conversion -->
+    <div data-reveal="left">
+      <Contact />
+    </div>
+
+    <!-- BlogPosts - Additional content at bottom -->
+    <div data-reveal="right">
+      <BlogPosts />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  /* Scroll Reveal Animasyonları */
+  [data-reveal] {
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+  }
+
+  [data-reveal="bottom"] {
+    transform: translateY(100px);
+  }
+
+  [data-reveal="top"] {
+    transform: translateY(-100px);
+  }
+
+  [data-reveal="left"] {
+    transform: translateX(-100px);
+  }
+
+  [data-reveal="right"] {
+    transform: translateX(100px);
+  }
+
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translate(0, 0) !important;
+  }
+
+  /* Brand Card Styles */
+  .brand-card {
+    transform-style: preserve-3d;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .brand-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  /* Smooth scrollbar for services list */
+  .brand-card ul::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .brand-card ul::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+  
+  .brand-card ul::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+  }
+</style>
+
+<script>
+  // Smooth Scroll Reveal Animasyonları - Gelişmiş Versiyon
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -150px 0px' // Daha erken tetikleme
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Her element için farklı delay ekle (stagger effect)
+        setTimeout(() => {
+          entry.target.classList.add('revealed');
+        }, index * 50); // Her element 50ms arayla
+        
+        // Bir kez gösterildikten sonra observe'i durdur (performans için)
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Sayfa yüklendiğinde tüm reveal elementlerini gözlemle
+  document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('[data-reveal]');
+    revealElements.forEach((el, index) => {
+      // İlk yüklemede görünür olanları hemen göster
+      const rect = el.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      if (!isVisible) {
+        revealObserver.observe(el);
+      } else {
+        // Zaten görünürse hemen göster
+        setTimeout(() => {
+          el.classList.add('revealed');
+        }, index * 30);
+      }
+    });
+  });
+</script>

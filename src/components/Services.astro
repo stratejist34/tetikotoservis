@@ -1,0 +1,184 @@
+---
+const services = [
+  {
+    id: '01',
+    image: '/images/hizmetlerimiz/bakim-onarim.avif',
+    title: 'Periyodik Bakım',
+    description: 'Aracınızın üretici standartlarında periyodik bakımı ve kontrolü.',
+  },
+  {
+    id: '02',
+    image: '/images/hizmetlerimiz/Motor Yenileme.avif',
+    title: 'Motor Yenileme',
+    description: 'Komple motor rektefiye ve performans yenileme işlemleri.',
+  },
+  {
+    id: '03',
+    image: '/images/hizmetlerimiz/ariza-tespiti.avif',
+    title: 'Arıza Tespit',
+    description: 'Son teknoloji cihazlarla detaylı arıza analizi ve raporlama.',
+  },
+  {
+    id: '04',
+    image: '/images/hizmetlerimiz/6782ce88347fbdb8fab18539_general-maintenance-featured-image.avif',
+    title: 'Yağ Değişimi',
+    description: 'Orijinal yağ ve filtrelerle motorunuzun ömrünü uzatın.',
+  },
+  {
+    id: '05',
+    image: '/images/hizmetlerimiz/mekanik.jpg', 
+    title: 'Şanzıman Tamiri',
+    description: 'Otomatik, Manuel ve CVT şanzıman revizyonu ve bakımı.',
+  },
+  {
+    id: '06',
+    image: '/images/hizmetlerimiz/Üst kapak rektefiye.avif',
+    title: 'Mekanik Onarım',
+    description: 'Alt takım, fren sistemi, debriyaj ve şanzıman onarımları.',
+  },
+  {
+    id: '07',
+    image: '/images/hizmetlerimiz/2-diesel-fuel-injection-services-2-l6ge7.avif',
+    title: 'Enjektör & Pompa',
+    description: 'Dizel ve benzinli araçlar için yakıt sistemi bakımı.',
+  },
+  {
+    id: '08',
+    image: '/images/hizmetlerimiz/3-diesel-fuel-injection-services-3-t0ii0.avif',
+    title: 'Triger Değişimi',
+    description: 'Zamanında triger değişimi ile motorunuzu koruma altına alın.',
+  },
+];
+---
+
+<section class="relative py-32 bg-slate-900 overflow-hidden" id="services-section">
+  <!-- Background Noise Texture -->
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-overlay" style="background-image: url('/images/pattern.svg'); background-size: 100px;"></div>
+  
+  <!-- Floating Image Container (Cursor Follower) -->
+  <div 
+    id="service-image-floater" 
+    class="fixed top-0 left-0 w-[400px] h-[250px] rounded-2xl overflow-hidden pointer-events-none opacity-0 z-50 hidden lg:block mix-blend-normal shadow-2xl shadow-orange-500/20 border border-white/10"
+    style="transform: translate(-50%, -50%);"
+  >
+    <div class="absolute inset-0 bg-slate-900"></div>
+    <img 
+      id="service-active-img" 
+      src="" 
+      class="w-full h-full object-cover transition-transform duration-700 scale-110" 
+      alt="Service Preview"
+    />
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-b border-white/10 pb-8">
+      <div class="max-w-2xl">
+        <span class="text-orange-500 font-bold tracking-widest uppercase text-sm mb-4 block">Hizmetlerimiz</span>
+        <h2 class="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
+          PROFESYONEL <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">OTO SERVİS</span>
+        </h2>
+      </div>
+      <p class="text-slate-400 text-lg max-w-md text-right hidden md:block">
+        Aracınızın ihtiyacı olan tüm çözümler tek çatı altında, uzman kadro ve garantili işçilikle.
+      </p>
+    </div>
+
+    <!-- Interactive Services List -->
+    <div class="services-list flex flex-col">
+      {services.map((service) => (
+        <div 
+          class="service-item group relative border-b border-white/10 py-8 md:py-12 cursor-pointer transition-colors duration-300 hover:bg-white/5"
+          data-image={service.image}
+        >
+          <div class="flex items-center justify-between relative z-10">
+            <div class="flex items-center gap-8 md:gap-16">
+              <span class="text-slate-600 font-mono text-sm md:text-xl group-hover:text-orange-500 transition-colors duration-300">
+                /{service.id}
+              </span>
+              <h3 class="text-2xl md:text-5xl font-bold text-slate-300 group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
+                {service.title}
+              </h3>
+            </div>
+            
+            <div class="flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-4 group-hover:translate-x-0">
+              <span class="text-sm text-slate-400 hidden md:block max-w-xs text-right">
+                {service.description}
+              </span>
+              <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-orange-500 bg-white/5">
+                <svg class="w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+
+  const servicesSection = document.getElementById('services-section');
+  const floater = document.getElementById('service-image-floater');
+  const activeImg = document.getElementById('service-active-img') as HTMLImageElement;
+  const serviceItems = document.querySelectorAll('.service-item');
+
+  let isHovering = false;
+
+  // Mouse Move Handler for Floater
+  if (servicesSection && floater) {
+    // Initial set
+    gsap.set(floater, { xPercent: -50, yPercent: -50 });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isHovering) return;
+      
+      // Smoothly follow cursor
+      gsap.to(floater, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+    });
+
+    serviceItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        isHovering = true;
+        const imgUrl = item.getAttribute('data-image');
+        
+        if (imgUrl && activeImg) {
+          activeImg.src = imgUrl;
+          
+          // Show floater
+          gsap.to(floater, {
+            autoAlpha: 1,
+            scale: 1,
+            duration: 0.4,
+            ease: "power2.out"
+          });
+
+          // Image scale effect inside floater
+          gsap.fromTo(activeImg, 
+            { scale: 1.4 },
+            { scale: 1, duration: 0.6, ease: "power2.out" }
+          );
+        }
+      });
+
+      item.addEventListener('mouseleave', () => {
+        isHovering = false;
+        
+        // Hide floater
+        gsap.to(floater, {
+          autoAlpha: 0,
+          scale: 0.8,
+          duration: 0.3,
+          ease: "power2.in"
+        });
+      });
+    });
+  }
+</script>

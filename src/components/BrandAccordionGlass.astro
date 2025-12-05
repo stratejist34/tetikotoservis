@@ -1,0 +1,126 @@
+---
+// Glassmorphism Stil - V3
+// Blur efektler ve semi-transparent modern look
+const brands = [
+  {
+    id: 'hyundai',
+    name: 'HYUNDAI',
+    title: 'HYUNDAI SERVİS',
+    image: '/images/Gebze Hyundai Servis.webp',
+    description: 'Orijinal yedek parça ve uzman teknisyenlerle Hyundai aracınız için garantili bakım ve onarım hizmeti.',
+    link: '/hyundai-ozel-servis',
+    glassColor: 'bg-blue-500/10'
+  },
+  {
+    id: 'kia',
+    name: 'KIA',
+    title: 'KIA SERVİS',
+    image: '/images/Kia Özel Servis Gebze Tuzla - Kia Ceed Servis.webp',
+    description: 'Kia modelleri için profesyonel bakım, mekanik onarım ve yedek parça çözümleri.',
+    link: '/kia-ozel-servis',
+    glassColor: 'bg-orange-500/10'
+  },
+  {
+    id: 'nissan',
+    name: 'NISSAN',
+    title: 'NISSAN SERVİS',
+    image: '/images/Gebze Nissan Servis.jpg',
+    description: 'Nissan Qashqai, Juke ve Micra gibi tüm modeller için uzman servis hizmeti.',
+    link: '/nissan-ozel-servis',
+    glassColor: 'bg-red-500/10'
+  },
+  {
+    id: 'toyota',
+    name: 'TOYOTA',
+    title: 'TOYOTA SERVİS',
+    image: '/images/gebze toyota servis.jpg',
+    description: 'Corolla, Auris, Yaris ve diğer Toyota modelleri için hibrit dahil tam kapsamlı servis.',
+    link: '/toyota-ozel-servis',
+    glassColor: 'bg-emerald-500/10'
+  }
+];
+---
+
+<section class="py-24 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-20" data-reveal="fade-up">
+      <span class="text-indigo-600 font-medium tracking-widest uppercase text-sm mb-3 block">Uzmanlık Alanlarımız</span>
+      <h2 class="text-5xl font-light text-slate-900 mb-6 tracking-tight">
+        Marka Servislerimiz
+        <span class="block w-24 h-1 bg-gradient-to-r from-indigo-400 to-purple-400 mx-auto mt-6 rounded-full"></span>
+      </h2>
+    </div>
+
+    <!-- Glassmorphism Accordion -->
+    <div class="flex flex-col lg:flex-row gap-4 lg:gap-6 max-w-7xl mx-auto h-auto lg:h-[520px] brand-accordion-container">
+      {brands.map((brand, index) => (
+        <a href={brand.link} class="group relative flex-[1] hover:flex-[3.2] transition-all duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] overflow-hidden rounded-3xl h-[280px] lg:h-auto ring-1 ring-white/50 shadow-xl hover:shadow-2xl min-h-[48px] min-w-[48px] brand-card-link" data-reveal="fade-up" data-delay={index * 100}>
+          
+          <!-- Image Layer -->
+          <div class="absolute inset-0">
+            <img src={brand.image} alt={brand.title} class="w-full h-full object-cover transition-transform duration-1200 group-hover:scale-105 filter group-hover:brightness-75">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30"></div>
+          </div>
+          
+          <!-- Glass Overlay -->
+          <div class={`absolute inset-0 ${brand.glassColor} backdrop-blur-0 group-hover:backdrop-blur-xl transition-all duration-1000`}></div>
+          
+          <!-- Content -->
+          <div class="absolute inset-0 p-8 lg:p-10 flex flex-col justify-end z-10">
+            
+            <!-- Collapsed State -->
+            <div class="lg:opacity-100 lg:group-hover:opacity-0 lg:transition-opacity lg:duration-700">
+              <div class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-xl ring-1 ring-white/20 inline-block transition-all duration-500">
+                <h3 class="text-xl font-light text-white tracking-wider lg:-rotate-90 origin-bottom-left lg:translate-x-12 lg:mb-24 lg:whitespace-nowrap transition-all text-center p-4">
+                  <span class="hidden lg-inline">{brand.name}</span>
+                  <span class="inline lg-hidden text-base font-medium">{brand.name}</span>
+                </h3>
+              </div>
+            </div>
+            
+            <!-- Expanded State -->
+            <div class="opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transform lg:translate-y-6 lg:group-hover:translate-y-0 transition-all duration-900 delay-200">
+              <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-6 ring-1 ring-white/20 border border-white/10 shadow-2xl">
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
+                  <span class="text-white/90 text-xs font-medium tracking-wider">ÖZEL SERVİS</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-light text-white mb-4 tracking-tight">
+                  {brand.title.split(' ')[0]}<span class="block font-semibold">{brand.title.split(' ')[1]}</span>
+                </h3>
+                <p class="text-white/90 text-sm md:text-base mb-6 hidden lg:block opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-300 text-xs md:text-sm">
+                  {brand.description}
+                </p>
+              </div>
+              
+              <div class="mt-6 flex items-center gap-4 text-white">
+                <span class="text-sm font-medium tracking-wider">Detaylı İncele</span>
+                <div class="w-12 h-12 lg:w-10 lg:h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center ring-1 ring-white/30 group-hover:bg-white/20 transition-all duration-400">
+                  <svg class="w-5 h-5 transition-transform duration-500 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .filter {
+    filter: brightness(0.9);
+  }
+  .group:hover .filter {
+    filter: brightness(0.7);
+  }
+  .ring-1 {
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  }
+  .shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+</style>

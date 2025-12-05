@@ -1,0 +1,115 @@
+---
+// LocalBusinessSchema.astro
+// DÜZELTILMIŞ VERSİYON - Hatasız
+
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  pubDate?: Date | string;  // ✅ Optional
+  date?: Date | string;      // ✅ Eski bloglar için
+}
+
+const { title, description, url, pubDate, date } = Astro.props;
+
+// ✅ Tarih formatını düzelt - hem pubDate hem date destekle
+const dateValue = pubDate || date;
+const datePublished = dateValue 
+  ? (typeof dateValue === 'string' ? dateValue : dateValue.toISOString())
+  : new Date().toISOString();
+const dateModified = datePublished;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tetik Otomotiv Hyundai Servisi",
+  "image": "https://hyundaiservisim.com/logo.png",
+  "@id": "https://hyundaiservisim.com",
+  "url": "https://hyundaiservisim.com",
+  "telephone": "+905336157835",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Aydıntepe, Tuzla Sanayi Sitesi No:117 B2 Blok",
+    "addressLocality": "Tuzla",
+    "addressRegion": "İstanbul",
+    "postalCode": "34903",
+    "addressCountry": "TR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "40.851401",
+    "longitude": "29.303651"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Tuzla"
+    },
+    {
+      "@type": "City",
+      "name": "Pendik"
+    },
+    {
+      "@type": "City",
+      "name": "Gebze"
+    }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "17:00"
+    }
+  ],
+  "sameAs": [
+    "https://maps.app.goo.gl/X7V55b5pZdPXJCqJA"
+  ]
+};
+
+// Article Schema (Blog için)
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "url": url,
+  "datePublished": datePublished,
+  "dateModified": dateModified,
+  "author": {
+    "@type": "Organization",
+    "name": "Tetik Otomotiv Hyundai Servisi"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tetik Otomotiv Hyundai Servisi",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hyundaiservisim.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": url
+  }
+};
+---
+
+<!-- Local Business Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+<!-- Article Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />

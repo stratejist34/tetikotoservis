@@ -1,0 +1,138 @@
+---
+// Sticky Stack Brand Showcase - Container Width Version
+const brands = [
+  {
+    id: 'hyundai',
+    name: 'HYUNDAI',
+    slogan: 'Yenilikçi Teknoloji',
+    description: 'i10, i20, Tucson, Elantra ve tüm Hyundai modelleri için yetkili servis kalitesinde bakım.',
+    link: '/hyundai-ozel-servis',
+    image: '/images/Gebze Hyundai Servis.webp',
+    logo: '/images/logolar/hyundai.webp',
+    color: 'from-blue-900 to-blue-950',
+    accent: 'text-blue-400',
+    index: '01'
+  },
+  {
+    id: 'kia',
+    name: 'KIA',
+    slogan: 'İlham Veren Hareket',
+    description: 'Sportage, Picanto, Ceed, Stonic dahil tüm Kia modelleri için profesyonel bakım.',
+    link: '/kia-ozel-servis',
+    image: '/images/Kia Özel Servis Gebze Tuzla - Kia Ceed Servis.webp',
+    logo: '/images/logolar/kia.webp',
+    color: 'from-orange-900 to-red-950',
+    accent: 'text-orange-400',
+    index: '02'
+  },
+  {
+    id: 'toyota',
+    name: 'TOYOTA',
+    slogan: 'Geleceğe Doğru',
+    description: 'Corolla, Yaris, C-HR ve tüm hibrit modeller için tam kapsamlı servis hizmeti.',
+    link: '/toyota-ozel-servis',
+    image: '/images/toyota-c-hr-ozel-servis.jpg',
+    logo: '/images/logolar/toyota.webp',
+    color: 'from-red-900 to-slate-950',
+    accent: 'text-red-400',
+    index: '03'
+  },
+  {
+    id: 'nissan',
+    name: 'NISSAN',
+    slogan: 'Heyecan Veren İnovasyon',
+    description: 'Qashqai, Juke, Micra ve X-Trail için CVT şanzıman dahil tüm servis işlemleri.',
+    link: '/nissan-ozel-servis',
+    image: '/images/nissan-micra-servis.jpg',
+    logo: '/images/logolar/nissan.webp',
+    color: 'from-slate-800 to-slate-950',
+    accent: 'text-slate-400',
+    index: '04'
+  }
+];
+---
+
+<section class="relative bg-slate-950 pt-32 pb-20" id="brand-stacked">
+  <!-- Section Header -->
+  <div class="container mx-auto px-4 mb-16 text-center">
+    <span class="inline-block text-orange-500 font-bold tracking-[0.3em] text-sm uppercase mb-4">Uzmanlık Alanlarımız</span>
+    <h2 class="text-4xl lg:text-6xl font-bold text-white font-heading tracking-tight">
+      MARKA <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">SERVİSLERİMİZ</span>
+    </h2>
+  </div>
+
+  <!-- Sticky Cards Container -->
+  <div class="container mx-auto px-4">
+    {brands.map((brand, index) => (
+      <div 
+        class="sticky mb-8 last:mb-0"
+        style={`top: calc(6rem + ${index * 1.5}rem); z-index: ${index + 10};`}
+      >
+        <div class={`group relative rounded-2xl lg:rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-gradient-to-br ${brand.color}`}>
+          
+          <!-- Content Container -->
+          <div class="relative min-h-[420px] lg:min-h-[480px] flex flex-col lg:flex-row">
+            
+            <!-- Text Content -->
+            <div class="w-full lg:w-1/2 p-6 lg:p-12 flex flex-col justify-between relative z-20">
+              
+              <div class="flex items-start justify-between">
+                <span class="text-5xl lg:text-7xl font-black text-white/10 font-heading">{brand.index}</span>
+              </div>
+
+              <div class="mt-8 lg:mt-0">
+                <h3 class="text-3xl lg:text-5xl font-bold text-white mb-2 font-heading tracking-tight">
+                  {brand.name}
+                </h3>
+                <p class={`text-base lg:text-lg font-light italic tracking-wide mb-6 ${brand.accent}`}>
+                  "{brand.slogan}"
+                </p>
+                <p class="text-slate-300 text-base leading-relaxed max-w-md mb-8 font-sans font-light">
+                  {brand.description}
+                </p>
+                
+                <a href={brand.link} class="inline-flex items-center gap-3 group/btn cursor-pointer bg-white/10 hover:bg-white px-6 py-3 rounded-full transition-all duration-300">
+                  <span class="text-white group-hover/btn:text-slate-900 font-semibold tracking-wide text-sm uppercase transition-colors">Servisi İncele</span>
+                  <svg class="w-5 h-5 text-white group-hover/btn:text-slate-900 transform group-hover/btn:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Image Side -->
+            <div class="absolute inset-0 lg:relative lg:w-1/2">
+              <img 
+                src={brand.image} 
+                alt={brand.name} 
+                class="w-full h-full object-cover transition-transform duration-1000 scale-105 group-hover:scale-100"
+                loading="lazy"
+              />
+              <!-- Gradient Overlays -->
+              <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent lg:from-black/60 lg:via-transparent lg:to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden"></div>
+              
+              <!-- Logo - Sağ Alt Köşe -->
+              <div class="absolute bottom-6 right-6 w-[77px] h-[77px] bg-white/10 backdrop-blur-md rounded-xl p-3 flex items-center justify-center border border-white/20 z-30">
+                <img src={brand.logo} alt={brand.name} class="w-full h-full object-contain" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    ))}
+    
+    <!-- Spacer for smooth scroll past last card -->
+    <div class="h-[30vh]"></div>
+  </div>
+</section>
+
+<style>
+  /* Smooth shadow transition on scroll */
+  #brand-stacked .sticky > div {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  }
+  
+  #brand-stacked .sticky:hover > div {
+    transform: scale(1.01);
+  }
+</style>

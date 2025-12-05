@@ -1,0 +1,54 @@
+---
+import Header from '../components/Header.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Hyundai, Kia, Toyota, Nissan Özel Servis - Tetik Otomotiv' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <title>{title}</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/jpeg" sizes="16x16" href="/images/favicon/16x16-hyundailogoikon.jpg">
+  <link rel="icon" type="image/jpeg" sizes="32x32" href="/images/favicon/32x32-hyundailogoikon.jpg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/180x180-hyundailogoikon.jpg">
+  <link rel="icon" type="image/jpeg" sizes="192x192" href="/images/favicon/192x192-hyundailogoikon.jpg">
+  <link rel="icon" type="image/jpeg" sizes="512x512" href="/images/favicon/512x512-hyundailogoikon.jpg">
+</head>
+<body class="font-body text-white bg-slate-950 antialiased">
+  <div class="relative min-h-screen overflow-x-hidden">
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"></div>
+      <div class="absolute inset-y-0 left-1/2 w-[160vw] -translate-x-1/2 bg-[radial-gradient(circle_at_top,_rgba(15,23,42,0.7),_transparent_60%)]"></div>
+      <div class="absolute -top-32 right-10 h-96 w-96 rounded-full bg-gradient-to-br from-sky-500/40 via-blue-500/20 to-transparent blur-3xl"></div>
+      <div class="absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-gradient-to-br from-amber-500/30 via-orange-400/10 to-transparent blur-3xl"></div>
+      <div class="absolute inset-0 opacity-[0.06]" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 60px 60px;"></div>
+    </div>
+
+    <div class="relative z-10 flex min-h-screen flex-col">
+      <Header />
+      <main class="flex-1">
+        <slot />
+      </main>
+    </div>
+    
+    <!-- WhatsApp Butonu -->
+    <WhatsAppButton />
+  </div>
+</body>
+</html>

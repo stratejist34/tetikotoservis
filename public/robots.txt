@@ -1,0 +1,18 @@
+User-agent: *
+
+Allow: /
+
+# Test sayfalarını engelle
+
+Disallow: /test/
+
+Disallow: /test-*
+
+Disallow: /index-backup/
+
+Disallow: /index-old/
+
+# Sitemap
+
+Sitemap: https://hyundaiservisim.com/sitemap-index.xml
+
