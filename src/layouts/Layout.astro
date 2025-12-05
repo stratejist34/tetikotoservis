@@ -28,17 +28,17 @@ const {
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=optional"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=optional"
       rel="stylesheet"
       media="print"
       onload="this.media='all'"
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=optional"
         rel="stylesheet"
       />
     </noscript>
@@ -73,15 +73,35 @@ const {
       sizes="512x512"
       href="/images/favicon/512x512-hyundailogoikon.jpg"
     />
-    <!-- Critical CSS for above-the-fold content -->
+    <!-- Critical CSS for above-the-fold content - Font metrics matched to prevent CLS -->
     <style is:inline>
+      /* Font fallback with matched metrics to prevent CLS */
+      @font-face {
+        font-family: "Kanit-fallback";
+        src: local("Arial Black"), local("Arial");
+        ascent-override: 105%;
+        descent-override: 35%;
+        line-height-override: 1.2;
+      }
+      @font-face {
+        font-family: "Manrope-fallback";
+        src: local("Arial"), local("Helvetica");
+        ascent-override: 100%;
+        descent-override: 25%;
+        line-height-override: 1.5;
+      }
       body {
-        font-family: Manrope, system-ui, sans-serif;
+        font-family: Manrope, "Manrope-fallback", system-ui, sans-serif;
         margin: 0;
         background: #f8fafc;
       }
       .font-heading {
-        font-family: Kanit, system-ui, sans-serif;
+        font-family: Kanit, "Kanit-fallback", system-ui, sans-serif;
+      }
+      /* Hero section - prevent CLS with fixed dimensions */
+      .hero-title {
+        font-size: clamp(2.5rem, 5vw, 3.75rem);
+        line-height: 1.1;
       }
       .bg-slate-900 {
         background-color: #0f172a;
