@@ -3,7 +3,7 @@ brand: 'Hyundai'
 model: 'Santa Fe'
 metaTitle: 'Gebze Hyundai Santa Fe Servisi | 7 Kişilik SUV Özel Bakım'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Hyundai Santa Fe bakım ve onarım servisi. 7 kişilik SUV modelleri için uzman servis çözümleri.'
-image: '/images/hyundai-santa-fe-servis.webp'
+image: '/images/avifs/hyundai-santa-fe-servis.avif'
 color: 'blue'
 features:
   - '7 Kişilik SUV Bakımı'
@@ -27,12 +27,11 @@ faqs:
 
 ### Santa Fe İçin Uzman Çözümler
 
-*   **Dizel Motor:** CRDi motorların bakımı, DPF temizliği ve rejenerasyonu.
-*   **4x4 Sistem:** Aktarma organları, diferansiyel ve transfer kutusu bakımı.
-*   **Periyodik Bakım:** 15.000 km ve 30.000 km periyotlarında tam bakım paketi.
-*   **Şanzıman:** Otomatik ve manuel şanzıman bakım ve onarımı.
+* **Dizel Motor:** CRDi motorların bakımı, DPF temizliği ve rejenerasyonu.
+* **4x4 Sistem:** Aktarma organları, diferansiyel ve transfer kutusu bakımı.
+* **Periyodik Bakım:** 15.000 km ve 30.000 km periyotlarında tam bakım paketi.
+* **Şanzıman:** Otomatik ve manuel şanzıman bakım ve onarımı.
 
 ### Orijinal Hyundai Kalitesi
 
 Servisimizde Hyundai'nin onayladığı orijinal parçalar kullanılır. Tuzla, Gebze, Pendik ve Kurtköy'de Santa Fe'nizi güvenle emanet edebileceğiniz adres.
-

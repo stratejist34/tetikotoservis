@@ -3,7 +3,7 @@ brand: 'Toyota'
 model: 'Camry'
 metaTitle: 'Gebze Toyota Camry Servisi | Üst Segment Özel Bakım'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Toyota Camry bakım ve onarım servisi. Üst segment sedan için özel servis çözümleri.'
-image: '/images/toyota-camry-servis.webp'
+image: '/images/avifs/toyota-camry-servis.avif'
 color: 'red'
 features:
   - 'Üst Segment Bakım'
@@ -25,12 +25,11 @@ faqs:
 
 ### Camry İçin Uzman Çözümler
 
-*   **Hibrit Sistem:** Camry Hybrid modellerde batarya sağlığı testi ve sistem kontrolü.
-*   **Periyodik Bakım:** 15.000 km ve 30.000 km periyotlarında tam bakım paketi.
-*   **Motor Mekanik:** Tüm motor revizyonu ve performans optimizasyonu.
-*   **Elektronik Sistem:** Arıza teşhis, ECU programlama ve sistem kontrolü.
+* **Hibrit Sistem:** Camry Hybrid modellerde batarya sağlığı testi ve sistem kontrolü.
+* **Periyodik Bakım:** 15.000 km ve 30.000 km periyotlarında tam bakım paketi.
+* **Motor Mekanik:** Tüm motor revizyonu ve performans optimizasyonu.
+* **Elektronik Sistem:** Arıza teşhis, ECU programlama ve sistem kontrolü.
 
 ### Orijinal Toyota Kalitesi
 
 Servisimizde Toyota'nın onayladığı orijinal parçalar kullanılır. Tuzla, Gebze, Pendik ve Kurtköy'de Camry'nizi güvenle emanet edebileceğiniz adres.
-
