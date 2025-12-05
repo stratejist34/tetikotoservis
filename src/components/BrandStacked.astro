@@ -59,7 +59,7 @@ const brands = [
 ];
 ---
 
-<section class="relative bg-slate-950 pt-32 pb-20" id="brand-stacked">
+<section class="relative bg-slate-950 pt-32 pb-20" id="brand-stacked" style="min-height: 300vh;">
   <!-- Section Header -->
   <div class="container mx-auto px-4 mb-16 text-center">
     <span class="inline-block text-orange-500 font-bold tracking-[0.3em] text-sm uppercase mb-4">Uzmanlık Alanlarımız</span>
@@ -72,8 +72,8 @@ const brands = [
   <div class="container mx-auto px-4">
     {brands.map((brand, index) => (
       <div 
-        class="sticky mb-8 last:mb-0"
-        style={`top: calc(6rem + ${index * 1.5}rem); z-index: ${index + 10};`}
+        class="mb-8 last:mb-0"
+        style={`position: sticky; top: calc(6rem + ${index * 2}rem); z-index: ${index + 10};`}
       >
         <div class={`group relative rounded-2xl lg:rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-gradient-to-br ${brand.color}`}>
           
