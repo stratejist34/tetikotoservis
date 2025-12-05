@@ -68,12 +68,11 @@ const brands = [
     </h2>
   </div>
 
-  <!-- Cards Container - Grid on mobile, Sticky on desktop -->
+  <!-- Sticky Cards Container -->
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:block gap-6 lg:gap-0">
     {brands.map((brand, index) => (
       <div 
-        class="lg:sticky mb-0 lg:mb-8 last:mb-0"
+        class="sticky mb-8 last:mb-0"
         style={`top: calc(6rem + ${index * 1.5}rem); z-index: ${index + 10};`}
       >
         <div class={`group relative rounded-2xl lg:rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-gradient-to-br ${brand.color}`}>
@@ -134,10 +133,9 @@ const brands = [
         </div>
       </div>
     ))}
-    </div>
     
     <!-- Spacer for smooth scroll past last card -->
-    <div class="h-[30vh] hidden lg:block"></div>
+    <div class="h-[50vh]"></div>
   </div>
 </section>
 
