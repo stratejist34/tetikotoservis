@@ -70,7 +70,8 @@ const menuItems = [
 
 <header
   id="main-header"
-  class="fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50"
+  class="fixed top-0 left-0 w-full z-[9999] transition-all duration-300 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50"
+  style="max-width: 100vw; overflow-x: hidden;"
 >
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between h-24">
@@ -226,18 +227,12 @@ const menuItems = [
         <button
           id="mobile-menu-btn"
           type="button"
-          class="lg:hidden w-14 h-14 flex flex-col items-center justify-center gap-2 relative z-[9999] group bg-orange-600 rounded-xl shadow-lg"
+          class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 bg-orange-600 rounded-lg shadow-lg flex-shrink-0"
           aria-label="Menüyü Aç"
         >
-          <span
-            class="w-7 h-1 bg-white rounded-full transition-all duration-300 origin-center group-[.is-active]:rotate-45 group-[.is-active]:translate-y-3"
-          ></span>
-          <span
-            class="w-7 h-1 bg-white rounded-full transition-all duration-300 group-[.is-active]:opacity-0"
-          ></span>
-          <span
-            class="w-7 h-1 bg-white rounded-full transition-all duration-300 origin-center group-[.is-active]:-rotate-45 group-[.is-active]:-translate-y-3"
-          ></span>
+          <span class="hamburger-line w-6 h-0.5 bg-white rounded-full"></span>
+          <span class="hamburger-line w-6 h-0.5 bg-white rounded-full"></span>
+          <span class="hamburger-line w-6 h-0.5 bg-white rounded-full"></span>
         </button>
       </div>
     </div>
@@ -247,8 +242,8 @@ const menuItems = [
 <!-- Mobile Menu - OUTSIDE HEADER -->
 <div
   id="mobile-menu"
-  class="lg:hidden fixed top-0 left-0 w-full h-full z-[9998] hidden"
-  style="background-color: #020617;"
+  class="lg:hidden fixed top-0 left-0 w-full h-full z-[9998]"
+  style="background-color: #020617; display: none;"
 >
   <!-- Close Button -->
   <button
@@ -349,70 +344,48 @@ const menuItems = [
 </div>
 
 <script is:inline>
-  // Simple Mobile Menu Toggle
-  (function () {
-    function setupMobileMenu() {
-      var menuBtn = document.getElementById("mobile-menu-btn");
-      var closeBtn = document.getElementById("mobile-menu-close");
-      var mobileMenu = document.getElementById("mobile-menu");
-      var links = document.querySelectorAll(".mobile-link");
+  // Mobile Menu - Event Delegation
+  document.addEventListener("click", function (e) {
+    var mobileMenu = document.getElementById("mobile-menu");
 
-      if (!menuBtn || !mobileMenu) {
-        console.log("Mobile menu elements not found");
-        return;
-      }
-
-      function openMenu() {
-        mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("block");
-        menuBtn.classList.add("is-active");
+    // Open button clicked
+    if (e.target.closest("#mobile-menu-btn")) {
+      e.preventDefault();
+      if (mobileMenu) {
+        mobileMenu.style.display = "block";
         document.body.style.overflow = "hidden";
       }
+      return;
+    }
 
-      function closeMenu() {
-        mobileMenu.classList.add("hidden");
-        mobileMenu.classList.remove("block");
-        menuBtn.classList.remove("is-active");
+    // Close button clicked
+    if (e.target.closest("#mobile-menu-close")) {
+      e.preventDefault();
+      if (mobileMenu) {
+        mobileMenu.style.display = "none";
         document.body.style.overflow = "";
       }
-
-      // Open button
-      menuBtn.onclick = function (e) {
-        e.preventDefault();
-        openMenu();
-      };
-
-      // Close button
-      if (closeBtn) {
-        closeBtn.onclick = function (e) {
-          e.preventDefault();
-          closeMenu();
-        };
-      }
-
-      // Close on link click
-      for (var i = 0; i < links.length; i++) {
-        links[i].onclick = function () {
-          closeMenu();
-        };
-      }
-
-      // Close on escape
-      document.onkeydown = function (e) {
-        if (e.key === "Escape") {
-          closeMenu();
-        }
-      };
+      return;
     }
 
-    // Run on load
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", setupMobileMenu);
-    } else {
-      setupMobileMenu();
+    // Link clicked inside menu
+    if (e.target.closest(".mobile-link")) {
+      if (mobileMenu) {
+        mobileMenu.style.display = "none";
+        document.body.style.overflow = "";
+      }
+      return;
     }
+  });
 
-    // Run on Astro navigation
-    document.addEventListener("astro:page-load", setupMobileMenu);
-  })();
+  // Close on escape
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      var mobileMenu = document.getElementById("mobile-menu");
+      if (mobileMenu && mobileMenu.style.display === "block") {
+        mobileMenu.style.display = "none";
+        document.body.style.overflow = "";
+      }
+    }
+  });
 </script>
