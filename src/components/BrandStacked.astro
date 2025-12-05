@@ -1,4 +1,10 @@
 ---
+import { Image } from 'astro:assets';
+import hyundaiImage from '../../assets/images/gebze-hyundai-servis.webp';
+import kiaImage from '../../assets/images/kia-özel-servis-gebze-tuzla---kia-ceed-servis.webp';
+import toyotaImage from '../../assets/images/toyota-c-hr-ozel-servis.jpg';
+import nissanImage from '../../assets/images/nissan-micra-servis.jpg';
+
 // Sticky Stack Brand Showcase - Container Width Version
 const brands = [
   {
@@ -7,7 +13,7 @@ const brands = [
     slogan: 'Yenilikçi Teknoloji',
     description: 'i10, i20, Tucson, Elantra ve tüm Hyundai modelleri için yetkili servis kalitesinde bakım.',
     link: '/hyundai-ozel-servis',
-    image: '/images/Gebze Hyundai Servis.webp',
+    image: hyundaiImage,
     logo: '/images/logolar/hyundai.webp',
     color: 'from-blue-900 to-blue-950',
     accent: 'text-blue-400',
@@ -19,7 +25,7 @@ const brands = [
     slogan: 'İlham Veren Hareket',
     description: 'Sportage, Picanto, Ceed, Stonic dahil tüm Kia modelleri için profesyonel bakım.',
     link: '/kia-ozel-servis',
-    image: '/images/Kia Özel Servis Gebze Tuzla - Kia Ceed Servis.webp',
+    image: kiaImage,
     logo: '/images/logolar/kia.webp',
     color: 'from-orange-900 to-red-950',
     accent: 'text-orange-400',
@@ -31,7 +37,7 @@ const brands = [
     slogan: 'Geleceğe Doğru',
     description: 'Corolla, Yaris, C-HR ve tüm hibrit modeller için tam kapsamlı servis hizmeti.',
     link: '/toyota-ozel-servis',
-    image: '/images/toyota-c-hr-ozel-servis.jpg',
+    image: toyotaImage,
     logo: '/images/logolar/toyota.webp',
     color: 'from-red-900 to-slate-950',
     accent: 'text-red-400',
@@ -43,7 +49,7 @@ const brands = [
     slogan: 'Heyecan Veren İnovasyon',
     description: 'Qashqai, Juke, Micra ve X-Trail için CVT şanzıman dahil tüm servis işlemleri.',
     link: '/nissan-ozel-servis',
-    image: '/images/nissan-micra-servis.jpg',
+    image: nissanImage,
     logo: '/images/logolar/nissan.webp',
     color: 'from-slate-800 to-slate-950',
     accent: 'text-slate-400',
@@ -100,10 +106,14 @@ const brands = [
 
             <!-- Image Side -->
             <div class="absolute inset-0 lg:relative lg:w-1/2">
-              <img 
+              <Image 
                 src={brand.image} 
                 alt={brand.name} 
                 class="w-full h-full object-cover transition-transform duration-1000 scale-105 group-hover:scale-100"
+                width={1200}
+                height={800}
+                format="avif"
+                quality={85}
                 loading="lazy"
               />
               <!-- Gradient Overlays -->

@@ -1,16 +1,24 @@
 ---
 import RevCounter from './RevCounter.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/hyundai-servis.jpg';
 ---
 
 <section class="relative h-screen min-h-[600px] flex items-center overflow-hidden bg-slate-900">
   <!-- Cinematic Background Image with Parallax Feel -->
   <div class="absolute inset-0 z-0 overflow-hidden">
     <div class="absolute inset-0 bg-slate-900/20 z-10"></div> <!-- Extra dim for text contrast -->
-    <img 
+    <Image 
       id="hero-bg"
-      src="/images/hyundai-servis.jpg" 
+      src={heroImage}
       alt="Tetik Oto Servis" 
       class="w-full h-[120%] top-0 absolute object-cover object-top parallax-img will-change-transform"
+      width={1920}
+      height={1080}
+      format="avif"
+      quality={85}
+      loading="eager"
+      fetchpriority="high"
     />
     <!-- Premium Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent z-20"></div>

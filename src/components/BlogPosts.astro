@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
 const allBlogPosts = await getCollection('blog');
 const blogPosts = allBlogPosts
@@ -52,6 +53,11 @@ const formatDate = (date: Date) => {
               src={featuredPost.data.coverImage || featuredPost.data.image} 
               alt={featuredPost.data.title}
               class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              width="1200"
+              height="900"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-90 group-hover:opacity-80 transition-opacity duration-500"></div>
             
@@ -89,6 +95,10 @@ const formatDate = (date: Date) => {
                 src={post.data.coverImage || post.data.image} 
                 alt={post.data.title}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                width="400"
+                height="280"
+                loading="lazy"
+                decoding="async"
               />
               <div class="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors"></div>
             </div>
