@@ -76,15 +76,13 @@ const menuItems = [
     <div class="flex items-center justify-between h-24">
       <!-- Logo -->
       <a href="/" class="relative z-50 flex items-center gap-3 group">
-        <div
-          class="bg-slate-900/60 backdrop-blur-sm rounded-lg px-3 py-2 border border-slate-700/30"
-        >
-          <img
-            src="/images/tetik-web-logo.webp"
-            alt="Tetik Otomotiv Logo"
-            class="h-10 w-auto group-hover:scale-105 transition-transform"
-          />
-        </div>
+        <img
+          src="/images/tetik-web-logo.webp"
+          alt="Tetik Otomotiv Logo"
+          class="h-10 w-auto group-hover:scale-105 transition-transform"
+          width="150"
+          height="40"
+        />
       </a>
 
       <!-- Desktop Navigation -->
@@ -227,7 +225,8 @@ const menuItems = [
         <!-- Mobile Menu Button -->
         <button
           id="mobile-menu-btn"
-          class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 relative z-50 group bg-slate-900/60 backdrop-blur-sm rounded-lg border border-slate-700/30"
+          type="button"
+          class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 relative z-[60] group"
           aria-label="Menüyü Aç"
         >
           <span
@@ -313,50 +312,95 @@ const menuItems = [
   </div>
 </header>
 
-<script>
-  // Header Scroll Effect
-  const header = document.getElementById("main-header");
-  const scrollThreshold = 50;
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Header Scroll Effect
+    const header = document.getElementById("main-header");
+    const scrollThreshold = 50;
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > scrollThreshold) {
-      header?.classList.add("shadow-lg");
-      header?.classList.remove("shadow-sm");
-    } else {
-      header?.classList.remove("shadow-lg");
-      header?.classList.add("shadow-sm");
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > scrollThreshold) {
+        header?.classList.add("shadow-lg");
+        header?.classList.remove("shadow-sm");
+      } else {
+        header?.classList.remove("shadow-lg");
+        header?.classList.add("shadow-sm");
+      }
+    });
+
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileItems = document.querySelectorAll(".mobile-item");
+    let isMenuOpen = false;
+
+    if (menuBtn) {
+      menuBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        isMenuOpen = !isMenuOpen;
+        menuBtn.classList.toggle("is-active");
+
+        if (isMenuOpen) {
+          mobileMenu?.classList.remove("translate-x-full", "opacity-0");
+          document.body.style.overflow = "hidden";
+
+          // Stagger animation for items
+          mobileItems.forEach(function (item, index) {
+            setTimeout(
+              function () {
+                item.classList.remove("opacity-0", "translate-y-4");
+              },
+              100 + index * 100,
+            );
+          });
+        } else {
+          mobileMenu?.classList.add("translate-x-full", "opacity-0");
+          document.body.style.overflow = "";
+
+          mobileItems.forEach(function (item) {
+            item.classList.add("opacity-0", "translate-y-4");
+          });
+        }
+      });
     }
   });
 
-  // Mobile Menu Toggle
-  const menuBtn = document.getElementById("mobile-menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const mobileItems = document.querySelectorAll(".mobile-item");
-  let isMenuOpen = false;
+  // Also run on page navigation (View Transitions)
+  document.addEventListener("astro:page-load", function () {
+    const menuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileItems = document.querySelectorAll(".mobile-item");
+    let isMenuOpen = false;
 
-  menuBtn?.addEventListener("click", () => {
-    isMenuOpen = !isMenuOpen;
-    menuBtn.classList.toggle("is-active");
+    if (menuBtn && !menuBtn.dataset.initialized) {
+      menuBtn.dataset.initialized = "true";
+      menuBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        isMenuOpen = !isMenuOpen;
+        menuBtn.classList.toggle("is-active");
 
-    if (isMenuOpen) {
-      mobileMenu?.classList.remove("translate-x-full", "opacity-0");
-      document.body.style.overflow = "hidden";
+        if (isMenuOpen) {
+          mobileMenu?.classList.remove("translate-x-full", "opacity-0");
+          document.body.style.overflow = "hidden";
 
-      // Stagger animation for items
-      mobileItems.forEach((item, index) => {
-        setTimeout(
-          () => {
-            item.classList.remove("opacity-0", "translate-y-4");
-          },
-          100 + index * 100,
-        );
-      });
-    } else {
-      mobileMenu?.classList.add("translate-x-full", "opacity-0");
-      document.body.style.overflow = "";
+          mobileItems.forEach(function (item, index) {
+            setTimeout(
+              function () {
+                item.classList.remove("opacity-0", "translate-y-4");
+              },
+              100 + index * 100,
+            );
+          });
+        } else {
+          mobileMenu?.classList.add("translate-x-full", "opacity-0");
+          document.body.style.overflow = "";
 
-      mobileItems.forEach((item) => {
-        item.classList.add("opacity-0", "translate-y-4");
+          mobileItems.forEach(function (item) {
+            item.classList.add("opacity-0", "translate-y-4");
+          });
+        }
       });
     }
   });
