@@ -1,10 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-// Import images with absolute path from src
-import hyundaiImage from '/src/assets/images/gebze-hyundai-servis.webp';
-import kiaImage from '/src/assets/images/kia-ozel-servis-gebze-tuzla.webp';
-import toyotaImage from '/src/assets/images/toyota-c-hr-ozel-servis.jpg';
-import nissanImage from '/src/assets/images/nissan-micra-servis.jpg';
+// Orijinal JPG dosyalarını kullan - Astro Sharp otomatik AVIF'e çevirecek ve responsive boyutlar oluşturacak
+import hyundaiImageJpg from '/src/assets/images/gebze-hyundai-servis.jpg';
+import kiaImageJpg from '/src/assets/images/kia-ozel-servis-gebze-tuzla.jpg';
+import toyotaImageJpg from '/src/assets/images/toyota-c-hr-ozel-servis.jpg';
+import nissanImageJpg from '/src/assets/images/nissan-micra-servis.jpg';
 
 // Sticky Stack Brand Showcase - Container Width Version
 const brands = [
@@ -14,7 +14,7 @@ const brands = [
     slogan: 'Yenilikçi Teknoloji',
     description: 'i10, i20, Tucson, Elantra ve tüm Hyundai modelleri için yetkili servis kalitesinde bakım.',
     link: '/hyundai-ozel-servis',
-    image: hyundaiImage,
+    image: hyundaiImageJpg,
     logo: '/images/logolar/hyundai.webp',
     color: 'from-blue-900 to-blue-950',
     accent: 'text-blue-400',
@@ -26,7 +26,7 @@ const brands = [
     slogan: 'İlham Veren Hareket',
     description: 'Sportage, Picanto, Ceed, Stonic dahil tüm Kia modelleri için profesyonel bakım.',
     link: '/kia-ozel-servis',
-    image: kiaImage,
+    image: kiaImageJpg,
     logo: '/images/logolar/kia.webp',
     color: 'from-orange-900 to-red-950',
     accent: 'text-orange-400',
@@ -38,7 +38,7 @@ const brands = [
     slogan: 'Geleceğe Doğru',
     description: 'Corolla, Yaris, C-HR ve tüm hibrit modeller için tam kapsamlı servis hizmeti.',
     link: '/toyota-ozel-servis',
-    image: toyotaImage,
+    image: toyotaImageJpg,
     logo: '/images/logolar/toyota.webp',
     color: 'from-red-900 to-slate-950',
     accent: 'text-red-400',
@@ -50,7 +50,7 @@ const brands = [
     slogan: 'Heyecan Veren İnovasyon',
     description: 'Qashqai, Juke, Micra ve X-Trail için CVT şanzıman dahil tüm servis işlemleri.',
     link: '/nissan-ozel-servis',
-    image: nissanImage,
+    image: nissanImageJpg,
     logo: '/images/logolar/nissan.webp',
     color: 'from-slate-800 to-slate-950',
     accent: 'text-slate-400',
@@ -116,6 +116,8 @@ const brands = [
                 format="avif"
                 quality={85}
                 loading="lazy"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                densities={[1, 1.5, 2]}
               />
               <!-- Gradient Overlays -->
               <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent lg:from-black/60 lg:via-transparent lg:to-transparent"></div>

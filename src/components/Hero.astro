@@ -1,7 +1,8 @@
 ---
 import RevCounter from './RevCounter.astro';
 import { Image } from 'astro:assets';
-import heroImage from '/src/assets/images/hyundai-servis.jpg';
+// Orijinal JPG'yi kullan - Astro Sharp otomatik AVIF'e çevirecek ve responsive boyutlar oluşturacak
+import heroImageJpg from '/src/assets/images/hyundai-servis.jpg';
 ---
 
 <section class="relative h-screen min-h-[600px] flex items-center overflow-hidden bg-slate-900">
@@ -10,7 +11,7 @@ import heroImage from '/src/assets/images/hyundai-servis.jpg';
     <div class="absolute inset-0 bg-slate-900/20 z-10"></div> <!-- Extra dim for text contrast -->
     <Image 
       id="hero-bg"
-      src={heroImage}
+      src={heroImageJpg}
       alt="Tetik Oto Servis" 
       class="w-full h-[120%] top-0 absolute object-cover object-top parallax-img will-change-transform"
       width={1920}
@@ -19,6 +20,8 @@ import heroImage from '/src/assets/images/hyundai-servis.jpg';
       quality={85}
       loading="eager"
       fetchpriority="high"
+      sizes="100vw"
+      densities={[1, 1.5, 2]}
     />
     <!-- Premium Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent z-20"></div>
