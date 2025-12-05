@@ -14,7 +14,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="tr" style="overflow-x: hidden; max-width: 100vw;">
+<html lang="tr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -169,15 +169,10 @@ const {
     </style>
   </head>
   <body
-    class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-orange-500 selection:text-white overflow-x-hidden"
-    style="max-width: 100vw;"
+    class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-orange-500 selection:text-white"
   >
     <Header />
-    <main
-      transition:animate="slide"
-      class="overflow-x-hidden"
-      style="max-width: 100vw;"
-    >
+    <main transition:animate="slide">
       <slot />
     </main>
 
