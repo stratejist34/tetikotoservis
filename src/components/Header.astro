@@ -1,231 +1,312 @@
 ---
-import { Image } from 'astro:assets';
-import hyundaiElantra from '../assets/images/hyundai-elantra-servis.jpg';
-import kiaStonic from '../assets/images/kia-stonic-servis.jpg';
-import toyotaCHR from '../assets/images/toyota-c-hr-ozel-servis.jpg';
-import nissanXTrail from '../assets/images/nissan-x-trail-ozel-servis.jpg';
+import { Image } from "astro:assets";
+import hyundaiElantra from "../assets/images/hyundai-elantra-servis.jpg";
+import kiaStonic from "../assets/images/kia-stonic-servis.jpg";
+import toyotaCHR from "../assets/images/toyota-c-hr-ozel-servis.jpg";
+import nissanXTrail from "../assets/images/nissan-x-trail-ozel-servis.jpg";
 
 const menuItems = [
-  { text: 'ANASAYFA', href: '/' },
-  { text: 'HAKKIMIZDA', href: '/hakkimizda' },
-  { 
-    text: 'HİZMETLERİMİZ', 
-    href: '/hizmetlerimiz', 
+  { text: "ANASAYFA", href: "/" },
+  { text: "HAKKIMIZDA", href: "/hakkimizda" },
+  {
+    text: "HİZMETLERİMİZ",
+    href: "/hizmetlerimiz",
     hasDropdown: true,
     dropdownItems: [
-      { 
-        text: 'HYUNDAI SERVİS', 
-        href: '/hyundai-ozel-servis', 
+      {
+        text: "HYUNDAI SERVİS",
+        href: "/hyundai-ozel-servis",
         image: hyundaiElantra,
         // Hyundai locations
         locations: [
-          { text: 'Gebze', href: '/gebze-hyundai-servis' },
-          { text: 'Tuzla', href: '/tuzla-hyundai-servis' },
-          { text: 'Pendik', href: '/pendik-hyundai-servis' },
-          { text: 'Kurtköy', href: '/kurtkoy-hyundai-servis' }
-        ]
+          { text: "Gebze", href: "/gebze-hyundai-servis" },
+          { text: "Tuzla", href: "/tuzla-hyundai-servis" },
+          { text: "Pendik", href: "/pendik-hyundai-servis" },
+          { text: "Kurtköy", href: "/kurtkoy-hyundai-servis" },
+        ],
       },
-      { 
-        text: 'KIA SERVİS', 
-        href: '/kia-ozel-servis', 
+      {
+        text: "KIA SERVİS",
+        href: "/kia-ozel-servis",
         image: kiaStonic,
-        // Kia locations  
+        // Kia locations
         locations: [
-          { text: 'Gebze', href: '/gebze-kia-servis' },
-          { text: 'Tuzla', href: '/tuzla-kia-servis' },
-          { text: 'Pendik', href: '/pendik-kia-servis' },
-          { text: 'Kurtköy', href: '/kurtkoy-kia-servis' }
-        ]
+          { text: "Gebze", href: "/gebze-kia-servis" },
+          { text: "Tuzla", href: "/tuzla-kia-servis" },
+          { text: "Pendik", href: "/pendik-kia-servis" },
+          { text: "Kurtköy", href: "/kurtkoy-kia-servis" },
+        ],
       },
-      { 
-        text: 'TOYOTA SERVİS', 
-        href: '/toyota-ozel-servis', 
+      {
+        text: "TOYOTA SERVİS",
+        href: "/toyota-ozel-servis",
         image: toyotaCHR,
         // Toyota locations
         locations: [
-          { text: 'Gebze', href: '/gebze-toyota-servis' },
-          { text: 'Tuzla', href: '/tuzla-toyota-servis' },
-          { text: 'Pendik', href: '/pendik-toyota-servis' },
-          { text: 'Kurtköy', href: '/kurtkoy-toyota-servis' }
-        ]
+          { text: "Gebze", href: "/gebze-toyota-servis" },
+          { text: "Tuzla", href: "/tuzla-toyota-servis" },
+          { text: "Pendik", href: "/pendik-toyota-servis" },
+          { text: "Kurtköy", href: "/kurtkoy-toyota-servis" },
+        ],
       },
-      { 
-        text: 'NISSAN SERVİS', 
-        href: '/nissan-ozel-servis', 
+      {
+        text: "NISSAN SERVİS",
+        href: "/nissan-ozel-servis",
         image: nissanXTrail,
         // Nissan locations
         locations: [
-          { text: 'Gebze', href: '/gebze-nissan-servis' },
-          { text: 'Tuzla', href: '/tuzla-nissan-servis' },
-          { text: 'Pendik', href: '/pendik-nissan-servis' },
-          { text: 'Kurtköy', href: '/kurtkoy-nissan-servis' }
-        ]
+          { text: "Gebze", href: "/gebze-nissan-servis" },
+          { text: "Tuzla", href: "/tuzla-nissan-servis" },
+          { text: "Pendik", href: "/pendik-nissan-servis" },
+          { text: "Kurtköy", href: "/kurtkoy-nissan-servis" },
+        ],
       },
-    ]
+    ],
   },
-  { text: 'BLOG', href: '/blog' },
-  { text: 'İLETİŞİM', href: '/iletisim' },
+  { text: "BLOG", href: "/blog" },
+  { text: "İLETİŞİM", href: "/iletisim" },
 ];
 ---
 
-<header 
-  id="main-header" 
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent"
+<header
+  id="main-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50"
 >
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between h-24">
-      
       <!-- Logo -->
       <a href="/" class="relative z-50 flex items-center gap-3 group">
-        <img 
-          src="/images/tetik-web-logo.webp" 
-          alt="Tetik Otomotiv Logo" 
-          class="h-12 w-auto group-hover:scale-105 transition-transform"
-        />
+        <div
+          class="bg-slate-900/60 backdrop-blur-sm rounded-lg px-3 py-2 border border-slate-700/30"
+        >
+          <img
+            src="/images/tetik-web-logo.webp"
+            alt="Tetik Otomotiv Logo"
+            class="h-10 w-auto group-hover:scale-105 transition-transform"
+          />
+        </div>
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-8">
-        {menuItems.map((item) => (
-          <div class="relative group">
-            <a 
-              href={item.href} 
-              class="text-sm font-bold text-white hover:text-orange-500 transition-colors py-4 flex items-center gap-1 tracking-wider"
-            >
-              {item.text}
-              {item.hasDropdown && (
-                <svg class="w-4 h-4 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-              )}
-            </a>
+        {
+          menuItems.map((item) => (
+            <div class="relative group">
+              <a
+                href={item.href}
+                class="text-sm font-bold text-white hover:text-orange-500 transition-colors py-4 flex items-center gap-1 tracking-wider"
+              >
+                {item.text}
+                {item.hasDropdown && (
+                  <svg
+                    class="w-4 h-4 group-hover:rotate-180 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                )}
+              </a>
 
-            {/* Dropdown Menu */}
-            {item.hasDropdown && (
-              <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 w-[750px]">
-                <div class="bg-slate-900 rounded-2xl p-3 shadow-2xl border border-slate-800 overflow-hidden grid grid-cols-2 gap-3">
-                  {item.dropdownItems.map((subItem) => (
-                    <div class="relative group/subitem">
-                      <div class="flex items-center gap-4 p-4 rounded-xl">
-                        <div class="w-[134px] h-[96px] rounded-lg overflow-hidden bg-slate-800 flex-shrink-0">
-                          <Image 
-                            src={subItem.image} 
-                            alt={subItem.text} 
-                            width={134}
-                            height={96}
-                            format="avif"
-                            quality={85}
-                            class="w-full h-full object-cover group-hover/subitem:scale-110 transition-transform duration-500" 
-                            loading="lazy"
-                          />
+              {/* Dropdown Menu */}
+              {item.hasDropdown && (
+                <div class="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 w-[750px]">
+                  <div class="bg-slate-900 rounded-2xl p-3 shadow-2xl border border-slate-800 overflow-hidden grid grid-cols-2 gap-3">
+                    {item.dropdownItems.map((subItem) => (
+                      <div class="relative group/subitem">
+                        <div class="flex items-center gap-4 p-4 rounded-xl">
+                          <div class="w-[134px] h-[96px] rounded-lg overflow-hidden bg-slate-800 flex-shrink-0">
+                            <Image
+                              src={subItem.image}
+                              alt={subItem.text}
+                              width={134}
+                              height={96}
+                              format="avif"
+                              quality={85}
+                              class="w-full h-full object-cover group-hover/subitem:scale-110 transition-transform duration-500"
+                              loading="lazy"
+                            />
+                          </div>
+                          <div class="flex-1 min-w-0">
+                            <a
+                              href={subItem.href}
+                              class="font-bold text-slate-200 hover:text-orange-500 transition-colors text-base block mb-3"
+                            >
+                              {subItem.text}
+                            </a>
+                            {/* Lokasyon linkleri */}
+                            {subItem.locations && (
+                              <div class="space-y-2">
+                                {subItem.locations.map((location) => (
+                                  <a
+                                    href={location.href}
+                                    class="block text-sm text-slate-400 hover:text-white transition-colors truncate"
+                                    title={location.text}
+                                  >
+                                    → {location.text}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
                         </div>
-                        <div class="flex-1 min-w-0">
-                          <a href={subItem.href} class="font-bold text-slate-200 hover:text-orange-500 transition-colors text-base block mb-3">
-                            {subItem.text}
-                          </a>
-                          {/* Lokasyon linkleri */}
-                          {subItem.locations && (
-                            <div class="space-y-2">
-                              {subItem.locations.map((location) => (
-                                <a 
-                                  href={location.href} 
-                                  class="block text-sm text-slate-400 hover:text-white transition-colors truncate"
-                                  title={location.text}
-                                >
-                                  → {location.text}
-                                </a>
-                              ))}
-                            </div>
-                          )}
+                      </div>
+                    ))}
+                    <a
+                      href="/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv"
+                      class="col-span-2 mt-2 p-4 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 flex items-center justify-between group/alert"
+                    >
+                      <div class="flex items-center gap-3">
+                        <div class="bg-white/20 p-2 rounded-lg text-white">
+                          <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <div class="font-black text-white text-sm">
+                            7/24 YOL YARDIM
+                          </div>
+                          <div class="text-white/80 text-xs">
+                            Gebze, Tuzla, Pendik, Kurtköy ve çevresi
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                  <a href="/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv" class="col-span-2 mt-2 p-4 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 flex items-center justify-between group/alert">
-                    <div class="flex items-center gap-3">
-                      <div class="bg-white/20 p-2 rounded-lg text-white">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                      </div>
-                      <div>
-                        <div class="font-black text-white text-sm">7/24 YOL YARDIM</div>
-                        <div class="text-white/80 text-xs">Gebze, Tuzla, Pendik, Kurtköy ve çevresi</div>
-                      </div>
-                    </div>
-                    <span class="text-white group-hover/alert:translate-x-1 transition-transform">→</span>
-                  </a>
+                      <span class="text-white group-hover/alert:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </a>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        ))}
+              )}
+            </div>
+          ))
+        }
       </nav>
 
       <!-- Action Button & Mobile Menu Toggle -->
       <div class="flex items-center gap-4">
-        <a 
-          href="tel:05336157835" 
+        <a
+          href="tel:05336157835"
           class="hidden md:flex items-center gap-2 bg-white text-slate-900 px-5 py-2.5 rounded-full font-bold text-sm hover:bg-orange-500 hover:text-white transition-all duration-300 group"
         >
           <span>0533 615 78 35</span>
-          <div class="w-6 h-6 bg-slate-900 text-white rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-orange-500 transition-colors">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+          <div
+            class="w-6 h-6 bg-slate-900 text-white rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-orange-500 transition-colors"
+          >
+            <svg
+              class="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              ></path></svg
+            >
           </div>
         </a>
 
         <!-- Mobile Menu Button -->
-        <button 
+        <button
           id="mobile-menu-btn"
-          class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 relative z-50 group"
+          class="lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 relative z-50 group bg-slate-900/60 backdrop-blur-sm rounded-lg border border-slate-700/30"
           aria-label="Menüyü Aç"
         >
-          <span class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center group-[.is-active]:rotate-45 group-[.is-active]:translate-y-2"></span>
-          <span class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 group-[.is-active]:opacity-0"></span>
-          <span class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center group-[.is-active]:-rotate-45 group-[.is-active]:-translate-y-2"></span>
+          <span
+            class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center group-[.is-active]:rotate-45 group-[.is-active]:translate-y-2"
+          ></span>
+          <span
+            class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 group-[.is-active]:opacity-0"
+          ></span>
+          <span
+            class="w-6 h-0.5 bg-white rounded-full transition-all duration-300 origin-center group-[.is-active]:-rotate-45 group-[.is-active]:-translate-y-2"
+          ></span>
         </button>
       </div>
     </div>
   </div>
 
   <!-- Mobile Menu Overlay -->
-  <div 
+  <div
     id="mobile-menu"
     class="fixed inset-0 bg-slate-950 z-40 flex flex-col justify-center px-8 transition-all duration-500 translate-x-full opacity-0"
   >
     <nav class="flex flex-col gap-6">
-      {menuItems.map((item) => (
-        <div class="mobile-item opacity-0 translate-y-4 transition-all duration-500">
-          <a href={item.href} class="text-3xl font-black text-white hover:text-orange-500 transition-colors">
-            {item.text}
-          </a>
-          {item.hasDropdown && (
-            <div class="mt-4 pl-4 border-l-2 border-slate-800 flex flex-col gap-4">
-              {item.dropdownItems.map((subItem) => (
-                <div>
-                  <div class="text-slate-400 text-lg font-medium mb-2">
-                    {subItem.text}
-                  </div>
-                  {/* Mobile lokasyon linkleri */}
-                  {subItem.locations && (
-                    <div class="pl-4 border-l border-slate-700 flex flex-col gap-2">
-                      {subItem.locations.map((location) => (
-                        <a href={location.href} class="text-slate-500 hover:text-slate-300 text-sm transition-colors">
-                          {location.text}
-                        </a>
-                      ))}
+      {
+        menuItems.map((item) => (
+          <div class="mobile-item opacity-0 translate-y-4 transition-all duration-500">
+            <a
+              href={item.href}
+              class="text-3xl font-black text-white hover:text-orange-500 transition-colors"
+            >
+              {item.text}
+            </a>
+            {item.hasDropdown && (
+              <div class="mt-4 pl-4 border-l-2 border-slate-800 flex flex-col gap-4">
+                {item.dropdownItems.map((subItem) => (
+                  <div>
+                    <div class="text-slate-400 text-lg font-medium mb-2">
+                      {subItem.text}
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+                    {/* Mobile lokasyon linkleri */}
+                    {subItem.locations && (
+                      <div class="pl-4 border-l border-slate-700 flex flex-col gap-2">
+                        {subItem.locations.map((location) => (
+                          <a
+                            href={location.href}
+                            class="text-slate-500 hover:text-slate-300 text-sm transition-colors"
+                          >
+                            {location.text}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))
+      }
     </nav>
-    
-    <div class="mt-12 mobile-item opacity-0 translate-y-4 transition-all duration-500 delay-300">
-      <a 
+
+    <div
+      class="mt-12 mobile-item opacity-0 translate-y-4 transition-all duration-500 delay-300"
+    >
+      <a
         href="tel:05336157835"
         class="flex items-center justify-center gap-3 bg-orange-600 text-white py-4 rounded-xl font-bold text-lg w-full"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+          ></path></svg
+        >
         0533 615 78 35
       </a>
     </div>
@@ -234,45 +315,48 @@ const menuItems = [
 
 <script>
   // Header Scroll Effect
-  const header = document.getElementById('main-header');
+  const header = document.getElementById("main-header");
   const scrollThreshold = 50;
 
-  window.addEventListener('scroll', () => {
+  window.addEventListener("scroll", () => {
     if (window.scrollY > scrollThreshold) {
-      header?.classList.add('bg-slate-950/90', 'backdrop-blur-md', 'shadow-lg', 'py-0');
-      header?.classList.remove('py-4', 'border-transparent');
+      header?.classList.add("shadow-lg");
+      header?.classList.remove("shadow-sm");
     } else {
-      header?.classList.remove('bg-slate-950/90', 'backdrop-blur-md', 'shadow-lg', 'py-0');
-      header?.classList.add('py-4', 'border-transparent');
+      header?.classList.remove("shadow-lg");
+      header?.classList.add("shadow-sm");
     }
   });
 
   // Mobile Menu Toggle
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileItems = document.querySelectorAll('.mobile-item');
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileItems = document.querySelectorAll(".mobile-item");
   let isMenuOpen = false;
 
-  menuBtn?.addEventListener('click', () => {
+  menuBtn?.addEventListener("click", () => {
     isMenuOpen = !isMenuOpen;
-    menuBtn.classList.toggle('is-active');
-    
+    menuBtn.classList.toggle("is-active");
+
     if (isMenuOpen) {
-      mobileMenu?.classList.remove('translate-x-full', 'opacity-0');
-      document.body.style.overflow = 'hidden';
-      
+      mobileMenu?.classList.remove("translate-x-full", "opacity-0");
+      document.body.style.overflow = "hidden";
+
       // Stagger animation for items
       mobileItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.classList.remove('opacity-0', 'translate-y-4');
-        }, 100 + (index * 100));
+        setTimeout(
+          () => {
+            item.classList.remove("opacity-0", "translate-y-4");
+          },
+          100 + index * 100,
+        );
       });
     } else {
-      mobileMenu?.classList.add('translate-x-full', 'opacity-0');
-      document.body.style.overflow = '';
-      
-      mobileItems.forEach(item => {
-        item.classList.add('opacity-0', 'translate-y-4');
+      mobileMenu?.classList.add("translate-x-full", "opacity-0");
+      document.body.style.overflow = "";
+
+      mobileItems.forEach((item) => {
+        item.classList.add("opacity-0", "translate-y-4");
       });
     }
   });

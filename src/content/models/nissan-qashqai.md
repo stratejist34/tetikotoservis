@@ -3,7 +3,7 @@ brand: 'Nissan'
 model: 'Qashqai'
 metaTitle: 'Gebze Nissan Qashqai Servisi | CVT & dCi Motor Uzmanı'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Nissan Qashqai (J10, J11, J12) özel servisi. CVT şanzıman tamiri, dCi motor bakımı ve orijinal yedek parça.'
-image: '/images/nissan-qashqai-ozel-servis.avif'
+image: '/images/avifs/nissan-qashqai-ozel-servis.avif'
 color: 'slate'
 features:
   - 'CVT Şanzıman Revizyonu'
@@ -27,10 +27,10 @@ Crossover segmentinin lideri **Nissan Qashqai**, konforu ve teknolojisiyle öne 
 
 ### Qashqai Kronik Sorunları ve Çözümler
 
-*   **CVT Şanzıman (X-Tronic):** Nissan'ın hassas CVT şanzımanı için özel NS-3 yağ değişimi, valf gövdesi temizliği ve gerekirse revizyon işlemleri yapıyoruz.
-*   **Turbo Arızaları:** 1.5 ve 1.6 dCi motorlarda görülen turbo sesi ve yağ kaçağı sorunlarını, turbo revizyonu ile gideriyoruz.
-*   **Dizel Partikül Filtresi:** Şehir içi kullanımda tıkanan DPF'yi sökerek özel ilaçlı makinelerde %100'e yakın temizliyoruz.
-*   **Alt Takım Sesleri:** Z rot, salıncak burçları ve amortisör takozlarından gelen sesleri orijinal parçalarla kesiyoruz.
+* **CVT Şanzıman (X-Tronic):** Nissan'ın hassas CVT şanzımanı için özel NS-3 yağ değişimi, valf gövdesi temizliği ve gerekirse revizyon işlemleri yapıyoruz.
+* **Turbo Arızaları:** 1.5 ve 1.6 dCi motorlarda görülen turbo sesi ve yağ kaçağı sorunlarını, turbo revizyonu ile gideriyoruz.
+* **Dizel Partikül Filtresi:** Şehir içi kullanımda tıkanan DPF'yi sökerek özel ilaçlı makinelerde %100'e yakın temizliyoruz.
+* **Alt Takım Sesleri:** Z rot, salıncak burçları ve amortisör takozlarından gelen sesleri orijinal parçalarla kesiyoruz.
 
 ### Neden Biz?
 
