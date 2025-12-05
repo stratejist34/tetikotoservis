@@ -1,32 +1,53 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import BrandStacked from '../components/BrandStacked.astro';
-import SkewMarquee from '../components/SkewMarquee.astro';
-import Services from '../components/Services.astro';
-import Testimonials from '../components/Testimonials.astro';
-import BlogPosts from '../components/BlogPosts.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import BrandStacked from "../components/BrandStacked.astro";
+import SkewMarquee from "../components/SkewMarquee.astro";
+import Services from "../components/Services.astro";
+import Testimonials from "../components/Testimonials.astro";
+import BlogPosts from "../components/BlogPosts.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import { getCollection } from "astro:content";
 
-const allModels = await getCollection('models');
+const allModels = await getCollection("models");
 
 // Marka renk haritası
 const brandColors = {
-  Hyundai: { accent: 'blue', hover: 'hover:bg-blue-600', border: 'border-blue-500', text: 'text-blue-200' },
-  Kia: { accent: 'orange', hover: 'hover:bg-orange-600', border: 'border-orange-500', text: 'text-orange-200' },
-  Toyota: { accent: 'red', hover: 'hover:bg-red-600', border: 'border-red-500', text: 'text-red-200' },
-  Nissan: { accent: 'red', hover: 'hover:bg-red-600', border: 'border-red-500', text: 'text-red-200' }
+  Hyundai: {
+    accent: "blue",
+    hover: "hover:bg-blue-600",
+    border: "border-blue-500",
+    text: "text-blue-200",
+  },
+  Kia: {
+    accent: "orange",
+    hover: "hover:bg-orange-600",
+    border: "border-orange-500",
+    text: "text-orange-200",
+  },
+  Toyota: {
+    accent: "red",
+    hover: "hover:bg-red-600",
+    border: "border-red-500",
+    text: "text-red-200",
+  },
+  Nissan: {
+    accent: "red",
+    hover: "hover:bg-red-600",
+    border: "border-red-500",
+    text: "text-red-200",
+  },
 };
 
 // SEO Meta
-const pageTitle = "Hyundai - Kia - Toyota - Nissan Özel Servis | Tetik Otomotiv";
-const pageDescription = "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyundai, Kia, Toyota ve Nissan araçlarınız için garantili özel servis. Orijinal yedek parça, uzman kadro.";
+const pageTitle =
+  "Hyundai - Kia - Toyota - Nissan Özel Servis | Tetik Otomotiv";
+const pageDescription =
+  "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyundai, Kia, Toyota ve Nissan araçlarınız için garantili özel servis. Orijinal yedek parça, uzman kadro.";
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-
   <main class="bg-slate-50">
     <div class="relative">
       <Hero />
@@ -42,106 +63,162 @@ const pageDescription = "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyu
     <!-- Models Infinite Marquee Section -->
     <section class="py-20 bg-slate-950 overflow-hidden relative">
       <!-- Background Pattern -->
-      <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 30px 30px;"></div>
-      
+      <div
+        class="absolute inset-0 opacity-[0.03]"
+        style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 30px 30px;"
+      >
+      </div>
+
       <div class="container mx-auto px-4 mb-10 relative z-10">
         <div class="flex items-center gap-4" data-reveal="fade-up">
-          <div class="h-px w-12 bg-gradient-to-r from-transparent to-orange-500"></div>
+          <div
+            class="h-px w-12 bg-gradient-to-r from-transparent to-orange-500"
+          >
+          </div>
           <h2 class="text-xl font-bold text-white tracking-[0.2em] uppercase">
             Hizmet Verdiğimiz Modeller
           </h2>
-          <div class="h-px flex-1 bg-gradient-to-r from-orange-500 to-transparent opacity-20"></div>
+          <div
+            class="h-px flex-1 bg-gradient-to-r from-orange-500 to-transparent opacity-20"
+          >
+          </div>
         </div>
       </div>
 
       <!-- Marquee Container -->
       <div class="relative w-full space-y-6" id="models-marquee-container">
-        
         {/* Row 1 - Toyota & Nissan - Moves Left */}
-        <div class="marquee-row relative flex w-full overflow-hidden select-none">
-          <div class="models-track-left flex gap-6 items-center w-max will-change-transform">
-            {(() => {
-              const toyotaNissanModels = allModels.filter(model => 
-                model.data.brand === 'Toyota' || model.data.brand === 'Nissan'
-              );
-              return [...toyotaNissanModels, ...toyotaNissanModels, ...toyotaNissanModels].slice(0, 48).map((model) => {
-                const colors = brandColors[model.data.brand as keyof typeof brandColors];
-                return (
-                  <a 
-                    href={`/modeller/${model.slug}`}
-                    class="group relative w-[320px] h-[180px] flex-shrink-0 rounded-xl overflow-hidden cursor-pointer transform transition-transform duration-500 hover:scale-95 border border-white/5 hover:border-orange-500/50"
-                  >
-                    <img 
-                      src={model.data.image} 
-                      alt={`${model.data.brand} ${model.data.model}`}
-                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-                      width="320"
-                      height="180"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90"></div>
-                    
-                    <div class="absolute bottom-0 left-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <span class={`inline-block px-2 py-0.5 ${colors.text.replace('text-', 'bg-')}-600 text-white text-xs font-bold rounded mb-1 tracking-wider !font-sport`}>
-                        {model.data.brand}
-                      </span>
-                      <h3 class="text-2xl font-bold text-white uppercase italic tracking-tighter leading-none group-hover:text-orange-500 transition-colors !font-sport">
-                        {model.data.model}
-                      </h3>
-                    </div>
-                  </a>
+        <div
+          class="marquee-row relative flex w-full overflow-hidden select-none"
+        >
+          <div
+            class="models-track-left flex gap-6 items-center w-max will-change-transform"
+          >
+            {
+              (() => {
+                const toyotaNissanModels = allModels.filter(
+                  (model) =>
+                    model.data.brand === "Toyota" ||
+                    model.data.brand === "Nissan",
                 );
-              });
-            })()}
+                return [
+                  ...toyotaNissanModels,
+                  ...toyotaNissanModels,
+                  ...toyotaNissanModels,
+                ]
+                  .slice(0, 48)
+                  .map((model) => {
+                    const colors =
+                      brandColors[model.data.brand as keyof typeof brandColors];
+                    return (
+                      <a
+                        href={`/modeller/${model.slug}`}
+                        class="group relative w-[320px] h-[180px] flex-shrink-0 rounded-xl overflow-hidden cursor-pointer transform transition-transform duration-500 hover:scale-95 border border-white/5 hover:border-orange-500/50"
+                      >
+                        <img
+                          src={model.data.image.replace(".avif", "-md.avif")}
+                          srcset={`${model.data.image.replace(".avif", "-sm.avif")} 400w, ${model.data.image.replace(".avif", "-md.avif")} 640w, ${model.data.image.replace(".avif", "-lg.avif")} 1280w`}
+                          sizes="(max-width: 640px) 400px, (max-width: 1024px) 640px, 320px"
+                          alt={`${model.data.brand} ${model.data.model}`}
+                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                          width="320"
+                          height="180"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90" />
+
+                        <div class="absolute bottom-0 left-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                          <span
+                            class={`inline-block px-2 py-0.5 ${colors.text.replace("text-", "bg-")}-600 text-white text-xs font-bold rounded mb-1 tracking-wider !font-sport`}
+                          >
+                            {model.data.brand}
+                          </span>
+                          <h3 class="text-2xl font-bold text-white uppercase italic tracking-tighter leading-none group-hover:text-orange-500 transition-colors !font-sport">
+                            {model.data.model}
+                          </h3>
+                        </div>
+                      </a>
+                    );
+                  });
+              })()
+            }
           </div>
         </div>
 
         {/* Row 2 - Kia & Hyundai - Moves Right */}
-        <div class="marquee-row relative flex w-full overflow-hidden select-none">
-          <div class="models-track-right flex gap-6 items-center w-max will-change-transform">
-            {(() => {
-              const kiaHyundaiModels = allModels.filter(model => 
-                model.data.brand === 'Kia' || model.data.brand === 'Hyundai'
-              );
-              return [...kiaHyundaiModels, ...kiaHyundaiModels, ...kiaHyundaiModels, ...kiaHyundaiModels, ...kiaHyundaiModels, ...kiaHyundaiModels].reverse().slice(0, 64).map((model) => {
-                const colors = brandColors[model.data.brand as keyof typeof brandColors];
-                return (
-                  <a 
-                    href={`/modeller/${model.slug}`}
-                    class="group relative w-[320px] h-[180px] flex-shrink-0 rounded-xl overflow-hidden cursor-pointer transform transition-transform duration-500 hover:scale-95 border border-white/5 hover:border-orange-500/50"
-                  >
-                    <img 
-                      src={model.data.image} 
-                      alt={`${model.data.brand} ${model.data.model}`}
-                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-                      width="320"
-                      height="180"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90"></div>
-                    
-                    <div class="absolute bottom-0 left-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <span class={`inline-block px-2 py-0.5 ${colors.text.replace('text-', 'bg-')}-600 text-white text-xs font-bold rounded mb-1 tracking-wider !font-sport`}>
-                        {model.data.brand}
-                      </span>
-                      <h3 class="text-2xl font-bold text-white uppercase italic tracking-tighter leading-none group-hover:text-orange-500 transition-colors !font-sport">
-                        {model.data.model}
-                      </h3>
-                    </div>
-                  </a>
+        <div
+          class="marquee-row relative flex w-full overflow-hidden select-none"
+        >
+          <div
+            class="models-track-right flex gap-6 items-center w-max will-change-transform"
+          >
+            {
+              (() => {
+                const kiaHyundaiModels = allModels.filter(
+                  (model) =>
+                    model.data.brand === "Kia" ||
+                    model.data.brand === "Hyundai",
                 );
-              });
-            })()}
+                return [
+                  ...kiaHyundaiModels,
+                  ...kiaHyundaiModels,
+                  ...kiaHyundaiModels,
+                  ...kiaHyundaiModels,
+                  ...kiaHyundaiModels,
+                  ...kiaHyundaiModels,
+                ]
+                  .reverse()
+                  .slice(0, 64)
+                  .map((model) => {
+                    const colors =
+                      brandColors[model.data.brand as keyof typeof brandColors];
+                    return (
+                      <a
+                        href={`/modeller/${model.slug}`}
+                        class="group relative w-[320px] h-[180px] flex-shrink-0 rounded-xl overflow-hidden cursor-pointer transform transition-transform duration-500 hover:scale-95 border border-white/5 hover:border-orange-500/50"
+                      >
+                        <img
+                          src={model.data.image.replace(".avif", "-md.avif")}
+                          srcset={`${model.data.image.replace(".avif", "-sm.avif")} 400w, ${model.data.image.replace(".avif", "-md.avif")} 640w, ${model.data.image.replace(".avif", "-lg.avif")} 1280w`}
+                          sizes="(max-width: 640px) 400px, (max-width: 1024px) 640px, 320px"
+                          alt={`${model.data.brand} ${model.data.model}`}
+                          class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                          width="320"
+                          height="180"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90" />
+
+                        <div class="absolute bottom-0 left-0 p-5 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                          <span
+                            class={`inline-block px-2 py-0.5 ${colors.text.replace("text-", "bg-")}-600 text-white text-xs font-bold rounded mb-1 tracking-wider !font-sport`}
+                          >
+                            {model.data.brand}
+                          </span>
+                          <h3 class="text-2xl font-bold text-white uppercase italic tracking-tighter leading-none group-hover:text-orange-500 transition-colors !font-sport">
+                            {model.data.model}
+                          </h3>
+                        </div>
+                      </a>
+                    );
+                  });
+              })()
+            }
           </div>
         </div>
-
       </div>
 
       <!-- Gradient Fade Edges -->
-      <div class="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none"></div>
-      <div class="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none"></div>
+      <div
+        class="absolute top-0 bottom-0 left-0 w-32 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none"
+      >
+      </div>
+      <div
+        class="absolute top-0 bottom-0 right-0 w-32 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none"
+      >
+      </div>
     </section>
 
     <script>
@@ -156,14 +233,18 @@ const pageDescription = "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyu
 
       const initMarquee = () => {
         // Önceki animasyonları temizle
-        marqueeTweens.forEach(tween => tween.kill());
-        marqueeScrollTriggers.forEach(trigger => trigger.kill());
+        marqueeTweens.forEach((tween) => tween.kill());
+        marqueeScrollTriggers.forEach((trigger) => trigger.kill());
         marqueeTweens = [];
         marqueeScrollTriggers = [];
 
-        const trackLeft = document.querySelector('.models-track-left') as HTMLElement | null;
-        const trackRight = document.querySelector('.models-track-right') as HTMLElement | null;
-        
+        const trackLeft = document.querySelector(
+          ".models-track-left",
+        ) as HTMLElement | null;
+        const trackRight = document.querySelector(
+          ".models-track-right",
+        ) as HTMLElement | null;
+
         if (!trackLeft || !trackRight) return;
 
         const createMarquee = (track: HTMLElement, direction = 1) => {
@@ -173,11 +254,11 @@ const pageDescription = "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyu
           const firstItem = items[0] as HTMLElement;
           const itemWidth = firstItem.offsetWidth + 24;
           const totalWidth = itemWidth * items.length;
-          const loopDistance = totalWidth / 3; 
+          const loopDistance = totalWidth / 3;
 
           const speed = 98;
           const duration = loopDistance / speed;
-          
+
           gsap.set(track, { x: direction === 1 ? 0 : -loopDistance });
 
           const tween = gsap.to(track, {
@@ -195,21 +276,21 @@ const pageDescription = "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyu
             end: "bottom bottom",
             onUpdate: (self) => {
               const velocity = Math.abs(self.getVelocity());
-              const timeScale = 1 + (velocity / 500);
-              
+              const timeScale = 1 + velocity / 500;
+
               if (velocity > 0) {
                 gsap.to(tween, {
                   timeScale: timeScale,
                   duration: 0.2,
-                  overwrite: true
+                  overwrite: true,
                 });
                 gsap.to(tween, {
                   timeScale: 1,
                   duration: 0.5,
-                  delay: 0.2
+                  delay: 0.2,
                 });
               }
-            }
+            },
           });
 
           marqueeScrollTriggers.push(scrollTrigger);
@@ -222,8 +303,8 @@ const pageDescription = "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyu
       // İlk yükleme
       const startMarquee = () => {
         // DOM'un hazır olmasını bekle
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', () => {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", () => {
             setTimeout(initMarquee, 100);
           });
         } else {
@@ -234,15 +315,15 @@ const pageDescription = "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyu
       startMarquee();
 
       // ViewTransitions: Sayfa yüklendiğinde tekrar başlat
-      document.addEventListener('astro:page-load', () => {
+      document.addEventListener("astro:page-load", () => {
         // Kısa bir gecikme ile başlat (DOM'un hazır olması için)
         setTimeout(initMarquee, 150);
       });
 
       // Sayfa değişmeden önce temizlik
-      document.addEventListener('astro:before-swap', () => {
-        marqueeTweens.forEach(tween => tween.kill());
-        marqueeScrollTriggers.forEach(trigger => trigger.kill());
+      document.addEventListener("astro:before-swap", () => {
+        marqueeTweens.forEach((tween) => tween.kill());
+        marqueeScrollTriggers.forEach((trigger) => trigger.kill());
         marqueeTweens = [];
         marqueeScrollTriggers = [];
       });
@@ -251,7 +332,7 @@ const pageDescription = "Gebze ve Tuzla bölgesinde 17 yıllık tecrübe ile Hyu
     <Services data-reveal="fade-up" />
 
     <div class="bg-slate-900 py-20" data-reveal="fade-up">
-        <Testimonials />
+      <Testimonials />
     </div>
 
     <BlogPosts data-reveal="fade-up" />
