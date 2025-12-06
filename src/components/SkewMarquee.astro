@@ -303,6 +303,11 @@
 
   // Initialize marquee animations with scroll velocity effect
   function initMarquee() {
+    // Element kontrolü - sadece anasayfada çalışsın
+    const darkBand = document.querySelector(".marquee-band-dark");
+    const orangeBand = document.querySelector(".marquee-band-orange");
+    if (!darkBand || !orangeBand) return;
+
     // Önceki animasyonları temizle
     if (darkTimeline) darkTimeline.kill();
     if (orangeTimeline) orangeTimeline.kill();
@@ -353,7 +358,7 @@
 
     // Scroll velocity effect - daha hassas
     skewScrollTrigger = ScrollTrigger.create({
-      trigger: ".marquee-band-dark, .marquee-band-orange",
+      trigger: darkBand,
       start: "top bottom",
       end: "bottom top",
       onUpdate: (self) => {
