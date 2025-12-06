@@ -90,10 +90,21 @@ const {
         descent-override: 25%;
         line-height-override: 1.5;
       }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
       body {
         font-family: Manrope, "Manrope-fallback", system-ui, sans-serif;
-        margin: 0;
-        background: #f8fafc;
+        background: #0f172a;
       }
       .font-heading {
         font-family: Kanit, "Kanit-fallback", system-ui, sans-serif;
@@ -169,10 +180,10 @@ const {
     </style>
   </head>
   <body
-    class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-orange-500 selection:text-white"
+    class="font-sans antialiased text-slate-800 bg-slate-900 selection:bg-orange-500 selection:text-white"
   >
     <Header />
-    <main transition:animate="slide">
+    <main transition:animate="slide" style="margin-top: 0; padding-top: 0;">
       <slot />
     </main>
 
