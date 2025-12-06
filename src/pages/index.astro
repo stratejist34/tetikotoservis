@@ -96,13 +96,17 @@ const pageDescription =
           >
             {
               (() => {
-                const toyotaNissanModels = allModels.filter(
-                  (model) =>
-                    model.data.brand === "Toyota" ||
-                    model.data.brand === "Nissan",
-                );
-                return [...toyotaNissanModels, ...toyotaNissanModels]
-                  .slice(0, 24)
+                // Mobilde tüm markalar tek satırda, desktop'ta sadece Toyota/Nissan
+                const isMobileSSR = true; // SSR'da bilemeyiz, tüm modelleri render et
+                const models = isMobileSSR
+                  ? allModels
+                  : allModels.filter(
+                      (model) =>
+                        model.data.brand === "Toyota" ||
+                        model.data.brand === "Nissan",
+                    );
+                return [...models, ...models]
+                  .slice(0, 16) // 24'ten 16'ya düşür
                   .map((model) => {
                     const colors =
                       brandColors[model.data.brand as keyof typeof brandColors];
@@ -142,9 +146,9 @@ const pageDescription =
           </div>
         </div>
 
-        {/* Row 2 - Kia & Hyundai - Moves Right */}
+        {/* Row 2 - Kia & Hyundai - Moves Right - Hidden on mobile */}
         <div
-          class="marquee-row relative flex w-full overflow-hidden select-none"
+          class="marquee-row relative hidden md:flex w-full overflow-hidden select-none"
         >
           <div
             class="models-track-right flex gap-6 items-center w-max will-change-transform"
