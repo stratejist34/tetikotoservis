@@ -4,210 +4,214 @@
 
 <section
   class="relative w-full h-[350px] overflow-hidden z-20"
-  style="max-width: 100vw;"
+  style="max-width: 100vw; clip-path: inset(0);"
 >
-  <!-- Band 1 - Dark (Negative Rotation) -->
-  <div
-    class="absolute top-1/2 left-1/2 w-[120%] -translate-x-1/2 -translate-y-1/2 -rotate-[3deg] bg-slate-900 border-y border-white/10 z-10 py-5 marquee-band-dark"
-  >
-    <div class="marquee-content-dark flex items-center gap-0 whitespace-nowrap">
+  <div class="absolute inset-0 overflow-hidden">
+    <!-- Band 1 - Dark (Negative Rotation) -->
+    <div
+      class="absolute top-1/2 left-1/2 w-[200vw] -translate-x-1/2 -translate-y-1/2 -rotate-[3deg] bg-slate-900 border-y border-white/10 z-10 py-5 marquee-band-dark"
+    >
       <div
-        class="marquee-item flex items-center gap-12 px-8 text-6xl md:text-8xl font-black uppercase leading-none"
+        class="marquee-content-dark flex items-center gap-0 whitespace-nowrap"
       >
-        <span class="text-white">HYUNDAI</span>
-        <span class="text-white/70">•</span>
-        <span class="text-transparent stroke-text">KIA</span>
-        <span class="text-white/70">•</span>
-        <span class="text-white">TOYOTA</span>
-        <span class="text-white/70">•</span>
-        <span class="text-transparent stroke-text">NISSAN</span>
-        <span class="text-white/70">•</span>
-        <span class="text-white">HYUNDAI</span>
-        <span class="text-white/70">•</span>
-        <span class="text-transparent stroke-text">KIA</span>
-        <span class="text-white/70">•</span>
-        <span class="text-white">TOYOTA</span>
-        <span class="text-white/70">•</span>
-        <span class="text-transparent stroke-text">NISSAN</span>
-        <span class="text-white/70">•</span>
-      </div>
-      <div
-        class="marquee-item flex items-center gap-12 px-8 text-6xl md:text-8xl font-black uppercase leading-none"
-      >
-        <span class="text-white">HYUNDAI</span>
-        <span class="text-white/70">•</span>
-        <span class="text-transparent stroke-text">KIA</span>
-        <span class="text-white/70">•</span>
-        <span class="text-white">TOYOTA</span>
-        <span class="text-white/70">•</span>
-        <span class="text-transparent stroke-text">NISSAN</span>
-        <span class="text-white/70">•</span>
-        <span class="text-white">HYUNDAI</span>
-        <span class="text-white/70">•</span>
-        <span class="text-transparent stroke-text">KIA</span>
-        <span class="text-white/70">•</span>
-        <span class="text-white">TOYOTA</span>
-        <span class="text-white/70">•</span>
-        <span class="text-transparent stroke-text">NISSAN</span>
-        <span class="text-white/70">•</span>
+        <div
+          class="marquee-item flex items-center gap-12 px-8 text-6xl md:text-8xl font-black uppercase leading-none"
+        >
+          <span class="text-white">HYUNDAI</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">KIA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">TOYOTA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">NISSAN</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">HYUNDAI</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">KIA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">TOYOTA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">NISSAN</span>
+          <span class="text-white/70">•</span>
+        </div>
+        <div
+          class="marquee-item flex items-center gap-12 px-8 text-6xl md:text-8xl font-black uppercase leading-none"
+        >
+          <span class="text-white">HYUNDAI</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">KIA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">TOYOTA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">NISSAN</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">HYUNDAI</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">KIA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">TOYOTA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">NISSAN</span>
+          <span class="text-white/70">•</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Band 2 - Orange (Positive Rotation) with Brand Logos -->
-  <div
-    class="absolute top-1/2 left-1/2 w-[120%] -translate-x-1/2 -translate-y-1/2 rotate-[3deg] bg-orange-600 shadow-xl z-20 py-4 marquee-band-orange"
-  >
+    <!-- Band 2 - Orange (Positive Rotation) with Brand Logos -->
     <div
-      class="marquee-content-orange flex items-center gap-0 whitespace-nowrap"
+      class="absolute top-1/2 left-1/2 w-[200vw] -translate-x-1/2 -translate-y-1/2 rotate-[3deg] bg-orange-600 shadow-xl z-20 py-4 marquee-band-orange"
     >
-      <div class="marquee-item flex items-center gap-16 px-8">
-        <img
-          src="/images/logolar/hyundai.webp"
-          alt="Hyundai"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/kia.webp"
-          alt="Kia"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/toyota.webp"
-          alt="Toyota"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/nissan.webp"
-          alt="Nissan"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/hyundai.webp"
-          alt="Hyundai"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/kia.webp"
-          alt="Kia"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/toyota.webp"
-          alt="Toyota"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/nissan.webp"
-          alt="Nissan"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-      </div>
-      <div class="marquee-item flex items-center gap-16 px-8">
-        <img
-          src="/images/logolar/hyundai.webp"
-          alt="Hyundai"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/kia.webp"
-          alt="Kia"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/toyota.webp"
-          alt="Toyota"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/nissan.webp"
-          alt="Nissan"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/hyundai.webp"
-          alt="Hyundai"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/kia.webp"
-          alt="Kia"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/toyota.webp"
-          alt="Toyota"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
-        <img
-          src="/images/logolar/nissan.webp"
-          alt="Nissan"
-          class="w-20 md:w-28 h-auto object-contain invert brightness-0"
-          width="112"
-          height="56"
-          loading="lazy"
-        />
-        <span class="text-white/70 text-4xl">•</span>
+      <div
+        class="marquee-content-orange flex items-center gap-0 whitespace-nowrap"
+      >
+        <div class="marquee-item flex items-center gap-16 px-8">
+          <img
+            src="/images/logolar/hyundai.webp"
+            alt="Hyundai"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/kia.webp"
+            alt="Kia"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/toyota.webp"
+            alt="Toyota"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/nissan.webp"
+            alt="Nissan"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/hyundai.webp"
+            alt="Hyundai"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/kia.webp"
+            alt="Kia"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/toyota.webp"
+            alt="Toyota"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/nissan.webp"
+            alt="Nissan"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+        </div>
+        <div class="marquee-item flex items-center gap-16 px-8">
+          <img
+            src="/images/logolar/hyundai.webp"
+            alt="Hyundai"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/kia.webp"
+            alt="Kia"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/toyota.webp"
+            alt="Toyota"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/nissan.webp"
+            alt="Nissan"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/hyundai.webp"
+            alt="Hyundai"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/kia.webp"
+            alt="Kia"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/toyota.webp"
+            alt="Toyota"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+          <img
+            src="/images/logolar/nissan.webp"
+            alt="Nissan"
+            class="w-20 md:w-28 h-auto object-contain invert brightness-0"
+            width="112"
+            height="56"
+            loading="lazy"
+          />
+          <span class="text-white/70 text-4xl">•</span>
+        </div>
       </div>
     </div>
   </div>
@@ -225,7 +229,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 120%;
+    width: 200vw;
     transform: translate(-50%, -50%);
     overflow: hidden;
     white-space: nowrap;
