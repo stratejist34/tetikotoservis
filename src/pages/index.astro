@@ -101,12 +101,8 @@ const pageDescription =
                     model.data.brand === "Toyota" ||
                     model.data.brand === "Nissan",
                 );
-                return [
-                  ...toyotaNissanModels,
-                  ...toyotaNissanModels,
-                  ...toyotaNissanModels,
-                ]
-                  .slice(0, 48)
+                return [...toyotaNissanModels, ...toyotaNissanModels]
+                  .slice(0, 24)
                   .map((model) => {
                     const colors =
                       brandColors[model.data.brand as keyof typeof brandColors];
@@ -160,16 +156,9 @@ const pageDescription =
                     model.data.brand === "Kia" ||
                     model.data.brand === "Hyundai",
                 );
-                return [
-                  ...kiaHyundaiModels,
-                  ...kiaHyundaiModels,
-                  ...kiaHyundaiModels,
-                  ...kiaHyundaiModels,
-                  ...kiaHyundaiModels,
-                  ...kiaHyundaiModels,
-                ]
+                return [...kiaHyundaiModels, ...kiaHyundaiModels]
                   .reverse()
-                  .slice(0, 64)
+                  .slice(0, 24)
                   .map((model) => {
                     const colors =
                       brandColors[model.data.brand as keyof typeof brandColors];

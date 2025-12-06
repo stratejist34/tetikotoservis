@@ -52,7 +52,7 @@ import heroImageJpg from "/src/assets/images/hyundai-servis.jpg";
       <div class="lg:col-span-9">
         <!-- Main Headline - Fluid Typography with clamp() -->
         <h1
-          class="text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8 drop-shadow-2xl animate-fade-up font-heading hero-title"
+          class="text-5xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8 drop-shadow-2xl font-heading hero-title"
         >
           TOYOTA <span class="text-red-600">&</span> NISSAN <br />
           HYUNDAI <span class="text-orange-500">&</span> KIA <br />
@@ -246,7 +246,7 @@ import heroImageJpg from "/src/assets/images/hyundai-servis.jpg";
   }
 
   .animate-fade-up {
-    animation: fade-up 1s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+    animation: fade-up 0.6s cubic-bezier(0.2, 1, 0.3, 1) forwards;
     opacity: 0; /* Start invisible */
   }
 
@@ -290,21 +290,21 @@ import heroImageJpg from "/src/assets/images/hyundai-servis.jpg";
   }
 
   // Number Counter Animation
-  const counters = document.querySelectorAll(".counter");
+  const counters = document.querySelectorAll<HTMLElement>(".counter");
   const speed = 200; // The lower the slower
 
   const animateCounters = () => {
     counters.forEach((counter) => {
       const updateCount = () => {
-        const target = +counter.getAttribute("data-target");
+        const target = +(counter.getAttribute("data-target") || "0");
         const count = +counter.innerText;
         const inc = target / speed;
 
         if (count < target) {
-          counter.innerText = Math.ceil(count + inc);
+          counter.innerText = String(Math.ceil(count + inc));
           setTimeout(updateCount, 20);
         } else {
-          counter.innerText = target;
+          counter.innerText = String(target);
         }
       };
       updateCount();
