@@ -1,0 +1,81 @@
+---
+// ScrollProgressBar.astro - Premium Scroll Progress Indicator
+interface Props {
+    color?: string;
+    height?: string;
+    showOnMobile?: boolean;
+}
+
+const {
+    color = "bg-gradient-to-r from-orange-500 via-orange-400 to-orange-600",
+    height = "h-1",
+    showOnMobile = true,
+} = Astro.props;
+---
+
+<div
+    class:list={[
+        "scroll-progress-container fixed top-0 left-0 right-0 z-[99999] pointer-events-none",
+        { "hidden md:block": !showOnMobile },
+    ]}
+>
+    <div
+        class={`scroll-progress-bar ${height} ${color} origin-left scale-x-0 shadow-[0_0_10px_rgba(249,115,22,0.5)]`}
+        style="transform: scaleX(0);"
+    >
+    </div>
+</div>
+
+<script>
+    function initScrollProgress() {
+        const progressBar = document.querySelector(
+            ".scroll-progress-bar",
+        ) as HTMLElement;
+        if (!progressBar) return;
+
+        let ticking = false;
+
+        const updateProgress = () => {
+            const scrollTop = window.scrollY;
+            const docHeight =
+                document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+
+            progressBar.style.transform = `scaleX(${progress})`;
+            ticking = false;
+        };
+
+        const onScroll = () => {
+            if (!ticking) {
+                requestAnimationFrame(updateProgress);
+                ticking = true;
+            }
+        };
+
+        window.addEventListener("scroll", onScroll, { passive: true });
+        updateProgress(); // Initial state
+
+        // Cleanup
+        document.addEventListener(
+            "astro:before-swap",
+            () => {
+                window.removeEventListener("scroll", onScroll);
+            },
+            { once: true },
+        );
+    }
+
+    if (document.readyState === "complete") {
+        initScrollProgress();
+    } else {
+        window.addEventListener("load", initScrollProgress, { once: true });
+    }
+    document.addEventListener("astro:page-load", initScrollProgress);
+</script>
+
+<style>
+    .scroll-progress-bar {
+        will-change: transform;
+        transition: none; /* Smooth scroll handled by RAF */
+    }
+</style>

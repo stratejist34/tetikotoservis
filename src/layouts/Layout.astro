@@ -1,6 +1,8 @@
 ---
 import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
+import StickyPhoneButton from "../components/StickyPhoneButton.astro";
+import ScrollProgressBar from "../components/ScrollProgressBar.astro";
 
 interface Props {
   title: string;
@@ -233,10 +235,13 @@ const {
   <body
     class="font-sans antialiased text-slate-800 bg-slate-900 selection:bg-orange-500 selection:text-white"
   >
+    <ScrollProgressBar />
     <Header />
     <main transition:animate="slide" style="margin-top: 0; padding-top: 0;">
       <slot />
     </main>
+
+    <StickyPhoneButton />
 
     <script>
       // Defer all animation libraries until well after LCP
@@ -329,6 +334,12 @@ const {
 
       // ViewTransitions support - optimized to avoid forced reflow
       document.addEventListener("astro:page-load", () => {
+        // Scroll'u en üste sıfırla
+        window.scrollTo(0, 0);
+        if (lenis) {
+          lenis.scrollTo(0, { immediate: true });
+        }
+
         if (ScrollTriggerInstance) {
           ScrollTriggerInstance.getAll().forEach((t: any) => t.kill());
         }
@@ -339,7 +350,10 @@ const {
       });
 
       document.addEventListener("astro:before-swap", () => {
+        // Geçiş öncesi scroll'u sıfırla
+        window.scrollTo(0, 0);
         if (lenis) {
+          lenis.scrollTo(0, { immediate: true });
           lenis.destroy();
           lenis = null;
         }

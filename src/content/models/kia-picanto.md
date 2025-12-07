@@ -20,3 +20,4 @@ Kia Picanto nuzun kıvraklığını koruyun. Şehir içi dur-kalk trafiğinde y�
 
 
 
+

@@ -1,0 +1,124 @@
+---
+// MagneticButton.astro - Premium Magnetic Hover Effect
+interface Props {
+    href: string;
+    variant?: "primary" | "secondary";
+    class?: string;
+}
+
+const { href, variant = "primary", class: className = "" } = Astro.props;
+
+const baseClasses =
+    "magnetic-btn relative px-8 py-4 font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-3 overflow-hidden font-sans";
+
+const variantClasses = {
+    primary:
+        "bg-orange-700 hover:bg-orange-800 text-white shadow-[0_0_20px_rgba(234,88,12,0.3)] hover:shadow-[0_0_30px_rgba(234,88,12,0.5)]",
+    secondary:
+        "bg-slate-800 hover:bg-slate-700 text-white border border-white/10 hover:border-orange-500/50",
+};
+---
+
+<a
+    href={href}
+    class:list={[baseClasses, variantClasses[variant], className]}
+    data-magnetic
+>
+    <span class="magnetic-content relative z-10 flex items-center gap-3">
+        <slot />
+    </span>
+    <div
+        class="magnetic-bg absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-500 opacity-0 transition-opacity duration-300"
+    >
+    </div>
+</a>
+
+<script>
+    function initMagneticButtons() {
+        const buttons = document.querySelectorAll("[data-magnetic]");
+
+        buttons.forEach((btn) => {
+            const button = btn as HTMLElement;
+            const content = button.querySelector(
+                ".magnetic-content",
+            ) as HTMLElement;
+
+            let bounds: DOMRect;
+            let isHovering = false;
+
+            const updateBounds = () => {
+                bounds = button.getBoundingClientRect();
+            };
+
+            const onMouseMove = (e: MouseEvent) => {
+                if (!isHovering || !bounds) return;
+
+                const x = e.clientX - bounds.left - bounds.width / 2;
+                const y = e.clientY - bounds.top - bounds.height / 2;
+
+                // Manyetik çekim efekti - içerik fareyi takip eder
+                const moveX = x * 0.3;
+                const moveY = y * 0.3;
+
+                content.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                button.style.transform = `translate(${moveX * 0.1}px, ${moveY * 0.1}px) scale(1.02)`;
+            };
+
+            const onMouseEnter = () => {
+                isHovering = true;
+                updateBounds();
+                button
+                    .querySelector(".magnetic-bg")
+                    ?.classList.add("opacity-100");
+            };
+
+            const onMouseLeave = () => {
+                isHovering = false;
+                content.style.transform = "translate(0, 0)";
+                button.style.transform = "translate(0, 0) scale(1)";
+                button
+                    .querySelector(".magnetic-bg")
+                    ?.classList.remove("opacity-100");
+            };
+
+            button.addEventListener("mouseenter", onMouseEnter);
+            button.addEventListener("mouseleave", onMouseLeave);
+            button.addEventListener("mousemove", onMouseMove);
+
+            // Cleanup on page transition
+            document.addEventListener(
+                "astro:before-swap",
+                () => {
+                    button.removeEventListener("mouseenter", onMouseEnter);
+                    button.removeEventListener("mouseleave", onMouseLeave);
+                    button.removeEventListener("mousemove", onMouseMove);
+                },
+                { once: true },
+            );
+        });
+    }
+
+    // Init on load and page transitions
+    if (document.readyState === "complete") {
+        initMagneticButtons();
+    } else {
+        window.addEventListener("load", initMagneticButtons, { once: true });
+    }
+    document.addEventListener("astro:page-load", initMagneticButtons);
+</script>
+
+<style>
+    .magnetic-btn {
+        cursor: pointer;
+        will-change: transform;
+    }
+
+    .magnetic-content {
+        will-change: transform;
+        transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    .magnetic-bg {
+        will-change: opacity;
+    }
+</style>

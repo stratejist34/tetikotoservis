@@ -1,0 +1,141 @@
+---
+// TiltCard.astro - Premium 3D Tilt Effect Card
+interface Props {
+    class?: string;
+    maxTilt?: number;
+    scale?: number;
+    glare?: boolean;
+}
+
+const {
+    class: className = "",
+    maxTilt = 10,
+    scale = 1.02,
+    glare = true,
+} = Astro.props;
+---
+
+<div
+    class:list={["tilt-card-wrapper relative", className]}
+    data-tilt
+    data-tilt-max={maxTilt}
+    data-tilt-scale={scale}
+    data-tilt-glare={glare}
+>
+    <div class="tilt-card-inner">
+        <slot />
+    </div>
+    {
+        glare && (
+            <div class="tilt-glare absolute inset-0 pointer-events-none rounded-[inherit] overflow-hidden opacity-0">
+                <div class="tilt-glare-inner absolute w-[200%] h-[200%] bg-gradient-to-br from-white/30 via-transparent to-transparent" />
+            </div>
+        )
+    }
+</div>
+
+<script>
+    function initTiltCards() {
+        const cards = document.querySelectorAll("[data-tilt]");
+
+        cards.forEach((card) => {
+            const wrapper = card as HTMLElement;
+            const inner = wrapper.querySelector(
+                ".tilt-card-inner",
+            ) as HTMLElement;
+            const glareEl = wrapper.querySelector(".tilt-glare") as HTMLElement;
+            const glareInner = wrapper.querySelector(
+                ".tilt-glare-inner",
+            ) as HTMLElement;
+
+            const maxTilt = parseFloat(wrapper.dataset.tiltMax || "10");
+            const scale = parseFloat(wrapper.dataset.tiltScale || "1.02");
+            const hasGlare = wrapper.dataset.tiltGlare === "true";
+
+            let bounds: DOMRect;
+            let isHovering = false;
+
+            const updateBounds = () => {
+                bounds = wrapper.getBoundingClientRect();
+            };
+
+            const onMouseMove = (e: MouseEvent) => {
+                if (!isHovering || !bounds) return;
+
+                const x = e.clientX - bounds.left;
+                const y = e.clientY - bounds.top;
+
+                const centerX = bounds.width / 2;
+                const centerY = bounds.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -maxTilt;
+                const rotateY = ((x - centerX) / centerX) * maxTilt;
+
+                inner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+
+                // Glare effect
+                if (hasGlare && glareEl && glareInner) {
+                    const glareX = (x / bounds.width) * 100;
+                    const glareY = (y / bounds.height) * 100;
+                    glareInner.style.transform = `translate(${glareX - 100}%, ${glareY - 100}%)`;
+                    glareEl.style.opacity = "1";
+                }
+            };
+
+            const onMouseEnter = () => {
+                isHovering = true;
+                updateBounds();
+                inner.style.transition = "transform 0.1s ease-out";
+            };
+
+            const onMouseLeave = () => {
+                isHovering = false;
+                inner.style.transition = "transform 0.5s ease-out";
+                inner.style.transform =
+                    "perspective(1000px) rotateX(0) rotateY(0) scale(1)";
+                if (glareEl) glareEl.style.opacity = "0";
+            };
+
+            wrapper.addEventListener("mouseenter", onMouseEnter);
+            wrapper.addEventListener("mouseleave", onMouseLeave);
+            wrapper.addEventListener("mousemove", onMouseMove);
+
+            // Cleanup
+            document.addEventListener(
+                "astro:before-swap",
+                () => {
+                    wrapper.removeEventListener("mouseenter", onMouseEnter);
+                    wrapper.removeEventListener("mouseleave", onMouseLeave);
+                    wrapper.removeEventListener("mousemove", onMouseMove);
+                },
+                { once: true },
+            );
+        });
+    }
+
+    if (document.readyState === "complete") {
+        initTiltCards();
+    } else {
+        window.addEventListener("load", initTiltCards, { once: true });
+    }
+    document.addEventListener("astro:page-load", initTiltCards);
+</script>
+
+<style>
+    .tilt-card-wrapper {
+        perspective: 1000px;
+    }
+
+    .tilt-card-inner {
+        will-change: transform;
+        transform-style: preserve-3d;
+    }
+
+    .tilt-glare {
+        transition: opacity 0.3s ease;
+    }
+
+    .tilt-glare-inner {
+        will-change: transform;
+    }
+</style>

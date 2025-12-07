@@ -12,35 +12,53 @@ import heroImageJpg from "/src/assets/images/hyundai-servis.jpg";
   <!-- Cinematic Background Image with Parallax Feel -->
   <div class="absolute inset-0 z-0 overflow-hidden">
     <div class="absolute inset-0 bg-slate-900/20 z-10"></div>
-    <!-- Extra dim for text contrast -->
+
+    <!-- Desktop Background -->
     <Image
       id="hero-bg"
       src={heroImageJpg}
       alt="Tetik Oto Servis"
-      class="w-full h-[120%] top-0 absolute object-cover object-top parallax-img will-change-transform"
+      class="hero-bg-desktop hidden md:block w-full h-[120%] top-0 absolute object-cover object-top parallax-img will-change-transform"
       width={1920}
       height={1080}
       format="avif"
       quality={40}
       loading="eager"
       fetchpriority="high"
-      sizes="100vw"
-      widths={[640, 1024, 1280, 1920]}
+      sizes="(min-width: 768px) 100vw, 1px"
+      widths={[1024, 1280, 1920]}
     />
-    <!-- Premium Gradient Overlay -->
+
+    <!-- Mobile Background (Dikey fotoğraf) -->
+    <img
+      src="/images/hyundaiservis-tetik-oto.avif"
+      alt="Tetik Oto Servis"
+      class="hero-bg-mobile md:hidden w-full h-full absolute inset-0 object-cover opacity-80"
+      loading="eager"
+      fetchpriority="high"
+      width="720"
+      height="1280"
+    />
+    <!-- Premium Gradient Overlay - Desktop -->
     <div
-      class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent z-20"
+      class="hidden md:block absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent z-20"
     >
     </div>
     <div
-      class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-20"
+      class="hidden md:block absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-20"
+    >
+    </div>
+
+    <!-- Mobil için daha yumuşak gradient -->
+    <div
+      class="md:hidden absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-920/60 to-transparent z-20"
     >
     </div>
   </div>
 
   <!-- Grid Pattern Texture (Subtle Tech Feel) -->
   <div
-    class="absolute inset-0 z-0 opacity-[0.03]"
+    class="absolute inset-0 z-0 opacity-[0.09]"
     style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"
   >
   </div>
@@ -67,7 +85,7 @@ import heroImageJpg from "/src/assets/images/hyundai-servis.jpg";
           class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl leading-relaxed font-light animate-fade-up delay-100 font-sans"
         >
           17 yıllık tecrübe, orijinal yedek parça ve garantili işçilik ile
-          aracınız emin ellerde. Gebze ve bölgesinin en kapsamlı özel servisi.
+          aracınız emin ellerde. Tuzla ve bölgesinin en kapsamlı özel servisi.
         </p>
 
         <!-- Action Buttons -->
@@ -266,6 +284,12 @@ import heroImageJpg from "/src/assets/images/hyundai-servis.jpg";
   }
   .delay-400 {
     animation-delay: 0.6s;
+  }
+
+  /* Mobil Hero - Dikey fotoğraf için */
+  .hero-bg-mobile {
+    object-fit: cover;
+    object-position: center 15%; /* Biraz yukarı kaydır */
   }
 </style>
 
