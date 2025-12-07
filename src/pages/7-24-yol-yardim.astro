@@ -1,260 +1,506 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
-import LocalBusinessSchema from '../components/LocalBusinessSchema.astro';
-import BreadcrumbSchema from '../components/BreadcrumbSchema.astro';
-import FAQSchema from '../components/FAQSchema.astro';
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import LocalBusinessSchema from "../components/LocalBusinessSchema.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import FAQSchema from "../components/FAQSchema.astro";
+
+// LCP Image Preload için
+const heroImage =
+  "/images/avifs/7-24-Yol-Yardim-Gebze-Tuzla-Pendik-Kartal.avif";
+const heroImageFallback =
+  "/images/7-24-Yol-Yardim-Gebze-Tuzla-Pendik-Kartal.jpg";
 
 const pageTitle = "7/24 Yol Yardım Gebze & Tuzla | Tetik Otomotiv";
-const pageDescription = "Gebze ve Tuzla bölgesinde 7/24 acil yol yardım, oto kurtarma ve çekici hizmeti. Akü takviye, lastik değişimi, yakıt ikmali. 30 dakikada yanınızdayız.";
+const pageDescription =
+  "Gebze ve Tuzla bölgesinde 7/24 acil yol yardım, oto kurtarma ve çekici hizmeti. Akü takviye, lastik değişimi, yakıt ikmali. 30 dakikada yanınızdayız.";
 
 // SEO Schemas
 const breadcrumbItems = [
-  { name: 'Anasayfa', url: '/' },
-  { name: 'Hizmetlerimiz', url: '#' },
-  { name: '7/24 Yol Yardım', url: '/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv' }
+  { name: "Anasayfa", url: "/" },
+  { name: "Hizmetlerimiz", url: "#" },
+  {
+    name: "7/24 Yol Yardım",
+    url: "/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv",
+  },
 ];
 
 const faqs = [
-  { question: "Gece saatlerinde hizmet veriyor musunuz?", answer: "Evet, 7 gün 24 saat kesintisiz yol yardım ve çekici hizmetimiz mevcuttur." },
-  { question: "Gebze'nin her yerine geliyor musunuz?", answer: "Gebze, Tuzla, Darıca, Çayırova, Dilovası ve çevresindeki tüm noktalara hizmet veriyoruz." },
-  { question: "Akü takviyesi yapıyor musunuz?", answer: "Evet, mobil aracımızla gelip akü takviyesi (booster) veya gerekirse yerinde akü değişimi yapıyoruz." },
-  { question: "Fiyatlarınız neye göre belirleniyor?", answer: "Mesfe, aracın durumu ve yapılacak işleme (çekici, kurtarma, basit onarım) göre en uygun fiyatı telefonda belirtiyoruz." }
+  {
+    question: "Gece saatlerinde hizmet veriyor musunuz?",
+    answer:
+      "Evet, 7 gün 24 saat kesintisiz yol yardım ve çekici hizmetimiz mevcuttur.",
+  },
+  {
+    question: "Gebze'nin her yerine geliyor musunuz?",
+    answer:
+      "Gebze, Tuzla, Darıca, Çayırova, Dilovası ve çevresindeki tüm noktalara hizmet veriyoruz.",
+  },
+  {
+    question: "Akü takviyesi yapıyor musunuz?",
+    answer:
+      "Evet, mobil aracımızla gelip akü takviyesi (booster) veya gerekirse yerinde akü değişimi yapıyoruz.",
+  },
+  {
+    question: "Fiyatlarınız neye göre belirleniyor?",
+    answer:
+      "Mesfe, aracın durumu ve yapılacak işleme (çekici, kurtarma, basit onarım) göre en uygun fiyatı telefonda belirtiyoruz.",
+  },
 ];
 
 const services = [
-  { title: 'Oto Çekici', desc: 'Aracınız hareket edemiyorsa güvenli çekici hizmeti.', icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z' },
-  { title: 'Akü Takviye', desc: 'Akü bittiyse profesyonel cihazlarla anında takviye.', icon: 'M13 10V3L4 14h7v7l9-11h-7z' },
-  { title: 'Lastik Değişimi', desc: 'Yedek lastiğiniz varsa yerinde değişim ve hava basma.', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
-  { title: 'Yakıt İkmali', desc: 'Yolda kaldıysanız en yakın istasyona kadar yakıt desteği.', icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' },
-  { title: 'Oto Kurtarma', desc: 'Kaza veya şarampole düşme durumunda vinçli kurtarma.', icon: 'M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z' },
-  { title: 'Anahtar Çilingir', desc: 'Anahtar içeride kaldıysa kapı açma desteği.', icon: 'M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z' },
+  {
+    title: "Oto Çekici",
+    desc: "Aracınız hareket edemiyorsa güvenli çekici hizmeti.",
+    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+  },
+  {
+    title: "Akü Takviye",
+    desc: "Akü bittiyse profesyonel cihazlarla anında takviye.",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+  },
+  {
+    title: "Lastik Değişimi",
+    desc: "Yedek lastiğiniz varsa yerinde değişim ve hava basma.",
+    icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+  {
+    title: "Yakıt İkmali",
+    desc: "Yolda kaldıysanız en yakın istasyona kadar yakıt desteği.",
+    icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+  },
+  {
+    title: "Oto Kurtarma",
+    desc: "Kaza veya şarampole düşme durumunda vinçli kurtarma.",
+    icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+  },
+  {
+    title: "Anahtar Çilingir",
+    desc: "Anahtar içeride kaldıysa kapı açma desteği.",
+    icon: "M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z",
+  },
 ];
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
-  <LocalBusinessSchema title={pageTitle} description={pageDescription} url="https://hyundaiservisim.com/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv" />
+  <!-- LCP Image Preload -->
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href={heroImage}
+    type="image/avif"
+    fetchpriority="high"
+  />
+
+  <LocalBusinessSchema
+    title={pageTitle}
+    description={pageDescription}
+    url="https://hyundaiservisim.com/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv"
+  />
   <BreadcrumbSchema items={breadcrumbItems} />
   <FAQSchema faqs={faqs} />
 
   <!-- Emergency Hero -->
-  <section class="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-slate-950">
-    <!-- Background Image -->
+  <section
+    class="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-slate-950"
+  >
+    <!-- Background Image - Optimized for LCP -->
     <div class="absolute inset-0 z-0">
-        <img 
-            src="/images/7-24-Yol-Yardim-Gebze-Tuzla-Pendik-Kartal.jpg" 
-            alt="7/24 Yol Yardım" 
-            class="w-full h-full object-cover object-center scale-105 opacity-40 grayscale animate-pulse-slow-bg" 
+      <picture>
+        <source srcset={heroImage} type="image/avif" />
+        <img
+          src={heroImageFallback}
+          alt="7/24 Yol Yardım Gebze Tuzla"
+          class="w-full h-full object-cover object-center opacity-40 grayscale"
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+          decoding="async"
         />
-        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-amber-900/20"></div>
-        <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10 mix-blend-overlay"></div>
+      </picture>
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-amber-900/20"
+      >
+      </div>
     </div>
-    
-    <!-- Warning Lights Animation -->
+
+    <!-- Warning Lights - CSS only, no JS animation -->
     <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-amber-500/20 rounded-full blur-[120px] animate-pulse-fast"></div>
-        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-red-600/20 rounded-full blur-[120px] animate-pulse-fast" style="animation-delay: 0.5s;"></div>
+      <div
+        class="absolute top-0 right-0 w-[400px] h-[400px] bg-amber-500/15 rounded-full blur-[100px] glow-pulse"
+      >
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-red-600/15 rounded-full blur-[100px] glow-pulse-delayed"
+      >
+      </div>
     </div>
-    
+
     <div class="container mx-auto px-4 relative z-10">
-        <div class="max-w-4xl">
-            <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-400 mb-8 animate-bounce-gentle">
-                <span class="relative flex h-4 w-4">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-4 w-4 bg-amber-500"></span>
-                </span>
-                <span class="font-black tracking-widest text-base uppercase">Acil Yol Yardım Hattı</span>
-            </div>
-
-            <h1 class="text-6xl md:text-8xl font-black text-white mb-8 leading-[1] tracking-tighter drop-shadow-2xl">
-                YOLDA MI <br/>
-                <span class="text-amber-500">KALDINIZ?</span>
-            </h1>
-
-            <p class="text-2xl text-slate-300 mb-12 leading-relaxed max-w-2xl border-l-8 border-amber-500 pl-8 font-medium">
-                Panik yapmayın. Gebze ve Tuzla'nın en hızlı yol yardım ekibi <span class="text-amber-400 font-bold">30 dakikada</span> yanınızda.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-5">
-                <a href="tel:05336157835" class="group relative flex items-center justify-center gap-4 bg-amber-500 hover:bg-amber-400 text-slate-950 px-10 py-6 rounded-2xl font-black text-2xl transition-all shadow-[0_0_50px_rgba(245,158,11,0.4)] hover:shadow-[0_0_80px_rgba(245,158,11,0.6)] hover:-translate-y-1 overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
-                    <svg class="w-8 h-8 animate-wiggle" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    <span>HEMEN ARA</span>
-                </a>
-                <a href="https://wa.me/905336157835" class="group flex items-center justify-center gap-3 bg-slate-800 hover:bg-[#25D366] text-white px-8 py-6 rounded-2xl font-bold text-xl transition-all border border-slate-700 hover:border-[#25D366]">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    Konum At
-                </a>
-            </div>
+      <div class="max-w-4xl">
+        <div
+          class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-500/40 text-amber-400 mb-8"
+        >
+          <span class="relative flex h-4 w-4">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-4 w-4 bg-amber-500"
+            ></span>
+          </span>
+          <span class="font-black tracking-widest text-base uppercase"
+            >Acil Yol Yardım Hattı</span
+          >
         </div>
+
+        <h1
+          class="text-6xl md:text-8xl font-black text-white mb-8 leading-[1] tracking-tighter drop-shadow-2xl"
+        >
+          YOLDA MI <br />
+          <span class="text-amber-500">KALDINIZ?</span>
+        </h1>
+
+        <p
+          class="text-2xl text-slate-300 mb-12 leading-relaxed max-w-2xl border-l-8 border-amber-500 pl-8 font-medium"
+        >
+          Panik yapmayın. Gebze ve Tuzla'nın en hızlı yol yardım ekibi <span
+            class="text-amber-400 font-bold">30 dakikada</span
+          > yanınızda.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-5">
+          <a
+            href="tel:05336157835"
+            class="group relative flex items-center justify-center gap-4 bg-amber-500 hover:bg-amber-400 text-slate-950 px-10 py-6 rounded-2xl font-black text-2xl transition-all shadow-[0_0_50px_rgba(245,158,11,0.4)] hover:shadow-[0_0_80px_rgba(245,158,11,0.6)] hover:-translate-y-1 overflow-hidden"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"
+            >
+            </div>
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+              ></path></svg
+            >
+            <span>HEMEN ARA</span>
+          </a>
+          <a
+            href="https://wa.me/905336157835"
+            class="group flex items-center justify-center gap-3 bg-slate-800 hover:bg-[#25D366] text-white px-8 py-6 rounded-2xl font-bold text-xl transition-all border border-slate-700 hover:border-[#25D366]"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"
+              ><path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+              ></path></svg
+            >
+            Konum At
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Quick Stats -->
   <section class="relative z-20 -mt-12 container mx-auto px-4">
-    <div class="bg-slate-900 rounded-3xl shadow-2xl border border-slate-800 p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-slate-800">
-        <div class="text-center group">
-            <div class="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-500 transition-colors">30</div>
-            <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Dakikada Oradayız</div>
+    <div
+      class="bg-slate-900 rounded-3xl shadow-2xl border border-slate-800 p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-slate-800"
+    >
+      <div class="text-center group">
+        <div
+          class="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-500 transition-colors"
+        >
+          30
         </div>
-        <div class="text-center group">
-            <div class="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-500 transition-colors">7/24</div>
-            <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Kesintisiz Hizmet</div>
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">
+          Dakikada Oradayız
         </div>
-        <div class="text-center group">
-            <div class="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-500 transition-colors">%100</div>
-            <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Müşteri Memnuniyeti</div>
+      </div>
+      <div class="text-center group">
+        <div
+          class="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-500 transition-colors"
+        >
+          7/24
         </div>
-        <div class="text-center group">
-            <div class="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-500 transition-colors">UYGUN</div>
-            <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">Fiyat Garantisi</div>
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">
+          Kesintisiz Hizmet
         </div>
+      </div>
+      <div class="text-center group">
+        <div
+          class="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-500 transition-colors"
+        >
+          %100
+        </div>
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">
+          Müşteri Memnuniyeti
+        </div>
+      </div>
+      <div class="text-center group">
+        <div
+          class="text-4xl md:text-5xl font-black text-white mb-2 group-hover:text-amber-500 transition-colors"
+        >
+          UYGUN
+        </div>
+        <div class="text-xs font-bold text-slate-500 uppercase tracking-widest">
+          Fiyat Garantisi
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- How It Works (Process) -->
   <section class="py-24 bg-white">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <span class="text-amber-600 font-bold tracking-widest uppercase text-sm">Nasıl Çalışır?</span>
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mt-3">3 Adımda Yol Yardım</h2>
+      <div class="text-center mb-16">
+        <span class="text-amber-600 font-bold tracking-widest uppercase text-sm"
+          >Nasıl Çalışır?</span
+        >
+        <h2 class="text-3xl md:text-5xl font-black text-slate-900 mt-3">
+          3 Adımda Yol Yardım
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-12 relative">
+        <!-- Connecting Line -->
+        <div
+          class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-100 -z-10 -translate-y-1/2"
+        >
         </div>
 
-        <div class="grid md:grid-cols-3 gap-12 relative">
-            <!-- Connecting Line -->
-            <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-100 -z-10 -translate-y-1/2"></div>
-
-            <!-- Step 1 -->
-            <div class="relative bg-white p-6 rounded-2xl text-center">
-                <div class="w-24 h-24 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-6 shadow-lg shadow-amber-100 ring-8 ring-white">1</div>
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Bizi Arayın</h3>
-                <p class="text-slate-500">0533 615 78 35 numarasından 7/24 çağrı merkezimize ulaşın.</p>
-            </div>
-
-             <!-- Step 2 -->
-             <div class="relative bg-white p-6 rounded-2xl text-center">
-                <div class="w-24 h-24 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-6 shadow-lg shadow-amber-100 ring-8 ring-white">2</div>
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Konum Paylaşın</h3>
-                <p class="text-slate-500">WhatsApp üzerinden konumunuzu gönderin, sizi hemen bulalım.</p>
-            </div>
-
-             <!-- Step 3 -->
-             <div class="relative bg-white p-6 rounded-2xl text-center">
-                <div class="w-24 h-24 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-6 shadow-lg shadow-amber-100 ring-8 ring-white">3</div>
-                <h3 class="text-xl font-bold text-slate-900 mb-2">Yardım Geliyor</h3>
-                <p class="text-slate-500">Uzman ekibimiz ortalama 30 dakika içinde yanınızda.</p>
-            </div>
+        <!-- Step 1 -->
+        <div class="relative bg-white p-6 rounded-2xl text-center">
+          <div
+            class="w-24 h-24 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-6 shadow-lg shadow-amber-100 ring-8 ring-white"
+          >
+            1
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Bizi Arayın</h3>
+          <p class="text-slate-500">
+            0533 615 78 35 numarasından 7/24 çağrı merkezimize ulaşın.
+          </p>
         </div>
+
+        <!-- Step 2 -->
+        <div class="relative bg-white p-6 rounded-2xl text-center">
+          <div
+            class="w-24 h-24 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-6 shadow-lg shadow-amber-100 ring-8 ring-white"
+          >
+            2
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Konum Paylaşın</h3>
+          <p class="text-slate-500">
+            WhatsApp üzerinden konumunuzu gönderin, sizi hemen bulalım.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative bg-white p-6 rounded-2xl text-center">
+          <div
+            class="w-24 h-24 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl font-black mx-auto mb-6 shadow-lg shadow-amber-100 ring-8 ring-white"
+          >
+            3
+          </div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Yardım Geliyor</h3>
+          <p class="text-slate-500">
+            Uzman ekibimiz ortalama 30 dakika içinde yanınızda.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Services Grid -->
   <section class="py-24 bg-slate-50">
     <div class="container mx-auto px-4">
-        <div class="text-center mb-20">
-            <span class="text-amber-600 font-bold tracking-widest uppercase text-sm">Hizmetlerimiz</span>
-            <h2 class="text-3xl md:text-5xl font-black text-slate-900 mt-3 mb-6">Yol Yardım Çözümleri</h2>
-            <p class="text-slate-600 max-w-2xl mx-auto text-lg">
-                Yolda karşılaşabileceğiniz her türlü soruna karşı donanımlı araçlarımız ve uzman ekibimiz hazır.
-            </p>
-        </div>
+      <div class="text-center mb-20">
+        <span class="text-amber-600 font-bold tracking-widest uppercase text-sm"
+          >Hizmetlerimiz</span
+        >
+        <h2 class="text-3xl md:text-5xl font-black text-slate-900 mt-3 mb-6">
+          Yol Yardım Çözümleri
+        </h2>
+        <p class="text-slate-600 max-w-2xl mx-auto text-lg">
+          Yolda karşılaşabileceğiniz her türlü soruna karşı donanımlı
+          araçlarımız ve uzman ekibimiz hazır.
+        </p>
+      </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map(service => (
-                <div class="group bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-[100%] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-                    
-                    <div class="relative z-10">
-                        <div class="w-16 h-16 bg-amber-500 text-slate-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform duration-500">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={service.icon}></path>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-amber-600 transition-colors">{service.title}</h3>
-                        <p class="text-slate-500 leading-relaxed">
-                            {service.desc}
-                        </p>
-                    </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {
+          services.map((service) => (
+            <div class="group bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-slate-100 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-[100%] -mr-8 -mt-8 transition-transform group-hover:scale-110" />
+
+              <div class="relative z-10">
+                <div class="w-16 h-16 bg-amber-500 text-slate-900 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform duration-500">
+                  <svg
+                    class="w-8 h-8"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d={service.icon}
+                    />
+                  </svg>
                 </div>
-            ))}
-        </div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-4 group-hover:text-amber-600 transition-colors">
+                  {service.title}
+                </h3>
+                <p class="text-slate-500 leading-relaxed">{service.desc}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </section>
 
   <!-- Service Area -->
   <section class="py-24 bg-slate-900 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5"></div>
-    
-    <div class="container mx-auto px-4 relative z-10">
-        <div class="flex flex-col md:flex-row justify-between items-center mb-16 gap-8">
-            <div>
-                <span class="text-amber-500 font-bold tracking-widest uppercase text-sm">Hizmet Bölgeleri</span>
-                <h2 class="text-3xl md:text-5xl font-black text-white mt-3">Nerelere Geliyoruz?</h2>
-            </div>
-            <div class="flex gap-4">
-                <span class="px-6 py-3 bg-slate-800 text-slate-300 rounded-full border border-slate-700">Gebze</span>
-                <span class="px-6 py-3 bg-slate-800 text-slate-300 rounded-full border border-slate-700">Tuzla</span>
-                <span class="px-6 py-3 bg-slate-800 text-slate-300 rounded-full border border-slate-700">Darıca</span>
-                <span class="px-6 py-3 bg-slate-800 text-slate-300 rounded-full border border-slate-700 hidden sm:block">Çayırova</span>
-            </div>
-        </div>
+    <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5">
+    </div>
 
-        <div class="bg-slate-800 rounded-3xl p-8 md:p-12 border border-slate-700 text-center">
-            <p class="text-xl text-slate-300 leading-relaxed max-w-4xl mx-auto">
-                E-5 (D-100) Karayolu, TEM Otoyolu, Kuzey Marmara Otoyolu bağlantı yolları dahil olmak üzere 
-                <span class="text-white font-bold">Gebze ve Tuzla'nın tüm mahallelerine</span>, sanayi bölgelerine (GOSB, TOSB, İTOSB) 
-                en kısa sürede ulaşıyoruz.
-            </p>
+    <div class="container mx-auto px-4 relative z-10">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center mb-16 gap-8"
+      >
+        <div>
+          <span
+            class="text-amber-500 font-bold tracking-widest uppercase text-sm"
+            >Hizmet Bölgeleri</span
+          >
+          <h2 class="text-3xl md:text-5xl font-black text-white mt-3">
+            Nerelere Geliyoruz?
+          </h2>
         </div>
+        <div class="flex gap-4">
+          <span
+            class="px-6 py-3 bg-slate-800 text-slate-300 rounded-full border border-slate-700"
+            >Gebze</span
+          >
+          <span
+            class="px-6 py-3 bg-slate-800 text-slate-300 rounded-full border border-slate-700"
+            >Tuzla</span
+          >
+          <span
+            class="px-6 py-3 bg-slate-800 text-slate-300 rounded-full border border-slate-700"
+            >Darıca</span
+          >
+          <span
+            class="px-6 py-3 bg-slate-800 text-slate-300 rounded-full border border-slate-700 hidden sm:block"
+            >Çayırova</span
+          >
+        </div>
+      </div>
+
+      <div
+        class="bg-slate-800 rounded-3xl p-8 md:p-12 border border-slate-700 text-center"
+      >
+        <p class="text-xl text-slate-300 leading-relaxed max-w-4xl mx-auto">
+          E-5 (D-100) Karayolu, TEM Otoyolu, Kuzey Marmara Otoyolu bağlantı
+          yolları dahil olmak üzere
+          <span class="text-white font-bold"
+            >Gebze ve Tuzla'nın tüm mahallelerine</span
+          >, sanayi bölgelerine (GOSB, TOSB, İTOSB) en kısa sürede ulaşıyoruz.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- FAQ -->
   <section class="py-24 bg-white">
     <div class="container mx-auto px-4 max-w-3xl">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">Sıkça Sorulan Sorular</h2>
-            <p class="text-slate-500 text-lg">Yol yardım hizmetimiz hakkında bilgiler.</p>
-        </div>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">
+          Sıkça Sorulan Sorular
+        </h2>
+        <p class="text-slate-500 text-lg">
+          Yol yardım hizmetimiz hakkında bilgiler.
+        </p>
+      </div>
 
-        <div class="space-y-4">
-            {faqs.map(faq => (
-                <div class="bg-slate-50 rounded-2xl p-1 transition-all hover:bg-white hover:shadow-lg border border-slate-100">
-                    <details class="group">
-                        <summary class="flex items-center justify-between p-6 font-bold text-slate-900 cursor-pointer list-none text-lg">
-                            <span>{faq.question}</span>
-                            <span class="transition-transform duration-300 group-open:rotate-180 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm text-amber-500">
-                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
-                            </span>
-                        </summary>
-                        <div class="px-6 pb-6 pt-0">
-                            <p class="text-slate-600 leading-relaxed border-t border-slate-200 pt-4">
-                                {faq.answer}
-                            </p>
-                        </div>
-                    </details>
+      <div class="space-y-4">
+        {
+          faqs.map((faq) => (
+            <div class="bg-slate-50 rounded-2xl p-1 transition-all hover:bg-white hover:shadow-lg border border-slate-100">
+              <details class="group">
+                <summary class="flex items-center justify-between p-6 font-bold text-slate-900 cursor-pointer list-none text-lg">
+                  <span>{faq.question}</span>
+                  <span class="transition-transform duration-300 group-open:rotate-180 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm text-amber-500">
+                    <svg
+                      fill="none"
+                      height="24"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="24"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </span>
+                </summary>
+                <div class="px-6 pb-6 pt-0">
+                  <p class="text-slate-600 leading-relaxed border-t border-slate-200 pt-4">
+                    {faq.answer}
+                  </p>
                 </div>
-            ))}
-        </div>
+              </details>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="py-24 bg-amber-500 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10 mix-blend-multiply"></div>
-    
+    <div
+      class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10 mix-blend-multiply"
+    >
+    </div>
+
     <div class="container mx-auto px-4 relative z-10 text-center">
-        <h2 class="text-4xl md:text-7xl font-black text-slate-900 mb-8">
-          DAHA FAZLA BEKLEMEYİN!
-        </h2>
-        <p class="text-slate-800 text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium">
-          Şu an size en yakın ekibimizi yönlendirmek için hazırız.
-        </p>
-        
-        <a href="tel:05336157835" class="inline-flex items-center justify-center gap-3 bg-slate-900 text-white px-12 py-6 rounded-full font-black text-2xl hover:bg-slate-800 transition-all shadow-2xl hover:scale-105 hover:shadow-slate-900/20">
-            <svg class="w-8 h-8 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-            HEMEN ARA: 0533 615 78 35
-        </a>
+      <h2 class="text-4xl md:text-7xl font-black text-slate-900 mb-8">
+        DAHA FAZLA BEKLEMEYİN!
+      </h2>
+      <p
+        class="text-slate-800 text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-medium"
+      >
+        Şu an size en yakın ekibimizi yönlendirmek için hazırız.
+      </p>
+
+      <a
+        href="tel:05336157835"
+        class="inline-flex items-center justify-center gap-3 bg-slate-900 text-white px-12 py-6 rounded-full font-black text-2xl hover:bg-slate-800 transition-all shadow-2xl hover:scale-105 hover:shadow-slate-900/20"
+      >
+        <svg
+          class="w-8 h-8 animate-pulse"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+          ></path></svg
+        >
+        HEMEN ARA: 0533 615 78 35
+      </a>
     </div>
   </section>
 
@@ -262,39 +508,45 @@ const services = [
 </Layout>
 
 <style>
+  /* Minimal critical CSS - only what's needed for above-the-fold */
   details[open] summary ~ * {
-    animation: sweep .3s ease-in-out;
+    animation: sweep 0.3s ease-in-out;
   }
   @keyframes sweep {
-    0%    {opacity: 0; transform: translateY(-10px)}
-    100%  {opacity: 1; transform: translateY(0)}
+    0% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  @keyframes pulse-fast {
-    0%, 100% { opacity: 0.1; transform: scale(1); }
-    50% { opacity: 0.3; transform: scale(1.2); }
+
+  /* Optimized glow animations - GPU accelerated */
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.15;
+    }
+    50% {
+      opacity: 0.25;
+    }
   }
-  .animate-pulse-fast {
-    animation: pulse-fast 2s infinite ease-in-out;
+  .glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+    will-change: opacity;
   }
-  @keyframes pulse-slow-bg {
-    0%, 100% { transform: scale(1.05); opacity: 0.4; }
-    50% { transform: scale(1.1); opacity: 0.5; }
+  .glow-pulse-delayed {
+    animation: glow-pulse 4s ease-in-out infinite 2s;
+    will-change: opacity;
   }
-  .animate-pulse-slow-bg {
-    animation: pulse-slow-bg 10s infinite ease-in-out;
-  }
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
-  }
-  .animate-wiggle {
-    animation: wiggle 0.5s infinite ease-in-out;
-  }
-  @keyframes bounce-gentle {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-  .animate-bounce-gentle {
-    animation: bounce-gentle 2s infinite ease-in-out;
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .glow-pulse,
+    .glow-pulse-delayed {
+      animation: none;
+    }
   }
 </style>

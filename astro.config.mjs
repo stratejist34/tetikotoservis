@@ -5,6 +5,24 @@ import remarkSlug from 'remark-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
 export default defineConfig({
+  // CSS Optimization
+  vite: {
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          // Smaller chunks for better caching
+          manualChunks: {
+            'vendor': ['lenis', 'gsap'],
+          },
+        },
+      },
+    },
+  },
+  // Inline ALL CSS to eliminate render-blocking
+  build: {
+    inlineStylesheets: 'always',
+  },
   integrations: [
     tailwind(),
     sitemap({
@@ -26,7 +44,7 @@ export default defineConfig({
     },
     remarkPlugins: [remarkSlug],
     rehypePlugins: [
-      [rehypeAutolinkHeadings, { 
+      [rehypeAutolinkHeadings, {
         behavior: 'wrap',
         properties: {
           className: ['heading-link']
@@ -43,24 +61,24 @@ export default defineConfig({
     '/hyundai-ozel-servis-gebze': '/gebze-hyundai-servis',
     '/tag/gebze-hyundai-servis': '/gebze-hyundai-servis',
     '/tag/gebze-hyundai-ozel-servisi': '/gebze-hyundai-servis',
-    
+
     // ========================================
     // KIA - Eski duplicate sayfaları yeni lokasyon sayfasına yönlendir
     // ========================================
     '/gebze-kia-servisi': '/gebze-kia-servis',
     '/kia-ozel-servis-gebze-tuzla': '/gebze-kia-servis',
-    
+
     // ========================================
     // NISSAN - Eski duplicate sayfaları yeni lokasyon sayfasına yönlendir
     // ========================================
     '/nissan-ozel-servis-gebze': '/gebze-nissan-servis',
-    
+
     // ========================================
     // MODEL SAYFALARI (modeller/[slug] yapısına yönlendir)
     // ========================================
     '/tag/tuzla-hyundai-i10': '/modeller/hyundai-i10',
     '/tag/hyundai-i10-elektrik-tamiri': '/modeller/hyundai-i10',
-    
+
     // ========================================
     // GENEL SAYFALAR
     // ========================================

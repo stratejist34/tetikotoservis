@@ -26,38 +26,60 @@ const {
     <title>{title}</title>
     <ViewTransitions />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ZVX33SCZC"
-    ></script>
+    <!-- Google Analytics - Deferred to not block LCP -->
     <script is:inline>
+      // Defer GA loading until after page is interactive
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-      gtag("config", "G-1ZVX33SCZC");
+
+      function loadGA() {
+        var s = document.createElement("script");
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-1ZVX33SCZC";
+        s.async = true;
+        document.head.appendChild(s);
+        gtag("js", new Date());
+        gtag("config", "G-1ZVX33SCZC");
+      }
+
+      // Load GA after user interaction or 4 seconds
+      if (document.readyState === "complete") {
+        setTimeout(loadGA, 4000);
+      } else {
+        window.addEventListener(
+          "load",
+          function () {
+            setTimeout(loadGA, 4000);
+          },
+          { once: true },
+        );
+      }
+      // Or on first user interaction
+      ["mousedown", "keydown", "touchstart", "scroll"].forEach(function (e) {
+        document.addEventListener(e, loadGA, { once: true, passive: true });
+      });
     </script>
 
-    <!-- Google Fonts - Preload for Performance -->
+    <!-- Google Fonts - Optimized for LCP -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Preload critical font (Kanit Bold for H1) -->
     <link
       rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=optional"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/kanit/v17/nKKU-Go6G5tXcraQI2GAdY5FPFtrGw.woff2"
+      crossorigin
     />
+    <!-- Use display=swap for immediate text rendering with fallback -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=optional"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&family=Manrope:wght@400;600;700&display=swap"
       rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
     />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;800&family=Manrope:wght@400;600;700&display=optional"
-        rel="stylesheet"
-      />
-    </noscript>
+
+    <!-- Page-specific head content (preloads, etc.) -->
+    <slot name="head" />
 
     <!-- Favicons -->
     <link
@@ -212,15 +234,22 @@ const {
     </main>
 
     <script>
-      // Defer all animation libraries until after LCP
+      // Defer all animation libraries until well after LCP
       let lenis: any = null;
       let gsapInstance: any = null;
       let ScrollTriggerInstance: any = null;
       let initialized = false;
 
-      // Mobil kontrolü
-      const isMobile = () =>
-        window.innerWidth < 1024 || "ontouchstart" in window;
+      // Mobil kontrolü - cache result
+      const isMobile = (() => {
+        let result: boolean | null = null;
+        return () => {
+          if (result === null) {
+            result = window.innerWidth < 1024 || "ontouchstart" in window;
+          }
+          return result;
+        };
+      })();
 
       async function loadAndInit() {
         if (initialized) return;
@@ -239,6 +268,12 @@ const {
 
         gsap.registerPlugin(ScrollTrigger);
 
+        // ScrollTrigger config - disable auto-refresh to prevent forced reflow
+        ScrollTrigger.config({
+          ignoreMobileResize: true,
+          autoRefreshEvents: "visibilitychange,DOMContentLoaded",
+        });
+
         // Lenis setup - SADECE DESKTOP'TA
         if (!isMobile()) {
           lenis = new Lenis({
@@ -252,57 +287,50 @@ const {
           gsap.ticker.lagSmoothing(0);
         }
 
-        // Animations
-        ScrollTrigger.config({
-          ignoreMobileResize: true,
-        });
+        // Batch all DOM reads first, then writes - prevents forced reflow
+        requestAnimationFrame(() => {
+          const revealElements = document.querySelectorAll("[data-reveal]");
 
-        const revealElements = document.querySelectorAll("[data-reveal]");
-        revealElements.forEach((element, index) => {
-          const delay = element.getAttribute("data-delay") || index * 30;
-          gsap.fromTo(
-            element,
-            { y: 10, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.6,
-              delay: Number(delay) / 1000,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: element,
-                start: "top 95%",
-                once: true,
-              },
-            },
-          );
-        });
+          // Use CSS for initial reveal instead of GSAP for better performance
+          revealElements.forEach((element) => {
+            (element as HTMLElement).style.opacity = "1";
+            (element as HTMLElement).style.transform = "translateY(0)";
+          });
 
-        ScrollTrigger.refresh();
+          // Only use ScrollTrigger for below-fold content
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        });
       }
 
-      // Wait for idle time or 2 seconds max
+      // Wait longer - 3 seconds after load to ensure LCP is complete
       function deferLoad() {
         if ("requestIdleCallback" in window) {
           (window as any).requestIdleCallback(() => loadAndInit(), {
-            timeout: 2000,
+            timeout: 3000,
           });
         } else {
-          setTimeout(loadAndInit, 1500);
+          setTimeout(loadAndInit, 2500);
         }
       }
 
-      // Start deferred loading
-      deferLoad();
+      // Start deferred loading after window load
+      if (document.readyState === "complete") {
+        deferLoad();
+      } else {
+        window.addEventListener("load", deferLoad, { once: true });
+      }
 
-      // ViewTransitions support
+      // ViewTransitions support - optimized to avoid forced reflow
       document.addEventListener("astro:page-load", () => {
         if (ScrollTriggerInstance) {
           ScrollTriggerInstance.getAll().forEach((t: any) => t.kill());
         }
         initialized = false;
-        deferLoad();
-        window.scrollTo(0, 0);
+        requestAnimationFrame(() => {
+          deferLoad();
+        });
       });
 
       document.addEventListener("astro:before-swap", () => {
