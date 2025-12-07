@@ -61,22 +61,27 @@ const {
       });
     </script>
 
-    <!-- Google Fonts - Optimized for LCP -->
+    <!-- Google Fonts - Deferred to prevent render-blocking and CLS -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Preload critical font (Kanit Bold for H1) -->
+    <!-- Defer font loading to prevent render-blocking -->
     <link
       rel="preload"
-      as="font"
-      type="font/woff2"
-      href="https://fonts.gstatic.com/s/kanit/v17/nKKU-Go6G5tXcraQI2GAdY5FPFtrGw.woff2"
-      crossorigin
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&family=Manrope:wght@400;600;700&display=optional"
     />
-    <!-- Use display=swap for immediate text rendering with fallback -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&family=Manrope:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&family=Manrope:wght@400;600;700&display=optional"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&family=Manrope:wght@400;600;700&display=optional"
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Page-specific head content (preloads, etc.) -->
     <slot name="head" />
