@@ -319,12 +319,13 @@ const whatsappMessage = encodeURIComponent(
         background-color: #c2410c;
     }
 
-    /* Tooltips */
+    /* Tooltips - Mobilde sola, desktop'ta sağa açılır */
     .btn-tooltip {
         position: absolute;
-        left: 70px;
+        right: 70px;
+        left: auto;
         top: 50%;
-        transform: translateY(-50%) translateX(-10px);
+        transform: translateY(-50%) translateX(10px);
         background: #1e293b;
         color: #fff;
         padding: 10px 16px;
@@ -342,18 +343,39 @@ const whatsappMessage = encodeURIComponent(
     .btn-tooltip::before {
         content: "";
         position: absolute;
-        left: -6px;
+        right: -6px;
+        left: auto;
         top: 50%;
         transform: translateY(-50%);
         border: 6px solid transparent;
-        border-right-color: #1e293b;
-        border-left: none;
+        border-left-color: #1e293b;
+        border-right: none;
     }
 
     .btn-tooltip.visible {
         opacity: 1;
         visibility: visible;
         transform: translateY(-50%) translateX(0);
+    }
+
+    /* Desktop'ta tooltip sağa açılsın */
+    @media (min-width: 768px) {
+        .btn-tooltip {
+            left: 70px;
+            right: auto;
+            transform: translateY(-50%) translateX(-10px);
+        }
+
+        .btn-tooltip::before {
+            left: -6px;
+            right: auto;
+            border-right-color: #1e293b;
+            border-left-color: transparent;
+        }
+
+        .btn-tooltip.visible {
+            transform: translateY(-50%) translateX(0);
+        }
     }
 
     /* Pulse animation for attention */
