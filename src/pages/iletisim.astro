@@ -36,7 +36,7 @@ const pageDescription =
       >
         <div
           id="time-widget"
-          class="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 backdrop-blur-xl px-5 py-5 md:px-7 md:py-6 shadow-2xl shadow-black/50 flex items-center gap-5 md:gap-6"
+          class="time-widget-night relative overflow-hidden rounded-3xl border border-white/10 bg-slate-900/40 backdrop-blur-xl px-5 py-5 md:px-7 md:py-6 shadow-2xl shadow-black/50 flex items-center gap-5 md:gap-6"
         >
           <div
             id="time-widget-sky"
@@ -376,10 +376,12 @@ const pageDescription =
       let currentTypewriterText = "";
 
       function typewriterEffect(
-        element: HTMLElement,
+        element: HTMLElement | null,
         text: string,
         speed = 80,
       ) {
+        if (!element) return;
+
         if (typewriterTimeout) {
           clearTimeout(typewriterTimeout);
         }
@@ -393,12 +395,14 @@ const pageDescription =
         let index = 0;
 
         function type() {
+          if (!element) return;
           if (index < text.length) {
             element.textContent += text.charAt(index);
             index++;
             typewriterTimeout = setTimeout(type, speed);
           } else {
             setTimeout(() => {
+              if (!element) return;
               element.textContent = "";
               index = 0;
               typewriterTimeout = setTimeout(type, 2000);
@@ -464,8 +468,15 @@ const pageDescription =
         }
       }
 
+      // İlk yükleme - hemen çalıştır
       updateStatus();
-      updateTimeWidget();
+
+      // Widget için küçük bir gecikme ile başlat (DOM tam hazır olsun)
+      setTimeout(() => {
+        updateTimeWidget();
+      }, 100);
+
+      // Periyodik güncelleme
       setInterval(() => {
         updateStatus();
         updateTimeWidget();
