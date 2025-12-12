@@ -79,21 +79,23 @@ const pageDescription =
               <div class="text-xs md:text-sm font-medium text-white/80 mt-0.5">
                 Tuzla Bölgesinin En iyi Japon - Kore Servisine Hoşgeldiniz
               </div>
-              <div class="mt-1.5 min-h-[2.5rem] md:min-h-[3rem] relative">
-                <div class="flex items-start">
-                  <div
-                    id="time-widget-ticker"
-                    class="text-xs md:text-sm font-mono font-medium dashboard-blue drop-shadow-sm whitespace-normal break-words pr-1"
-                  >
-                  </div>
-                  <span
-                    id="typewriter-cursor"
-                    class="typewriter-cursor dashboard-blue flex-shrink-0"
-                    >|</span
-                  >
-                </div>
-              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Typewriter mesajı widget'ın dışında -->
+        <div class="mt-4 px-5 md:px-7">
+          <div class="flex items-start">
+            <div
+              id="time-widget-ticker"
+              class="text-sm md:text-base font-mono font-medium typewriter-text drop-shadow-sm whitespace-normal break-words pr-1"
+            >
+            </div>
+            <span
+              id="typewriter-cursor"
+              class="typewriter-cursor typewriter-text flex-shrink-0 text-sm md:text-base"
+              >|</span
+            >
           </div>
         </div>
       </div>
@@ -810,10 +812,16 @@ const pageDescription =
     }
   }
 
-  /* Dashboard blue color - similar to car instrument displays */
-  .dashboard-blue {
+  /* Typewriter text color - gündüz ve gece modları için */
+  .time-widget-night ~ div .typewriter-text {
     color: #60a5fa;
     text-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
+  }
+
+  .time-widget-day ~ div .typewriter-text {
+    color: #3b82f6;
+    text-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+    font-weight: 600;
   }
 
   /* Typewriter cursor animation */
