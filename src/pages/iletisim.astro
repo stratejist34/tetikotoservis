@@ -373,24 +373,23 @@ const pageDescription =
       }
 
       let typewriterTimeout: ReturnType<typeof setTimeout> | null = null;
-      let currentTypewriterText = "";
 
       function typewriterEffect(
         element: HTMLElement | null,
         text: string,
         speed = 80,
       ) {
-        if (!element) return;
+        if (!element) {
+          console.log("Typewriter: Element bulunamadı");
+          return;
+        }
+
+        console.log("Typewriter başlatılıyor:", text.substring(0, 50) + "...");
 
         if (typewriterTimeout) {
           clearTimeout(typewriterTimeout);
         }
 
-        if (currentTypewriterText === text) {
-          return;
-        }
-
-        currentTypewriterText = text;
         element.textContent = "";
         let index = 0;
 
@@ -401,8 +400,12 @@ const pageDescription =
             index++;
             typewriterTimeout = setTimeout(type, speed);
           } else {
+            console.log(
+              "Typewriter tamamlandı, 5 saniye sonra tekrar başlayacak",
+            );
             setTimeout(() => {
               if (!element) return;
+              console.log("Typewriter yeniden başlatılıyor");
               element.textContent = "";
               index = 0;
               typewriterTimeout = setTimeout(type, 2000);
