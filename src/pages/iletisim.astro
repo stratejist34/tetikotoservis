@@ -44,10 +44,11 @@ const pageDescription =
           >
           </div>
 
-          <div
-            class="star-field absolute inset-0 opacity-0 transition-opacity duration-1000"
-          >
-          </div>
+          <!-- Yıldızlar -->
+          <span class="star star-1"></span>
+          <span class="star star-2"></span>
+          <span class="star star-3"></span>
+          <span class="star star-4"></span>
 
           <div class="relative flex items-center gap-5 md:gap-6 w-full z-10">
             <div class="relative w-14 h-14 md:w-16 md:h-16 flex-shrink-0">
@@ -644,36 +645,77 @@ const pageDescription =
         rgba(248, 250, 252, 0.08),
         transparent 40%
       ),
-      radial-gradient(
-        circle at 85% 85%,
-        rgba(59, 130, 246, 0.15),
-        transparent 50%
-      ),
+      radial-gradient(ellipse at 75% 50%, rgba(2, 6, 23, 0.6), transparent 60%),
       linear-gradient(180deg, #020617 0%, #0c1e35 50%, #1e293b 100%);
   }
 
-  .time-widget-night .star-field {
-    opacity: 1;
-    background-image:
-      radial-gradient(2px 2px at 85% 15%, white, transparent),
-      radial-gradient(1px 1px at 92% 8%, white, transparent),
-      radial-gradient(2px 2px at 78% 22%, white, transparent),
-      radial-gradient(1px 1px at 88% 18%, white, transparent),
-      radial-gradient(1px 1px at 82% 12%, white, transparent),
-      radial-gradient(2px 2px at 90% 25%, white, transparent),
-      radial-gradient(1px 1px at 95% 10%, white, transparent);
-    background-size: 200% 200%;
-    background-position: 0% 0%;
+  /* Yıldızlar */
+  .time-widget-night .star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.8);
+    z-index: 20;
+    pointer-events: none;
     animation: twinkle 8s ease-in-out infinite;
   }
 
+  .time-widget-night .star-1 {
+    top: 20%;
+    right: 28%;
+    width: 5px;
+    height: 5px;
+    opacity: 0.9;
+  }
+
+  .time-widget-night .star-2 {
+    top: 30%;
+    right: 15%;
+    width: 4px;
+    height: 4px;
+    opacity: 0.7;
+    animation-delay: 2s;
+  }
+
+  .time-widget-night .star-3 {
+    top: 35%;
+    right: 22%;
+    width: 5px;
+    height: 5px;
+    opacity: 0.85;
+    animation-delay: 4s;
+  }
+
+  .time-widget-night .star-4 {
+    top: 25%;
+    right: 10%;
+    width: 4px;
+    height: 4px;
+    opacity: 0.75;
+    animation-delay: 6s;
+  }
+
+  .time-widget-day .star {
+    opacity: 0;
+  }
+
   @keyframes twinkle {
-    0%,
-    100% {
+    0% {
       opacity: 0.6;
+    }
+    25% {
+      opacity: 0.9;
     }
     50% {
       opacity: 1;
+    }
+    75% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.6;
     }
   }
 
