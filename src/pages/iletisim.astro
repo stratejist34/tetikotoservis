@@ -84,18 +84,13 @@ const pageDescription =
         </div>
 
         <!-- Typewriter mesajı widget'ın dışında -->
-        <div class="mt-4 px-5 md:px-7">
-          <div class="flex items-start">
+        <div class="mt-4 max-w-4xl mx-auto px-4">
+          <div class="h-[100px] overflow-hidden">
             <div
               id="time-widget-ticker"
-              class="text-sm md:text-base font-mono font-medium typewriter-text drop-shadow-sm whitespace-normal break-words pr-1"
+              class="text-sm md:text-base font-mono font-medium typewriter-text drop-shadow-sm leading-relaxed"
             >
             </div>
-            <span
-              id="typewriter-cursor"
-              class="typewriter-cursor typewriter-text flex-shrink-0 text-sm md:text-base"
-              >|</span
-            >
           </div>
         </div>
       </div>
@@ -393,26 +388,76 @@ const pageDescription =
           clearTimeout(typewriterTimeout);
         }
 
-        element.textContent = "";
-        let index = 0;
+        // Metni cümlelere ayır (. ? ! ile biten)
+        const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+        let currentSentence = 0;
+        let currentChar = 0;
+        let currentLineDiv: HTMLDivElement | null = null;
+        element.innerHTML = "";
 
         function type() {
           if (!element) return;
-          if (index < text.length) {
-            element.textContent += text.charAt(index);
-            index++;
-            typewriterTimeout = setTimeout(type, speed);
-          } else {
-            console.log(
-              "Typewriter tamamlandı, 5 saniye sonra tekrar başlayacak",
-            );
-            setTimeout(() => {
-              if (!element) return;
-              console.log("Typewriter yeniden başlatılıyor");
-              element.textContent = "";
-              index = 0;
-              typewriterTimeout = setTimeout(type, 2000);
-            }, 5000);
+
+          if (currentSentence < sentences.length) {
+            const sentence = sentences[currentSentence].trim();
+
+            if (currentChar === 0) {
+              // Yeni cümle için yeni div oluştur
+              currentLineDiv = document.createElement("div");
+              currentLineDiv.className = "mb-1";
+              element.appendChild(currentLineDiv);
+            }
+
+            if (currentChar < sentence.length) {
+              const char = sentence.charAt(currentChar);
+
+              // Karakteri ekle ve cursor'u inline göster
+              if (currentLineDiv) {
+                currentLineDiv.innerHTML =
+                  sentence.substring(0, currentChar + 1) +
+                  '<span class="typewriter-cursor">|</span>';
+              }
+
+              currentChar++;
+
+              // Virgül, soru işaretleri gibi noktalama işaretlerinde hafif duraklama
+              let delay = speed;
+              if (char === "," || char === ";") {
+                delay = 300; // 300ms duraklama
+              } else if (char === "?" || char === "!") {
+                delay = 400; // 400ms duraklama
+              }
+
+              typewriterTimeout = setTimeout(type, delay);
+            } else {
+              // Cümle bitti, cursor'u kaldır
+              if (currentLineDiv) {
+                currentLineDiv.innerHTML = sentence;
+              }
+
+              // Sonraki cümleye geç
+              currentSentence++;
+              currentChar = 0;
+
+              if (currentSentence < sentences.length) {
+                // Cümle sonu 800ms duraklama
+                typewriterTimeout = setTimeout(type, 800);
+              } else {
+                // Tüm cümleler bitti, baştan başla
+                console.log(
+                  "Typewriter tamamlandı, 5 saniye sonra tekrar başlayacak",
+                );
+                setTimeout(() => {
+                  if (!element) return;
+                  console.log("Typewriter yeniden başlatılıyor");
+                  element.innerHTML = "";
+                  currentSentence = 0;
+                  currentChar = 0;
+                  currentLineDiv = null;
+                  typewriterTimeout = setTimeout(type, 2000);
+                }, 5000);
+              }
+            }
           }
         }
 
@@ -455,7 +500,7 @@ const pageDescription =
         let detail = "";
         if (isDay) {
           detail =
-            "Acil bir durum mu? veya bakım ihtiyacınız mı var? İsah ustayı hemen arayabilir veya yazarak bilgi isteyebilirsiniz. Telefon ile daha hızlı iletişim kurabilirsiniz.";
+            "Acil bir durum mu? veya bakım ihtiyacınız mı var? İsah ustayı hemen arayabilir veya yazarak bilgi isteyebilirsiniz.";
         } else {
           detail =
             "Servisimiz 08:00'de açılıyor, dilerseniz WhatsApp üzerinden İsah Usta'ya not bırakabilirsiniz.";
@@ -812,16 +857,14 @@ const pageDescription =
     }
   }
 
-  /* Typewriter text color - gündüz ve gece modları için */
-  .time-widget-night ~ div .typewriter-text {
-    color: #60a5fa;
-    text-shadow: 0 0 8px rgba(96, 165, 250, 0.5);
-  }
-
-  .time-widget-day ~ div .typewriter-text {
-    color: #3b82f6;
-    text-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
-    font-weight: 600;
+  /* Typewriter text color - neon yeşili */
+  .typewriter-text {
+    color: #00ff41;
+    text-shadow:
+      0 0 10px rgba(0, 255, 65, 0.8),
+      0 0 20px rgba(0, 255, 65, 0.5),
+      0 0 30px rgba(0, 255, 65, 0.3);
+    font-weight: 500;
   }
 
   /* Typewriter cursor animation */
