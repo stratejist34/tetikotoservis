@@ -343,8 +343,12 @@ const pageDescription =
 
     function initTimeWidget() {
       // Önceki interval'i temizle
-      if (timeWidgetInterval) clearInterval(timeWidgetInterval);
-      if (typewriterTimeout) clearTimeout(typewriterTimeout);
+      if (timeWidgetInterval) window.clearInterval(timeWidgetInterval);
+      if (typewriterTimeout) window.clearTimeout(typewriterTimeout);
+      
+      const widgetTicker = document.getElementById("time-widget-ticker");
+      // Eğer widget ticker varsa, içeriğini temizle ki "donmuş" kalmasın, sıfırdan başlasın
+      if (widgetTicker) widgetTicker.innerHTML = "";
 
       const openEl = document.getElementById("service-status-open");
       const closedEl = document.getElementById("service-status-closed");
@@ -525,12 +529,28 @@ const pageDescription =
     }
 
     // Astro sayfa geçişlerinde çalışması için:
-    document.addEventListener('astro:page-load', initTimeWidget);
-    // İlk yükleme için (Astro kullanmıyorsa veya fallback olarak)
-    if (document.readyState === 'complete') {
+    let isInitialized = false;
+
+    function startWidget() {
+        // Double-fire önlemi: Eğer çok kısa süre içinde tekrar çağrılırsa ve zaten çalışıyorsa elleme
+        // Ama sayfa değiştiyse (DOM elemanları yenilendiyse) yeniden başlat
+        const widget = document.getElementById("time-widget");
+        if (!widget) {
+            isInitialized = false;
+            return; 
+        }
+
         initTimeWidget();
+        isInitialized = true;
+    }
+
+    document.addEventListener('astro:page-load', startWidget);
+    
+    // Fallback: Eğer astro:page-load çalışmazsa (ilk yüklemede bazen olabiliyor)
+    if (document.readyState === 'complete') {
+        startWidget();
     } else {
-        document.addEventListener('DOMContentLoaded', initTimeWidget);
+        document.addEventListener('DOMContentLoaded', startWidget);
     }
   </script>
 
