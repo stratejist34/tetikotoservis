@@ -61,6 +61,76 @@ const {
       ["mousedown", "keydown", "touchstart", "scroll"].forEach(function (e) {
         document.addEventListener(e, loadGA, { once: true, passive: true });
       });
+
+      // GLOBAL CLICK TRACKING (Gelişmiş Versiyon)
+      document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        // Sticky Button kendi takibini yapıyor, onu atla
+        if (link.classList.contains('sticky-btn')) return;
+
+        const href = link.href;
+        if (!href) return;
+
+        // Tıklanan Yeri (Location) Tespit Etme Fonksiyonu
+        const getLocation = (element) => {
+            if (element.closest('header') || element.closest('#main-header')) return 'header';
+            if (element.closest('footer')) return 'footer';
+            if (element.closest('#mobile-menu')) return 'mobile_menu';
+            
+            // Eğer main içindeki ilk section ise 'hero' varsayalım
+            const main = element.closest('main');
+            if (main) {
+                const sections = main.querySelectorAll('section');
+                if (sections.length > 0 && sections[0].contains(element)) return 'hero_section';
+            }
+            
+            return 'page_content'; // Diğer tüm alanlar
+        };
+
+        const location = getLocation(link);
+        const linkText = link.innerText ? link.innerText.trim().substring(0, 50) : 'icon_only';
+
+        let eventName = '';
+        let eventParams = {};
+
+        // 1. Telefon Tıklaması -> Event: phone_click
+        if (href.startsWith('tel:')) {
+            eventName = 'phone_click';
+            eventParams = {
+                'click_location': location,     // Örn: header, footer, hero_section
+                'click_text': linkText,         // Örn: "0533...", "Hemen Ara"
+                'full_action': `phone_${location}`, // Örn: phone_header, phone_footer
+                'number': href.replace('tel:', '')
+            };
+        }
+        // 2. WhatsApp Tıklaması -> Event: whatsapp_click
+        else if (href.includes('wa.me') || href.includes('whatsapp.com')) {
+            eventName = 'whatsapp_click';
+            eventParams = {
+                'click_location': location,
+                'click_text': linkText,
+                'full_action': `whatsapp_${location}` // Örn: whatsapp_mobile_menu
+            };
+        }
+        // 3. Harita/Yol Tarifi -> Event: map_click
+        else if (href.includes('maps.google') || href.includes('google.com/maps')) {
+            eventName = 'map_click';
+            eventParams = {
+                'click_location': location,
+                'click_text': linkText,
+                'full_action': `map_${location}`
+            };
+        }
+
+        // Event varsa gönder
+        if (eventName && typeof window.gtag !== 'undefined') {
+            window.gtag('event', eventName, eventParams);
+            // Test için konsola da yazalım
+            // console.log(`GA Event: ${eventName}`, eventParams);
+        }
+      }, { passive: true });
     </script>
 
     <!-- Google Fonts - Deferred to prevent render-blocking and CLS -->

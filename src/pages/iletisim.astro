@@ -337,7 +337,15 @@ const pageDescription =
   </section>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    // Global scope'ta değişkenleri tutalım ki sayfa geçişlerinde temizleyebilelim
+    let timeWidgetInterval: number | null = null;
+    let typewriterTimeout: number | null = null;
+
+    function initTimeWidget() {
+      // Önceki interval'i temizle
+      if (timeWidgetInterval) clearInterval(timeWidgetInterval);
+      if (typewriterTimeout) clearTimeout(typewriterTimeout);
+
       const openEl = document.getElementById("service-status-open");
       const closedEl = document.getElementById("service-status-closed");
 
@@ -348,6 +356,9 @@ const pageDescription =
       const widgetOrb = document.getElementById("time-widget-orb");
       const widgetOrbMask = document.getElementById("time-widget-orb-mask");
       const widgetOrbGlow = document.getElementById("time-widget-orb-glow");
+
+      // Elementler yoksa çık (başka sayfadayız demektir)
+      if (!widget || !widgetTicker) return;
 
       function updateStatus() {
         if (!openEl || !closedEl) return;
@@ -370,39 +381,35 @@ const pageDescription =
         }
       }
 
-      let typewriterTimeout: ReturnType<typeof setTimeout> | null = null;
-
       function typewriterEffect(
         element: HTMLElement | null,
         text: string,
-        speed = 80,
+        speed = 50, // Hızı biraz artırdık
       ) {
-        if (!element) {
-          console.log("Typewriter: Element bulunamadı");
-          return;
-        }
+        if (!element) return;
 
-        console.log("Typewriter başlatılıyor:", text.substring(0, 50) + "...");
+        // Önceki timeout'u temizle
+        if (typewriterTimeout) clearTimeout(typewriterTimeout);
 
-        if (typewriterTimeout) {
-          clearTimeout(typewriterTimeout);
-        }
-
-        // Metni cümlelere ayır (. ? ! ile biten)
+        // Metni cümlelere ayır
         const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
         let currentSentence = 0;
         let currentChar = 0;
         let currentLineDiv: HTMLDivElement | null = null;
+        
+        // Elementi temizle
         element.innerHTML = "";
+        // Başlangıçta görünür yap (bazen opacity 0 kalabiliyor)
+        element.style.opacity = "1";
 
         function type() {
-          if (!element) return;
+          if (!element) return; // Element gitmişse dur
 
           if (currentSentence < sentences.length) {
             const sentence = sentences[currentSentence].trim();
 
             if (currentChar === 0) {
-              // Yeni cümle için yeni div oluştur
+              // Yeni cümle için yeni div
               currentLineDiv = document.createElement("div");
               currentLineDiv.className = "mb-1";
               element.appendChild(currentLineDiv);
@@ -411,7 +418,6 @@ const pageDescription =
             if (currentChar < sentence.length) {
               const char = sentence.charAt(currentChar);
 
-              // Karakteri ekle ve cursor'u inline göster
               if (currentLineDiv) {
                 currentLineDiv.innerHTML =
                   sentence.substring(0, currentChar + 1) +
@@ -420,41 +426,31 @@ const pageDescription =
 
               currentChar++;
 
-              // Virgül, soru işaretleri gibi noktalama işaretlerinde hafif duraklama
               let delay = speed;
-              if (char === "," || char === ";") {
-                delay = 300; // 300ms duraklama
-              } else if (char === "?" || char === "!") {
-                delay = 400; // 400ms duraklama
-              }
+              if (char === "," || char === ";") delay = 300;
+              else if (char === "?" || char === "!") delay = 400;
 
-              typewriterTimeout = setTimeout(type, delay);
+              typewriterTimeout = window.setTimeout(type, delay);
             } else {
-              // Cümle bitti, cursor'u kaldır
+              // Cümle bitti
               if (currentLineDiv) {
                 currentLineDiv.innerHTML = sentence;
               }
 
-              // Sonraki cümleye geç
               currentSentence++;
               currentChar = 0;
 
               if (currentSentence < sentences.length) {
-                // Cümle sonu 800ms duraklama
-                typewriterTimeout = setTimeout(type, 800);
+                typewriterTimeout = window.setTimeout(type, 800);
               } else {
-                // Tüm cümleler bitti, baştan başla
-                console.log(
-                  "Typewriter tamamlandı, 5 saniye sonra tekrar başlayacak",
-                );
-                setTimeout(() => {
-                  if (!element) return;
-                  console.log("Typewriter yeniden başlatılıyor");
-                  element.innerHTML = "";
-                  currentSentence = 0;
-                  currentChar = 0;
-                  currentLineDiv = null;
-                  typewriterTimeout = setTimeout(type, 2000);
+                // Döngü tamamlandı, 5sn sonra tekrar
+                typewriterTimeout = window.setTimeout(() => {
+                    if (!element) return;
+                    element.innerHTML = "";
+                    currentSentence = 0;
+                    currentChar = 0;
+                    currentLineDiv = null;
+                    typewriterEffect(element, text, speed);
                 }, 5000);
               }
             }
@@ -480,36 +476,34 @@ const pageDescription =
         const now = new Date();
         const minutes = now.getHours() * 60 + now.getMinutes();
 
-        // Selamlama metni
+        // Selamlama
         let greeting = "";
-        if (minutes >= 8 * 60 && minutes < 10 * 60) {
-          greeting = "Günaydın";
-        } else if (minutes >= 10 * 60 && minutes < 17 * 60) {
-          greeting = "İyi Günler";
-        } else if (minutes >= 17 * 60 && minutes < 22 * 60) {
-          greeting = "İyi Akşamlar";
-        } else if (minutes >= 22 * 60 || minutes < 3 * 60) {
-          greeting = "İyi Geceler";
-        } else {
-          // 03:00 - 08:00
-          greeting = "İyi Sabahlar";
-        }
+        if (minutes >= 8 * 60 && minutes < 10 * 60) greeting = "Günaydın";
+        else if (minutes >= 10 * 60 && minutes < 17 * 60) greeting = "İyi Günler";
+        else if (minutes >= 17 * 60 && minutes < 22 * 60) greeting = "İyi Akşamlar";
+        else if (minutes >= 22 * 60 || minutes < 3 * 60) greeting = "İyi Geceler";
+        else greeting = "İyi Sabahlar";
 
-        // Servis durumuna göre detay mesaj
+        // Detay mesajı
         const isDay = minutes >= 8 * 60 && minutes < 19 * 60;
         let detail = "";
         if (isDay) {
-          detail =
-            "Acil bir durum mu? veya bakım ihtiyacınız mı var? İsah ustayı hemen arayabilir veya yazarak bilgi isteyebilirsiniz.";
+          detail = "Acil bir durum mu? veya bakım ihtiyacınız mı var? İsah ustayı hemen arayabilir veya yazarak bilgi isteyebilirsiniz.";
         } else {
-          detail =
-            "Servisimiz 08:00'de açılıyor, dilerseniz WhatsApp üzerinden İsah Usta'ya not bırakabilirsiniz.";
+          detail = "Servisimiz 08:00'de açılıyor, dilerseniz WhatsApp üzerinden İsah Usta'ya not bırakabilirsiniz.";
         }
 
-        widgetGreeting.textContent = greeting;
-        typewriterEffect(widgetTicker, detail);
+        // Sadece içerik değiştiyse güncelle (loop'a girmesin)
+        if (widgetGreeting.textContent !== greeting) {
+             widgetGreeting.textContent = greeting;
+        }
+        
+        // Typewriter sadece boşsa veya ilk kez çalışıyorsa başlat
+        if (widgetTicker.innerHTML === "") {
+             typewriterEffect(widgetTicker, detail);
+        }
 
-        // Gün / gece temasını güncelle
+        // Tema
         if (isDay) {
           widget.classList.add("time-widget-day");
           widget.classList.remove("time-widget-night");
@@ -519,20 +513,25 @@ const pageDescription =
         }
       }
 
-      // İlk yükleme - hemen çalıştır
+      // Başlat
       updateStatus();
+      updateTimeWidget();
 
-      // Widget için küçük bir gecikme ile başlat (DOM tam hazır olsun)
-      setTimeout(() => {
-        updateTimeWidget();
-      }, 100);
-
-      // Periyodik güncelleme
-      setInterval(() => {
+      // Periyodik güncelleme (her dakika)
+      timeWidgetInterval = window.setInterval(() => {
         updateStatus();
         updateTimeWidget();
-      }, 60 * 1000);
-    });
+      }, 60000);
+    }
+
+    // Astro sayfa geçişlerinde çalışması için:
+    document.addEventListener('astro:page-load', initTimeWidget);
+    // İlk yükleme için (Astro kullanmıyorsa veya fallback olarak)
+    if (document.readyState === 'complete') {
+        initTimeWidget();
+    } else {
+        document.addEventListener('DOMContentLoaded', initTimeWidget);
+    }
   </script>
 
   <!-- FAQ Section - Dark Theme -->
