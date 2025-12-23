@@ -454,10 +454,23 @@ const {
         animation: fadeSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
 
-      /* Smooth transition for all elements */
-      ::view-transition-group(*) {
-        animation-duration: 0.4s;
-        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      /* Mobilde view transition group animasyonunu devre dışı bırak - Performans İçin Kritik */
+      @media (min-width: 768px) {
+        ::view-transition-group(*) {
+          animation-duration: 0.4s;
+          animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
+      
+      /* Mobilde sadece root animasyonu çalışsın, diğerleri default kalsın */
+      @media (max-width: 767px) {
+         ::view-transition-group(*) {
+            animation: none !important;
+         }
+         ::view-transition-old(root),
+         ::view-transition-new(root) {
+            animation-duration: 0.2s; /* Mobilde daha hızlı geçiş */
+         }
       }
 
       /* Lenis temel stilleri */
@@ -486,7 +499,7 @@ const {
       [data-reveal] {
         opacity: 0;
         transform: translateY(10px);
-        will-change: transform, opacity;
+        /* will-change mobilde bellek sorununa yol açabilir, kaldırıldı */
         transition: none;
       }
 
