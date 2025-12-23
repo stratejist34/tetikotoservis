@@ -321,9 +321,23 @@ const {
 
       async function loadAndInit() {
         if (initialized) return;
+        
+        // Mobilde ağır animasyon kütüphanelerini HİÇ yükleme
+        // Sadece CSS transition'lar çalışsın
+        if (isMobile()) {
+            initialized = true;
+            // Mobilde elementleri görünür yap (JS beklemesinler)
+            const revealElements = document.querySelectorAll("[data-reveal]");
+            revealElements.forEach((element) => {
+                (element as HTMLElement).style.opacity = "1";
+                (element as HTMLElement).style.transform = "translateY(0)";
+            });
+            return;
+        }
+
         initialized = true;
 
-        // Dynamic import - deferred loading
+        // Dynamic import - deferred loading (Sadece Desktop)
         const [{ default: Lenis }, { gsap }, { ScrollTrigger }] =
           await Promise.all([
             import("lenis"),

@@ -388,80 +388,86 @@ const pageDescription =
       function typewriterEffect(
         element: HTMLElement | null,
         text: string,
-        speed = 50, // Hızı biraz artırdık
+        speed = 50,
       ) {
         if (!element) return;
 
-        // Önceki timeout'u temizle
-        if (typewriterTimeout) clearTimeout(typewriterTimeout);
-
-        // Metni cümlelere ayır
-        const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-        let currentSentence = 0;
-        let currentChar = 0;
-        let currentLineDiv: HTMLDivElement | null = null;
+        // Önceki işlemi temizle
+        if (typewriterTimeout) window.clearTimeout(typewriterTimeout);
         
-        // Elementi temizle
+        // Elementi hazırla
         element.innerHTML = "";
-        // Başlangıçta görünür yap (bazen opacity 0 kalabiliyor)
         element.style.opacity = "1";
 
-        function type() {
-          if (!element) return; // Element gitmişse dur
+        const sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+        let state = {
+            sentenceIndex: 0,
+            charIndex: 0,
+            currentDiv: null as HTMLDivElement | null
+        };
 
-          if (currentSentence < sentences.length) {
-            const sentence = sentences[currentSentence].trim();
+        function nextStep() {
+            if (!element) return; // Güvenlik kontrolü
 
-            if (currentChar === 0) {
-              // Yeni cümle için yeni div
-              currentLineDiv = document.createElement("div");
-              currentLineDiv.className = "mb-1";
-              element.appendChild(currentLineDiv);
-            }
-
-            if (currentChar < sentence.length) {
-              const char = sentence.charAt(currentChar);
-
-              if (currentLineDiv) {
-                currentLineDiv.innerHTML =
-                  sentence.substring(0, currentChar + 1) +
-                  '<span class="typewriter-cursor">|</span>';
-              }
-
-              currentChar++;
-
-              let delay = speed;
-              if (char === "," || char === ";") delay = 300;
-              else if (char === "?" || char === "!") delay = 400;
-
-              typewriterTimeout = window.setTimeout(type, delay);
-            } else {
-              // Cümle bitti
-              if (currentLineDiv) {
-                currentLineDiv.innerHTML = sentence;
-              }
-
-              currentSentence++;
-              currentChar = 0;
-
-              if (currentSentence < sentences.length) {
-                typewriterTimeout = window.setTimeout(type, 800);
-              } else {
-                // Döngü tamamlandı, 5sn sonra tekrar
+            // Tüm cümleler bitti mi?
+            if (state.sentenceIndex >= sentences.length) {
+                // Bekle ve başa dön
                 typewriterTimeout = window.setTimeout(() => {
-                    if (!element) return;
-                    element.innerHTML = "";
-                    currentSentence = 0;
-                    currentChar = 0;
-                    currentLineDiv = null;
-                    typewriterEffect(element, text, speed);
+                    if (element) {
+                        element.innerHTML = ""; // Temizle
+                        typewriterEffect(element, text, speed); // Baştan başla
+                    }
                 }, 5000);
-              }
+                return;
             }
-          }
+
+            const currentSentenceText = sentences[state.sentenceIndex].trim();
+
+            // Yeni cümle başlangıcı
+            if (state.charIndex === 0) {
+                state.currentDiv = document.createElement("div");
+                state.currentDiv.className = "mb-1";
+                element.appendChild(state.currentDiv);
+            }
+
+            // Karakter yazma
+            if (state.charIndex < currentSentenceText.length) {
+                const char = currentSentenceText.charAt(state.charIndex);
+                
+                if (state.currentDiv) {
+                    // Span ile cursor ekle
+                    state.currentDiv.innerHTML = 
+                        currentSentenceText.substring(0, state.charIndex + 1) + 
+                        '<span class="typewriter-cursor">|</span>';
+                }
+
+                state.charIndex++;
+                
+                // Noktalama işareti gecikmesi
+                let delay = speed;
+                if (char === "," || char === ";") delay = 300;
+                else if (char === "?" || char === "!") delay = 400;
+
+                typewriterTimeout = window.setTimeout(nextStep, delay);
+            } 
+            // Cümle bitişi
+            else {
+                // Cursor'ı temizle (sabit kalsın istemiyorsak)
+                if (state.currentDiv) {
+                     state.currentDiv.innerHTML = currentSentenceText;
+                }
+                
+                state.sentenceIndex++;
+                state.charIndex = 0;
+                state.currentDiv = null;
+
+                // Cümle arası bekleme
+                typewriterTimeout = window.setTimeout(nextStep, 800);
+            }
         }
 
-        type();
+        // Başlat
+        nextStep();
       }
 
       function updateTimeWidget() {
