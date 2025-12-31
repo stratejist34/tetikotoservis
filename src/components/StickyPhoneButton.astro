@@ -223,8 +223,13 @@ const whatsappMessage = encodeURIComponent(
                 ? Math.round((Date.now() - showTime) / 1000)
                 : 0;
 
+            const eventName =
+                btnType === "phone"
+                    ? "masaustu_arama_tiklamasi"
+                    : "masaustu_whatsapp_tiklamasi";
+
             if (typeof (window as any).gtag !== "undefined") {
-                (window as any).gtag("event", "contact_button_click", {
+                (window as any).gtag("event", eventName, {
                     device_type: deviceType,
                     button_type: btnType,
                     time_after_tooltip: timeElapsed,
@@ -290,14 +295,15 @@ const whatsappMessage = encodeURIComponent(
         right: 20px;
         bottom: 20px;
         z-index: 9999;
-        display: flex;
+        display: none; /* Mobilde gizli, Aksiyon Merkezi ile çakışmayı önlemek için */
         flex-direction: column;
         gap: 10px;
     }
 
-    /* Desktop'ta sol altta */
+    /* Desktop'ta sol altta ve görünür */
     @media (min-width: 768px) {
         .sticky-contact-wrapper {
+            display: flex;
             left: 20px;
             right: auto;
             bottom: 30px;

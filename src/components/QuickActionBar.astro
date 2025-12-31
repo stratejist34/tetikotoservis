@@ -310,6 +310,11 @@
             iconOpen?.classList.add("hidden");
             iconClose?.classList.remove("hidden");
             document.body.style.overflow = "hidden";
+
+            // Analytics: Aksiyon Merkezi açıldı
+            if (typeof (window as any).gtag !== "undefined") {
+                (window as any).gtag("event", "mobil_aksiyon_merkezi_acildi");
+            }
         } else {
             overlay?.classList.add("opacity-0");
             drawer?.classList.add("translate-y-full");
@@ -334,13 +339,29 @@
         .forEach((item) => {
             item.addEventListener("click", () => {
                 const actionName = item.getAttribute("data-action");
-                if (typeof (window as any).gtag !== "undefined") {
-                    (window as any).gtag("event", "quick_action_click", {
-                        action_name: actionName,
-                        click_location: item.classList.contains("hub-item")
-                            ? "mobile_action_hub"
-                            : "desktop_action_bar",
-                    });
+                const isHubItem = item.classList.contains("hub-item");
+                let eventName = "";
+
+                if (isHubItem) {
+                    // Mobil Aksiyon Merkezi
+                    if (actionName === "Motor Arızası")
+                        eventName = "mobil_ariza_karti_tiklamasi";
+                    else if (actionName === "Periyodik Bakım")
+                        eventName = "mobil_bakim_karti_tiklamasi";
+                    else if (actionName === "Hemen Sor")
+                        eventName = "mobil_arama_karti_tiklamasi";
+                } else {
+                    // Masaüstü Bar
+                    if (actionName === "Motor Arızası")
+                        eventName = "masaustu_bar_ariza_tiklamasi";
+                    else if (actionName === "Periyodik Bakım")
+                        eventName = "masaustu_bar_bakim_tiklamasi";
+                    else if (actionName === "Hemen Sor")
+                        eventName = "masaustu_bar_arama_tiklamasi";
+                }
+
+                if (eventName && typeof (window as any).gtag !== "undefined") {
+                    (window as any).gtag("event", eventName);
                 }
             });
         });
