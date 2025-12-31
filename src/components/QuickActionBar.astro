@@ -131,31 +131,42 @@
     <!-- Floating Trigger Button -->
     <button
         id="hub-trigger"
-        class="fixed bottom-24 right-6 w-16 h-16 bg-orange-600 text-white rounded-2xl shadow-[0_20px_40px_-10px_rgba(234,88,12,0.5)] border border-orange-500/50 z-[45] flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95"
-        aria-label="Aksiyon Merkezi"
+        class="fixed bottom-20 right-6 w-16 h-16 bg-orange-600 text-white rounded-2xl shadow-[0_20px_40px_-10px_rgba(234,88,12,0.5)] border border-orange-500/50 z-[45] flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 group overflow-hidden"
+        aria-label="İletişim ve Destek"
     >
+        <!-- Glossy Parlama Efekti -->
+        <span
+            class="absolute inset-0 w-full h-full bg-gradient-to-tr from-white/10 to-white/30 skew-x-[-20deg] translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000"
+        ></span>
+
+        <!-- Telefon İkonu (Yeni) -->
         <svg
-            class="w-8 h-8 hub-icon-open"
+            class="w-8 h-8 hub-icon-open phone-ring"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            ><path
+        >
+            <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2.5"
-                d="M4 6h16M4 12h16m-7 6h7"></path></svg
-        >
+                d="M3 5.5A2.5 2.5 0 015.5 3h1.342a1 1 0 01.996.81l.628 3.77a1 1 0 01-.496 1.05l-2.236 1.118a1 1 0 00-.51.921c.033.462.13.914.288 1.341a1 1 0 00.584.629l2.251 1.126a1 1 0 01.559 1.051l-.628 3.77a1 1 0 01-.996.81h-1.342A2.5 2.5 0 013 18.5V5.5zM16 3a1 1 0 011 1v2a1 1 0 01-1 1h-2a1 1 0 01-1-1V4a1 1 0 011-1h2zM15 11h3a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-3a1 1 0 011-1z"
+            ></path>
+        </svg>
+
+        <!-- Kapat İkonu -->
         <svg
             class="w-8 h-8 hub-icon-close hidden"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            ><path
+        >
+            <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2.5"
-                d="M6 18L18 6M6 6l12 12"></path></svg
-        >
+                d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
     </button>
 
     <!-- Hub Overlay / Drawer -->
@@ -388,5 +399,40 @@
 
     #hub-trigger {
         animation: pulse-orange 2s infinite;
+    }
+
+    /* Telefon Çınlama Animasyonu */
+    @keyframes phone-ring-animation {
+        0% {
+            transform: rotate(0);
+        }
+        5% {
+            transform: rotate(15deg);
+        }
+        10% {
+            transform: rotate(-15deg);
+        }
+        15% {
+            transform: rotate(15deg);
+        }
+        20% {
+            transform: rotate(-15deg);
+        }
+        25% {
+            transform: rotate(10deg);
+        }
+        30% {
+            transform: rotate(-10deg);
+        }
+        35% {
+            transform: rotate(0);
+        }
+        100% {
+            transform: rotate(0);
+        }
+    }
+
+    .phone-ring {
+        animation: phone-ring-animation 2s infinite;
     }
 </style>
