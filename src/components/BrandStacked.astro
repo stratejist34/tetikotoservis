@@ -61,10 +61,10 @@ const brands = [
 
 <section class="relative bg-slate-50 pt-32 pb-0" id="brand-stacked">
   <!-- Section Header -->
-  <div class="container mx-auto px-4 mb-16 text-center">
-    <span class="inline-block text-orange-500 font-bold tracking-[0.3em] text-sm uppercase mb-4">Uzmanlık Alanlarımız</span>
-    <h2 class="text-4xl lg:text-6xl font-bold text-slate-900 font-heading tracking-tight">
-      MARKA <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">SERVİSLERİMİZ</span>
+  <div class="container mx-auto px-4 mb-20 text-center">
+    <span class="inline-block text-orange-500 font-button tracking-[0.4em] text-[10px] uppercase mb-4 animate-fade-up">Uzmanlık Alanlarımız</span>
+    <h2 class="text-4xl lg:text-6xl text-slate-900 font-hero tracking-[0.1em] leading-tight animate-fade-up delay-100">
+      PREMIUM <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">SERVİSLERİMİZ</span>
     </h2>
   </div>
 
@@ -75,7 +75,7 @@ const brands = [
         class="mb-8 last:mb-0"
         style={`position: sticky; top: calc(6rem + ${index * 2}rem); z-index: ${index + 10};`}
       >
-        <div class={`group relative rounded-2xl lg:rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50 bg-gradient-to-br ${brand.color}`}>
+        <div class={`group relative rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-gradient-to-br ${brand.color} transition-all duration-700`}>
           
           <!-- Content Container -->
           <div class="relative min-h-[320px] md:min-h-[280px] lg:min-h-[480px] flex flex-col lg:flex-row">
@@ -84,23 +84,23 @@ const brands = [
             <div class="w-full lg:w-1/2 p-6 lg:p-12 flex flex-col justify-between relative z-20">
               
               <div class="flex items-start justify-between">
-                <span class="text-5xl lg:text-7xl font-black text-white/10 font-heading">{brand.index}</span>
+                <span class="text-7xl lg:text-9xl font-button text-white/5 leading-none tracking-tighter">{brand.index}</span>
               </div>
 
               <div class="mt-8 lg:mt-0">
-                <h3 class="text-3xl lg:text-5xl font-bold text-white mb-2 font-heading tracking-tight">
+                <h3 class="text-3xl lg:text-5xl text-white mb-4 font-button tracking-widest leading-tight uppercase">
                   {brand.name}
                 </h3>
-                <p class={`text-base lg:text-lg font-light italic tracking-wide mb-6 ${brand.accent}`}>
-                  "{brand.slogan}"
+                <p class={`text-sm lg:text-base font-button tracking-[0.3em] mb-8 uppercase ${brand.accent}`}>
+                  {brand.slogan}
                 </p>
-                <p class="text-slate-300 text-base leading-relaxed max-w-md mb-8 font-sans font-light">
+                <p class="text-slate-300/80 text-lg leading-relaxed max-w-md mb-10 font-sans font-medium">
                   {brand.description}
                 </p>
                 
-                <a href={brand.link} class="inline-flex items-center gap-3 group/btn cursor-pointer bg-white/10 hover:bg-white px-6 py-3 rounded-full transition-all duration-300">
-                  <span class="text-white group-hover/btn:text-slate-900 font-semibold tracking-wide text-sm uppercase transition-colors">Servisi İncele</span>
-                  <svg class="w-5 h-5 text-white group-hover/btn:text-slate-900 transform group-hover/btn:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                <a href={brand.link} class="inline-flex items-center gap-4 group/btn cursor-pointer bg-white/10 hover:bg-white px-8 py-4 rounded-2xl transition-all duration-500 backdrop-blur-xl border border-white/10 hover:border-white">
+                  <span class="text-white group-hover/btn:text-slate-900 font-button tracking-widest text-xs uppercase transition-all duration-500">DENEYİMİ KEŞFET</span>
+                  <svg class="w-5 h-5 text-white group-hover/btn:text-slate-900 transform group-hover/btn:rotate-[-45deg] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
               </div>
             </div>
@@ -123,9 +123,9 @@ const brands = [
               <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent lg:from-black/60 lg:via-transparent lg:to-transparent"></div>
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden"></div>
               
-              <!-- Logo - Sağ Alt Köşe -->
-              <div class="absolute bottom-6 right-6 w-[77px] h-[77px] bg-white/10 backdrop-blur-md rounded-xl p-3 flex items-center justify-center border border-white/20 z-30">
-                <img src={brand.logo} alt={brand.name} class="w-full h-full object-contain" />
+              <!-- Logo - Premium Floating Style -->
+              <div class="absolute bottom-10 right-10 w-24 h-24 bg-white/5 backdrop-blur-3xl rounded-3xl p-5 flex items-center justify-center border border-white/10 z-30 shadow-2xl group-hover:scale-110 transition-transform duration-700">
+                <img src={brand.logo} alt={brand.name} class="w-full h-full object-contain filter brightness-0 invert opacity-80" />
               </div>
             </div>
 

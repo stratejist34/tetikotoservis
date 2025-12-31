@@ -3,6 +3,8 @@ import Header from "../components/Header.astro";
 import { ViewTransitions } from "astro:transitions";
 import StickyPhoneButton from "../components/StickyPhoneButton.astro";
 import ScrollProgressBar from "../components/ScrollProgressBar.astro";
+import iOSCallSheet from "../components/iOSCallSheet.astro";
+import ExitIntentPopup from "../components/ExitIntentPopup.astro";
 
 interface Props {
   title: string;
@@ -63,97 +65,94 @@ const {
       });
 
       // GLOBAL CLICK TRACKING (Gelişmiş Versiyon)
-      document.addEventListener('click', function(e) {
-        const link = e.target.closest('a');
-        if (!link) return;
+      document.addEventListener(
+        "click",
+        function (e) {
+          const link = e.target.closest("a");
+          if (!link) return;
 
-        // Sticky Button kendi takibini yapıyor, onu atla
-        if (link.classList.contains('sticky-btn')) return;
+          // Sticky Button kendi takibini yapıyor, onu atla
+          if (link.classList.contains("sticky-btn")) return;
 
-        const href = link.href;
-        if (!href) return;
+          const href = link.href;
+          if (!href) return;
 
-        // Tıklanan Yeri (Location) Tespit Etme Fonksiyonu
-        const getLocation = (element) => {
-            if (element.closest('header') || element.closest('#main-header')) return 'header';
-            if (element.closest('footer')) return 'footer';
-            if (element.closest('#mobile-menu')) return 'mobile_menu';
-            
+          // Tıklanan Yeri (Location) Tespit Etme Fonksiyonu
+          const getLocation = (element) => {
+            if (element.closest("header") || element.closest("#main-header"))
+              return "header";
+            if (element.closest("footer")) return "footer";
+            if (element.closest("#mobile-menu")) return "mobile_menu";
+
             // Eğer main içindeki ilk section ise 'hero' varsayalım
-            const main = element.closest('main');
+            const main = element.closest("main");
             if (main) {
-                const sections = main.querySelectorAll('section');
-                if (sections.length > 0 && sections[0].contains(element)) return 'hero_section';
+              const sections = main.querySelectorAll("section");
+              if (sections.length > 0 && sections[0].contains(element))
+                return "hero_section";
             }
-            
-            return 'page_content'; // Diğer tüm alanlar
-        };
 
-        const location = getLocation(link);
-        const linkText = link.innerText ? link.innerText.trim().substring(0, 50) : 'icon_only';
+            return "page_content"; // Diğer tüm alanlar
+          };
 
-        let eventName = '';
-        let eventParams = {};
+          const location = getLocation(link);
+          const linkText = link.innerText
+            ? link.innerText.trim().substring(0, 50)
+            : "icon_only";
 
-        // 1. Telefon Tıklaması -> Event: phone_click
-        if (href.startsWith('tel:')) {
-            eventName = 'phone_click';
+          let eventName = "";
+          let eventParams = {};
+
+          // 1. Telefon Tıklaması -> Event: phone_click
+          if (href.startsWith("tel:")) {
+            eventName = "phone_click";
             eventParams = {
-                'click_location': location,     // Örn: header, footer, hero_section
-                'click_text': linkText,         // Örn: "0533...", "Hemen Ara"
-                'full_action': `phone_${location}`, // Örn: phone_header, phone_footer
-                'number': href.replace('tel:', '')
+              click_location: location, // Örn: header, footer, hero_section
+              click_text: linkText, // Örn: "0533...", "Hemen Ara"
+              full_action: `phone_${location}`, // Örn: phone_header, phone_footer
+              number: href.replace("tel:", ""),
             };
-        }
-        // 2. WhatsApp Tıklaması -> Event: whatsapp_click
-        else if (href.includes('wa.me') || href.includes('whatsapp.com')) {
-            eventName = 'whatsapp_click';
+          }
+          // 2. WhatsApp Tıklaması -> Event: whatsapp_click
+          else if (href.includes("wa.me") || href.includes("whatsapp.com")) {
+            eventName = "whatsapp_click";
             eventParams = {
-                'click_location': location,
-                'click_text': linkText,
-                'full_action': `whatsapp_${location}` // Örn: whatsapp_mobile_menu
+              click_location: location,
+              click_text: linkText,
+              full_action: `whatsapp_${location}`, // Örn: whatsapp_mobile_menu
             };
-        }
-        // 3. Harita/Yol Tarifi -> Event: map_click
-        else if (href.includes('maps.google') || href.includes('google.com/maps')) {
-            eventName = 'map_click';
+          }
+          // 3. Harita/Yol Tarifi -> Event: map_click
+          else if (
+            href.includes("maps.google") ||
+            href.includes("google.com/maps")
+          ) {
+            eventName = "map_click";
             eventParams = {
-                'click_location': location,
-                'click_text': linkText,
-                'full_action': `map_${location}`
+              click_location: location,
+              click_text: linkText,
+              full_action: `map_${location}`,
             };
-        }
+          }
 
-        // Event varsa gönder
-        if (eventName && typeof window.gtag !== 'undefined') {
-            window.gtag('event', eventName, eventParams);
+          // Event varsa gönder
+          if (eventName && typeof window.gtag !== "undefined") {
+            window.gtag("event", eventName, eventParams);
             // Test için konsola da yazalım
             // console.log(`GA Event: ${eventName}`, eventParams);
-        }
-      }, { passive: true });
+          }
+        },
+        { passive: true },
+      );
     </script>
 
-    <!-- Google Fonts - Deferred to prevent render-blocking and CLS -->
+    <!-- Google Fonts - Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Defer font loading to prevent render-blocking -->
     <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&family=Manrope:wght@400;600;700&display=optional"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&family=Manrope:wght@400;600;700&display=optional"
+      href="https://fonts.googleapis.com/css2?family=Electrolize&family=Oxanium:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Saira:wght@400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
     />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:wght@700;800&family=Manrope:wght@400;600;700&display=optional"
-        rel="stylesheet"
-      />
-    </noscript>
 
     <!-- Page-specific head content (preloads, etc.) -->
     <slot name="head" />
@@ -180,18 +179,44 @@ const {
     <style is:inline>
       /* Font fallback with matched metrics to prevent CLS */
       @font-face {
-        font-family: "Kanit-fallback";
-        src: local("Arial Black"), local("Arial");
-        ascent-override: 105%;
-        descent-override: 35%;
-        line-height-override: 1.2;
+        font-family: "ManifoldExtended";
+        src: url("/fonts/manifold-extended/ManifoldExtendedCF-Bold.woff2")
+          format("woff2");
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
       }
       @font-face {
-        font-family: "Manrope-fallback";
+        font-family: "ManifoldExtended";
+        src: url("/fonts/manifold-extended/ManifoldExtendedCF-Medium.woff2")
+          format("woff2");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Electrolize-fallback";
         src: local("Arial"), local("Helvetica");
         ascent-override: 100%;
-        descent-override: 25%;
-        line-height-override: 1.5;
+        descent-override: 20%;
+      }
+      @font-face {
+        font-family: "Syne-fallback";
+        src: local("Arial"), local("Helvetica");
+        ascent-override: 100%;
+        descent-override: 20%;
+      }
+      :root {
+        --brand-blue: #002c5f;
+        --brand-orange: #f97316;
+        --brand-red: #eb0a1e;
+        --bg-dark: #020617;
+        --bg-card: rgba(15, 23, 42, 0.6);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+        --accent-gradient: linear-gradient(135deg, #002c5f 0%, #0284c7 100%);
+        --premium-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
       }
       *,
       *::before,
@@ -204,13 +229,33 @@ const {
       body {
         margin: 0;
         padding: 0;
+        scroll-behavior: smooth;
       }
       body {
-        font-family: Manrope, "Manrope-fallback", system-ui, sans-serif;
-        background: #0f172a;
+        font-family: "Syne", "Syne-fallback", system-ui, sans-serif;
+        background: #020617;
+        color: #f8fafc;
       }
       .font-heading {
-        font-family: Kanit, "Kanit-fallback", system-ui, sans-serif;
+        font-family:
+          "Electrolize", "Electrolize-fallback", system-ui, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .font-hero {
+        font-family: "ManifoldExtended", sans-serif;
+        font-weight: bold;
+        letter-spacing: 0.02em;
+      }
+      .font-hero-alt {
+        font-family: "ManifoldExtended", sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+      }
+      .font-button {
+        font-family: "Oxanium", cursive, sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
       /* Hero section - prevent CLS with fixed dimensions */
       .hero-title {
@@ -300,6 +345,8 @@ const {
     </main>
 
     <StickyPhoneButton />
+    <iOSCallSheet></iOSCallSheet>
+    <ExitIntentPopup />
 
     <script>
       // Defer all animation libraries until well after LCP
@@ -321,18 +368,18 @@ const {
 
       async function loadAndInit() {
         if (initialized) return;
-        
+
         // Mobilde ağır animasyon kütüphanelerini HİÇ yükleme
         // Sadece CSS transition'lar çalışsın
         if (isMobile()) {
-            initialized = true;
-            // Mobilde elementleri görünür yap (JS beklemesinler)
-            const revealElements = document.querySelectorAll("[data-reveal]");
-            revealElements.forEach((element) => {
-                (element as HTMLElement).style.opacity = "1";
-                (element as HTMLElement).style.transform = "translateY(0)";
-            });
-            return;
+          initialized = true;
+          // Mobilde elementleri görünür yap (JS beklemesinler)
+          const revealElements = document.querySelectorAll("[data-reveal]");
+          revealElements.forEach((element) => {
+            (element as HTMLElement).style.opacity = "1";
+            (element as HTMLElement).style.transform = "translateY(0)";
+          });
+          return;
         }
 
         initialized = true;
@@ -475,16 +522,16 @@ const {
           animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         }
       }
-      
+
       /* Mobilde sadece root animasyonu çalışsın, diğerleri default kalsın */
       @media (max-width: 767px) {
-         ::view-transition-group(*) {
-            animation: none !important;
-         }
-         ::view-transition-old(root),
-         ::view-transition-new(root) {
-            animation-duration: 0.2s; /* Mobilde daha hızlı geçiş */
-         }
+        ::view-transition-group(*) {
+          animation: none !important;
+        }
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+          animation-duration: 0.2s; /* Mobilde daha hızlı geçiş */
+        }
       }
 
       /* Lenis temel stilleri */

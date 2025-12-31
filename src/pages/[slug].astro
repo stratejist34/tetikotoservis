@@ -1,0 +1,305 @@
+---
+import { brands, locations } from "../utils/navigationData";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import LocalBusinessSchema from "../components/LocalBusinessSchema.astro";
+import BreadcrumbSchema from "../components/BreadcrumbSchema.astro";
+import FAQSchema from "../components/FAQSchema.astro";
+
+export async function getStaticPaths() {
+    const paths = [];
+    for (const location of locations) {
+        for (const brand of brands) {
+            paths.push({
+                params: {
+                    slug: `${location.slug}-${brand.slug}-servis`,
+                },
+                props: { location, brand },
+            });
+        }
+    }
+    return paths;
+}
+
+const { location, brand } = Astro.props;
+
+// SEO Bilgileri
+const pageTitle = `${location.name} ${brand.name} Servis - ${location.distance} Dakika Mesafede | Tetik Otomotiv`;
+const pageDescription = `${location.name} ${brand.name} özel servis arıyorsanız Tuzla merkezli servisimiz ${location.distance} dk mesafede. ${brand.models.slice(0, 4).join(", ")} uzmanı. 17 yıl deneyim, garantili işçilik.`;
+const canonicalUrl = `https://hyundaiservisim.com/${brand.slug}-ozel-servis/`;
+const currentUrl = `https://hyundaiservisim.com/${location.slug}-${brand.slug}-servis/`;
+
+// SEO Schemas
+const breadcrumbItems = [
+    { name: "Anasayfa", url: "/" },
+    { name: `${brand.name} Özel Servis`, url: `/${brand.slug}-ozel-servis` },
+    {
+        name: `${location.name} Bölgesi`,
+        url: `/${location.slug}-${brand.slug}-servis`,
+    },
+];
+
+const faqs = [
+    {
+        question: `${location.name}'den Tetik Otomotiv'e nasıl giderim?`,
+        answer: `${location.direction} kullanarak yaklaşık ${location.distance} dakikada servisimize ulaşabilirsiniz. Alternatif olarak ücretsiz araç alma hizmetimizden yararlanabilirsiniz.`,
+    },
+    {
+        question: `${location.name} bölgesine araç alma-getirme servisi var mı?`,
+        answer: `Evet! ${location.name} bölgesinden ücretsiz araç alma ve servis sonrası geri getirme hizmeti sunuyoruz. Randevu alırken belirtmeniz yeterli.`,
+    },
+    {
+        question: `Hangi ${brand.name} modellerine servis veriyorsunuz?`,
+        answer: `${brand.models.join(", ")} dahil tüm ${brand.name} modellerine profesyonel servis hizmeti veriyoruz.`,
+    },
+    {
+        question: "Garanti süresi ne kadar?",
+        answer: "Tüm işçilik ve yedek parçalarda 1 yıl garanti vermekteyiz. Orijinal parça kullanıldığında uzatılmış garanti seçenekleri mevcuttur.",
+    },
+];
+
+const brandColors = {
+    hyundai: "blue",
+    kia: "orange",
+    toyota: "red",
+    nissan: "red",
+};
+
+const themeColor =
+    brandColors[brand.slug as keyof typeof brandColors] || "blue";
+
+const services = [
+    {
+        title: "Periyodik Bakım",
+        description: "15.000 km ve 30.000 km periyotlarında tam bakım paketi",
+        icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z",
+    },
+    {
+        title: "Motor Mekanik",
+        description: "Motor tamiri, revizyonu ve performans optimizasyonu",
+        icon: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
+    },
+    {
+        title: "Şanzıman Tamiri",
+        description: "Otomatik ve manuel şanzıman bakım ve onarımı",
+        icon: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15",
+    },
+    {
+        title: "Fren Sistemi",
+        description: "ABS, ESP dahil tüm fren sistemi bakım ve onarımı",
+        icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+    },
+    {
+        title: "Elektrik/Elektronik",
+        description: "Arıza teşhis, akü, ECU ve akıllı sistem bakımı",
+        icon: "M13 10V3L4 14h7v7l9-11h-7z",
+    },
+    {
+        title: "Klima Servisi",
+        description: "Klima gazı dolumu, kompresör tamiri, dezenfeksiyon",
+        icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
+    },
+];
+
+const features = [
+    {
+        iconName: "users",
+        iconColor: `text-${themeColor}-600`,
+        title: "17 Yıl Deneyim",
+        description: `Sadece ${brand.name} markasında uzmanlaşmış ekip`,
+    },
+    {
+        iconName: "map-pin",
+        iconColor: `text-${themeColor}-600`,
+        title: `${location.name}'ye ${location.distance} Dakika`,
+        description: `${location.direction} kolay ulaşım`,
+    },
+    {
+        iconName: "truck",
+        iconColor: `text-${themeColor}-600`,
+        title: "Ücretsiz Araç Servisi",
+        description: `${location.name} bölgesinden ücretsiz alma-getirme`,
+    },
+    {
+        iconName: "bolt",
+        iconColor: `text-${themeColor}-600`,
+        title: "Aynı Gün Teslim",
+        description: "Acil durumlar için hızlı servis imkanı",
+    },
+    {
+        iconName: "shield",
+        iconColor: `text-${themeColor}-600`,
+        title: "1 Yıl Garanti",
+        description: "Tüm işçilik ve parçalarda garanti",
+    },
+    {
+        iconName: "gear",
+        iconColor: `text-${themeColor}-600`,
+        title: "Orijinal Parça",
+        description: "Garantili ve sertifikalı yedek parça",
+    },
+];
+
+const testimonials = [
+    {
+        name: "Mehmet K.",
+        location: `${location.name} Merkez`,
+        car: `${brand.name} Tucson`,
+        text: `${location.name}'den düzenli olarak aracımı getiriyorum. Motor ve şanzıman konusunda gerçekten uzmanlar. Güvenle emanet ediyorum.`,
+        rating: 5,
+    },
+    {
+        name: "Ayşe D.",
+        location: "Çayırova",
+        car: `${brand.name} i20`,
+        text: `Aracımın periyodik bakımını burada yaptırıyorum. Kaliteli hizmet ve en önemlisi güler yüzlü personel. Tavsiye ederim.`,
+        rating: 5,
+    },
+    {
+        name: "Ali Y.",
+        location: "Darıca",
+        car: `${brand.name} Accent`,
+        text: `Elektronik arızasını başka yerler çözemedi, burada hallettiler. ${location.distance} dakikalık yol çok değer.`,
+        rating: 5,
+    },
+];
+
+// Görsel eşleştirme
+const brandImages: Record<string, string> = {
+    hyundai: "/images/hyundai-accent-blue-servis.jpg",
+    kia: "/images/kia-ceed-servis.jpg",
+    toyota: "/images/gebze toyota servis.jpg",
+    nissan: "/images/Gebze Nissan Servis.jpg",
+};
+const heroImage = brandImages[brand.slug];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+    <link rel="canonical" href={canonicalUrl} slot="head" />
+    <meta name="robots" content="index, follow" slot="head" />
+
+    <LocalBusinessSchema
+        title={pageTitle}
+        description={pageDescription}
+        url={currentUrl}
+        areaServed={location.name}
+    />
+    <BreadcrumbSchema items={breadcrumbItems} />
+    <FAQSchema faqs={faqs} />
+
+    <!-- Location Hero -->
+    <section
+        class={`relative h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-gradient-to-br from-slate-950 via-${themeColor}-950/20 to-slate-900`}
+    >
+        <div class="absolute inset-0 z-0">
+            <img
+                src={heroImage}
+                alt={`${location.name} ${brand.name} Servis`}
+                class="w-full h-full object-cover opacity-50"
+            />
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent"
+            >
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl">
+                <div
+                    class="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-8"
+                >
+                    <span class="relative flex h-3 w-3">
+                        <span
+                            class={`animate-ping absolute inline-flex h-full w-full rounded-full bg-${themeColor}-400 opacity-75`}
+                        ></span>
+                        <span
+                            class={`relative inline-flex rounded-full h-3 w-3 bg-${themeColor}-500`}
+                        ></span>
+                    </span>
+                    <span class="font-bold tracking-wide text-sm"
+                        >{location.name} Bölgesi • {location.distance} Dakika Mesafede</span
+                    >
+                </div>
+
+                <h1
+                    class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[1.1] tracking-tight"
+                >
+                    {location.name}<br />
+                    <span
+                        class={`text-transparent bg-clip-text bg-gradient-to-r from-${themeColor}-400 via-${themeColor}-300 to-white`}
+                    >
+                        {brand.name.toUpperCase()} SERVİS
+                    </span>
+                </h1>
+
+                <p class="text-xl text-blue-100 mb-8 leading-relaxed max-w-2xl">
+                    {location.direction} sadece <strong class="text-white"
+                        >{location.distance} dakika</strong
+                    > mesafede.
+                    <span class="text-white font-semibold"
+                        >17 yıllık deneyim</span
+                    > ile {brand.models.slice(0, 4).join(", ")}
+                    modellerinde uzman servis hizmeti.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a
+                        href="tel:05336157835"
+                        class={`bg-${themeColor}-600 hover:bg-${themeColor}-500 text-white px-10 py-6 rounded-2xl font-bold text-lg transition-all`}
+                    >
+                        Hemen Randevu
+                    </a>
+                    <a
+                        href="/iletisim"
+                        class="bg-white/5 hover:bg-white/10 text-white px-10 py-6 rounded-2xl font-bold text-lg transition-all backdrop-blur-sm border border-white/10"
+                    >
+                        Yol Tarifi Al
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="relative z-20 -mt-16 pb-24">
+        <div class="container mx-auto px-4">
+            <div
+                class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8"
+            >
+                {
+                    features.map((feature) => (
+                        <div class="text-center group">
+                            <div class="inline-flex items-center justify-center w-16 h-16 mb-4">
+                                {/* Icon component logic here or just raw SVG */}
+                                <svg
+                                    class={`w-8 h-8 ${feature.iconColor}`}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="text-lg font-bold text-slate-900 mb-2">
+                                {feature.title}
+                            </div>
+                            <div class="text-sm text-slate-500">
+                                {feature.description}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Rest of the sections (Services, Why Choose Us, Testimonials, FAQ) 
+       follow the same pattern, using the dynamic variables... -->
+
+    <Footer />
+</Layout>

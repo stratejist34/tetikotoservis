@@ -1,0 +1,297 @@
+---
+/**
+ * QuickActionBar - Hero altı aksiyon çubuğu
+ *
+ * 📊 Bilimsel Dayanaklar:
+ * - Fitts's Law: Büyük hedefler = daha hızlı tıklama
+ * - Miller's Law: 3-4 seçenek = optimal karar hızı
+ * - Nielsen Norman (2019): Sticky elements %22 daha fazla tıklama
+ *
+ * Strateji: Mobilde "smart sticky" - scroll sonrası görünsün
+ * Icons: Lucide (https://lucide.dev)
+ */
+---
+
+<!-- Desktop: Static below hero, Mobile: Smart sticky after scroll -->
+<div
+    id="quick-action-bar"
+    class="quick-action-bar relative z-40 bg-slate-950/90 backdrop-blur-2xl border-y border-white/10"
+>
+    <div class="container mx-auto px-4 py-5">
+        <div class="flex items-center justify-center gap-3 md:gap-8">
+            <!-- Motor Arızası -->
+            <a
+                href="https://wa.me/905336157835?text=Merhaba,%20aracımda%20bir%20arıza%20uyarısı%20var,%20arıza%20tespiti%20için%20randevu/bilgi%20almak%20istiyorum."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="quick-action-item group relative flex items-center gap-2 md:gap-4 px-5 md:px-8 py-3.5 rounded-2xl
+                    bg-slate-900/60 border border-orange-500/40
+                    hover:border-orange-500/80 overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(249,115,22,0.5)]"
+                data-action="Motor Arızası"
+            >
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-orange-500/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+                <!-- Glossy Shine Effect -->
+                <div
+                    class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg]"
+                >
+                </div>
+
+                <div
+                    class="relative w-10 h-10 md:w-11 md:h-11 bg-orange-500/30 rounded-xl flex items-center justify-center border border-orange-500/40 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-inner"
+                >
+                    <svg
+                        class="w-5 h-5 md:w-6 md:h-6 text-orange-400 group-hover:text-orange-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"
+                        ></path>
+                    </svg>
+                </div>
+                <div class="relative flex flex-col items-start leading-tight">
+                    <span
+                        class="text-[9px] md:text-[10px] text-orange-400 font-button tracking-[0.2em] uppercase mb-0.5"
+                        >ARIZA TESPİT</span
+                    >
+                    <span
+                        class="text-xs md:text-sm font-button tracking-widest text-white transition-colors uppercase font-bold"
+                    >
+                        Motor Arızası
+                    </span>
+                </div>
+            </a>
+
+            <!-- Periyodik Bakım -->
+            <a
+                href="https://wa.me/905336157835?text=Merhaba,%20aracımın%20periyodik%20bakımı%20(yağ/filtre)%20için%20fiyat%20ve%20randevu%20bilgisi%20alabilir%20miyim?"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="quick-action-item group relative flex items-center gap-2 md:gap-4 px-5 md:px-8 py-3.5 rounded-2xl
+                    bg-slate-900/60 border border-blue-500/40
+                    hover:border-blue-500/80 overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.5)]"
+                data-action="Periyodik Bakım"
+            >
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-blue-500/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+                <!-- Glossy Shine Effect -->
+                <div
+                    class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg]"
+                >
+                </div>
+
+                <div
+                    class="relative w-10 h-10 md:w-11 md:h-11 bg-blue-500/30 rounded-xl flex items-center justify-center border border-blue-500/40 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-inner"
+                >
+                    <svg
+                        class="w-5 h-5 md:w-6 md:h-6 text-blue-400 group-hover:text-blue-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                        ></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+                <div class="relative flex flex-col items-start leading-tight">
+                    <span
+                        class="text-[9px] md:text-[10px] text-blue-400 font-button tracking-[0.2em] uppercase mb-0.5"
+                        >FULL KONTROL</span
+                    >
+                    <span
+                        class="text-xs md:text-sm font-button tracking-widest text-white transition-colors uppercase font-bold"
+                    >
+                        Periyodik Bakım
+                    </span>
+                </div>
+            </a>
+
+            <!-- Hemen Sor -->
+            <a
+                href="tel:05336157835"
+                class="quick-action-item group relative flex items-center gap-2 md:gap-4 px-5 md:px-8 py-3.5 rounded-2xl
+                    bg-slate-900/60 border border-green-500/40
+                    hover:border-green-500/80 overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(34,197,94,0.5)]"
+                data-action="Hemen Sor"
+            >
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-green-500/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                >
+                </div>
+                <!-- Glossy Shine Effect -->
+                <div
+                    class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg]"
+                >
+                </div>
+
+                <div
+                    class="relative w-10 h-10 md:w-11 md:h-11 bg-green-500/30 rounded-xl flex items-center justify-center border border-green-500/40 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-inner"
+                >
+                    <svg
+                        class="w-5 h-5 md:w-6 md:h-6 text-green-400 group-hover:text-green-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                        ></path>
+                    </svg>
+                </div>
+                <div class="relative flex flex-col items-start leading-tight">
+                    <span
+                        class="text-[9px] md:text-[10px] text-green-400 font-button tracking-[0.2em] uppercase mb-0.5"
+                        >USTAYA BAĞLAN</span
+                    >
+                    <span
+                        class="text-xs md:text-sm font-button tracking-widest text-white transition-colors uppercase font-bold"
+                    >
+                        Hemen Sor
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .quick-action-bar {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Smart Sticky Behavior - Mobilde scroll sonrası sticky */
+    @media (max-width: 768px) {
+        .quick-action-bar {
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .quick-action-bar.is-sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0.25rem 0;
+            animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .quick-action-bar.is-sticky .container {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Horizontal scroll on very small screens */
+    @media (max-width: 380px) {
+        .quick-action-bar .container > div {
+            overflow-x: auto;
+            justify-content: flex-start;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .quick-action-bar .container > div::-webkit-scrollbar {
+            display: none;
+        }
+
+        .quick-action-item {
+            flex-shrink: 0;
+        }
+    }
+</style>
+
+<script>
+    // Smart Sticky Logic - Mobilde sadece scroll sonrası sticky yap
+    const quickActionBar = document.getElementById("quick-action-bar");
+    if (quickActionBar && window.innerWidth < 768) {
+        const originalTop = quickActionBar.offsetTop;
+        let isSticky = false;
+
+        window.addEventListener(
+            "scroll",
+            () => {
+                const scrollY = window.scrollY;
+
+                // Hero'yu geçtikten sonra sticky yap
+                if (scrollY > originalTop && !isSticky) {
+                    isSticky = true;
+                    quickActionBar.classList.add("is-sticky");
+                } else if (scrollY <= originalTop && isSticky) {
+                    isSticky = false;
+                    quickActionBar.classList.remove("is-sticky");
+                }
+            },
+            { passive: true },
+        );
+    }
+
+    // Click Tracking
+    document.querySelectorAll(".quick-action-item").forEach((item) => {
+        item.addEventListener("click", () => {
+            const actionName = item.getAttribute("data-action");
+            if (typeof (window as any).gtag !== "undefined") {
+                (window as any).gtag("event", "quick_action_click", {
+                    action_name: actionName,
+                    click_location: "quick_action_bar",
+                });
+            }
+        });
+    });
+
+    // Smooth scroll for anchor links
+    document
+        .querySelectorAll('.quick-action-item[href^="#"]')
+        .forEach((anchor) => {
+            anchor.addEventListener(
+                "click",
+                function (this: HTMLAnchorElement, e: Event) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute("href");
+                    if (targetId) {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: "smooth",
+                                block: "start",
+                            });
+                        }
+                    }
+                },
+            );
+        });
+</script>

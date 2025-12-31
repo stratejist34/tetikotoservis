@@ -241,19 +241,47 @@ const whatsappMessage = encodeURIComponent(
         }
     }
 
+    // Mobile: Intercept phone button click to open iOS Sheet
+    function initMobileSheetTrigger() {
+        const phoneBtn = document.querySelector(".sticky-phone-btn");
+        if (!phoneBtn) return;
+
+        // Only on mobile devices
+        const isMobile = window.innerWidth < 768 || "ontouchstart" in window;
+        if (!isMobile) return;
+
+        phoneBtn.addEventListener("click", (e) => {
+            // Prevent default phone call
+            e.preventDefault();
+
+            // Open iOS Sheet if available
+            if (typeof (window as any).openIOSSheet === "function") {
+                (window as any).openIOSSheet();
+            } else {
+                // Fallback: direct call
+                window.location.href = "tel:05336157835";
+            }
+        });
+    }
+
     // Init
     if (document.readyState === "complete") {
         setTimeout(initContactTooltips, 100);
+        setTimeout(initMobileSheetTrigger, 150);
     } else {
         window.addEventListener(
             "load",
-            () => setTimeout(initContactTooltips, 100),
+            () => {
+                setTimeout(initContactTooltips, 100);
+                setTimeout(initMobileSheetTrigger, 150);
+            },
             { once: true },
         );
     }
-    document.addEventListener("astro:page-load", () =>
-        setTimeout(initContactTooltips, 100),
-    );
+    document.addEventListener("astro:page-load", () => {
+        setTimeout(initContactTooltips, 100);
+        setTimeout(initMobileSheetTrigger, 150);
+    });
 </script>
 
 <style>

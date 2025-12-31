@@ -1,0 +1,50 @@
+---
+// BlogPostingSchema.astro
+// Blog yazıları için özel SEO şeması.
+
+interface Props {
+    title: string;
+    description: string;
+    url: string;
+    pubDate?: Date | string;
+    author?: string;
+    image?: string;
+}
+
+const { title, description, url, pubDate, author, image } = Astro.props;
+
+const dateValue = pubDate || new Date();
+const dateISO =
+    typeof dateValue === "string"
+        ? new Date(dateValue).toISOString()
+        : dateValue.toISOString();
+
+const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description: description,
+    url: url,
+    datePublished: dateISO,
+    dateModified: dateISO,
+    image: image || "https://hyundaiservisim.com/images/tetik-web-logo.webp",
+    author: {
+        "@type": "Person",
+        name: author || "Tetik Otomotiv Uzman Kadrosu",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "Tetik Otomotiv",
+        logo: {
+            "@type": "ImageObject",
+            url: "https://hyundaiservisim.com/images/tetik-web-logo.webp",
+        },
+    },
+    mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": url,
+    },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />

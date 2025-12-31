@@ -6,9 +6,13 @@ const currentYear = new Date().getFullYear();
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
       <!-- Company Info -->
-      <div>
-        <h3 class="text-white text-2xl font-black mb-6">TETİK OTOMOTİV</h3>
-        <p class="leading-relaxed mb-6 text-sm text-slate-200">
+      <div class="lg:col-span-1">
+        <h3 class="text-white text-3xl mb-8 font-heading tracking-widest">
+          TETİK<span class="text-orange-500">.</span>
+        </h3>
+        <p
+          class="leading-relaxed mb-8 text-sm text-slate-400 font-medium max-w-xs font-sans"
+        >
           Gebze ve Tuzla bölgesinde Hyundai, Kia, Toyota ve Nissan marka
           araçlarınız için 25 yılı aşkın tecrübemizle garantili özel servis
           hizmeti sunuyoruz.
@@ -42,7 +46,11 @@ const currentYear = new Date().getFullYear();
 
       <!-- Hızlı Menü -->
       <div>
-        <h4 class="text-white font-bold mb-6">HİZMETLERİMİZ</h4>
+        <h4
+          class="text-white font-heading text-sm tracking-widest mb-8 uppercase opacity-80"
+        >
+          HİZMETLERİMİZ
+        </h4>
         <ul class="space-y-3 text-sm">
           <li>
             <a
@@ -85,7 +93,11 @@ const currentYear = new Date().getFullYear();
 
       <!-- Kurumsal -->
       <div>
-        <h4 class="text-white font-bold mb-6">KURUMSAL</h4>
+        <h4
+          class="text-white font-heading text-sm tracking-widest mb-8 uppercase opacity-80"
+        >
+          KURUMSAL
+        </h4>
         <ul class="space-y-3 text-sm">
           <li>
             <a
@@ -106,7 +118,7 @@ const currentYear = new Date().getFullYear();
           <li>
             <a
               href="/gizlilik-politikasi"
-              class="hover:text-orange-500 transition-colors"
+              class="text-slate-400 hover:text-orange-500 transition-colors text-xs font-button tracking-widest uppercase"
               >Gizlilik Politikası</a
             >
           </li>
@@ -115,7 +127,11 @@ const currentYear = new Date().getFullYear();
 
       <!-- Contact -->
       <div>
-        <h4 class="text-white font-bold mb-6">İLETİŞİM</h4>
+        <h4
+          class="text-white font-heading text-sm tracking-widest mb-8 uppercase opacity-80"
+        >
+          İLETİŞİM
+        </h4>
         <ul class="space-y-4 text-sm">
           <li class="flex items-start gap-3">
             <svg
@@ -153,7 +169,7 @@ const currentYear = new Date().getFullYear();
             >
             <a
               href="tel:05336157835"
-              class="text-white font-bold hover:text-orange-500 transition-colors"
+              class="text-white font-button tracking-widest hover:text-orange-500 transition-colors"
               >0533 615 78 35</a
             >
           </li>
