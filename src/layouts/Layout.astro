@@ -278,24 +278,25 @@ const {
       }
 
       /* List Hierarchy (Hanging Indent) */
-      ol {
+      ol,
+      ul {
         padding-left: 24px;
         margin-bottom: 24px;
       }
-      ol li {
+      ol li,
+      ul li {
         padding-left: 8px;
         margin-bottom: 16px;
       }
-      /* Ensure nested strong tags break line for readability if needed, 
-         or just stay bold. User requested 'display: block' for strong in lists
-         but globally might be risky. Applying strictly to ordered lists.
-      */
-      ol li strong {
+      /* Ensure nested strong tags break line for readability if needed */
+      ol li strong,
+      ul li strong {
         display: block;
         margin-bottom: 4px;
         color: #0a0a0a;
       }
-      ol li p {
+      ol li p,
+      ul li p {
         margin-top: 8px;
         padding-left: 0;
       }
