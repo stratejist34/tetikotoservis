@@ -20,7 +20,7 @@ export default {
       fontFamily: {
         sans: ['Manrope', 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
         body: ['Manrope', 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        heading: ['Kanit', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
+        heading: ['"Plus Jakarta Sans"', 'Manrope', 'sans-serif'],
         sport: ['"Exo 2"', 'sans-serif'],
       },
       fontSize: {
