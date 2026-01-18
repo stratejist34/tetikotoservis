@@ -20,7 +20,7 @@ export default {
       fontFamily: {
         sans: ['Manrope', 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
         body: ['Manrope', 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-        heading: ['"Electrolize"', 'sans-serif'],
+        heading: ['"ManifoldExtended"', 'sans-serif'],
         sport: ['"Exo 2"', 'sans-serif'],
       },
       fontSize: {
