@@ -91,6 +91,10 @@ const clientScript = `
     author={entry.data.author}
     image={entry.data.image || entry.data.coverImage}
   />
+  
+  {entry.data.faqs && (
+    <FAQSchema faqs={entry.data.faqs} />
+  )}
   <BreadcrumbSchema items={breadcrumbItems} />
   
   <style set:html={smoothScrollCSS}></style>
