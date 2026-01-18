@@ -29,9 +29,9 @@ import { Image } from "astro:assets";
     />
 
     <!-- Multi-layered Overlay for Vibrancy -->
-    <!-- Gradient for Text Legibility (Right to Left) -->
+    <!-- Gradient for Text Legibility (Right to Left) - Increased Opacity for Contrast -->
     <div
-      class="absolute inset-0 bg-gradient-to-l from-[#020617] via-[#020617]/70 to-transparent z-10"
+      class="absolute inset-0 bg-gradient-to-l from-[#020617] via-[#020617]/85 to-transparent z-10"
     >
     </div>
 
@@ -116,7 +116,7 @@ import { Image } from "astro:assets";
       >
         <a
           href="/iletisim"
-          class="group px-8 py-5 sm:px-12 sm:py-6 bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl border border-white/10 hover:border-orange-500/50 backdrop-blur-2xl transition-all duration-500 flex items-center justify-center gap-4 hover:-translate-y-2 order-2 sm:order-1"
+          class="group px-8 py-5 sm:px-12 sm:py-6 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl border-2 border-white/30 hover:border-white/60 backdrop-blur-2xl transition-all duration-500 flex items-center justify-center gap-4 hover:-translate-y-2 order-2 sm:order-1"
         >
           <span class="uppercase tracking-widest text-xs sm:text-sm"
             >Randevu Al</span
@@ -266,6 +266,14 @@ import { Image } from "astro:assets";
 
   .hero-bg-desktop {
     transition: transform 0.1s ease-out;
+  }
+
+  /* Mobile Hero Specifics */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 26px !important;
+      line-height: 1.15 !important;
+    }
   }
 </style>
 
