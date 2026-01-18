@@ -19,64 +19,99 @@ faqs:
 
 # Şanzıman Revizyonu ve Tamiri Fiyatları 2026
 
-Aracınızın en karmaşık ve pahalı parçalarından biri olan şanzıman (vites kutusu), arızalandığında ciddi masraflar çıkarabilir. Kullanıcıların en çok merak ettiği "**şanzıman tamiri ne kadar tutar?**", "**şanzıman revizyonu fiyat 2026**" gibi soruları güncel piyasa koşullarına göre cevapladık.
+Aracınızın en karmaşık ve pahalı yürüyen aksam parçalarından biri olan şanzıman (vites kutusu), arızalandığında araç sahiplerini ciddi masraflarla karşı karşıya bırakabilir. Özellikle otomatik vitesli araçlarda sistemin karmaşıklığı, onarım maliyetlerini artıran en büyük etkendir. Kullanıcıların en çok merak ettiği "**şanzıman tamiri ne kadar tutar?**", "**şanzıman revizyonu fiyat 2026**" ve "**şanzıman değişimi maliyeti**" gibi soruları güncel piyasa koşullarına göre detaylandırdık.
 
-## Şanzıman Sökme Takma Ücreti 2026
+Şanzıman arızaları genellikle ihmal edilen yağ değişimleri, yanlış kullanım veya mekanik yorgunluk sonucu ortaya çıkar. Arızanın erken teşhis edilmesi, komple revizyon (yenileme) yerine daha düşük maliyetli onarımlarla kurtulmanızı sağlayabilir.
 
-Halk arasında "şanzıman indirme parası" olarak bilinen işçilik ücreti, aracın modeline ve montaj zorluğuna göre değişir.
-*   **Binek Araçlar:** 4.000₺ - 6.000₺
-*   **SUV / Ticari:** 5.500₺ - 8.500₺
+## Şanzıman İndirme (Sökme Takma) İşçiliği
 
-> **Not:** Bu sadece ustalık ücretidir. İçerisine parça veya revizyon dahil değildir.
+Bir şanzımanın tamir edilebilmesi için önce araçtan ayrılması, yani motor bloğundan sökülmesi gerekir. Bu işleme sanayi dilinde "şanzıman indirme" denir. İşçilik ücretleri, aracın önden veya arkadan çekişli olmasına, motor hacmine ve şanzımanın ağırlığına göre değişir.
+
+2026 yılı güncel şanzıman sökme takma işçilik ücretleri şu şekildedir:
+
+*   **Binek Araçlar (Manuel):** 4.000 TL - 5.500 TL
+*   **Binek Araçlar (Otomatik):** 5.000 TL - 7.000 TL
+*   **SUV ve Ticari Araçlar:** 6.000 TL - 9.000 TL
+
+> **Önemli:** Bu fiyatlar sadece şanzımanın araçtan sökülüp takılması (işçilik) içindir. Şanzıman içerisindeki parçaların değişimi, revizyonu veya yağ maliyetleri bu fiyata dahil değildir.
 
 ## Manuel Şanzıman Tamir Fiyatı
 
-Manuel vites kutuları daha basit yapıda olsa da, dişli kırılması veya senkromeç (cırtlama) sorunları görülebilir.
-*   **Manuel Şanzıman Revizyonu:** 8.500₺ - 18.000₺
-*   **Baskı Balata Değişimi İşçiliği:** 3.500₺ - 5.000₺ (Parça Hariç)
+Manuel şanzımanlar, otomatiklere göre daha basit bir dişli yapısına sahiptir. Ancak zamanla senkromeç aşınması, dişli kırılması veya rulman dağılması gibi sorunlar görülebilir. En sık karşılaşılan "vitese geçmeme" veya "vitesten atma" sorunlarının maliyetleri:
+
+*   **Manuel Şanzıman Revizyonu:** 8.500 TL - 18.000 TL
+*   **Senkromeç Değişimi:** 5.000 TL - 8.000 TL
+*   **Baskı Balata Değişimi İşçiliği:** 3.500 TL - 5.000 TL (Parça Hariç)
+
+Manuel şanzımanlarda genellikle parça maliyeti işçilikten daha düşük tutar, ancak şanzımanın dağıtılıp toplanması uzmanlık gerektirir.
 
 ## Otomatik Şanzıman Revizyonu Fiyat 2026
 
-Tork konvertörlü, CVT veya DCT... Her birinin maliyeti farklıdır. **Şanzıman değişimi ne kadar** derseniz, sıfır şanzımanlar 150.000₺'yi bulduğu için revizyon en mantıklı çözümdür.
+Otomatik şanzıman teknolojisi geliştikçe onarım maliyetleri de çeşitlenmiştir. Tork konvertörlü, CVT veya Çift Kavramalı (DCT/DSG) şanzımanların her birinin revizyon süreci farklıdır.
 
-| İşlem Türü | Tahmini Fiyat Aralığı |
-| :--- | :--- |
-| **Tork Konvertör Revizyonu** | 7.500₺ - 12.000₺ |
-| **Beyin (Mekatronik) Tamiri** | 9.000₺ - 18.000₺ |
-| **Komple Şanzıman Revizyonu** | 25.000₺ - 55.000₺ |
+Komple şanzıman değişimi (Sıfır Sandık Şanzıman) maliyetleri 150.000 TL ile 300.000 TL arasında değiştiği için, araç sahipleri %80 oranında **şanzıman revizyonu** yöntemini tercih etmektedir.
 
-<div class="my-10 p-6 bg-slate-50 border-l-4 border-orange-500 rounded-r-xl shadow-sm">
-  <h3 class="font-heading text-slate-800 text-xl mb-2">Şanzımanınızdan Ses mi Geliyor?</h3>
-  <p class="text-slate-600 mb-4">Erken teşhis, komple şanzıman değişiminden kurtarır. Ücretsiz arıza tespiti için bizi arayın.</p>
-  <a href="tel:05336157835" class="inline-flex items-center gap-2 bg-orange-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors">
-    📞 Şanzıman Ustasına Danış
-  </a>
+| İşlem Türü | İşlem Açıklaması | Tahmini Fiyat |
+| :--- | :--- | :--- |
+| **Tork Konvertör Revizyonu** | Konvertörün kesilip içinin yenilenmesi | 7.500 TL - 12.000 TL |
+| **Beyin (Mekatronik) Tamiri** | Elektronik kart ve valf tamiri | 9.000 TL - 18.000 TL |
+| **CVT Şanzıman Revizyonu** | Zincir, kasnak ve pompa değişimi | 30.000 TL - 50.000 TL |
+| **Komple Şanzıman Revizyonu** | Tüm balata, disk ve conta setinin yenilenmesi | 25.000 TL - 60.000 TL |
+
+Otomatik şanzımanlarda arıza tespiti hayati önem taşır. Bazen sadece bir selenoid valf (manyetik vana) arızası, komple şanzıman arızası gibi belirti verebilir. Bu yüzden doğru teşhis sizi 40-50 bin TL masraftan kurtarabilir.
+
+<div class="my-10 p-6 bg-orange-50 border border-orange-200 rounded-xl text-center">
+  <h3 class="font-heading text-orange-900 text-xl mb-2">Şanzımanınızdan Ses veya Vuruntu mu Geliyor?</h3>
+  <p class="text-slate-600 mb-6 text-sm">Erken teşhis, komple şanzıman değişiminden kurtarır. Vakit kaybetmeden ücretsiz arıza tespiti yaptırın.</p>
+  <div class="flex flex-col sm:flex-row justify-center gap-3">
+     <a href="tel:05336157835" class="bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
+        Şanzıman Ustasına Danış
+     </a>
+  </div>
 </div>
 
-## Markalara Göre Tamir Fiyatları
+## Markalara Göre Şanzıman Tamiri
+
+Her otomobil üreticisi farklı şanzıman teknolojileri kullanır. Tetik Otomotiv olarak uzmanlaştığımız markaların şanzıman tamir detayları:
 
 ### Hyundai Şanzıman Tamiri
-Hyundai i20 ve Accent modellerinde görülen 4 ileri otomatik şanzımanlar oldukça sağlamdır. Genellikle selenoid valf değişimi ile (5.000₺ - 8.000₺) kurtarılabilir.
+Hyundai modellerinde (i20, Accent Blue, Elantra) kullanılan 4 ileri ve 6 ileri tork konvertörlü şanzımanlar oldukça dayanıklıdır. Genellikle selenoid valf değişimi veya yağ basınç sensörü arızaları görülür.
+*   **Ortalama Tamir Maliyeti:** 5.000 TL - 15.000 TL
 
 ### Kia Şanzıman Tamiri
-Kia Sportage ve Ceed modellerindeki DCT şanzımanlarda kavrama ve volant değişimi sık yapılır. **DCT Şanzıman Tamiri** maliyeti (Kavrama Seti Dahil) 25.000₺ - 35.000₺ bandındadır.
+Kia Sportage, Ceed ve Stonic modellerinde kullanılan 7 ileri DCT (Çift Kavramalı) şanzımanlar, manuel şanzıman prensibiyle çalışır. En sık görülen arıza kavrama bitmesi ve volant sesidir. Kavrama seti değişimi, bir nevi "ağır bakım" gibi düşünülmelidir.
+*   **DCT Kavrama ve Volant Değişimi:** 25.000 TL - 35.000 TL
 
 ### Toyota Şanzıman Tamiri
-Toyota Corolla'nın MMT (Yarı Otomatik) şanzımanlarında aktüatör arızası meşhurdur. Aktüatör tamiri 6.000₺ - 9.000₺ tutabilir. CVT şanzımanlar ise genelde yağ değişimi ile (Bkz: [Otomatik Şanzıman Yağı Değişimi](/blog/otomatik-sanziman-yagi-degisimi)) uzun ömürlüdür.
+Toyota'nın eski nesil MMT (MultiMode) şanzımanlarında aktüatör (vites robotu) arızaları meşhurdur. Aktüatör tamiri ile şanzıman kurtarılabilir. Yeni nesil Multidrive S (CVT) şanzımanlar ise yağsız kalmadıkça kolay arıza yapmaz.
+*   **MMT Aktüatör Tamiri:** 6.000 TL - 9.000 TL
+*   **CVT Revizyonu:** 30.000 TL - 45.000 TL
 
 ### Nissan Şanzıman Tamiri
-Nissan Qashqai ve Juke modellerindeki CVT şanzımanlar hassastır. **Nissan şanzıman tamiri** genellikle zincir ve kasnak değişimi gerektirir, maliyeti 40.000₺ - 60.000₺ arasındadır.
+Nissan Qashqai, Juke ve X-Trail modellerindeki Jatco üretimi X-Tronic CVT şanzımanlar, piyasadaki en hassas şanzımanlardan biridir. Genellikle yüksek kilometrede zincir koparma veya kasnak çizme sorunu yaşatır.
+*   **Komple Revizyon Maliyeti:** 40.000 TL - 65.000 TL
 
 ## Karter Yağ Kaçağı ve Keçe Değişimi
 
-Şanzımanla motorun birleştiği yerden yağ damlıyorsa, **krank keçesi yağ kaçağı değişim ücreti** merak edilir. Parça ucuzdur (500₺) ancak şanzıman inmesi gerektiği için işçilik 4.000₺ - 6.000₺ tutar.
+Bazen şanzımanın kendisinde bir sorun olmasa da, motor ile şanzımanın birleştiği noktadan yağ damlatması görülür. Bunun sebebi genellikle **Arka Krank Keçesi**nin sertleşmesidir. Parça fiyatı çok düşük olsa da, keçeye ulaşmak için şanzımanın indirilmesi gerekir.
 
-Daha detaylı bilgi için [Motor Yağ Kaçağı Masrafı](/blog/motor-yag-kacagi-tamiri) yazımızı okuyabilirsiniz.
+Bu durumda ödenecek tutar, yukarıda belirttiğimiz "Şanzıman İndirme Ücreti" + Keçe Fiyatıdır. Ortalama 5.000 TL - 7.500 TL arasında bir masraf çıkarır.
 
----
+Daha detaylı bilgi için [Motor Yağ Kaçağı Masrafı](/blog/motor-yag-kacagi-tamiri) yazımızı inceleyebilirsiniz.
 
-**Garantili Şanzıman Revizyonu**
-
-Tetik Otomotiv'de yapılan tüm şanzıman revizyon işlemleri **1 Yıl Garantilidir**. Vuruntu, silkeleme ve ses sorunlarına kesin çözüm üretiyoruz.
-
-[📞 Şanzıman Fiyat Teklifi Al: 0533 615 78 35](tel:05336157835)
+<div class="my-12 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+  <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="text-center md:text-left">
+      <h3 class="font-heading text-2xl text-slate-800 mb-2">Garantili Şanzıman Revizyonu</h3>
+      <p class="text-slate-600 max-w-xl">Tetik Otomotiv'de yapılan tüm şanzıman revizyon işlemleri 1 Yıl Garantilidir. Orijinal test cihazlarımızla adaptasyon ve kalibrasyon işlemlerini eksiksiz yapıyoruz.</p>
+    </div>
+    <div class="flex flex-col gap-3 min-w-[200px]">
+      <a href="tel:05336157835" class="bg-orange-600 text-white text-center px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-colors">
+        Fiyat Teklifi Al
+      </a>
+      <a href="/iletisim" class="bg-white text-slate-700 border border-slate-200 text-center px-6 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors">
+        Konum Al
+      </a>
+    </div>
+  </div>
+</div>

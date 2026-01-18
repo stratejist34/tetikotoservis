@@ -19,42 +19,63 @@ faqs:
 
 # Motor Yağ Kaçağı Tamiri ve Değişim Ücreti 2026
 
-Sabah aracınızın altında siyah yağ lekeleri görmek can sıkıcıdır. "Araba yağ eksiltiyor" veya "altına damlatıyor" şikayetlerinin kaynağı genellikle basit contalardır ancak işçilikleri zor olabilir. İşte 2026 yılı için **motor yağ kaçağı masrafı**.
+Sabah aracınızın yanına gittiğinizde yerdeki siyah yağ lekelerini görmek, her sürücü için endişe verici bir durumdur. "Araba yağ eksiltiyor" şikayetinin en yaygın sebebi olan yağ kaçakları, genellikle basit contaların zamanla sertleşmesinden kaynaklanır. Ancak bazen, kaçıran parçaya ulaşmak için harcanan işçilik, parça fiyatının katbekat üstünde olabilir.
+
+2026 yılı güncel işçilik ve parça maliyetlerine göre; karter, külbütör kapağı ve krank keçesi gibi yaygın **motor yağ kaçağı masraflarını** sizin için detaylandırdık.
 
 ## En Sık Görülen Yağ Kaçakları ve Fiyatları
 
-### 1. Karter Yağ Kaçağı Masrafı
-Motorun en altındaki yağ deposu (karter) contası zamanla sertleşir veya darbe alır.
-*   **İşlem:** Yağ boşaltılır, karter sökülür, yeni sıvı conta çekilir.
-*   **Fiyat:** 1.500₺ - 3.000₺ (Yağ hariç).
+Motor yağ kaçakları genellikle motorun en üstünden (külbütör), en altından (karter) veya motor-şanzıman birleşim yerinden gelir. Her birinin tamir süreci ve maliyeti farklıdır.
 
-### 2. Külbütör (Üst Kapak) Contası
-Motorun en üstündeki kapaktır. Kaçırırsa bujilerin üzerine yağ dolar, tekleme yapar.
-*   **Fiyat:** Değişimi kolaydır. 1.200₺ - 2.500₺.
+### 1. Karter Yağ Kaçağı Masrafı
+Motor yağının biriktiği depo olan karter, aracın en alt kısmındadır. Kaldırıma sürtme, taş çarpması veya contanın eskimesi sonucu yağ kaçırabilir.
+*   **İşlem:** Motor yağı boşaltılır, karter sökülür, yüzey temizlenir. Modele göre "sıvı conta" veya "hazır mantar conta" uygulanarak kapatılır.
+*   **Fiyat:** 1.500 TL - 3.000 TL (Yeni Yağ Hariç).
+
+### 2. Külbütör (Üst Kapak) Contası Kaçağı
+Motorun en üst kapağıdır. Buradan kaçıran yağ, motor bloğunun üzerine süzülür, egzoz manifolduna damlayıp yanık yağ kokusu yapabilir. En tehlikeli yanı, **buji yuvalarına yağ dolmasıdır**. Bu durum ateşlemeyi bozar ve tekleme yaptırır.
+*   **Fiyat:** Değişimi nispeten kolaydır. 1.200 TL - 2.500 TL.
 
 ### 3. Krank Keçesi Yağ Kaçağı Değişim Ücreti
-En pahalı işçilik buradadır. Motor bloğu ile şanzımanın arasındaki keçe (Arka Krank Keçesi) kaçırırsa, değişim için **şanzımanın inmesi gerekir**. (Bkz: [Şanzıman İndirme Ücreti](/blog/sanziman-tamiri-fiyatlari-2026))
-*   **Parça Fiyatı:** 400₺ - 800₺
-*   **İşçilik Fiyatı:** 4.000₺ - 6.000₺
-*   **Toplam Masraf:** 5.000₺ - 7.500₺.
+Bir araç sahibinin en korkulu rüyasıdır. Motor bloğu ile şanzımanın birleştiği noktada bulunan "Arka Krank Keçesi" zamanla sertleşir ve yağ kaçırır. Yağ, motor ile şanzıman arasından damlar.
 
-<div class="my-10 p-6 bg-slate-100 border border-slate-300 rounded-lg flex flex-col md:flex-row items-center justify-between gap-6">
-  <div class="text-center md:text-left">
-     <h3 class="font-heading text-slate-800 text-lg mb-1">Yağ Lekesi Büyümeden Önlem Alın</h3>
-     <p class="text-slate-600 text-sm">Küçük bir damla, yolda motorsuz kalmanıza neden olabilir. Kaçak tespiti bizden.</p>
+*   **Zorluğu:** Parça fiyatı çok ucuzdur (400 TL - 800 TL). Ancak bu parçayı değiştirmek için **şanzımanın araçtan indirilmesi** gerekir.
+*   **İşçilik Fiyatı:** 4.000 TL - 6.000 TL
+*   **Toplam Masraf:** 5.000 TL - 7.500 TL arasındadır.
+
+<div class="my-10 p-6 bg-orange-50 border border-orange-200 rounded-xl text-center">
+  <h3 class="font-heading text-orange-900 text-xl mb-2">Yağ Lekesi Büyümeden Önlem Alın</h3>
+  <p class="text-slate-600 mb-6 text-sm">Küçük bir damla, yolda motorsuz kalmanıza neden olabilir. Motor susuz veya yağsız kalırsa yatak sarar. Kaçak tespiti için bize ulaşın.</p>
+  <div class="flex flex-col sm:flex-row justify-center gap-3">
+     <a href="tel:05336157835" class="bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
+        Kaçak Kontrolü Yaptır
+     </a>
   </div>
-  <a href="tel:05336157835" class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition-colors shadow-md whitespace-nowrap">
-    💧 Kaçak Kontrolü Yaptır
-  </a>
 </div>
 
 ## Yağ Kaçağı Muayeneden Geçer mi?
-Hafif terleme şeklindeki kaçaklar "Hafif Kusur" olarak geçer. Ancak yere damlayan, **şakır şakır yağ kaçağı** "Ağır Kusur"dur, muayeneden geçmez.
+TÜVTÜRK muayenelerinde yağ kaçakları sınıflandırılır:
+1.  **Hafif Terleme:** Motorun altı nemli ama damlatmıyorsa "Hafif Kusur" olarak geçer.
+2.  **Damlatma:** Eğer kanala girdiğinde yere yağ damlıyorsa "Ağır Kusur" sayılır ve **muayeneden kalır**.
+
+## Motor Yıkama ve Kaçak Tespiti
+Bazen motorun her yeri yağ içindedir ve kaçağın nereden geldiği anlaşılmaz. Bu durumda servisimizde özel ilaçlarla **motor yıkama** yapılır. Motor pırıl pırıl olduktan sonra, UV ışık veya gözle kontrol ile kaçağın tam kaynağı nokta atışı tespit edilir.
 
 ---
 
-**Temiz Motor, Sorunsuz Sürüş**
-
-Tetik Otomotiv'de motor yıkama ve detaylı kaçak tespiti hizmeti ile yağ damlatma sorunlarına son veriyoruz.
-
-[📞 Randevu ve Fiyat: 0533 615 78 35](tel:05336157835)
+<div class="my-12 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+  <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="text-center md:text-left">
+      <h3 class="font-heading text-2xl text-slate-800 mb-2">Temiz Motor, Sorunsuz Sürüş</h3>
+      <p class="text-slate-600 max-w-xl">Yağ eksilten araçla yola çıkmayın. Tetik Otomotiv'de detaylı kaçak tespiti ve garantili conta değişimi hizmeti veriyoruz.</p>
+    </div>
+    <div class="flex flex-col gap-3 min-w-[200px]">
+      <a href="tel:05336157835" class="bg-orange-600 text-white text-center px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-colors">
+        Fiyat Teklifi Al
+      </a>
+      <a href="/iletisim" class="bg-white text-slate-700 border border-slate-200 text-center px-6 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors">
+        Yol Tarifi Al
+      </a>
+    </div>
+  </div>
+</div>

@@ -19,51 +19,81 @@ faqs:
 
 # Otomatik Şanzıman Yağı Değişimi Fiyatları 2026
 
-Otomatik vitesli araçlarda en kritik bakım, şanzıman yağı eğitimidir. Piyasada **şanzıman yağı değişimi fiyat 2026** araştırması yapan araç sahipleri için, makine ile ve manuel değişim arasındaki farkları ve güncel maliyetleri listeledik.
+Otomatik şanzıman, aracınızın konforlu sürüşünün gizli kahramanıdır. Ancak içerisinde çalışan yüzlerce hareketli parça, yüksek ısı ve sürtünme altında çalışır. Bu parçaları koruyan yegane sıvı, "Otomatik Şanzıman Yağı"dır (ATF).
+
+Piyasada **şanzıman yağı değişimi fiyat 2026** araştırması yapan araç sahiplerinin kafası genellikle karışıktır. "Makine ile değişim mi, manuel değişim mi?", "Kaç litre yağ gider?", "Hangi marka yağ kullanılmalı?" gibi soruların cevaplarını ve güncel maliyetleri bu yazıda derledik.
+
+## Şanzıman Yağı Değişimi Nasıl Yapılır? (Manuel vs Makine)
+
+Fiyatlara geçmeden önce, işlem yöntemini anlamak gerekir. Çünkü fiyat farkının ana sebebi budur.
+
+### 1. Manuel Değişim (Tapa Açılarak)
+Klasik yöntemdir. Karter tapası açılır ve dökülen yağ kadar yeni yağ eklenir.
+*   **Dezavantajı:** Tork konvertörü, soğutucu radyatör ve valf gövdesindeki (şanzıman beyni) eski yağ **boşalmaz**. Toplam yağın sadece %40-%50 arası yenilenir. Eski yağ ile yeni yağ karışır.
+
+### 2. Makine ile %100 Değişim (Flushing)
+Özel bir cihaz şanzımana bağlanır. Araç çalıştırılırken cihaz, bir taraftan eski yağı çekerken diğer taraftan eş zamanlı olarak yeni yağı sisteme pompalar.
+*   **Avantajı:** Şanzımanın içindeki yağ %99 oranında yenilenir. Tüm kanallar temizlenir. Vites geçişleri hissedilir derecede yumuşar.
+*   **Maliyeti:** İşlem sırasında "yıkama" payı olarak fazladan 2-3 litre yağ kullanıldığı için maliyeti daha yüksektir.
 
 ## Şanzıman Yağı Değişimi Fiyat 2026 (Genel Liste)
 
-Fiyatlar, şanzımanın aldığı yağ kapasitesine (Litre) ve yağın kalitesine (Motul, Castrol, Orijinal) göre değişir.
+Aşağıdaki fiyatlar, ortalama işçilik ve kaliteli yağ (Motul, Castrol, Mobil 1 veya Orijinal) maliyetleri dahil edilerek hesaplanmıştır.
 
-| Şanzıman Tipi | Yağ Kapasitesi | Manuel Değişim (Tapa Açarak) | Makine ile (%100 Değişim) |
-| :--- | :--- | :--- | :--- |
-| **Tam Otomatik** (Tork Konv.) | 6-8 Litre | 3.500₺ - 5.000₺ | 5.500₺ - 7.500₺ |
-| **CVT Şanzıman** | 5-7 Litre | 4.000₺ - 5.500₺ | 6.000₺ - 8.500₺ |
-| **DCT / DSG** (Çift Kavrama) | 2 Litre | 2.500₺ - 3.500₺ | Yapılmaz (Dişli Yağıdır) |
+| Şanzıman Tipi | Manuel Değişim (Kısmi) | Makine ile (%100 Değişim) |
+| :--- | :--- | :--- |
+| **Tam Otomatik** (Tork Konvertörlü) | 3.500 TL - 5.000 TL | 5.500 TL - 7.500 TL |
+| **CVT Şanzıman** (Filtre Hariç) | 4.000 TL - 5.500 TL | 6.000 TL - 8.500 TL |
+| **DCT / DSG / EDC** (Çift Kavrama) | 2.500 TL - 3.500 TL | (Bu şanzımanlarda makine kullanılmaz, manuel değişir) |
 
-*Not: Makine ile değişimde, şanzımanın içindeki tork konvertörü tamamen temizlendiği için fazladan 2-3 litre yağ kullanılır. Bu yüzden fiyatı yüksektir ama en sağlıklı yöntemdir.*
+> **Öneri:** Eğer aracınızın şanzıman yağı uzun süredir (örneğin 100.000 km) değişmediyse, kesinlikle **makine ile değişim** öneriyoruz.
 
-(Bkz: [Otomatik Şanzıman Yağı Ne Zaman Değişir?](/blog/otomatik-sanziman-yagi-degisimi))
-
-## CVT Şanzıman Yağı Değişimi Ücreti
-Toyota ve Nissan grubu araçlarda kullanılan CVT şanzımanlar, yağa karşı çok hassastır. **CVT şanzıman yağı değişimi** sırasında mutlaka filtre (süzgeç) ve karter contası da değişmelidir.
-*   **Filtreli Değişim Ücreti:** 5.000₺ - 7.500₺ (Filtre + Yağ + İşçilik)
-
-<div class="my-10 p-6 bg-slate-900 rounded-xl text-center relative overflow-hidden group">
-  <div class="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors"></div>
-  <h3 class="font-heading text-white text-xl mb-2 relative z-10">Makine ile %100 Yağ Değişimi</h3>
-  <p class="text-slate-300 mb-4 text-sm relative z-10">Eski yağın tamamını boşaltıp pırıl pırıl yeni yağ dolduruyoruz. Vites geçişleriniz pamuk gibi olsun.</p>
-  <a href="tel:05336157835" class="relative z-10 inline-block bg-white text-slate-900 px-8 py-3 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-all shadow-lg">
-    🧪 Fiyat Al
-  </a>
+<div class="my-10 p-6 bg-orange-50 border border-orange-200 rounded-xl text-center">
+  <h3 class="font-heading text-orange-900 text-xl mb-2">Vites Geçişleri Sertleşti mi?</h3>
+  <p class="text-slate-600 mb-6 text-sm">Şanzıman yağı özelliğini kaybettiğinde vuruntu ve kararsızlık yapar. Şanzımanınızı bozmadan yağını değiştirin.</p>
+  <div class="flex flex-col sm:flex-row justify-center gap-3">
+     <a href="tel:05336157835" class="bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
+        Yağ Değişim Fiyatı Al
+     </a>
+  </div>
 </div>
 
-## Markalara Göre Yağ Seçimi
-Her araca "kırmızı yağ" konulmaz. Yanlış yağ, şanzımanı 10.000 km içinde bozar.
+## CVT Şanzıman Yağı Değişimi Ücreti (Özel Durum)
+
+Toyota, Nissan, Honda ve Subaru gibi markaların kullandığı CVT şanzımanlar, yağ kirliliğine karşı çok hassastır. Metal kayışın kasnak üzerinde kaymaması için yağın sürtünme katsayısı çok önemlidir.
+
+CVT şanzıman bakımında sadece yağ değiştirmek yetmez; şanzıman karteri sökülmeli, **şanzıman filtresi (süzgeç)** ve karter contası da mutlaka yenilenmelidir. Ayrıca karterin dibindeki mıknatıslarda biriken metal çapakları temizlenmelidir.
+
+*   **CVT Karterli ve Filtreli Bakım Ücreti:** 5.000 TL - 8.000 TL (Kullanılan orijinal parçalara göre değişir)
+
+## Markalara Göre Doğru Yağ Seçimi
+Her "kırmızı yağ" otomatik şanzıman yağı değildir. Yanlış spesifikasyonda yağ kullanımı, şanzımanı 10.000 km içinde bozar.
 
 ### Toyota Otomatik Şanzıman Yağı Hangisi?
-*   **Multidrive S (CVT):** Toyota Genuine CVT Fluid FE
-*   **Eski Corolla (4 İleri):** Toyota ATF WS
-*   **Toyota cvt şanzıman fiyatı** çok yüksek olduğu için (70.000₺+), yan sanayi yağ kullanmanızı önermiyoruz.
+*   **CVT Modeller (Multidrive S):** Toyota Genuine CVT Fluid FE (veya eşdeğeri TC)
+*   **Tam Otomatik (4 İleri):** Toyota ATF WS
+*   **Toyota CVT şanzıman fiyatı** (komple değişim) çok yüksek olduğu için, bakımda 300-500 TL'den kaçıp yan sanayi yağ kullanmak büyük risktir.
 
 ### Hyundai & Kia
-*   **6 İleri Otomatik:** SP-IV normunda yağ.
-*   **DCT:** 75W sentetik dişli yağı.
+*   **6 İleri Tork Konvertörlü:** SP-IV (SP-4) onaylı yağ.
+*   **DCT (7 İleri):** 70W veya 75W sentetik dişli yağı (GL-4).
 
----
+### Nissan
+*   **X-Tronic CVT:** Nissan NS-3 onaylı yağ (Yeşilimsi renktedir). Asla NS-2 veya üniversal yağ konulmamalıdır.
 
-**Tetik Otomotiv Yağ Değişim Merkezi**
-
-Gebze ve Tuzla'da tam otomatik cihazımızla, şanzımanınıza el değmeden %100 yağ değişimi yapıyoruz.
-
-[📞 Randevu: 0533 615 78 35](tel:05336157835)
+<div class="my-12 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
+  <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="text-center md:text-left">
+      <h3 class="font-heading text-2xl text-slate-800 mb-2">Makine ile %100 Yağ Değişimi</h3>
+      <p class="text-slate-600 max-w-xl">Gebze ve Tuzla şubemizde tam otomatik cihazımızla, şanzımanınıza el değmeden, kirli yağı %100 oranında temizliyoruz. Aracınızın ömrünü uzatın.</p>
+    </div>
+    <div class="flex flex-col gap-3 min-w-[200px]">
+      <a href="tel:05336157835" class="bg-orange-600 text-white text-center px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-colors">
+        Randevu Oluştur
+      </a>
+      <a href="/iletisim" class="bg-white text-slate-700 border border-slate-200 text-center px-6 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors">
+        Servis Konumu
+      </a>
+    </div>
+  </div>
+</div>
