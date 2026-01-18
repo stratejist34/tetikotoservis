@@ -31,25 +31,19 @@ Kullanıcılar genellikle "Bir kayış neden bu kadar pahalı?" diye düşünebi
 2.  **Devirdaim (Su Pompası):** Çoğu araçta triger kayışı, motor soğutma suyunu çeviren devirdaim pompasını da döndürür. Triger söküldüğünde, riske atmamak için devirdaim de mutlaka yenilenir.
 3.  **Yüksek İşçilik:** Triger sistemine ulaşmak için motorun yan tarafındaki kulaklar, kapaklar, kayışlar ve bazen motorun kendisinin askıya alınması gerekir. Ortalama 4-6 saatlik hassas bir işçilik gerektirir. Sentenin (zamanlamanın) milimetrik ayarlanması gerekir.
 
-## Hyundai Triger Değişimi Ücreti (2026)
+## Hyundai Triger Değişimi (2026)
 
 Hyundai modellerinde kullanılan motor tipine göre triger sistemi (Kayış veya Zincir) değişiklik gösterir.
 
-*   **1.4 MPI / 1.2 MPI Motorlar (i20, Accent Blue, Bayon):** Bu motorlar **Zincirlidir**. Zincir değişimi periyodik değildir, ses yaptığında (şakırtı) değişir.
-    *   **Zincir Seti Değişim Fiyatı:** 9.000 TL - 14.000 TL (Yağ Bakımı Dahil)
+*   **1.4 MPI / 1.2 MPI Motorlar:** Zincirlidir. Zincir değişimi ortalama **9.000 TL - 14.000 TL**.
+*   **1.4 CRDi / 1.6 CRDi Dizel:** Zincirlidir. Değişim fiyatı **10.000 TL - 16.000 TL**.
+*   **Eski Model (Kayışlı):** Kayış seti değişimi **7.500 TL - 9.500 TL**.
 
-*   **1.4 CRDi / 1.6 CRDi Dizel Motorlar:** Zincirlidir. Zincir sesi 150.000 - 200.000 km civarında başlayabilir.
-    *   **Dizel Zincir Seti Değişimi:** 10.000 TL - 16.000 TL
+## Kia Triger Değişimi
 
-*   **Eski Model (Getz, Accent Era, Admire):** Bu araçların çoğu **Kayışlıdır**. 4 yıl veya 80.000 km'de bir değişmesi şarttır.
-    *   **Triger Kayış Seti Değişimi:** 7.500 TL - 9.500 TL (Devirdaim Dahil)
-
-## Kia Triger Değişimi Fiyatları
-
-Kia marka araçların (Ceed, Sportage, Rio, Stonic) motorları Hyundai ile aynıdır, bu nedenle fiyatlar benzerlik gösterir.
-
-*   **Kia Sportage 1.6 GDI (Zincirli):** Değişim gerekirse 10.000 TL - 15.000 TL.
-*   **Kia Rio 1.4 Dizel (Zincirli):** Zincir seti değişimi ortalama 12.000 TL.
+Kia marka araçların (Ceed, Sportage, Rio) motorları Hyundai ile aynı altyapıyı kullanır.
+*   **Kia Sportage Triger Değişimi (Zincir):** 10.000 TL - 15.000 TL.
+*   **Kia Rio Triger Değişimi:** 12.000 TL bandındadır.
 
 <div class="my-10 p-6 bg-orange-50 border border-orange-200 rounded-xl text-center">
   <h3 class="font-heading text-orange-900 text-xl mb-2">Triger Kayışınız Koparsa Ne Olur?</h3>
@@ -65,20 +59,16 @@ Kia marka araçların (Ceed, Sportage, Rio, Stonic) motorları Hyundai ile aynı
 </div>
 
 ## Toyota Triger Değişimi
-Toyota'nın efsanevi VVT-i benzinli motorları genellikle **Zincirlidir** ve oldukça uzun ömürlüdür (200.000 km üzeri).
+Toyota'nın efsanevi VVT-i benzinli motorları genellikle **Zincirlidir** ve oldukça uzun ömürlüdür.
 
-*   **Toyota Corolla / Auris 1.6 (Zincirli):** Zincir seti (Orijinal) değişimi 12.000 TL - 18.000 TL.
-*   **Toyota 1.4 D-4D Dizel (Zincirli):** Dizel Corolla'larda zincir uzaması görülebilir. Değişim maliyeti: 14.000 TL civarı.
-*   **Eski Kasa (Efsane Kasa) Corolla:** Triger kayışı değişimi 6.000 TL bandındadır.
+*   **Toyota Corolla (Zincirli):** Zincir seti değişimi 12.000 TL - 18.000 TL.
+*   **Toyota Dizel (D-4D):** Zincir değişimi 14.000 TL civarındadır.
 
 ## Nissan Triger Değişim Fiyatı 2026
 Nissan araçlarında motor hacmine göre "Kayış mı Zincir mi?" sorusunun cevabı değişir.
 
-*   **1.5 dCi Motor (Qashqai, Juke, Micra):** Renault ortak üretimi bu motor **Triger Kayışlıdır**. En kritik motordur. 4-5 yılda bir mutlaka değişmelidir.
-    *   **Nissan Triger Değişim Fiyatı:** 9.000 TL - 12.500 TL (Orijinal Mais/Renault parçaları ile Devirdaim dahil).
-
-*   **1.2 DIG-T / 1.6 dCi Motor:** Bu motorlar **Zincirlidir**. Zincir setleri pahalıdır.
-    *   **Zincir Seti Değişimi:** 15.000 TL - 20.000 TL.
+*   **1.5 dCi Motor (Qashqai, Juke):** **Triger Kayışlıdır**. 4-5 yılda bir değişmelidir. Fiyatı **9.000 TL - 12.500 TL**.
+*   **1.2 DIG-T / 1.6 dCi Motor:** **Zincirlidir**. Set değişim fiyatı **15.000 TL - 20.000 TL**.
 
 ## Triger Değişim Zamanı Nasıl Anlaşılır?
 

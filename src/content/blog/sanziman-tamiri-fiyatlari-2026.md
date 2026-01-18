@@ -23,27 +23,25 @@ Aracınızın en karmaşık ve pahalı yürüyen aksam parçalarından biri olan
 
 Şanzıman arızaları genellikle ihmal edilen yağ değişimleri, yanlış kullanım veya mekanik yorgunluk sonucu ortaya çıkar. Arızanın erken teşhis edilmesi, komple revizyon (yenileme) yerine daha düşük maliyetli onarımlarla kurtulmanızı sağlayabilir.
 
-## Şanzıman İndirme (Sökme Takma) İşçiliği
+## Şanzıman Sökme Takma Ücreti 2026 (Şanzıman İndirme)
 
-Bir şanzımanın tamir edilebilmesi için önce araçtan ayrılması, yani motor bloğundan sökülmesi gerekir. Bu işleme sanayi dilinde "şanzıman indirme" denir. İşçilik ücretleri, aracın önden veya arkadan çekişli olmasına, motor hacmine ve şanzımanın ağırlığına göre değişir.
-
-2026 yılı güncel şanzıman sökme takma işçilik ücretleri şu şekildedir:
+Bir şanzımanın tamir edilebilmesi için önce araçtan ayrılması gerekir. Bu işleme sanayi dilinde "şanzıman indirme" denir. **Otomatik şanzıman indirme fiyatı** ve manuel şanzıman sökme takma işçilikleri şu şekildedir:
 
 *   **Binek Araçlar (Manuel):** 4.000 TL - 5.500 TL
-*   **Binek Araçlar (Otomatik):** 5.000 TL - 7.000 TL
-*   **SUV ve Ticari Araçlar:** 6.000 TL - 9.000 TL
+*   **Binek Araçlar (Otomatik):** 5.000 TL - 7.500 TL
+*   **SUV ve Ticari Araçlar:** 6.500 TL - 9.500 TL
 
-> **Önemli:** Bu fiyatlar sadece şanzımanın araçtan sökülüp takılması (işçilik) içindir. Şanzıman içerisindeki parçaların değişimi, revizyonu veya yağ maliyetleri bu fiyata dahil değildir.
+> **Önemli:** Bu fiyat sadece işçiliktir. Şanzıman revizyonu dahil değildir.
 
 ## Manuel Şanzıman Tamir Fiyatı
 
-Manuel şanzımanlar, otomatiklere göre daha basit bir dişli yapısına sahiptir. Ancak zamanla senkromeç aşınması, dişli kırılması veya rulman dağılması gibi sorunlar görülebilir. En sık karşılaşılan "vitese geçmeme" veya "vitesten atma" sorunlarının maliyetleri:
+Manuel şanzımanlar, otomatiklere göre daha basit bir dişli yapısına sahiptir. Ancak zamanla senkromeç aşınması, dişli kırılması veya prizdirek bilyası sesi gibi sorunlar görülebilir.
 
-*   **Manuel Şanzıman Revizyonu:** 8.500 TL - 18.000 TL
-*   **Senkromeç Değişimi:** 5.000 TL - 8.000 TL
-*   **Baskı Balata Değişimi İşçiliği:** 3.500 TL - 5.000 TL (Parça Hariç)
+**Şanzıman tamiri ne kadar tutar?** Manuel şanzımanlar için ortalama maliyetler:
 
-Manuel şanzımanlarda genellikle parça maliyeti işçilikten daha düşük tutar, ancak şanzımanın dağıtılıp toplanması uzmanlık gerektirir.
+*   **Manuel Şanzıman Revizyonu:** 9.000 TL - 18.000 TL
+*   **Senkromeç Değişimi:** 5.500 TL - 8.500 TL
+*   **Baskı Balata Değişimi İşçiliği:** 3.500 TL - 5.000 TL
 
 ## Otomatik Şanzıman Revizyonu Fiyat 2026
 

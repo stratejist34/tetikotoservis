@@ -30,10 +30,10 @@ Motor yağ kaçakları genellikle motorun en üstünden (külbütör), en altın
 ### 1. Karter Yağ Kaçağı Masrafı
 Motor yağının biriktiği depo olan karter, aracın en alt kısmındadır. Kaldırıma sürtme, taş çarpması veya contanın eskimesi sonucu yağ kaçırabilir.
 *   **İşlem:** Motor yağı boşaltılır, karter sökülür, yüzey temizlenir. Modele göre "sıvı conta" veya "hazır mantar conta" uygulanarak kapatılır.
-*   **Fiyat:** 1.500 TL - 3.000 TL (Yeni Yağ Hariç).
+*   **Karter Yağ Kaçağı Tamiri Fiyatı:** 1.500 TL - 3.000 TL (Yeni Yağ Hariç).
 
 ### 2. Külbütör (Üst Kapak) Contası Kaçağı
-Motorun en üst kapağıdır. Buradan kaçıran yağ, motor bloğunun üzerine süzülür, egzoz manifolduna damlayıp yanık yağ kokusu yapabilir. En tehlikeli yanı, **buji yuvalarına yağ dolmasıdır**. Bu durum ateşlemeyi bozar ve tekleme yaptırır.
+Motorun en üst kapağıdır. Buradan kaçıran yağ, motor bloğunun üzerine süzülür. En tehlikeli yanı, **buji yuvalarına yağ dolmasıdır**.
 *   **Fiyat:** Değişimi nispeten kolaydır. 1.200 TL - 2.500 TL.
 
 ### 3. Krank Keçesi Yağ Kaçağı Değişim Ücreti

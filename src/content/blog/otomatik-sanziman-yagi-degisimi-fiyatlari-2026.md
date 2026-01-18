@@ -69,19 +69,23 @@ CVT şanzıman bakımında sadece yağ değiştirmek yetmez; şanzıman karteri 
 
 *   **CVT Karterli ve Filtreli Bakım Ücreti:** 5.000 TL - 8.000 TL (Kullanılan orijinal parçalara göre değişir)
 
-## Markalara Göre Doğru Yağ Seçimi
-Her "kırmızı yağ" otomatik şanzıman yağı değildir. Yanlış spesifikasyonda yağ kullanımı, şanzımanı 10.000 km içinde bozar.
+## Toyota Otomatik Şanzıman Yağı Hangisi?
 
-### Toyota Otomatik Şanzıman Yağı Hangisi?
-*   **CVT Modeller (Multidrive S):** Toyota Genuine CVT Fluid FE (veya eşdeğeri TC)
-*   **Tam Otomatik (4 İleri):** Toyota ATF WS
-*   **Toyota CVT şanzıman fiyatı** (komple değişim) çok yüksek olduğu için, bakımda 300-500 TL'den kaçıp yan sanayi yağ kullanmak büyük risktir.
+Toyota araçlarda kullanılan şanzıman tipine göre yağ seçimi hayati önem taşır. Yanlış yağ şanzımanı bozar.
+
+1.  **Toyota CVT Şanzıman Yağı:** Multidrive S şanzımanlarda **"Toyota Genuine CVT Fluid FE"** (veya eşdeğeri TC) kullanılmalıdır.
+2.  **Tam Otomatik (4 İleri) Yağı:** Eski model Corolla ve Yaris'lerde **"Toyota ATF WS"** standardında yağ kullanılır.
+
+*   **Uyarı:** Toyota CVT şanzımanlar yağa karşı çok hassastır. Bakımda 300-500 TL'den kaçıp yan sanayi veya üniversal yağ kullanmak büyük risktir.
+
+### Diğer Markalar İçin Doğru Yağ Seçimi
+*   **Hyundai & Kia (6 İleri):** SP-IV (SP-4) onaylı yağ.
+*   **Nissan (X-Tronic CVT):** Nissan NS-3 (Yeşil). Asla NS-2 konulmamalıdır.
 
 ### Hyundai & Kia
 *   **6 İleri Tork Konvertörlü:** SP-IV (SP-4) onaylı yağ.
 *   **DCT (7 İleri):** 70W veya 75W sentetik dişli yağı (GL-4).
 
-### Nissan
 *   **X-Tronic CVT:** Nissan NS-3 onaylı yağ (Yeşilimsi renktedir). Asla NS-2 veya üniversal yağ konulmamalıdır.
 
 <div class="my-12 bg-white border border-slate-200 rounded-2xl p-8 shadow-sm">
