@@ -72,7 +72,7 @@ const brands = [
   <div class="container mx-auto px-4">
     {brands.map((brand, index) => (
       <div 
-        class="mb-8 last:mb-0"
+        class="sticky-card mb-8 last:mb-0"
         style={`position: sticky; top: calc(6rem + ${index * 2}rem); z-index: ${index + 10};`}
       >
         <div class={`group relative rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-gradient-to-br ${brand.color} transition-all duration-700`}>
@@ -141,11 +141,11 @@ const brands = [
 
 <style>
   /* Smooth shadow transition on scroll */
-  #brand-stacked .sticky > div {
+  #brand-stacked .sticky-card > div {
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
   }
   
-  #brand-stacked .sticky:hover > div {
+  #brand-stacked .sticky-card:hover > div {
     transform: scale(1.01);
   }
 </style>

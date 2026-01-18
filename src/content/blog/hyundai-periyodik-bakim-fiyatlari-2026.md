@@ -1,0 +1,96 @@
+---
+title: "Hyundai Periyodik Bakım Fiyatları 2026 | Güncel Servis Rehberi"
+description: "2026 yılı Hyundai periyodik bakım fiyatları ne kadar? i10, i20, Tucson ve Elantra modelleri için güncel özel servis fiyat listesi, km bakımları ve servis detayları."
+pubDate: "2026-01-07"
+category: "bakim"
+tags: ["hyundai", "bakim-fiyatlari", "2026", "periyodik-bakim", "ozel-servis"]
+image: "/images/blog/hyundai-periyodik-bakim-fiyatlari-2026.avif"
+author: "Tetik Otomotiv Uzman Kadrosu"
+alt: "Hyundai Periyodik Bakım Fiyatları 2026"
+draft: false
+---
+
+# Hyundai Periyodik Bakım Fiyatları 2026
+
+Hyundai marka aracınızın performansını korumak ve güvenli sürüş sağlamak için düzenli periyodik bakım hayati önem taşır. 2026 yılına girerken Hyundai kullanıcılarının en çok merak ettiği soru: "**Hyundai periyodik bakım fiyatları ne kadar oldu?**"
+
+Bu rehberde, i10, i20, i30, Tucson, Elantra, Kona ve Bayon gibi popüler modellerin 2026 güncel bakım maliyetlerini, bakım aralıklarında yapılan işlemleri ve servis seçiminde dikkat etmeniz gereken kritik noktaları bulacaksınız. Amacımız, servis randevusu almadan önce maliyetlerinizi netleştirmenize yardımcı olmaktır.
+
+## 📊 Hyundai Periyodik Bakım Fiyat Listesi 2026
+
+2026 yılı için tahmini özel servis bakım fiyat aralıkları aşağıdadır. Rakamlar, kullanılan yedek parçanın (Orijinal / Muadil) türüne ve motor hacmine göre değişkenlik gösterebilir.
+
+| Model Grubu | Küçük Bakım (Yağ + Filtre) | Orta Bakım (+Kontrol) | Büyük Bakım (Ağır Bakım) |
+| :--- | :--- | :--- | :--- |
+| **B Segment** (i10, i20, Bayon) | 2.850₺ - 4.200₺ | 4.100₺ - 5.800₺ | 6.500₺ - 9.200₺ |
+| **C Segment / SUV** (i30, Elantra, Kona) | 3.200₺ - 4.900₺ | 4.800₺ - 6.700₺ | 7.400₺ - 10.500₺ |
+| **SUV / D Segment** (Tucson, Santa Fe) | 3.800₺ - 5.600₺ | 5.500₺ - 8.200₺ | 8.800₺ - 13.500₺ |
+
+*Not: Belirtilen fiyatlar işçilik dahil yaklaşık aralıklardır. Güncel kur ve parça maliyetlerine göre anlık değişim gösterebilir.*
+
+---
+
+## 🛠️ Hyundai Bakım Periyotlarında Neler Yapılır?
+
+Hyundai araçlarda bakımlar genellikle her **15.000 km**'de veya **1 yılda** bir (hangisi önce dolarsa) gerçekleştirilir.
+
+### 🚗 15.000 Km Bakımı (Küçük Bakım)
+Bu aşama motorun temel sağlığı için en kritik adımdır.
+- Motor yağı değişimi (Tam sentetik, yüksek performans serisi)
+- Yağ filtresi değişimi (Orijinal ekipman standardında)
+- Hava filtresi değişimi
+- Polen filtresi kontrolü / değişimi
+- Temel mekanik kontroller ve sıvı seviyeleri kontrolü
+
+### 📉 30.000 Km Bakımı (Orta Bakım)
+Küçük bakıma ek olarak aracın durdurma ve ateşleme sistemleri incelenir.
+- Fren hidroliği kontrolü ve gerekirse değişimi
+- Balata ve disk kontrolü (Ön ve arka)
+- Soğutma sıvısı (Antifriz) ölçümü ve takviyesi
+- Elektronik sistem taraması (Ayrıntılı diyagnoz raporu)
+
+### ⚙️ 60.000 Km / 90.000 Km Bakımı (Büyük Bakım)
+Aracın tüm bileşenlerinin detaylıca elden geçtiği ağır bakım dönemidir.
+- Şanzıman yağı değişimi (Özellikle DCT ve 6-ileri otomatik modellerde)
+- Triger seti veya zincir kontrolü
+- V kayışı ve gergi bilyası değişimi
+- Yakıt filtresi değişimi (Dizel motorlarda sistem sağlığı için kritik)
+- Buji değişimi (İridyum veya standart buji kontrolü)
+
+---
+
+## 🏗️ Yetkili Servis vs. Özel Servis: Neden Tetik Otomotiv?
+
+2026 yılında artan bakım maliyetleri, araç sahiplerini daha rasyonel ve güvenilir çözümlere yönlendiriyor.
+
+**Yetkili Servis:** Standart prosedürleri takip eder ancak işçilik ve parça birim fiyatları genellikle özel servislere göre %40-60 daha yüksektir.
+
+**Özel Servis (Tetik Otomotiv):** 17 yıllık Hyundai marka uzmanlığımızla, yetkili servis standartlarında ekipman ve hassasiyetle çalışıyoruz. Kullandığımız parçalar orijinal veya yüksek kaliteli sertifikalı muadillerdir. En büyük farkımız, **fiyat şeffaflığı**, **uzman teknisyen kadrosu** ve **kurumsal hizmet** anlayışımızdır.
+
+---
+
+## ❓ Sık Sorulan Sorular (SSS)
+
+### 1. Hyundai bakım fiyatları 2026'da neden farklılık gösteriyor?
+Yedek parça ithalat maliyetleri, madeni yağ fiyatlarındaki değişim ve modelin teknik karmaşıklığı (Örn: Hibrit vs Standart) fiyat listelerini etkileyen temel unsurlardır.
+
+### 2. Bakım süresi yaklaşık ne kadar sürer?
+Genel periyodik bakımlarımız, randevulu araçlar için ortalama **90-120 dakika** içerisinde tamamlanarak teslim edilmektedir. Ağır bakımlarda bu süre iş kapsamına göre değişebilir.
+
+### 3. Aracımın bakım yapıldığına dair kayıt oluşturuyor musunuz?
+Evet, yaptığımız tüm işlemler servis yazılımımıza kaydedilir. Aracınızın servis geçmişi şeffaf bir şekilde tutulur, bu da aracınızın ikinci el değerini korur.
+
+### 4. DCT şanzıman bakımı fiyatlara dahil mi?
+Şanzıman yağı ve kavram kontrolü işlemleri "Ağır Bakım" kapsamına girer ve kullanılan yağın niteliği gereği standart bakım fiyatlarına ek bir maliyet olarak yansıtılır.
+
+---
+
+## 📍 Gebze, Tuzla ve Marmara Bölgesi Hyundai Sahipleri İçin
+
+Tetik Otomotiv olarak, Kocaeli ve İstanbul bölgelerindeki tüm Hyundai sahiplerine şeffaf ve garantili bakım hizmeti sunuyoruz. Aracınızın modeline ve kilometresine özel net fiyat teklifi almak ve bakım planınızı oluşturmak için uzman ekibimize ulaşabilirsiniz.
+
+> **Satış odaklı değil, çözüm odaklı hizmet anlayışımızla servis randevunuzu güvenle planlayın.**
+
+[📞 Hemen Fiyat Teklifi Al: 0533 615 78 35](tel:05336157835)
+
+---
