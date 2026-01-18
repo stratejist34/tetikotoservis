@@ -54,9 +54,12 @@ Kia marka araçların (Ceed, Sportage, Rio, Stonic) motorları Hyundai ile aynı
 <div class="my-10 p-6 bg-orange-50 border border-orange-200 rounded-xl text-center">
   <h3 class="font-heading text-orange-900 text-xl mb-2">Triger Kayışınız Koparsa Ne Olur?</h3>
   <p class="text-slate-600 mb-6 text-sm">"Ses geliyor" deyip geçmeyin. Zincir veya kayış koparsa supaplar eğilir, motor rektefiye ister. Masraf 10 katına çıkar.</p>
+  
+  <p class="text-center font-bold text-slate-700 mb-4 text-sm">Bu belirtiler aracınızda varsa, motorunuzu riske atmadan kontrol ettirin.</p>
+
   <div class="flex flex-col sm:flex-row justify-center gap-3">
      <a href="tel:05336157835" class="bg-orange-600 !text-white no-underline px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
-        Ücretsiz Ses Kontrolü
+        Risk Almayın, Hemen Arayın
      </a>
   </div>
 </div>

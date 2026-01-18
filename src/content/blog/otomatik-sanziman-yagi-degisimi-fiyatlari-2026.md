@@ -51,9 +51,12 @@ Aşağıdaki fiyatlar, ortalama işçilik ve kaliteli yağ (Motul, Castrol, Mobi
 <div class="my-10 p-6 bg-orange-50 border border-orange-200 rounded-xl text-center">
   <h3 class="font-heading text-orange-900 text-xl mb-2">Vites Geçişleri Sertleşti mi?</h3>
   <p class="text-slate-600 mb-6 text-sm">Şanzıman yağı özelliğini kaybettiğinde vuruntu ve kararsızlık yapar. Şanzımanınızı bozmadan yağını değiştirin.</p>
+  
+  <p class="text-center font-bold text-slate-700 mb-4 text-sm">Vuruntu başladıysa zaman aleyhinize işliyor demektir, daha fazla beklemeyin.</p>
+
   <div class="flex flex-col sm:flex-row justify-center gap-3">
      <a href="tel:05336157835" class="bg-orange-600 !text-white no-underline px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
-        Yağ Değişim Fiyatı Al
+        Şanzımanınızı Kurtarın
      </a>
   </div>
 </div>
