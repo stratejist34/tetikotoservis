@@ -233,8 +233,108 @@ const {
       }
       body {
         font-family: "Manrope", system-ui, sans-serif;
+        font-size: 18px;
+        line-height: 1.7;
+        color: #2a2a2a;
         background: #020617;
-        color: #f8fafc;
+      }
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+          line-height: 1.8;
+        }
+      }
+
+      /* Lead Text */
+      .lead-text {
+        font-size: 20px;
+        font-weight: 450;
+        line-height: 1.65;
+        color: #1a1a1a;
+      }
+
+      /* Global Headings */
+      h1,
+      .h1 {
+        font-family: "ManifoldExtended", sans-serif;
+        font-size: clamp(28px, 5vw, 48px);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+
+      h2,
+      .h2 {
+        font-family: "ManifoldExtended", sans-serif;
+        font-size: clamp(24px, 4vw, 32px);
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: -0.01em;
+      }
+
+      h3,
+      .h3 {
+        font-family: "ManifoldExtended", sans-serif;
+        font-size: clamp(20px, 3vw, 24px);
+        font-weight: 600;
+        line-height: 1.4;
+        letter-spacing: 0;
+      }
+
+      /* CTA Buttons */
+      .cta-primary {
+        font-family: "ManifoldExtended", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, #ff5722 0%, #e64a19 100%);
+        color: #ffffff !important;
+        padding: 18px 36px;
+        border-radius: 8px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+      .cta-primary:hover {
+        background: linear-gradient(135deg, #e64a19 0%, #d84315 100%);
+        letter-spacing: 0.08em;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(255, 87, 34, 0.3);
+        color: #ffffff !important;
+      }
+
+      @media (max-width: 768px) {
+        .cta-primary {
+          font-size: 16px;
+          padding: 16px 32px;
+          width: 100%;
+        }
+      }
+
+      .cta-secondary {
+        font-family: "ManifoldExtended", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        background: transparent;
+        color: #ff5722;
+        border: 2px solid #ff5722;
+        padding: 16px 34px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+      .cta-secondary:hover {
+        background: #ff5722;
+        color: #ffffff !important;
       }
       .font-heading {
         font-family: "ManifoldExtended", system-ui, sans-serif;
@@ -251,11 +351,7 @@ const {
         font-weight: 500;
         letter-spacing: 0.03em;
       }
-      .font-button {
-        font-family: "ManifoldExtended", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
+
       /* Hero section - prevent CLS with fixed dimensions */
       .hero-title {
         font-size: clamp(2.5rem, 5vw, 3.75rem);

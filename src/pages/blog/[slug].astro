@@ -107,6 +107,54 @@ const clientScript = `
     .prose a.bg-orange-600:hover {
       color: #ffffff !important;
     }
+
+    /* Prose Headings Override for Contrast */
+    .prose h2 {
+      color: #E64A19 !important; /* High Contrast Orange */
+    }
+
+    /* Sidebar Typography */
+    .sidebar-title {
+      font-family: "ManifoldExtended", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    .sidebar-link {
+      font-family: "Manrope", sans-serif;
+      font-size: 16px;
+      font-weight: 450;
+      line-height: 1.8;
+      color: #2a2a2a;
+      transition: color 0.2s ease, padding-left 0.2s ease;
+      display: block;
+    }
+
+    .sidebar-link:hover {
+      color: #FF5722;
+      padding-left: 8px;
+    }
+
+    /* Sidebar CTA Card */
+    .sidebar-cta-card {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+      border: 1px solid #FFECB3;
+    }
+    .sidebar-cta-card h4 {
+      font-family: "ManifoldExtended", sans-serif;
+      font-size: 18px !important;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .sidebar-cta-card p {
+      font-family: "Manrope", sans-serif;
+      font-size: 14px !important;
+      line-height: 1.6;
+      color: #555;
+    }
   </style>
 
   <!-- Progress Bar -->
@@ -228,7 +276,7 @@ const clientScript = `
                     {/* Table of Contents */}
                     {headings.length > 0 && (
                         <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                            <h3 class="font-button text-slate-900 mb-4 text-[10px] uppercase flex items-center gap-2 opacity-80">
+                            <h3 class="sidebar-title mb-4 flex items-center gap-2 opacity-80">
                                 <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                                 İÇİNDEKİLER
                             </h3>
@@ -237,7 +285,7 @@ const clientScript = `
                                 <div class="absolute left-0 top-2 bottom-2 w-px bg-slate-200"></div>
                                 
                                 {headings.map(h => (
-                                    <a href={`#${h.slug}`} class="toc-link text-sm text-slate-500 hover:text-orange-600 transition-all py-1 pl-4 border-l-2 border-transparent -ml-[1px] hover:border-orange-300">
+                                    <a href={`#${h.slug}`} class="toc-link sidebar-link py-1 pl-4 border-l-2 border-transparent -ml-[1px] hover:border-orange-300">
                                         {h.text}
                                     </a>
                                 ))}
@@ -246,13 +294,13 @@ const clientScript = `
                     )}
 
                     {/* Sidebar CTA */}
-                    <div class="bg-orange-50 rounded-2xl p-6 border border-orange-100 text-center">
+                    <div class="sidebar-cta-card rounded-2xl p-6 text-center">
                         <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mx-auto mb-4 text-orange-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
-                        <h4 class="font-heading uppercase text-xs text-slate-900 mb-2">Hızlı Servis İhtiyacı?</h4>
-                        <p class="text-[10px] text-slate-500 mb-4 leading-relaxed font-button uppercase opacity-70">Aracınızla ilgili acil bir durum mu var? 7/24 bize ulaşabilirsiniz.</p>
-                        <a href="tel:05336157835" class="block w-full bg-orange-600 text-white text-[10px] font-button uppercase py-3 rounded-xl hover:bg-orange-700 transition-colors shadow-lg shadow-orange-600/20 text-center">
+                        <h4 class="uppercase mb-2">Hızlı Servis İhtiyacı?</h4>
+                        <p class="mb-4 uppercase opacity-70">Aracınızla ilgili acil bir durum mu var? 7/24 bize ulaşabilirsiniz.</p>
+                        <a href="tel:05336157835" class="cta-primary w-full shadow-lg shadow-orange-600/20">
                             0533 615 78 35
                         </a>
                     </div>
