@@ -52,7 +52,7 @@ Aşağıdaki fiyatlar, ortalama işçilik ve kaliteli yağ (Motul, Castrol, Mobi
   <h3 class="font-heading text-orange-900 text-xl mb-2">Vites Geçişleri Sertleşti mi?</h3>
   <p class="text-slate-600 mb-6 text-sm">Şanzıman yağı özelliğini kaybettiğinde vuruntu ve kararsızlık yapar. Şanzımanınızı bozmadan yağını değiştirin.</p>
   <div class="flex flex-col sm:flex-row justify-center gap-3">
-     <a href="tel:05336157835" class="bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
+     <a href="tel:05336157835" class="bg-orange-600 !text-white no-underline px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
         Yağ Değişim Fiyatı Al
      </a>
   </div>
@@ -88,7 +88,7 @@ Her "kırmızı yağ" otomatik şanzıman yağı değildir. Yanlış spesifikasy
       <p class="text-slate-600 max-w-xl">Gebze ve Tuzla şubemizde tam otomatik cihazımızla, şanzımanınıza el değmeden, kirli yağı %100 oranında temizliyoruz. Aracınızın ömrünü uzatın.</p>
     </div>
     <div class="flex flex-col gap-3 min-w-[200px]">
-      <a href="tel:05336157835" class="bg-orange-600 text-white text-center px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-colors">
+      <a href="tel:05336157835" class="bg-orange-600 !text-white no-underline text-center px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-colors">
         Randevu Oluştur
       </a>
       <a href="/iletisim" class="bg-white text-slate-700 border border-slate-200 text-center px-6 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors">

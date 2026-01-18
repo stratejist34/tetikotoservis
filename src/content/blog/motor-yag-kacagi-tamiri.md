@@ -47,7 +47,7 @@ Bir araç sahibinin en korkulu rüyasıdır. Motor bloğu ile şanzımanın birl
   <h3 class="font-heading text-orange-900 text-xl mb-2">Yağ Lekesi Büyümeden Önlem Alın</h3>
   <p class="text-slate-600 mb-6 text-sm">Küçük bir damla, yolda motorsuz kalmanıza neden olabilir. Motor susuz veya yağsız kalırsa yatak sarar. Kaçak tespiti için bize ulaşın.</p>
   <div class="flex flex-col sm:flex-row justify-center gap-3">
-     <a href="tel:05336157835" class="bg-orange-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
+     <a href="tel:05336157835" class="bg-orange-600 !text-white no-underline px-8 py-3 rounded-lg font-bold hover:bg-orange-700 transition-colors shadow-lg shadow-orange-200">
         Kaçak Kontrolü Yaptır
      </a>
   </div>
@@ -70,7 +70,7 @@ Bazen motorun her yeri yağ içindedir ve kaçağın nereden geldiği anlaşılm
       <p class="text-slate-600 max-w-xl">Yağ eksilten araçla yola çıkmayın. Tetik Otomotiv'de detaylı kaçak tespiti ve garantili conta değişimi hizmeti veriyoruz.</p>
     </div>
     <div class="flex flex-col gap-3 min-w-[200px]">
-      <a href="tel:05336157835" class="bg-orange-600 text-white text-center px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-colors">
+      <a href="tel:05336157835" class="bg-orange-600 !text-white no-underline text-center px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition-colors">
         Fiyat Teklifi Al
       </a>
       <a href="/iletisim" class="bg-white text-slate-700 border border-slate-200 text-center px-6 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors">
