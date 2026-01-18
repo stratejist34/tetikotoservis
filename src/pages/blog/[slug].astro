@@ -98,6 +98,16 @@ const clientScript = `
   <BreadcrumbSchema items={breadcrumbItems} />
   
   <style set:html={smoothScrollCSS}></style>
+  <style is:global>
+    /* Force white text on orange CTA buttons inside prose */
+    .prose a.bg-orange-600 {
+      color: #ffffff !important;
+      text-decoration: none !important;
+    }
+    .prose a.bg-orange-600:hover {
+      color: #ffffff !important;
+    }
+  </style>
 
   <!-- Progress Bar -->
   <div class="fixed top-0 left-0 h-1 bg-orange-500 z-[60] w-0 transition-all duration-200" id="progress-bar"></div>
