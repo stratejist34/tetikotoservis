@@ -16,18 +16,27 @@ C-SUV segmentinin en popüler modellerinden biri olan **Hyundai Tucson**, konfor
 
 Bu yazımızda, 2026 yılı için **Hyundai Tucson bakım fiyatlarını** ve DCT şanzıman, DPF gibi kritik bileşenlerin bakım detaylarını inceledik.
 
-## 📊 2026 Hyundai Tucson Bakım Fiyat Listesi
+## 📊 Hyundai Tucson Özel Servis Bakım Fiyatları 2026 (Garanti Dışı)
 
-Tucson bakımları, motor seçeneklerine (Benzinli, Dizel, Mild-Hybrid) göre farklılık gösterir. Aşağıdaki fiyatlar, özel servisimizde **orijinal ekipman kalitesinde** parça kullanılarak verilen hizmetin bedelleridir.
+Aşağıdaki fiyatlar, Hyundai yetkili servis listesinin yaklaşık **%45 indirimli** halidir. **Tetik Otomotiv Özel Servis** olarak, orijinal ekipman kalitesinde parça kullanarak hizmet veriyoruz.
 
 | İşlem | 1.6 T-GDI (Benzinli) | 1.6 CRDI (Dizel/Hibrit) | Eski Kasa (ix35/Tucson) |
 | :--- | :--- | :--- | :--- |
-| **Küçük Bakım** (15.000 Km) | 3.800₺ - 5.500₺ | 4.200₺ - 6.000₺ | 3.500₺ - 5.000₺ |
-| **Ön Balata Değişimi** | 2.500₺ - 3.500₺ | 2.500₺ - 3.500₺ | 2.200₺ - 3.200₺ |
-| **DCT Şanzıman Bakımı** | 5.500₺ - 7.500₺ | 5.500₺ - 7.500₺ | (Tork Konvertörlü ise) 6-8 Bin₺ |
-| **Ağır Bakım** (60/90 Bin Km) | 9.000₺ - 13.000₺ | 10.000₺ - 15.000₺ | 8.500₺ - 12.000₺ |
+| **Küçük Bakım** (15.000 Km) | 7.200₺ - 8.500₺ | 7.200₺ - 8.500₺ | 8.000₺ - 10.000₺ |
+| **Ön Balata Değişimi** | 3.500₺ - 4.500₺ | 3.500₺ - 4.500₺ | 3.200₺ - 4.200₺ |
+| **DCT Şanzıman Bakımı** | 7.500₺ - 9.500₺ | 7.500₺ - 9.500₺ | (Tork Konvertörlü) 8-10 Bin₺ |
+| **Ağır Bakım** (60/90 Bin Km) | 14.000₺ - 18.000₺ | 15.000₺ - 20.000₺ | 12.000₺ - 16.000₺ |
 
 *Fiyatlar işçilik dahil ve KDV hariç tahmini aralıklardır.*
+
+<div class="bg-blue-50/50 border border-blue-100 rounded-lg p-4 mt-6 mb-8">
+  <p class="text-sm text-slate-600 mb-3 font-medium">Bu fiyatlar ortalama değerlerdir. Aracınızın motor tipi ve km’sine göre netleşir.</p>
+  <a href="https://api.whatsapp.com/send?phone=905336157835&text=Merhaba,%20Hyundai%20Tucson%20aracım%20için%20bakım%20fiyatı%20almak%20istiyorum." 
+     onclick="gtag('event', 'whatsapp_click', {'event_category': 'conversion', 'event_label': 'tucson_price_inquiry_micro'});"
+     class="inline-flex items-center text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:text-blue-600 px-4 py-2 rounded-md transition-colors shadow-sm">
+    <span class="mr-2">💬</span> Aracıma özel fiyat sor
+  </a>
+</div>
 
 ---
 

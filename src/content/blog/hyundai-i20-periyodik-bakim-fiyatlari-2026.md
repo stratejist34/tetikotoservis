@@ -16,17 +16,26 @@ B segmentinin lider oyuncularından **Hyundai i20**, hem ekonomik hem de şık y
 
 Bu detaylı rehberde, i20'nizin bakım maliyetlerini ve kullanıcıların sıkça karşılaştığı kronik sorunları servis tecrübelerimizle derledik.
 
-## 📊 2026 Hyundai i20 Bakım Fiyatları
+## 📊 Hyundai i20 Özel Servis Bakım Fiyatları 2026 (Garanti Dışı)
 
-Aşağıdaki fiyatlar 1.4 MPI (Otomatik/Manuel), 1.2 MPI ve 1.0 T-GDI motor seçenekleri için ortalama **özel servis** fiyatlarıdır.
+Aşağıdaki fiyatlar 1.4 MPI, 1.2 MPI ve 1.0 T-GDI motor seçenekleri için **Tetik Otomotiv Özel Servis** fiyatlarıdır. Rakamlar, yetkili servis listesinin yaklaşık **%45 indirimli** halidir.
 
-| İşlem Türü | 1.4 MPI / 1.2 MPI | 1.0 T-GDI (Turbo) | 1.4 Dizel (Eski Kasa) |
-| :--- | :--- | :--- | :--- |
-| **Periyodik Bakım** (15.000 km) | 2.850₺ - 3.800₺ | 3.200₺ - 4.500₺ | 3.500₺ - 4.900₺ |
-| **Fren Balata Değişimi** (Ön) | 1.800₺ - 2.500₺ | 2.000₺ - 2.800₺ | 1.900₺ - 2.600₺ |
-| **Ağır Bakım** (V Kayışı/Buji/Şanzıman) | 6.000₺ - 8.500₺ | 7.500₺ - 10.000₺ | 8.000₺ - 11.500₺ |
+| İşlem Türü | Benzinli (1.4 / 1.2 / 1.0 Turbo) | Dizel (1.4 CRDi - Eski Kasa) |
+| :--- | :--- | :--- |
+| **Periyodik Bakım** (15.000 km) | 4.400₺ - 5.500₺ | 5.600₺ - 6.800₺ |
+| **Fren Balata Değişimi** (Ön) | 2.500₺ - 3.200₺ | 2.500₺ - 3.200₺ |
+| **Ağır Bakım** (Zincir/Kayış/Şanzıman) | 9.000₺ - 12.500₺ | 11.000₺ - 15.000₺ |
 
-*Fiyatlara işçilik ve KDV dahildir. Orijinal kalitede yedek parça baz alınmıştır.*
+*Fiyatlar işçilik ve KDV dahildir. Orijinal kalitede yedek parça baz alınmıştır.*
+
+<div class="bg-blue-50/50 border border-blue-100 rounded-lg p-4 mt-6 mb-8">
+  <p class="text-sm text-slate-600 mb-3 font-medium">Bu fiyatlar ortalama değerlerdir. Aracınızın motor tipi ve km’sine göre netleşir.</p>
+  <a href="https://api.whatsapp.com/send?phone=905336157835&text=Merhaba,%20Hyundai%20i20%20aracım%20için%20bakım%20fiyatı%20almak%20istiyorum." 
+     onclick="gtag('event', 'whatsapp_click', {'event_category': 'conversion', 'event_label': 'i20_price_inquiry_micro'});"
+     class="inline-flex items-center text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:text-blue-600 px-4 py-2 rounded-md transition-colors shadow-sm">
+    <span class="mr-2">💬</span> Aracıma özel fiyat sor
+  </a>
+</div>
 
 ---
 

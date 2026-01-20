@@ -16,17 +16,26 @@ Hyundai marka aracınızın performansını korumak ve güvenli sürüş sağlam
 
 Bu rehberde, i10, i20, i30, Tucson, Elantra, Kona ve Bayon gibi popüler modellerin 2026 güncel bakım maliyetlerini, bakım aralıklarında yapılan işlemleri ve servis seçiminde dikkat etmeniz gereken kritik noktaları bulacaksınız. Amacımız, servis randevusu almadan önce maliyetlerinizi netleştirmenize yardımcı olmaktır.
 
-## 📊 Hyundai Periyodik Bakım Fiyat Listesi 2026
+## 📊 Hyundai Özel Servis Bakım Fiyat Listesi 2026 (Garanti Dışı)
 
-2026 yılı için tahmini özel servis bakım fiyat aralıkları aşağıdadır. Rakamlar, kullanılan yedek parçanın (Orijinal / Muadil) türüne ve motor hacmine göre değişkenlik gösterebilir.
+Aşağıdaki fiyatlar, Hyundai yetkili servis tavsiye edilen satış fiyatlarının yaklaşık **%45 indirimli** halidir. Garantisi bitmiş (2022 ve öncesi) araçlar için geçerli **Tetik Otomotiv Özel Servis** fiyatlarıdır.
 
 | Model Grubu | Küçük Bakım (Yağ + Filtre) | Orta Bakım (+Kontrol) | Büyük Bakım (Ağır Bakım) |
 | :--- | :--- | :--- | :--- |
-| **B Segment** (i10, i20, Bayon) | 2.850₺ - 4.200₺ | 4.100₺ - 5.800₺ | 6.500₺ - 9.200₺ |
-| **C Segment / SUV** (i30, Elantra, Kona) | 3.200₺ - 4.900₺ | 4.800₺ - 6.700₺ | 7.400₺ - 10.500₺ |
-| **SUV / D Segment** (Tucson, Santa Fe) | 3.800₺ - 5.600₺ | 5.500₺ - 8.200₺ | 8.800₺ - 13.500₺ |
+| **B Segment** (i10, i20, Bayon) | 4.400₺ - 5.500₺ | 5.800₺ - 7.200₺ | 8.500₺ - 11.500₺ |
+| **C Segment** (i30, Elantra) | 5.900₺ - 7.500₺ | 7.900₺ - 9.800₺ | 12.000₺ - 16.500₺ |
+| **SUV / D Segment** (Tucson, Santa Fe) | 7.200₺ - 9.500₺ | 9.800₺ - 12.500₺ | 15.000₺ - 22.000₺ |
 
-*Not: Belirtilen fiyatlar işçilik dahil yaklaşık aralıklardır. Güncel kur ve parça maliyetlerine göre anlık değişim gösterebilir.*
+*Not: Fiyatlar motor tipi (Benzinli/Dizel) ve yağ kapasitesine göre değişkenlik gösterebilir.*
+
+<div class="bg-blue-50/50 border border-blue-100 rounded-lg p-4 mt-6 mb-8">
+  <p class="text-sm text-slate-600 mb-3 font-medium">Bu fiyatlar ortalama değerlerdir. Aracınızın motor tipi ve km’sine göre netleşir.</p>
+  <a href="https://api.whatsapp.com/send?phone=905336157835&text=Merhaba,%20Hyundai%20aracım%20için%20bakım%20fiyatı%20almak%20istiyorum." 
+     onclick="gtag('event', 'whatsapp_click', {'event_category': 'conversion', 'event_label': 'hyundai_price_inquiry_micro'});"
+     class="inline-flex items-center text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:text-blue-600 px-4 py-2 rounded-md transition-colors shadow-sm">
+    <span class="mr-2">💬</span> Aracıma özel fiyat sor
+  </a>
+</div>
 
 ---
 
