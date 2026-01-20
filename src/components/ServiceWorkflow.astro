@@ -1,0 +1,95 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "İLK TEMAS",
+    description: "Aracı değil, problemi dinleriz. Doğru sorularla süreci en baştan netleştiririz.",
+    shortDescription: "Problemi dinler, süreci doğru başlatırız."
+  },
+  {
+    number: "02",
+    title: "DİAGNOSTİK & ANALİZ",
+    description: "Tahminle değil, ölçümle çalışırız. Gelişmiş cihazlarla arızayı net şekilde tespit ederiz.",
+    shortDescription: "Tahmin değil ölçüm. Net arıza tespiti."
+  },
+  {
+    number: "03",
+    title: "NET BİLGİLENDİRME",
+    description: "Yapılacak işlemleri açıkça anlatırız. Nedenleri, alternatifleri ve süreci net şekilde paylaşırız.",
+    shortDescription: "Ne yapılacağını net şekilde açıklarız."
+  },
+  {
+    number: "04",
+    title: "UYGULAMA",
+    description: "Onaylanan işlemler kontrollü şekilde uygulanır. Kayıtlı, ölçülü ve üretici standartlarına uygun çalışırız.",
+    shortDescription: "Onaylı işlemler kontrollü şekilde uygulanır."
+  },
+  {
+    number: "05",
+    title: "TESLİM & SON KONTROL",
+    description: "Araç, kontrol edilmeden teslim edilmez. Son kontroller yapılır, güvenle teslim edilir.",
+    shortDescription: "Son kontrol yapılmadan teslim edilmez."
+  }
+];
+---
+
+<section class="py-24 bg-slate-950 text-white relative overflow-hidden border-t border-white/5">
+    <!-- Background Texture -->
+    <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <!-- Header -->
+        <div class="mb-16 md:mb-24 max-w-2xl" data-reveal="fade-up">
+            <h2 class="text-3xl md:text-5xl font-bold font-heading tracking-tight mb-4">
+                SERVİS SÜRECİ
+            </h2>
+            <p class="text-slate-400 font-sans text-lg md:text-xl leading-relaxed">
+                Şeffaf, planlı ve teknik standartlara uygun çalışma disiplini.
+                Her adımda kontrol ve bilgilendirme.
+            </p>
+        </div>
+
+        <!-- Workflow Steps -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative">
+            
+            <!-- Connecting Line (Desktop) -->
+            <div class="hidden md:block absolute top-[2.5rem] left-0 w-full h-px bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800"></div>
+
+            {steps.map((step, index) => (
+                <div class="group relative flex flex-col md:block" data-reveal="fade-up" data-delay={index * 100}>
+                    
+                    <!-- Vertical Line (Mobile) -->
+                    {index !== steps.length - 1 && (
+                        <div class="md:hidden absolute left-[1.35rem] top-12 bottom-[-2rem] w-px bg-slate-800"></div>
+                    )}
+
+                    <!-- Marker -->
+                    <div class="flex items-start md:block mb-4 md:mb-8">
+                        <div class="relative z-10 w-11 h-11 rounded-full bg-slate-900 border border-slate-700 group-hover:border-orange-500/50 group-hover:bg-slate-800 transition-all duration-300 flex items-center justify-center shrink-0">
+                            <span class="text-xs font-bold text-slate-500 group-hover:text-orange-400 transition-colors font-mono">
+                                {step.number}
+                            </span>
+                        </div>
+                        
+                        <!-- Content Wrapper -->
+                        <div class="ml-6 md:ml-0 md:mt-8">
+                            <h3 class="text-lg font-bold text-white mb-2 font-heading group-hover:text-orange-500 transition-colors duration-300">
+                                {step.title}
+                            </h3>
+                            
+                            <!-- Desktop Description (Version A) -->
+                            <p class="hidden md:block text-sm text-slate-400 leading-relaxed font-sans group-hover:text-slate-300 transition-colors duration-300">
+                                {step.description}
+                            </p>
+
+                             <!-- Mobile Description (Version C) -->
+                             <p class="md:hidden text-sm text-slate-400 leading-relaxed font-sans group-hover:text-slate-300 transition-colors duration-300">
+                                {step.shortDescription}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>

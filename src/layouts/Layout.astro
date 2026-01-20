@@ -27,6 +27,20 @@ const {
       name="google-site-verification"
       content="vemNiR5N4bfi6F1zafaPA8iS6rINmGpuYzK4AO9giWs"
     />
+    {/* Canonical URL Generating Logic */}
+    {
+      (() => {
+        let canonicalURL = new URL(Astro.url.pathname, Astro.site);
+        // Ensure strictly no trailing slash for consistency (unless root)
+        if (
+          canonicalURL.pathname.length > 1 &&
+          canonicalURL.pathname.endsWith("/")
+        ) {
+          canonicalURL.pathname = canonicalURL.pathname.slice(0, -1);
+        }
+        return <link rel="canonical" href={canonicalURL.href} />;
+      })()
+    }
     <title>{title}</title>
     <ViewTransitions />
 

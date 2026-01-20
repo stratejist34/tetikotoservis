@@ -1,12 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-// Orijinal JPG dosyalarını kullan - Astro Sharp otomatik AVIF'e çevirecek ve responsive boyutlar oluşturacak
 import hyundaiImageJpg from '/src/assets/images/gebze-hyundai-servis.jpg';
 import kiaImageJpg from '/src/assets/images/kia-ozel-servis-gebze-tuzla.jpg';
 import toyotaImageJpg from '/src/assets/images/toyota-c-hr-ozel-servis.jpg';
 import nissanImageJpg from '/src/assets/images/nissan-micra-servis.jpg';
 
-// Sticky Stack Brand Showcase - Container Width Version
 const brands = [
   {
     id: 'hyundai',
@@ -18,7 +16,9 @@ const brands = [
     logo: '/images/logolar/hyundai.webp',
     color: 'from-blue-900 to-blue-950',
     accent: 'text-blue-400',
-    index: '01'
+    index: '01',
+    // ✅ CTA’yı somutlaştır (information scent)
+    cta: 'Servis Detayları',
   },
   {
     id: 'kia',
@@ -30,7 +30,8 @@ const brands = [
     logo: '/images/logolar/kia.webp',
     color: 'from-orange-900 to-red-950',
     accent: 'text-orange-400',
-    index: '02'
+    index: '02',
+    cta: 'Bakım & Arıza Çözümleri',
   },
   {
     id: 'toyota',
@@ -39,10 +40,11 @@ const brands = [
     description: 'Corolla, Yaris, C-HR ve tüm hibrit modeller için tam kapsamlı servis hizmeti.',
     link: '/toyota-ozel-servis',
     image: toyotaImageJpg,
-    logo: '/images/logolar/toyota.webp',
+    logo: '/images/logolar/hyundai.webp',
     color: 'from-red-900 to-slate-950',
     accent: 'text-red-400',
-    index: '03'
+    index: '03',
+    cta: 'Hybrid Servis Detayları',
   },
   {
     id: 'nissan',
@@ -54,7 +56,8 @@ const brands = [
     logo: '/images/logolar/nissan.webp',
     color: 'from-slate-800 to-slate-950',
     accent: 'text-slate-400',
-    index: '04'
+    index: '04',
+    cta: 'CVT & Mekanik Servis',
   }
 ];
 ---
@@ -62,7 +65,9 @@ const brands = [
 <section class="relative bg-slate-50 pt-32 pb-0" id="brand-stacked">
   <!-- Section Header -->
   <div class="container mx-auto px-4 mb-20 text-center">
-    <span class="inline-block text-orange-500 font-button tracking-[0.4em] text-[10px] uppercase mb-4 animate-fade-up">Uzmanlık Alanlarımız</span>
+    <span class="inline-block text-orange-500 font-button tracking-[0.4em] text-[10px] uppercase mb-4 animate-fade-up">
+      Uzmanlık Alanlarımız
+    </span>
     <h2 class="text-4xl lg:text-6xl text-slate-900 font-hero tracking-[0.1em] leading-tight animate-fade-up delay-100">
       PREMIUM <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600">SERVİSLERİMİZ</span>
     </h2>
@@ -71,61 +76,75 @@ const brands = [
   <!-- Sticky Cards Container -->
   <div class="container mx-auto px-4">
     {brands.map((brand, index) => (
-      <div 
+      <div
         class="sticky-card mb-8 last:mb-0"
         style={`position: sticky; top: calc(6rem + ${index * 2}rem); z-index: ${index + 10};`}
       >
-        <div class={`group relative rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-gradient-to-br ${brand.color} transition-all duration-700`}>
+        <div class={`group relative rounded-[2.5rem] lg:rounded-[4rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] bg-gradient-to-br ${brand.color} transition-[transform,box-shadow] duration-500`}>
           
-          <!-- Content Container -->
-          <div class="relative min-h-[320px] md:min-h-[280px] lg:min-h-[480px] flex flex-col lg:flex-row">
+          <div class="relative min-h-[340px] md:min-h-[300px] lg:min-h-[480px] flex flex-col lg:flex-row">
             
             <!-- Text Content -->
             <div class="w-full lg:w-1/2 p-6 lg:p-12 flex flex-col justify-between relative z-20">
-              
               <div class="flex items-start justify-between">
-                <span class="text-7xl lg:text-9xl font-button text-white/5 leading-none tracking-tighter">{brand.index}</span>
+                <!-- ✅ Mobilde watermark çok baskın olmasın -->
+                <span class="text-7xl lg:text-9xl font-button text-white/4 md:text-white/5 leading-none tracking-tighter select-none">
+                  {brand.index}
+                </span>
               </div>
 
               <div class="mt-8 lg:mt-0">
                 <h3 class="text-3xl lg:text-5xl text-white mb-4 font-button tracking-widest leading-tight uppercase">
                   {brand.name}
                 </h3>
-                <p class={`text-sm lg:text-base font-button tracking-[0.3em] mb-8 uppercase ${brand.accent}`}>
+                <p class={`text-sm lg:text-base font-button tracking-[0.3em] mb-6 uppercase ${brand.accent}`}>
                   {brand.slogan}
                 </p>
-                <p class="text-slate-300/80 text-lg leading-relaxed max-w-md mb-10 font-sans font-medium">
+
+                <!-- ✅ Mobilde bilişsel yük: 2 satır clamp -->
+                <p class="text-slate-300/80 text-lg leading-relaxed max-w-md mb-10 font-sans font-medium clamp-2 md:clamp-none">
                   {brand.description}
                 </p>
-                
-                <a href={brand.link} class="inline-flex items-center gap-4 group/btn cursor-pointer bg-white/10 hover:bg-white px-8 py-4 rounded-2xl transition-all duration-500 backdrop-blur-xl border border-white/10 hover:border-white">
-                  <span class="text-white group-hover/btn:text-slate-900 font-button tracking-widest text-xs uppercase transition-all duration-500">DENEYİMİ KEŞFET</span>
-                  <svg class="w-5 h-5 text-white group-hover/btn:text-slate-900 transform group-hover/btn:rotate-[-45deg] transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+                <!-- ✅ CTA: “Deneyimi keşfet” yerine somut vaat -->
+                <a
+                  href={brand.link}
+                  class="inline-flex items-center gap-4 group/btn cursor-pointer bg-white/10 hover:bg-white/95 px-8 py-4 rounded-2xl transition-all duration-300 backdrop-blur-xl border border-white/10 hover:border-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                  aria-label={`${brand.name} ${brand.cta}`}
+                >
+                  <span class="text-white group-hover/btn:text-slate-900 font-button tracking-widest text-xs uppercase transition-all duration-300">
+                    {brand.cta}
+                  </span>
+                  <svg class="w-5 h-5 text-white group-hover/btn:text-slate-900 transform group-hover/btn:rotate-[-45deg] transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                  </svg>
                 </a>
               </div>
             </div>
 
             <!-- Image Side -->
             <div class="absolute inset-0 lg:relative lg:w-1/2">
-              <Image 
-                src={brand.image} 
-                alt={brand.name} 
-                class="w-full h-full object-cover transition-transform duration-1000 scale-105 group-hover:scale-100"
+              <Image
+                src={brand.image}
+                alt={`${brand.name} özel servis`}
+                class="w-full h-full object-cover transition-transform duration-700 scale-105 group-hover:scale-[1.01]"
                 width={800}
                 height={533}
                 format="avif"
                 quality={45}
-                loading="lazy"
+                // ✅ İlk kart erken yüklensin (algı gecikmesini azalt)
+                loading={index === 0 ? "eager" : "lazy"}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
                 widths={[320, 480, 600]}
               />
+
               <!-- Gradient Overlays -->
-              <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent lg:from-black/60 lg:via-transparent lg:to-transparent"></div>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent lg:hidden"></div>
-              
-              <!-- Logo - Premium Floating Style -->
-              <div class="absolute bottom-10 right-10 w-24 h-24 bg-white/5 backdrop-blur-3xl rounded-3xl p-5 flex items-center justify-center border border-white/10 z-30 shadow-2xl group-hover:scale-110 transition-transform duration-700">
-                <img src={brand.logo} alt={brand.name} class="w-full h-full object-contain filter brightness-0 invert opacity-80" />
+              <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-transparent lg:from-black/60 lg:via-transparent lg:to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent lg:hidden"></div>
+
+              <!-- Logo -->
+              <div class="absolute bottom-10 right-10 w-24 h-24 bg-white/5 backdrop-blur-3xl rounded-3xl p-5 flex items-center justify-center border border-white/10 z-30 shadow-2xl group-hover:scale-[1.05] transition-transform duration-500">
+                <img src={brand.logo} alt={brand.name} class="w-full h-full object-contain filter brightness-0 invert opacity-85" />
               </div>
             </div>
 
@@ -133,19 +152,37 @@ const brands = [
         </div>
       </div>
     ))}
-    
-    <!-- Spacer for smooth scroll past last card -->
-    <div class="h-[20vh]"></div>
+
+    <div class="h-[24vh]"></div>
   </div>
 </section>
 
 <style>
-  /* Smooth shadow transition on scroll */
-  #brand-stacked .sticky-card > div {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  /* ✅ “clamp” yardımcı sınıf */
+  .clamp-2{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
-  
+  .md\\:clamp-none{
+    -webkit-line-clamp: unset;
+  }
+
+  /* ✅ Önceki .sticky bug fix: artık .sticky-card var */
+  #brand-stacked .sticky-card > div {
+    transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 260ms ease;
+  }
   #brand-stacked .sticky-card:hover > div {
-    transform: scale(1.01);
+    transform: translateY(-2px);
+  }
+
+  /* ✅ Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    #brand-stacked * {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>

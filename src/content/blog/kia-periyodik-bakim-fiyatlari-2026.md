@@ -28,6 +28,15 @@ Aşağıdaki fiyatlar, 2026 yılı için öngörülen **özel servis** bakım fi
 
 *Not: Fiyatlar işçilik dahil tahmini rakamlardır. Döviz kuru ve parça fiyatlarındaki anlık değişimler yansıtılabilir.*
 
+<div class="bg-blue-50/50 border border-blue-100 rounded-lg p-4 mt-6 mb-8">
+  <p class="text-sm text-slate-600 mb-3 font-medium">Bu fiyatlar ortalama değerlerdir. Aracınızın motor tipi ve km’sine göre netleşir.</p>
+  <a href="https://api.whatsapp.com/send?phone=905336157835&text=Merhaba,%20Kia%20aracım%20için%20bakım%20fiyatı%20almak%20istiyorum." 
+     onclick="gtag('event', 'whatsapp_click', {'event_category': 'conversion', 'event_label': 'kia_price_inquiry_micro'});"
+     class="inline-flex items-center text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:text-blue-600 px-4 py-2 rounded-md transition-colors shadow-sm">
+    <span class="mr-2">💬</span> Aracıma özel fiyat sor
+  </a>
+</div>
+
 ---
 
 ## 🛠️ Kia Bakım Periyotlarında Yapılan İşlemler
@@ -88,4 +97,4 @@ Aracınızın bakımı geldi mi? Gebze, Tuzla, Darıca ve Çayırova bölgesinde
 
 > **Aracınızı riske atmayın, uzman ellere teslim edin.**
 
-[📞 Hemen Randevu ve Fiyat Alın: 0533 615 78 35](tel:05336157835)
+[📞 Hemen Randevu ve Fiyat Alın: 0533 615 78 35](tel:05336157835 "onclick=gtag('event', 'phone_call', {'event_category': 'conversion', 'event_label': 'kia_blog_bottom'});")
