@@ -27,6 +27,15 @@ Aşağıdaki fiyatlar 1.6 CRDi Dizel ve 1.6 GDI Benzinli modeller için özel se
 | **DCT Şanzıman Yağı** | 5.500₺ - 7.500₺ | 5.500₺ - 7.500₺ | (Tork Konvertörlü) 6-8 Bin₺ |
 | **Ağır Bakım** (90 Bin Km) | 10.000₺ - 15.000₺ | 8.500₺ - 12.000₺ | 12.000₺ - 18.000₺ |
 
+<div class="bg-blue-50/50 border border-blue-100 rounded-lg p-4 mt-6 mb-8">
+  <p class="text-sm text-slate-600 mb-3 font-medium">Bu fiyatlar ortalama değerlerdir. Aracınızın motor tipi ve km’sine göre netleşir.</p>
+  <a href="https://api.whatsapp.com/send?phone=905336157835&text=Merhaba,%20Kia%20Sportage%20aracım%20için%20bakım%20fiyatı%20almak%20istiyorum." 
+     onclick="gtag('event', 'whatsapp_click', {'event_category': 'conversion', 'event_label': 'sportage_price_inquiry_micro'});"
+     class="inline-flex items-center text-xs font-bold text-slate-700 bg-white border border-slate-200 hover:bg-slate-50 hover:text-blue-600 px-4 py-2 rounded-md transition-colors shadow-sm">
+    <span class="mr-2">💬</span> Aracıma özel fiyat sor
+  </a>
+</div>
+
 ---
 
 ## 🛠️ Sportage Kronik Sorunlar ve Çözümleri
@@ -60,4 +69,4 @@ Kia Sportage 1.6 motorların (Dizel ve Benzinli) neredeyse tamamı **Zincirlidir
 
 Yetkili servis kalitesinde, garantili ve çok daha uygun fiyatlı Kia Sportage bakımı için Tetik Otomotiv Gebze'de hizmetinizde.
 
-[📞 Randevu ve Bilgi: 0533 615 78 35](tel:05336157835)
+[📞 Randevu ve Bilgi: 0533 615 78 35](tel:05336157835 "onclick=gtag('event', 'phone_call', {'event_category': 'conversion', 'event_label': 'sportage_blog_bottom'});")
