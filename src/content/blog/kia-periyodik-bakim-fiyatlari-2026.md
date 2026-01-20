@@ -16,15 +16,15 @@ Kore teknolojisinin güçlü temsilcisi Kia, dayanıklılığı ve şık tasarı
 
 Bu rehberde; **Sportage**, **Picanto**, **Ceed**, **Stonic**, **Rio** ve **Cerato** gibi popüler Kia modellerinin 2026 güncel bakım maliyetlerini ve bakım kapsamlarını detaylandırdık.
 
-## 📊 Kia Periyodik Bakım Fiyat Listesi 2026
+## 📊 Kia Özel Servis Bakım Fiyat Listesi 2026 (Garanti Dışı)
 
-Aşağıdaki fiyatlar, 2026 yılı için öngörülen **özel servis** bakım fiyat aralıklarıdır. Motor hacmi, yağ kapasitesi ve tercih edilen parça kalitesine (Orijinal/Muadil) göre değişkenlik gösterebilir.
+Aşağıdaki fiyat listesi, garantisi bitmiş (**2023 ve öncesi**) araçlar için **Tetik Otomotiv Özel Servis** fiyatlarıdır. Benzinli ve dizel araçları kapsamaktadır.
 
 | Model Grubu | Küçük Bakım (Yağ + Filtre) | Orta Bakım (+Kontrol) | Büyük Bakım (Ağır Bakım) |
 | :--- | :--- | :--- | :--- |
-| **A/B Segment** (Picanto, Rio) | 2.900₺ - 4.100₺ | 4.200₺ - 5.700₺ | 6.400₺ - 9.100₺ |
-| **C Segment / Crossover** (Ceed, Stonic, Cerato) | 3.300₺ - 4.950₺ | 4.900₺ - 6.800₺ | 7.600₺ - 10.800₺ |
-| **SUV** (Sportage, Sorento) | 3.900₺ - 5.800₺ | 5.700₺ - 8.500₺ | 9.200₺ - 14.100₺ |
+| **A/B Segment** (Picanto, Rio, Venga) | 5.200₺ - 6.500₺ | 6.800₺ - 8.200₺ | 12.000₺ - 16.000₺ |
+| **C Segment / Crossover** (Ceed, Stonic, Cerato, Soul) | 5.900₺ - 7.500₺ | 7.800₺ - 9.500₺ | 14.500₺ - 19.500₺ |
+| **SUV** (Sportage, Sorento) | 6.900₺ - 8.900₺ | 9.500₺ - 12.000₺ | 17.000₺ - 25.000₺ |
 
 *Not: Fiyatlar işçilik dahil tahmini rakamlardır. Döviz kuru ve parça fiyatlarındaki anlık değişimler yansıtılabilir.*
 

@@ -22,10 +22,12 @@ Aşağıdaki fiyatlar 1.6 CRDi Dizel ve 1.6 GDI Benzinli modeller için özel se
 
 | İşlem Türü | 1.6 CRDi (Dizel) | 1.6 GDI (Benzinli) | Eski Kasa (2.0 CRDi) |
 | :--- | :--- | :--- | :--- |
-| **Küçük Bakım** (15 Bin Km) | 3.900₺ - 5.800₺ | 3.500₺ - 4.900₺ | 4.500₺ - 6.500₺ |
-| **Ön-Arka Balata Değişimi** | 3.500₺ - 5.000₺ | 3.200₺ - 4.500₺ | 3.500₺ - 5.000₺ |
-| **DCT Şanzıman Yağı** | 5.500₺ - 7.500₺ | 5.500₺ - 7.500₺ | (Tork Konvertörlü) 6-8 Bin₺ |
-| **Ağır Bakım** (90 Bin Km) | 10.000₺ - 15.000₺ | 8.500₺ - 12.000₺ | 12.000₺ - 18.000₺ |
+| **Küçük Bakım** (15 Bin Km) | 6.900₺ - 7.900₺ | 6.000₺ - 7.700₺ | 8.000₺ - 9.500₺ |
+| **Ön-Arka Balata Değişimi** | 4.200₺ - 5.800₺ | 3.900₺ - 5.200₺ | 4.500₺ - 6.000₺ |
+| **DCT Şanzıman Yağı** | 7.500₺ - 9.500₺ | 7.500₺ - 9.500₺ | (Tork Konvertörlü) 8-11 Bin₺ |
+| **Ağır Bakım** (Zincir/Kayış) | 16.000₺ - 22.000₺ | 15.000₺ - 20.000₺ | 18.000₺ - 25.000₺ |
+
+*Sportage modelleri, motor ve donanım seçeneklerine göre bakım maliyeti en çok değişen Kia modellerindendir.*
 
 <div class="bg-blue-50/50 border border-blue-100 rounded-lg p-4 mt-6 mb-8">
   <p class="text-sm text-slate-600 mb-3 font-medium">Bu fiyatlar ortalama değerlerdir. Aracınızın motor tipi ve km’sine göre netleşir.</p>
@@ -70,3 +72,9 @@ Kia Sportage 1.6 motorların (Dizel ve Benzinli) neredeyse tamamı **Zincirlidir
 Yetkili servis kalitesinde, garantili ve çok daha uygun fiyatlı Kia Sportage bakımı için Tetik Otomotiv Gebze'de hizmetinizde.
 
 [📞 Randevu ve Bilgi: 0533 615 78 35](tel:05336157835 "onclick=gtag('event', 'phone_call', {'event_category': 'conversion', 'event_label': 'sportage_blog_bottom'});")
+
+---
+
+### 🔗 Diğer Kia Modelleri
+Sportage dışındaki modellerin fiyatlarını mı merak ediyorsunuz?
+👉 [Tüm Kia Periyodik Bakım Fiyatları 2026](/blog/kia-periyodik-bakim-fiyatlari-2026) bağlantısına giderek Picanto, Rio, Ceed ve Stonic fiyatlarını inceleyebilirsiniz. *("Bu link geçişini ölçüyoruz")*
