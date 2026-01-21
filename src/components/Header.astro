@@ -12,7 +12,7 @@ const menuItems = navigationData.menuItems;
 
 <header
   id="main-header"
-  class="fixed top-0 left-0 w-full z-[9999] transition-all duration-500 bg-[#020617]/40 backdrop-blur-2xl border-b border-white/5 overflow-x-clip"
+  class="fixed top-0 left-0 w-full z-[9999] transition-all duration-500 bg-[#0f172a]/40 backdrop-blur-2xl border-b border-white/5 overflow-x-clip"
 >
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between h-24">
@@ -219,7 +219,7 @@ const menuItems = navigationData.menuItems;
 <div
   id="mobile-menu"
   class="lg:hidden fixed inset-0 w-full h-full z-[99999] overflow-hidden"
-  style="background-color: #020617; display: none;"
+  style="background-color: #0f172a; display: none;"
 >
   <!-- Animated Background Shapes -->
   <div class="absolute inset-0 z-0 opacity-20">
@@ -259,7 +259,7 @@ const menuItems = navigationData.menuItems;
             <li class="group">
               <a
                 href={item.href}
-                class="mobile-link block text-2xl text-white hover:text-orange-500 transition-all duration-500 font-heading tracking-widest"
+                class="mobile-link block text-xl text-white hover:text-orange-500 transition-all duration-500 font-heading tracking-widest"
               >
                 {item.text}
               </a>
@@ -268,7 +268,7 @@ const menuItems = navigationData.menuItems;
                   {item.dropdownItems.map((subItem) => (
                     <a
                       href={subItem.href}
-                      class="mobile-link block text-base font-heading text-slate-400 hover:text-white transition-colors py-1 tracking-widest uppercase"
+                      class="mobile-link block text-sm font-heading text-slate-400 hover:text-white transition-colors py-1 tracking-widest uppercase"
                     >
                       {subItem.text}
                     </a>
@@ -375,17 +375,14 @@ const menuItems = navigationData.menuItems;
 
       if (currentScroll <= 0) {
         header.style.transform = "translateY(0)";
-        header.style.backgroundColor = "rgba(2, 6, 23, 0.4)";
+        header.style.backgroundColor = "rgba(15, 23, 42, 0.4)"; // Navige blue tone with alpha
         return;
       }
 
-      if (currentScroll > lastScroll && currentScroll > 100) {
-        // Scroll Down
-        header.style.transform = "translateY(-100%)";
-      } else if (currentScroll < lastScroll) {
-        // Scroll Up
-        header.style.transform = "translateY(0)";
-        header.style.backgroundColor = "rgba(2, 6, 23, 0.8)";
+      if (currentScroll > 100) {
+        header.style.backgroundColor = "rgba(15, 23, 42, 0.9)"; // More opaque navy blue on scroll
+      } else {
+        header.style.backgroundColor = "rgba(15, 23, 42, 0.4)"; // Transparent navy blue at top
       }
       lastScroll = currentScroll;
     },

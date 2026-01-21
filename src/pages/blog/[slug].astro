@@ -229,8 +229,6 @@ const clientScript = `
     }
   </style>
 
-  <!-- Progress Bar -->
-  <div class="fixed top-0 left-0 h-1 bg-orange-500 z-[60] w-0 transition-all duration-200" id="progress-bar"></div>
 
   <main class="bg-white">
     
@@ -260,7 +258,7 @@ const clientScript = `
         </div>
 
         <!-- Title -->
-        <h1 class="text-3xl md:text-5xl lg:text-6xl font-heading text-white mb-4 leading-tight">
+        <h1 class="text-2xl md:text-4xl lg:text-5xl font-heading text-white mb-4 leading-tight">
             {entry.data.title}
         </h1>
 
@@ -384,14 +382,4 @@ const clientScript = `
   <Footer />
 
   <script set:html={clientScript}></script>
-  <script>
-      // Reading Progress Bar
-      window.addEventListener('scroll', () => {
-          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          const scrolled = (winScroll / height) * 100;
-          const bar = document.getElementById('progress-bar');
-          if(bar) bar.style.width = scrolled + "%";
-      });
-  </script>
 </Layout>
