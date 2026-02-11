@@ -93,152 +93,47 @@ const {
         document.addEventListener(e, loadGA, { once: true, passive: true });
       });
 
-      // GLOBAL CLICK TRACKING (Gelişmiş Versiyon - Granüler Takip)
-      document.addEventListener(
-        "click",
-        function (e) {
-          const link = e.target.closest("a");
-          if (!link) return;
+      // GLOBAL CLICK INTERCEPTION: Service Region Modal Trigger
+      // Guard: tek seferlik listener kaydı (ViewTransitions ile tekrar eklenmesini önle)
+      if (!window.__globalClickListenerAdded) {
+        window.__globalClickListenerAdded = true;
+        document.addEventListener(
+          "click",
+          function (e) {
+            const link = e.target.closest("a");
+            if (!link) return;
 
-          // Sticky Button, Modal ve iOS Sheet kendi takibini yapıyor, onları atla (Double counting önleme)
-          if (
-            link.classList.contains("sticky-btn") ||
-            link.closest("#quick-action-hub-mobile") ||
-            link.closest("#region-modal") ||
-            link.closest("#ios-call-sheet") ||
-            link.classList.contains("sheet-action")
-          )
-            return;
-
-          const href = link.href;
-          if (!href) return;
-
-          // Tıklanan Yeri (Location) Tespit Etme Fonksiyonu
-          const getLocation = (element) => {
-            // 1. Mobile Menu / Drawer
+            // Bu bileşenler kendi iç mantığını yönetiyor, atla
             if (
-              element.closest("#mobile-menu") ||
-              element.closest(".mobile-nav")
+              link.classList.contains("sticky-btn") ||
+              link.closest("#quick-action-hub-mobile") ||
+              link.closest("#region-modal") ||
+              link.closest("#ios-call-sheet") ||
+              link.classList.contains("sheet-action")
             )
-              return "mobile_menu_drawer";
+              return;
 
-            // 2. Header / Navbar
-            if (
-              element.closest("header") ||
-              element.closest("#main-header") ||
-              element.closest(".nav-container")
-            )
-              return "header_ust_menu";
+            const href = link.href;
+            if (!href) return;
 
-            // 3. Footer
-            if (element.closest("footer") || element.closest(".footer-section"))
-              return "footer_alt_kisim";
-
-            // 4. Hero Section (Genellikle sayfanın en üstündeki ilk section)
-            // Eğer main içindeki ilk section ise 'hero' varsayalım
-            const main = element.closest("main");
-            if (main) {
-              const sections = main.querySelectorAll("section");
-              if (sections.length > 0 && sections[0].contains(element))
-                return "hero_manset_alani";
-            }
-
-            // 5. Blog İçeriği (URL kontrolü + içerik alanı)
-            if (
-              window.location.pathname.includes("/blog") ||
-              window.location.pathname.includes("/yazi")
-            ) {
-              if (
-                element.closest("article") ||
-                element.closest(".prose") ||
-                element.closest(".blog-content")
-              ) {
-                return "blog_yazi_ici";
-              }
-              return "blog_sayfasi_genel";
-            }
-
-            // 6. İletişim Sayfası
-            if (window.location.pathname.includes("/iletisim")) {
-              return "iletisim_sayfasi_icerik";
-            }
-
-            // 7. Servisler / Hizmetler
-            if (
-              window.location.pathname.includes("/hizmetler") ||
-              window.location.pathname.includes("/servis")
-            ) {
-              return "hizmetler_sayfasi_kart";
-            }
-
-            return "sayfa_icerigi_genel"; // Diğer tüm alanlar
-          };
-
-          const location = getLocation(link);
-          const linkText = link.innerText
-            ? link.innerText.trim().substring(0, 50)
-            : "icon_only";
-
-          let eventName = "";
-          let eventParams = {};
-
-          // 1. Telefon Tıklaması -> Event: telefon_tiklama_genel
-          if (href.startsWith("tel:")) {
-            eventName = "telefon_tiklama_genel";
-            eventParams = {
-              tiklama_yeri: location, // Örn: header_ust_menu, footer_alt_kisim, blog_yazi_ici
-              tiklama_metni: linkText, // Örn: "0533...", "Hemen Ara"
-              sayfa_url: window.location.pathname,
-              hedef_numara: href.replace("tel:", ""),
-            };
-          }
-          // 2. WhatsApp Tıklaması -> Event: whatsapp_tiklama_genel
-          else if (href.includes("wa.me") || href.includes("whatsapp.com")) {
-            eventName = "whatsapp_tiklama_genel";
-            eventParams = {
-              tiklama_yeri: location,
-              tiklama_metni: linkText,
-              sayfa_url: window.location.pathname,
-            };
-          }
-          // 3. Harita/Yol Tarifi -> Event: harita_tiklama_genel
-          else if (
-            href.includes("maps.google") ||
-            href.includes("google.com/maps")
-          ) {
-            eventName = "harita_tiklama_genel";
-            eventParams = {
-              tiklama_yeri: location,
-              tiklama_metni: linkText,
-              sayfa_url: window.location.pathname,
-            };
-          }
-
-          // Event varsa gönder
-          if (eventName && typeof window.gtag !== "undefined") {
-            window.gtag("event", eventName, eventParams);
-          }
-
-          // -----------------------------------------------------------------------
-          // GLOBAL INTERCEPTION: Service Region Modal Trigger
-          // -----------------------------------------------------------------------
-          // Eğer "tel:" veya "wa.me" ise ve yukarıdaki "hariç tutulanlar"a girmediyse,
-          // işlemi durdur ve Merkezi Modal'ı aç.
-          // -----------------------------------------------------------------------
-          if (
-            (href.startsWith("tel:") ||
+            // tel: veya whatsapp linki ise → modalı aç (modal kendi eventlerini yönetiyor)
+            const isContactLink =
+              href.startsWith("tel:") ||
               href.includes("wa.me") ||
-              href.includes("whatsapp.com")) &&
-            typeof window.openServiceRegionModal === "function"
-          ) {
-            e.preventDefault(); // Varsayılan aramayı/gitmeyi durdur
+              href.includes("whatsapp.com");
 
-            const type = href.startsWith("tel:") ? "phone" : "whatsapp";
-            window.openServiceRegionModal(type, href);
-          }
-        },
-        { passive: false }, // passive: false yaptık ki preventDefault çalışsın
-      );
+            if (
+              isContactLink &&
+              typeof window.openServiceRegionModal === "function"
+            ) {
+              e.preventDefault();
+              const type = href.startsWith("tel:") ? "phone" : "whatsapp";
+              window.openServiceRegionModal(type, href);
+            }
+          },
+          { passive: false },
+        );
+      }
     </script>
 
     <!-- Google Fonts - Premium Typography -->

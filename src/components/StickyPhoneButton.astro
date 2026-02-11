@@ -169,26 +169,6 @@ const whatsappMessage = encodeURIComponent(
             { passive: true },
         );
 
-        // Buton tıklama tracking
-        function trackClick(btnType: string) {
-            const showTime = tooltipShowTimes[btnType];
-            const timeElapsed = showTime
-                ? Math.round((Date.now() - showTime) / 1000)
-                : 0;
-
-            const eventName = "masaustu_whatsapp_tiklamasi";
-
-            if (typeof (window as any).gtag !== "undefined") {
-                (window as any).gtag("event", eventName, {
-                    device_type: deviceType,
-                    button_type: btnType,
-                    time_after_tooltip: timeElapsed,
-                });
-            }
-        }
-
-        whatsappBtn?.addEventListener("click", () => trackClick("whatsapp"));
-
         // İlk ziyaret olarak işaretle
         if (onlyFirstVisit) {
             localStorage.setItem(storageKey, "true");

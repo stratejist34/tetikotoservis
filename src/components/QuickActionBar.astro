@@ -205,263 +205,254 @@
     </button>
 
     <script>
-        // Region Modal Logic & Persistence
-        const hubContainer = document.getElementById("quick-action-hub-mobile");
-        const triggerPhone = document.getElementById("hub-trigger");
-        const triggerWhatsapp = document.getElementById("hub-whatsapp-btn");
+        // Region Modal Logic & Persistence — ViewTransitions Compatible
+        function initQuickActionHub() {
+            const hubContainer = document.getElementById(
+                "quick-action-hub-mobile",
+            );
+            const triggerPhone = document.getElementById("hub-trigger");
+            const triggerWhatsapp = document.getElementById("hub-whatsapp-btn");
 
-        const modal = document.getElementById("region-modal");
-        const backdrop = document.getElementById("modal-backdrop");
-        const content = document.getElementById("modal-content");
-        const closeX = document.getElementById("modal-close-xf");
-        const cancelBtn = document.getElementById("modal-cancel-btn");
-        const callBtn = document.getElementById("modal-call-btn");
+            const modal = document.getElementById("region-modal");
+            const backdrop = document.getElementById("modal-backdrop");
+            const content = document.getElementById("modal-content");
+            const closeX = document.getElementById("modal-close-xf");
+            const cancelBtn = document.getElementById("modal-cancel-btn");
+            const callBtn = document.getElementById("modal-call-btn");
 
-        let currentAction = "phone"; // 'phone' or 'whatsapp'
+            let currentAction: string = "phone"; // 'phone' or 'whatsapp'
+            let modalHistoryPushed = false;
 
-        // 4. Persistence check on load (Session Storage - Safer)
-        // If they dismissed it in this session, hide it. But if they close tab/browser and return, it comes back.
-        if (
-            typeof sessionStorage !== "undefined" &&
-            sessionStorage.getItem("region_dismissed") === "true"
-        ) {
-            if (hubContainer) {
-                hubContainer.style.display = "none !important";
-                hubContainer.classList.add("hidden");
+            // Persistence check on load (Session Storage)
+            // Dismissed in this session? Hide hub entirely with CSS class.
+            if (
+                typeof sessionStorage !== "undefined" &&
+                sessionStorage.getItem("region_dismissed") === "true"
+            ) {
+                if (hubContainer) {
+                    hubContainer.classList.add("force-hidden");
+                }
             }
-        }
 
-        // 2. Dismiss Logic (Hide for this session)
-        function dismissForSession() {
-            if (typeof sessionStorage !== "undefined") {
-                sessionStorage.setItem("region_dismissed", "true");
+            // Dismiss Logic (Hide for this session)
+            function dismissForSession() {
+                if (typeof sessionStorage !== "undefined") {
+                    sessionStorage.setItem("region_dismissed", "true");
+                }
+                closeModal();
+
+                // Animate out, then force-hide via CSS class
+                if (hubContainer) {
+                    hubContainer.style.pointerEvents = "none";
+                    hubContainer.style.transition =
+                        "opacity 0.5s ease, transform 0.5s ease";
+                    hubContainer.style.opacity = "0";
+                    hubContainer.style.transform = "translateY(20px)";
+
+                    setTimeout(() => {
+                        hubContainer.classList.add("force-hidden");
+                        // Clean up inline styles
+                        hubContainer.style.removeProperty("pointer-events");
+                        hubContainer.style.removeProperty("transition");
+                        hubContainer.style.removeProperty("opacity");
+                        hubContainer.style.removeProperty("transform");
+                    }, 500);
+                }
+
+                // Analytics — single event for dismiss
+                if (typeof (window as any).gtag !== "undefined") {
+                    const eventName =
+                        currentAction === "whatsapp"
+                            ? "whatsapp_vazgecti"
+                            : "tel_vazgecti";
+                    (window as any).gtag("event", eventName, {
+                        reason: "user_cancelled_modal_session",
+                    });
+                }
             }
-            closeModal();
 
-            // Immediate hide with animation attempt
-            if (hubContainer) {
-                hubContainer.style.pointerEvents = "none"; // Make unclickable immediately
-                hubContainer.style.transition =
-                    "opacity 0.5s ease, transform 0.5s ease";
-                hubContainer.style.opacity = "0";
-                hubContainer.style.transform = "translateY(20px)";
+            function openModal(
+                source: string = "phone",
+                destinationUrl: string | null = null,
+            ) {
+                if (!modal || !backdrop || !content) return;
+
+                currentAction = source;
+
+                // Update Button Text & Link
+                if (callBtn) {
+                    if (source === "whatsapp") {
+                        callBtn.innerHTML = `
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+                        Bölgedeyim, Mesaj Yaz
+                    `;
+                        callBtn.classList.remove(
+                            "bg-red-600",
+                            "hover:bg-red-700",
+                            "shadow-red-900/20",
+                        );
+                        callBtn.classList.add(
+                            "bg-[#25D366]",
+                            "hover:bg-[#128C7E]",
+                            "shadow-[#25D366]/20",
+                        );
+
+                        if (destinationUrl) {
+                            callBtn.setAttribute("href", destinationUrl);
+                        } else {
+                            callBtn.setAttribute(
+                                "href",
+                                "https://wa.me/905336157835?text=Merhaba,%20servis%20hizmetleri%20hakkında%20bilgi%20almak%20istiyorum.",
+                            );
+                        }
+                    } else {
+                        // Phone Mode
+                        callBtn.innerHTML = `
+                        <svg class="w-5 h-5 phone-ring" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        Bölgedeyim, Hemen Ara
+                    `;
+                        callBtn.classList.remove(
+                            "bg-[#25D366]",
+                            "hover:bg-[#128C7E]",
+                            "shadow-[#25D366]/20",
+                        );
+                        callBtn.classList.add(
+                            "bg-red-600",
+                            "hover:bg-red-700",
+                            "shadow-red-900/20",
+                        );
+
+                        if (destinationUrl) {
+                            callBtn.setAttribute("href", destinationUrl);
+                        } else {
+                            callBtn.setAttribute("href", "tel:05336157835");
+                        }
+                    }
+                }
+
+                modal.classList.remove("hidden");
+                void modal.offsetWidth; // Force reflow
+
+                backdrop.classList.remove("opacity-0");
+                content.classList.remove("scale-90", "opacity-0");
+                content.classList.add("scale-100", "opacity-100");
+
+                document.body.style.overflow = "hidden";
+
+                // Push history state to handle Back Button (only once per modal open)
+                modalHistoryPushed = true;
+                window.history.pushState({ modalOpen: true }, "");
+
+                // Analytics — Modal açılma niyeti (TEK event)
+                if (typeof (window as any).gtag !== "undefined") {
+                    const eventName =
+                        source === "whatsapp"
+                            ? "whatsapp_yazma_niyet"
+                            : "tel_arama_niyeti";
+                    (window as any).gtag("event", eventName, {
+                        source: source,
+                        sayfa_url: window.location.pathname,
+                    });
+                }
+            }
+
+            // Expose Global — her sayfa geçişinde güncel referansı kaydet
+            (window as any).openServiceRegionModal = openModal;
+
+            function closeModal() {
+                if (!modal || !backdrop || !content) return;
+                if (modal.classList.contains("hidden")) return; // Already closed
+
+                backdrop.classList.add("opacity-0");
+                content.classList.remove("scale-100", "opacity-100");
+                content.classList.add("scale-90", "opacity-0");
 
                 setTimeout(() => {
-                    hubContainer.style.display = "none";
-                    hubContainer.classList.add("hidden");
-                }, 500);
+                    modal.classList.add("hidden");
+                    document.body.style.overflow = "";
+                }, 300);
             }
 
-            // Analytics
-            if (typeof (window as any).gtag !== "undefined") {
-                const eventName =
-                    currentAction === "whatsapp"
-                        ? "whatsapp_vazgecti"
-                        : "tel_vazgecti";
-                (window as any).gtag("event", eventName, {
-                    reason: "user_cancelled_modal_session",
-                });
-            }
-        }
-
-        function openModal(source = "phone", destinationUrl = null) {
-            if (!modal || !backdrop || !content) return;
-
-            currentAction = source;
-
-            // Update Button Text & Link
-            if (callBtn) {
-                // overrideUrl provided? Use it.
-                // But we also need to respect the 'Mode' (phone vs whatsapp) for styling
-
-                if (source === "whatsapp") {
-                    callBtn.innerHTML = `
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
-                    Bölgedeyim, Mesaj Yaz
-                `;
-                    callBtn.classList.remove(
-                        "bg-red-600",
-                        "hover:bg-red-700",
-                        "shadow-red-900/20",
-                    );
-                    callBtn.classList.add(
-                        "bg-[#25D366]",
-                        "hover:bg-[#128C7E]",
-                        "shadow-[#25D366]/20",
-                    );
-
-                    // Use destination if provided, otherwise default
-                    if (destinationUrl) {
-                        callBtn.setAttribute("href", destinationUrl);
-                    } else {
-                        callBtn.setAttribute(
-                            "href",
-                            "https://wa.me/905336157835?text=Merhaba,%20servis%20hizmetleri%20hakkında%20bilgi%20almak%20istiyorum.",
-                        );
-                    }
-                } else {
-                    // Phone Mode
-                    callBtn.innerHTML = `
-                    <svg class="w-5 h-5 phone-ring" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                    Bölgedeyim, Hemen Ara
-                `;
-                    callBtn.classList.remove(
-                        "bg-[#25D366]",
-                        "hover:bg-[#128C7E]",
-                        "shadow-[#25D366]/20",
-                    );
-                    callBtn.classList.add(
-                        "bg-red-600",
-                        "hover:bg-red-700",
-                        "shadow-red-900/20",
-                    );
-
-                    // Use destination if provided, otherwise default
-                    if (destinationUrl) {
-                        callBtn.setAttribute("href", destinationUrl);
-                    } else {
-                        callBtn.setAttribute("href", "tel:05336157835");
-                    }
+            // Handle Back Button — sadece modal kapat, session dismiss yapma
+            function handlePopState() {
+                if (
+                    modal &&
+                    !modal.classList.contains("hidden") &&
+                    modalHistoryPushed
+                ) {
+                    modalHistoryPushed = false;
+                    closeModal();
                 }
             }
+            // Remove old listener if any, then add fresh
+            window.removeEventListener(
+                "popstate",
+                (window as any).__qab_popstate,
+            );
+            (window as any).__qab_popstate = handlePopState;
+            window.addEventListener("popstate", handlePopState);
 
-            modal.classList.remove("hidden");
-            // Force reflow
-            void modal.offsetWidth;
-
-            backdrop.classList.remove("opacity-0");
-            content.classList.remove("scale-90", "opacity-0");
-            content.classList.add("scale-100", "opacity-100");
-
-            document.body.style.overflow = "hidden";
-
-            // Push history state to handle Back Button
-            window.history.pushState({ modalOpen: true }, "");
-
-            // Analytics (Niyet Takibi)
-            if (typeof (window as any).gtag !== "undefined") {
-                const eventName =
-                    source === "whatsapp"
-                        ? "whatsapp_yazma_niyet"
-                        : "tel_arama_niyeti";
-                (window as any).gtag("event", eventName, {
-                    source: source,
-                });
-            }
-        }
-
-        // Expose Global
-        (window as any).openServiceRegionModal = openModal;
-
-        function closeModal() {
-            if (!modal || !backdrop || !content) return;
-
-            backdrop.classList.add("opacity-0");
-            content.classList.remove("scale-100", "opacity-100");
-            content.classList.add("scale-90", "opacity-0");
-
-            setTimeout(() => {
-                modal.classList.add("hidden");
-                document.body.style.overflow = "";
-            }, 300);
-        }
-
-        // Handle Back Button
-        window.addEventListener("popstate", (event) => {
-            // If modal is open when user triggers Back, dismiss it
-            if (modal && !modal.classList.contains("hidden")) {
-                dismissForSession();
-            }
-        });
-
-        triggerPhone?.addEventListener("click", (e) => {
-            e.preventDefault();
-            openModal("phone");
-        });
-
-        triggerWhatsapp?.addEventListener("click", (e) => {
-            e.preventDefault();
-            openModal("whatsapp");
-        });
-
-        // Dismiss Actions -> Hide For Session
-        closeX?.addEventListener("click", dismissForSession);
-        cancelBtn?.addEventListener("click", dismissForSession);
-        backdrop?.addEventListener("click", (e) => {
-            if (e.target === backdrop) dismissForSession();
-        });
-
-        // Call/Message Action -> Just allow functionality (Proceed)
-        callBtn?.addEventListener("click", () => {
-            if (typeof (window as any).gtag !== "undefined") {
-                const eventName =
-                    currentAction === "whatsapp"
-                        ? "whatsapptan_yazanlar"
-                        : "telefon_aramasi";
-                (window as any).gtag("event", eventName, {
-                    action_type: currentAction,
-                });
-            }
-            // Let the link functionality proceed
-            // If it's a tel: link, it might not navigate away, so we should close modal
-            setTimeout(closeModal, 1000);
-        });
-
-        // Tıklama Takibi (Masaüstü Bar için - Mobil Hub artık yok)
-        document.querySelectorAll(".quick-action-item").forEach((item) => {
-            item.addEventListener("click", () => {
-                const actionName = item.getAttribute("data-action");
-                let eventName = "";
-
-                // Masaüstü Bar
-                if (actionName === "Motor Arızası")
-                    eventName = "masaustu_bar_ariza_tiklamasi";
-                else if (actionName === "Periyodik Bakım")
-                    eventName = "masaustu_bar_bakim_tiklamasi";
-                else if (actionName === "Hemen Sor")
-                    eventName = "masaustu_bar_arama_tiklamasi";
-
-                if (eventName && typeof (window as any).gtag !== "undefined") {
-                    (window as any).gtag("event", eventName);
-                }
+            triggerPhone?.addEventListener("click", (e: Event) => {
+                e.preventDefault();
+                openModal("phone");
             });
-        });
 
-        // DINAMIK TOOLTIP SISTEMI
-        const tooltip = document.getElementById("hub-tooltip");
-        const tooltipText = document.getElementById("tooltip-text");
-        const phrases = [
-            "Bakım Fiyatı Al",
-            "Ustaya Sor",
-            "Tuzla - Gebze Özel Servis",
-        ];
+            triggerWhatsapp?.addEventListener("click", (e: Event) => {
+                e.preventDefault();
+                openModal("whatsapp");
+            });
 
-        function showTooltip(index, duration = 3000) {
-            if (!tooltip || !tooltipText) return;
+            // Dismiss Actions -> Hide For Session
+            closeX?.addEventListener("click", dismissForSession);
+            cancelBtn?.addEventListener("click", dismissForSession);
+            backdrop?.addEventListener("click", (e: Event) => {
+                if (e.target === backdrop) dismissForSession();
+            });
 
-            // Update text
-            tooltipText.textContent = phrases[index];
+            // Call/Message Action -> Proceed with communication
+            callBtn?.addEventListener("click", () => {
+                if (typeof (window as any).gtag !== "undefined") {
+                    const eventName =
+                        currentAction === "whatsapp"
+                            ? "whatsapptan_yazanlar"
+                            : "telefon_aramasi";
+                    (window as any).gtag("event", eventName, {
+                        action_type: currentAction,
+                        sayfa_url: window.location.pathname,
+                    });
+                }
+                setTimeout(closeModal, 1000);
+            });
 
-            // Show
-            tooltip.classList.remove("opacity-0", "translate-y-4");
-            tooltip.classList.add("opacity-100", "translate-y-0");
+            // DINAMIK TOOLTIP SISTEMI
+            const tooltip = document.getElementById("hub-tooltip");
+            const tooltipText = document.getElementById("tooltip-text");
+            const phrases = [
+                "Bakım Fiyatı Al",
+                "Ustaya Sor",
+                "Tuzla - Gebze Özel Servis",
+            ];
 
-            // Hide after duration
-            setTimeout(() => {
-                tooltip.classList.add("opacity-0", "translate-y-4");
-                tooltip.classList.remove("opacity-100", "translate-y-0");
-            }, duration);
+            function showTooltip(index: number, duration: number = 3000) {
+                if (!tooltip || !tooltipText) return;
+                tooltipText.textContent = phrases[index];
+                tooltip.classList.remove("opacity-0", "translate-y-4");
+                tooltip.classList.add("opacity-100", "translate-y-0");
+                setTimeout(() => {
+                    tooltip.classList.add("opacity-0", "translate-y-4");
+                    tooltip.classList.remove("opacity-100", "translate-y-0");
+                }, duration);
+            }
+
+            // Zamanlama Senaryosu — Tek Seferlik Döngü
+            setTimeout(() => showTooltip(0, 4000), 10000);
+            setTimeout(() => showTooltip(1, 4000), 21000);
+            setTimeout(() => showTooltip(2, 5000), 46000);
         }
 
-        // Zamanlama Senaryosu (Kullanıcıyı boğmadan) - Tek Seferlik Döngü
-        // 1. Balon: 10sn sonra (Duration: 4sn)
-        setTimeout(() => showTooltip(0, 4000), 10000);
-
-        // 2. Balon: 1. bittikten 7sn sonra (10+4+7 = 21. saniyede) (Duration: 4sn)
-        setTimeout(() => showTooltip(1, 4000), 21000);
-
-        // 3. Balon: 2. bittikten 21sn sonra (21+4+21 = 46. saniyede) (Duration: 5sn - Son mesaj uzun)
-        setTimeout(() => showTooltip(2, 5000), 46000);
+        // Init — runs on first load AND on every ViewTransitions page-load
+        initQuickActionHub();
+        document.addEventListener("astro:page-load", initQuickActionHub);
     </script>
 
     <!-- Region & Service Warning Modal (Moved to Global Scope) -->
@@ -593,6 +584,11 @@
     </div>
 
     <style>
+        /* Session dismiss — CSS class ile kesin gizleme */
+        #quick-action-hub-mobile.force-hidden {
+            display: none !important;
+        }
+
         /* Masaüstü çubuğu için gölge efekti */
         #quick-action-bar-desktop {
             box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.7);
