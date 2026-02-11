@@ -141,10 +141,10 @@
         </div>
     </div>
 
-    <!-- LEFT: Main Hub Trigger (Phone/Action) -->
+    <!-- LEFT: Main Hub Trigger (Phone/Action) - "Pill" Shape with Text (Modern Boxy) -->
     <button
         id="hub-trigger"
-        class="fixed bottom-6 left-4 w-16 h-16 bg-amber-500 text-slate-950 rounded-full shadow-[0_10px_30px_-10px_rgba(245,158,11,0.6)] border-2 border-amber-300/50 z-[45] flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 group overflow-hidden"
+        class="fixed bottom-3 left-4 h-14 bg-amber-500 text-slate-950 rounded-2xl shadow-[0_10px_30px_-10px_rgba(245,158,11,0.6)] border-2 border-amber-300/50 z-[45] flex items-center justify-center gap-3 px-6 transition-all duration-500 hover:scale-[1.02] active:scale-95 group overflow-hidden w-auto"
         aria-label="Aksiyon Menüsünü Aç"
     >
         <!-- Glossy Parlama Efekti -->
@@ -154,7 +154,7 @@
 
         <!-- Telefon İkonu -->
         <svg
-            class="w-7 h-7 hub-icon-open phone-ring"
+            class="w-6 h-6 hub-icon-open phone-ring shrink-0"
             fill="currentColor"
             viewBox="0 0 24 24"
         >
@@ -169,6 +169,12 @@
                 d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
                 clip-rule="evenodd"></path>
         </svg>
+
+        <!-- CTA Text -->
+        <span
+            class="font-bold text-sm tracking-wide whitespace-nowrap hub-text-open"
+            >HEMEN ARA</span
+        >
 
         <!-- Kapat İkonu -->
         <svg
@@ -185,10 +191,10 @@
         </svg>
     </button>
 
-    <!-- RIGHT: Direct WhatsApp Button (Round) -->
+    <!-- RIGHT: Direct WhatsApp Button (Modern Boxy) -->
     <button
         id="hub-whatsapp-btn"
-        class="fixed bottom-6 right-4 w-16 h-16 bg-[#25D366] text-white rounded-full shadow-[0_10px_30px_-10px_rgba(37,211,102,0.6)] border-2 border-[#4ce485]/50 z-[45] flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 group overflow-hidden"
+        class="fixed bottom-3 right-4 w-14 h-14 bg-[#25D366] text-white rounded-2xl shadow-[0_10px_30px_-10px_rgba(37,211,102,0.6)] border-2 border-[#4ce485]/50 z-[45] flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 group overflow-hidden"
         aria-label="WhatsApp'tan Yaz"
     >
         <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
