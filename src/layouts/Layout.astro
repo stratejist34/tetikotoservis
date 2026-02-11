@@ -43,6 +43,22 @@ const {
     <title>{title}</title>
     <ViewTransitions />
 
+    <!-- Trailing Slash Redirect (Client-Side Fallback) -->
+    <script is:inline>
+      (function () {
+        if (
+          window.location.pathname.length > 1 &&
+          window.location.pathname.endsWith("/")
+        ) {
+          const newPath =
+            window.location.pathname.slice(0, -1) +
+            window.location.search +
+            window.location.hash;
+          window.location.replace(newPath);
+        }
+      })();
+    </script>
+
     <!-- Google Analytics - Deferred to not block LCP -->
     <script is:inline>
       // Defer GA loading until after page is interactive
@@ -77,35 +93,85 @@ const {
         document.addEventListener(e, loadGA, { once: true, passive: true });
       });
 
-      // GLOBAL CLICK TRACKING (Gelişmiş Versiyon)
+      // GLOBAL CLICK TRACKING (Gelişmiş Versiyon - Granüler Takip)
       document.addEventListener(
         "click",
         function (e) {
           const link = e.target.closest("a");
           if (!link) return;
 
-          // Sticky Button kendi takibini yapıyor, onu atla
-          if (link.classList.contains("sticky-btn")) return;
+          // Sticky Button, Modal ve iOS Sheet kendi takibini yapıyor, onları atla (Double counting önleme)
+          if (
+            link.classList.contains("sticky-btn") ||
+            link.closest("#quick-action-hub-mobile") ||
+            link.closest("#region-modal") ||
+            link.closest("#ios-call-sheet") ||
+            link.classList.contains("sheet-action")
+          )
+            return;
 
           const href = link.href;
           if (!href) return;
 
           // Tıklanan Yeri (Location) Tespit Etme Fonksiyonu
           const getLocation = (element) => {
-            if (element.closest("header") || element.closest("#main-header"))
-              return "header";
-            if (element.closest("footer")) return "footer";
-            if (element.closest("#mobile-menu")) return "mobile_menu";
+            // 1. Mobile Menu / Drawer
+            if (
+              element.closest("#mobile-menu") ||
+              element.closest(".mobile-nav")
+            )
+              return "mobile_menu_drawer";
 
+            // 2. Header / Navbar
+            if (
+              element.closest("header") ||
+              element.closest("#main-header") ||
+              element.closest(".nav-container")
+            )
+              return "header_ust_menu";
+
+            // 3. Footer
+            if (element.closest("footer") || element.closest(".footer-section"))
+              return "footer_alt_kisim";
+
+            // 4. Hero Section (Genellikle sayfanın en üstündeki ilk section)
             // Eğer main içindeki ilk section ise 'hero' varsayalım
             const main = element.closest("main");
             if (main) {
               const sections = main.querySelectorAll("section");
               if (sections.length > 0 && sections[0].contains(element))
-                return "hero_section";
+                return "hero_manset_alani";
             }
 
-            return "page_content"; // Diğer tüm alanlar
+            // 5. Blog İçeriği (URL kontrolü + içerik alanı)
+            if (
+              window.location.pathname.includes("/blog") ||
+              window.location.pathname.includes("/yazi")
+            ) {
+              if (
+                element.closest("article") ||
+                element.closest(".prose") ||
+                element.closest(".blog-content")
+              ) {
+                return "blog_yazi_ici";
+              }
+              return "blog_sayfasi_genel";
+            }
+
+            // 6. İletişim Sayfası
+            if (window.location.pathname.includes("/iletisim")) {
+              return "iletisim_sayfasi_icerik";
+            }
+
+            // 7. Servisler / Hizmetler
+            if (
+              window.location.pathname.includes("/hizmetler") ||
+              window.location.pathname.includes("/servis")
+            ) {
+              return "hizmetler_sayfasi_kart";
+            }
+
+            return "sayfa_icerigi_genel"; // Diğer tüm alanlar
           };
 
           const location = getLocation(link);
@@ -116,46 +182,62 @@ const {
           let eventName = "";
           let eventParams = {};
 
-          // 1. Telefon Tıklaması -> Event: phone_click
+          // 1. Telefon Tıklaması -> Event: telefon_tiklama_genel
           if (href.startsWith("tel:")) {
-            eventName = "phone_click";
+            eventName = "telefon_tiklama_genel";
             eventParams = {
-              click_location: location, // Örn: header, footer, hero_section
-              click_text: linkText, // Örn: "0533...", "Hemen Ara"
-              full_action: `phone_${location}`, // Örn: phone_header, phone_footer
-              number: href.replace("tel:", ""),
+              tiklama_yeri: location, // Örn: header_ust_menu, footer_alt_kisim, blog_yazi_ici
+              tiklama_metni: linkText, // Örn: "0533...", "Hemen Ara"
+              sayfa_url: window.location.pathname,
+              hedef_numara: href.replace("tel:", ""),
             };
           }
-          // 2. WhatsApp Tıklaması -> Event: whatsapp_click
+          // 2. WhatsApp Tıklaması -> Event: whatsapp_tiklama_genel
           else if (href.includes("wa.me") || href.includes("whatsapp.com")) {
-            eventName = "whatsapp_click";
+            eventName = "whatsapp_tiklama_genel";
             eventParams = {
-              click_location: location,
-              click_text: linkText,
-              full_action: `whatsapp_${location}`, // Örn: whatsapp_mobile_menu
+              tiklama_yeri: location,
+              tiklama_metni: linkText,
+              sayfa_url: window.location.pathname,
             };
           }
-          // 3. Harita/Yol Tarifi -> Event: map_click
+          // 3. Harita/Yol Tarifi -> Event: harita_tiklama_genel
           else if (
             href.includes("maps.google") ||
             href.includes("google.com/maps")
           ) {
-            eventName = "map_click";
+            eventName = "harita_tiklama_genel";
             eventParams = {
-              click_location: location,
-              click_text: linkText,
-              full_action: `map_${location}`,
+              tiklama_yeri: location,
+              tiklama_metni: linkText,
+              sayfa_url: window.location.pathname,
             };
           }
 
           // Event varsa gönder
           if (eventName && typeof window.gtag !== "undefined") {
             window.gtag("event", eventName, eventParams);
-            // Test için konsola da yazalım
-            // console.log(`GA Event: ${eventName}`, eventParams);
+          }
+
+          // -----------------------------------------------------------------------
+          // GLOBAL INTERCEPTION: Service Region Modal Trigger
+          // -----------------------------------------------------------------------
+          // Eğer "tel:" veya "wa.me" ise ve yukarıdaki "hariç tutulanlar"a girmediyse,
+          // işlemi durdur ve Merkezi Modal'ı aç.
+          // -----------------------------------------------------------------------
+          if (
+            (href.startsWith("tel:") ||
+              href.includes("wa.me") ||
+              href.includes("whatsapp.com")) &&
+            typeof window.openServiceRegionModal === "function"
+          ) {
+            e.preventDefault(); // Varsayılan aramayı/gitmeyi durdur
+
+            const type = href.startsWith("tel:") ? "phone" : "whatsapp";
+            window.openServiceRegionModal(type, href);
           }
         },
-        { passive: true },
+        { passive: false }, // passive: false yaptık ki preventDefault çalışsın
       );
     </script>
 

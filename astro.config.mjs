@@ -19,10 +19,15 @@ export default defineConfig({
       },
     },
   },
-  // Inline ALL CSS to eliminate render-blocking
+  // Build Options
   build: {
     inlineStylesheets: 'always',
+    format: 'file', // Generate clean URLs (file.html) instead of folder/index.html
   },
+  // URL Structure
+  // Dev modunda 'ignore' yapıyoruz ki Middleware devreye girip redirect edebilsin.
+  // Prod modunda 'never' yapıyoruz ki build işleminde klasör oluşmasın.
+  trailingSlash: process.env.NODE_ENV === 'production' ? 'never' : 'ignore',
   integrations: [
     tailwind(),
     sitemap({

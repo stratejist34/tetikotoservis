@@ -17,32 +17,6 @@ const whatsappMessage = encodeURIComponent(
     data-tooltips={showTooltips}
     data-first-visit={onlyFirstVisit}
 >
-    <!-- Phone Button (Üstte) -->
-    <a
-        href={`tel:${phoneNumber}`}
-        class="sticky-btn sticky-phone-btn"
-        aria-label="Telefon ile ara"
-        title="Hemen arayın"
-        data-btn-type="phone"
-    >
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-        >
-            <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-            ></path>
-        </svg>
-        <span class="btn-tooltip phone-tooltip" aria-hidden="true"></span>
-    </a>
-
     <!-- WhatsApp Button (Altta) -->
     <a
         href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
@@ -81,17 +55,11 @@ const whatsappMessage = encodeURIComponent(
         const whatsappTooltip = wrapper.querySelector(
             ".whatsapp-tooltip",
         ) as HTMLElement;
-        const phoneTooltip = wrapper.querySelector(
-            ".phone-tooltip",
-        ) as HTMLElement;
         const whatsappBtn = wrapper.querySelector(
             ".sticky-whatsapp-btn",
         ) as HTMLElement;
-        const phoneBtn = wrapper.querySelector(
-            ".sticky-phone-btn",
-        ) as HTMLElement;
 
-        if (!showTooltips || !whatsappTooltip || !phoneTooltip) return;
+        if (!showTooltips || !whatsappTooltip) return;
 
         // localStorage kontrolü
         const storageKey = "contact_tooltips_shown_v2";
@@ -102,43 +70,29 @@ const whatsappMessage = encodeURIComponent(
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
         const deviceType = isIPhone ? "iPhone" : isIOS ? "iPad" : "other";
 
-        // Zamanlama ayarları (iPhone için daha hızlı)
+        // Zamanlama ayarları
         const timings = {
-            first: isIPhone ? 2000 : 3000,
-            second: isIPhone ? 5000 : 7000,
-            duration: 3000,
+            first: 3000,
+            duration: 4000,
         };
 
-        // Mesajlar (cihaza göre)
-        const messages = isIPhone
-            ? {
-                  first: { text: "💬 WhatsApp'tan Yazın", target: "whatsapp" },
-                  second: { text: "📞 Veya Hemen Ara", target: "phone" },
-                  footer: {
-                      text: "🎁 Ücretsiz Fiyat Teklifi",
-                      target: "phone",
-                  },
-              }
-            : {
-                  first: { text: "👨‍🔧 Ustaya Sor", target: "whatsapp" },
-                  second: { text: "📞 Hemen Ara", target: "phone" },
-                  footer: { text: "💰 Fiyat Al", target: "phone" },
-              };
+        // Mesajlar
+        const messages = {
+            first: {
+                text: "👋 Size nasıl yardımcı olabiliriz?",
+                target: "whatsapp",
+            },
+            footer: { text: "💬 Hemen Fiyat Alın", target: "whatsapp" },
+        };
 
         let footerShown = false;
         let tooltipShowTimes: { [key: string]: number } = {};
 
         // Analytics tracking helper
+        // Analytics tracking helper (Removed per request)
         function trackTooltip(message: string, timing: string, target: string) {
             tooltipShowTimes[target] = Date.now();
-            if (typeof (window as any).gtag !== "undefined") {
-                (window as any).gtag("event", "tooltip_shown", {
-                    device_type: deviceType,
-                    tooltip_message: message,
-                    tooltip_timing: timing,
-                    button_target: target,
-                });
-            }
+            // tooltip_shown removed
         }
 
         // Tooltip gösterme fonksiyonu
@@ -151,43 +105,22 @@ const whatsappMessage = encodeURIComponent(
         ) {
             tooltip.textContent = text;
             tooltip.classList.add("visible");
-            trackTooltip(text, timing, target);
+
             setTimeout(() => tooltip.classList.remove("visible"), duration);
         }
 
-        // İlk tooltip (WhatsApp'a işaret)
+        // İlk tooltip (WhatsApp)
         setTimeout(() => {
             if (!footerShown) {
-                const tooltip =
-                    messages.first.target === "whatsapp"
-                        ? whatsappTooltip
-                        : phoneTooltip;
                 showTooltip(
-                    tooltip,
+                    whatsappTooltip,
                     messages.first.text,
                     timings.duration,
-                    isIPhone ? "2s" : "3s",
+                    "3s",
                     messages.first.target,
                 );
             }
         }, timings.first);
-
-        // İkinci tooltip (Telefon'a işaret)
-        setTimeout(() => {
-            if (!footerShown) {
-                const tooltip =
-                    messages.second.target === "whatsapp"
-                        ? whatsappTooltip
-                        : phoneTooltip;
-                showTooltip(
-                    tooltip,
-                    messages.second.text,
-                    timings.duration,
-                    isIPhone ? "5s" : "7s",
-                    messages.second.target,
-                );
-            }
-        }, timings.second);
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -198,21 +131,16 @@ const whatsappMessage = encodeURIComponent(
                     if (entry.isIntersecting) {
                         stickyWrapper?.classList.add("near-footer");
 
-                        // Tooltip logic for footer intersection (keep existing)
+                        // Tooltip logic for footer intersection
                         if (!footerShown) {
                             footerShown = true;
-                            const tooltip =
-                                messages.footer.target === "whatsapp"
-                                    ? whatsappTooltip
-                                    : phoneTooltip;
                             showTooltip(
-                                tooltip,
+                                whatsappTooltip,
                                 messages.footer.text,
                                 timings.duration,
                                 "footer",
                                 messages.footer.target,
                             );
-                            // observer.disconnect(); // Don't disconnect, we need it to toggle 'near-footer' class
                         }
                     } else {
                         stickyWrapper?.classList.remove("near-footer");
@@ -248,10 +176,7 @@ const whatsappMessage = encodeURIComponent(
                 ? Math.round((Date.now() - showTime) / 1000)
                 : 0;
 
-            const eventName =
-                btnType === "phone"
-                    ? "masaustu_arama_tiklamasi"
-                    : "masaustu_whatsapp_tiklamasi";
+            const eventName = "masaustu_whatsapp_tiklamasi";
 
             if (typeof (window as any).gtag !== "undefined") {
                 (window as any).gtag("event", eventName, {
@@ -263,7 +188,6 @@ const whatsappMessage = encodeURIComponent(
         }
 
         whatsappBtn?.addEventListener("click", () => trackClick("whatsapp"));
-        phoneBtn?.addEventListener("click", () => trackClick("phone"));
 
         // İlk ziyaret olarak işaretle
         if (onlyFirstVisit) {
@@ -271,46 +195,20 @@ const whatsappMessage = encodeURIComponent(
         }
     }
 
-    // Mobile: Intercept phone button click to open iOS Sheet
-    function initMobileSheetTrigger() {
-        const phoneBtn = document.querySelector(".sticky-phone-btn");
-        if (!phoneBtn) return;
-
-        // Only on mobile devices
-        const isMobile = window.innerWidth < 768 || "ontouchstart" in window;
-        if (!isMobile) return;
-
-        phoneBtn.addEventListener("click", (e) => {
-            // Prevent default phone call
-            e.preventDefault();
-
-            // Open iOS Sheet if available
-            if (typeof (window as any).openIOSSheet === "function") {
-                (window as any).openIOSSheet();
-            } else {
-                // Fallback: direct call
-                window.location.href = "tel:05336157835";
-            }
-        });
-    }
-
     // Init
     if (document.readyState === "complete") {
         setTimeout(initContactTooltips, 100);
-        setTimeout(initMobileSheetTrigger, 150);
     } else {
         window.addEventListener(
             "load",
             () => {
                 setTimeout(initContactTooltips, 100);
-                setTimeout(initMobileSheetTrigger, 150);
             },
             { once: true },
         );
     }
     document.addEventListener("astro:page-load", () => {
         setTimeout(initContactTooltips, 100);
-        setTimeout(initMobileSheetTrigger, 150);
     });
 </script>
 
@@ -384,15 +282,6 @@ const whatsappMessage = encodeURIComponent(
 
     .sticky-whatsapp-btn:hover {
         background-color: #20bd5a;
-    }
-
-    /* Phone Button */
-    .sticky-phone-btn {
-        background-color: #ea580c;
-    }
-
-    .sticky-phone-btn:hover {
-        background-color: #c2410c;
     }
 
     /* Tooltips - Mobilde sola, desktop'ta sağa açılır */

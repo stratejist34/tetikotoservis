@@ -1,0 +1,28 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+    title="Sayfa Bulunamadı - 404"
+    description="Aradığınız sayfa bulunamadı. Tetik Otomotiv ana sayfasına dönebilirsiniz."
+>
+    <section
+        class="py-24 bg-slate-900 text-white text-center min-h-[60vh] flex flex-col justify-center items-center"
+    >
+        <div class="container mx-auto px-4">
+            <h1 class="text-6xl font-bold text-orange-500 mb-6 font-heading">
+                404
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6">
+                Aradığınız Sayfa Bulunamadı
+            </h2>
+            <p class="text-slate-400 mb-8 max-w-lg mx-auto">
+                Ulaşmaya çalıştığınız sayfa silinmiş, taşınmış veya adresi
+                değişmiş olabilir. Lütfen adresi kontrol edin veya ana sayfaya
+                dönün.
+            </p>
+
+            <a href="/" class="cta-primary"> Ana Sayfaya Dön </a>
+        </div>
+    </section>
+</Layout>

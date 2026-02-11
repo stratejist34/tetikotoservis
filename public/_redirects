@@ -1,0 +1,7 @@
+# Force HTTPS
+/* https://:splat 301!
+
+# Redirect trailing slash to non-trailing slash
+# Note: This is a general rule, but Netlify automatically normalizes this if "Pretty URLs" is on.
+# Explicitly handling it for safety.
+/*  /:splat  301!
