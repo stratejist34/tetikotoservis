@@ -373,8 +373,7 @@
             if (typeof helper === "function") {
                 helper(eventKey, payload);
             } else if (typeof (window as any).gtag === "function") {
-                // @ts-ignore
-                (window as any).gtag("event", eventKey, payload);
+                (window as any).gtag("event", eventKey as any, payload as any);
             }
         }
 

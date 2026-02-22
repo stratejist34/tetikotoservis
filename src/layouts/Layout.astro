@@ -244,23 +244,68 @@ const {
           const search = new URLSearchParams(window.location.search);
           let brandKey = search.get("marka") || search.get("brand");
 
-          // 1. Path Check
-          if (!brandKey) {
+          // Search Console Optimised Path Overrides (Point-Blank Revisions)
+          const PATH_OVERRIDES = {
+            "/blog/toyota-corolla-periyodik-bakim-fiyatlari-2025": {
+              mark: "TOYOTA",
+              hook: "BAKIMDA %40 TASARRUF SAĞLAYIN!",
+              sub: "Yetkili Servis Kalitesinde, Toyota Aracınız İçin En Avantajlı Bakım Paketi.",
+              cta: "Toyota Uzmanlığımızla Hemen Teklif Al!",
+            },
+            "/blog/sanziman-tamiri-fiyatlari-2026": {
+              mark: "ŞANZIMAN",
+              hook: "GARANTİLİ VE KESİN ÇÖZÜM!",
+              sub: "Şanzıman Sorunlarına Tetik Otomotiv Uzmanlığıyla 1 Yıl Garantili Revizyon.",
+              cta: "Ücretsiz Şanzıman Teşhisi İçin Ara!",
+            },
+            "/blog/hyundai-periyodik-bakim-fiyatlari-2025/": {
+              mark: "HYUNDAI",
+              hook: "ŞEFFAF FİYAT GARANTİSİ!",
+              sub: "Hyundai Aracınızda Son Sistem Diyagnoz ve Garantiyi Bozmayan Bakım.",
+              cta: "Hyundai Bakım Randevusu Al!",
+            },
+            "/blog/kia-periyodik-bakim-fiyatlari-2026": {
+              mark: "KIA",
+              hook: "YETKİLİ SERVİS STANDARTLARINDA!",
+              sub: "Orijinal Yedek Parça Güvencesiyle Kia Periyodik Bakım ve Onarım Hizmeti.",
+              cta: "Kia Ustasından Hızlı Randevu Al!",
+            },
+            "/blog/triger-seti-degisim-fiyatlari-2026/": {
+              mark: "TRİGER",
+              hook: "MOTORUNUZU RİSKE ATMAYIN!",
+              sub: "Triger Değişiminde Hata Payı Sıfır. Uzman Mekanik Kadromuzla Buradayız.",
+              cta: "Triger Durumunu Ücretsiz Kontrol Edelim!",
+            },
+          };
+
+          // 1. Path Check (Specific overrides first)
+          let override = null;
+          // Normalize path for lookup (handle trailing slashes)
+          const cleanPath = path.endsWith("/") ? path.slice(0, -1) : path;
+
+          Object.keys(PATH_OVERRIDES).forEach((op) => {
+            const cleanOp = op.endsWith("/") ? op.slice(0, -1) : op;
+            if (cleanPath === cleanOp) override = PATH_OVERRIDES[op];
+          });
+
+          if (!brandKey && !override) {
             Object.keys(BRAND_MAP).forEach((key) => {
               if (path.includes(key)) brandKey = key;
             });
           }
 
-          // 2. Session Persistence
-          if (brandKey && BRAND_MAP[brandKey]) {
-            sessionStorage.setItem("user_auto_brand", brandKey);
-          } else {
-            brandKey = sessionStorage.getItem("user_auto_brand");
+          // 2. Session Persistence (Only if not in an override page)
+          if (!override) {
+            if (brandKey && BRAND_MAP[brandKey]) {
+              sessionStorage.setItem("user_auto_brand", brandKey);
+            } else {
+              brandKey = sessionStorage.getItem("user_auto_brand");
+            }
           }
 
-          if (!brandKey || !BRAND_MAP[brandKey]) return;
+          if (!override && (!brandKey || !BRAND_MAP[brandKey])) return;
 
-          const data = BRAND_MAP[brandKey];
+          const data = override || BRAND_MAP[brandKey];
 
           // 3. Apply Changes (Immediate + DOMContentLoaded for safety)
           const runUpdate = () => {
@@ -269,7 +314,10 @@ const {
             const subtext = document.querySelector("[data-dynamic-subtext]");
             const cta = document.querySelector("[data-dynamic-cta]");
 
-            if (h1Mark) h1Mark.textContent = data.name.toUpperCase();
+            if (h1Mark)
+              h1Mark.textContent = (
+                override ? data.mark : data.name
+              ).toUpperCase();
             if (h1Hook) h1Hook.textContent = data.hook.toUpperCase();
             if (subtext) subtext.textContent = data.sub;
             if (cta) {
