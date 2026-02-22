@@ -3,8 +3,8 @@ import { Image } from "astro:assets";
 ---
 
 <section
-  class="relative h-screen min-h-[750px] flex items-center overflow-hidden bg-[#020617]"
-  style="min-height: 100vh; contain: layout;"
+  class="relative h-[85vh] min-h-[650px] flex items-center overflow-hidden bg-[#020617]"
+  style="contain: layout;"
 >
   <!-- Background Layer -->
   <div class="absolute inset-0 z-0">
@@ -60,7 +60,7 @@ import { Image } from "astro:assets";
       <!-- Top Badges -->
       <div class="flex flex-wrap gap-3 mb-10 animate-fade-right justify-end">
         <span
-          class="px-5 py-2 bg-orange-600/10 border border-orange-500/30 backdrop-blur-xl rounded-full text-[11px] tracking-[0.2em] font-bold text-white flex items-center gap-3"
+          class="px-5 py-2 bg-orange-600/10 border border-orange-500/30 backdrop-blur-lg rounded-full text-[11px] tracking-[0.2em] font-bold text-white flex items-center gap-3"
         >
           <span class="w-1.5 h-1.5 bg-orange-500 rounded-full animate-ping"
           ></span>
@@ -120,7 +120,7 @@ import { Image } from "astro:assets";
       >
         <a
           href="/iletisim"
-          class="group px-8 py-5 sm:px-12 sm:py-6 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl border-2 border-white/30 hover:border-white/60 backdrop-blur-2xl transition-all duration-500 flex items-center justify-center gap-4 hover:-translate-y-2 order-2 sm:order-1"
+          class="group px-8 py-5 sm:px-12 sm:py-6 bg-white/10 hover:bg-white/20 text-white font-bold rounded-2xl border-2 border-white/30 hover:border-white/60 backdrop-blur-lg transition-all duration-500 flex items-center justify-center gap-4 hover:-translate-y-2 order-2 sm:order-1"
         >
           <span class="uppercase tracking-widest text-xs sm:text-sm"
             >Randevu Al</span
@@ -164,6 +164,23 @@ import { Image } from "astro:assets";
           >
           </div>
         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Cue (Premium Indicator) -->
+  <div
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 animate-fade-in delay-700 opacity-40"
+  >
+    <span class="text-[10px] uppercase tracking-[0.4em] font-bold text-white/60"
+      >KEŞFET</span
+    >
+    <div
+      class="w-[1px] h-12 bg-gradient-to-b from-orange-500 to-transparent relative overflow-hidden"
+    >
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-white animate-scroll-line"
+      >
       </div>
     </div>
   </div>
@@ -237,8 +254,21 @@ import { Image } from "astro:assets";
     }
   }
 
+  @keyframes scroll-line {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
   .animate-scanline {
     animation: scanline 10s linear infinite;
+  }
+
+  .animate-scroll-line {
+    animation: scroll-line 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   }
 
   .animate-fade-right {
