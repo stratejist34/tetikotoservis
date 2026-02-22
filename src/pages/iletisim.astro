@@ -98,7 +98,7 @@ const pageDescription =
   </section>
 
   <!-- Contact Info Cards - Dark Theme -->
-  <section class="py-12 -mt-16 relative z-20">
+  <section class="py-12 -mt-16 relative z-20" data-sticky-conflict>
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-3 gap-6">
         <!-- Telefon -->
@@ -198,7 +198,7 @@ const pageDescription =
   </section>
 
   <!-- Map & CTA Section - Dark Theme -->
-  <section id="map" class="py-16 bg-slate-950">
+  <section id="map" class="py-16 bg-slate-950" data-sticky-conflict>
     <div class="container mx-auto px-4">
       <div class="grid lg:grid-cols-5 gap-8 items-stretch">
         <!-- Map (3 columns) -->
@@ -235,7 +235,7 @@ const pageDescription =
               <span
                 class="text-xs font-bold text-blue-200 uppercase tracking-wider"
               >
-                Servis Açılış Saati: 08:00
+                Servis Açılış Saati: 08:30
               </span>
             </div>
             <h4 class="font-bold text-white text-sm mb-1">Tetik Otomotiv</h4>
@@ -365,13 +365,20 @@ const pageDescription =
 
       function updateStatus() {
         if (!openEl || !closedEl) return;
-
-        const now = new Date();
+        const helperNow = (window as any).__tetikNowIstanbul;
+        const now =
+          typeof helperNow === "function"
+            ? helperNow()
+            : new Date(
+                new Date().toLocaleString("en-US", {
+                  timeZone: "Europe/Istanbul",
+                }),
+              );
         const minutes = now.getHours() * 60 + now.getMinutes();
         const day = now.getDay(); // 0 = Pazar, 1 = Pazartesi, ... 6 = Cumartesi
         const isWorkingDay = day >= 1 && day <= 6; // Pzt-Cmt açık
-        const openStart = 8 * 60; // 08:00
-        const openEnd = 19 * 60; // 19:00
+        const openStart = 8 * 60 + 30; // 08:30
+        const openEnd = 20 * 60; // 20:00
         const isOpen =
           isWorkingDay && minutes >= openStart && minutes < openEnd;
 
@@ -482,8 +489,20 @@ const pageDescription =
           return;
         }
 
-        const now = new Date();
+        const helperNow = (window as any).__tetikNowIstanbul;
+        const now =
+          typeof helperNow === "function"
+            ? helperNow()
+            : new Date(
+                new Date().toLocaleString("en-US", {
+                  timeZone: "Europe/Istanbul",
+                }),
+              );
         const minutes = now.getHours() * 60 + now.getMinutes();
+        const slotHelper = (window as any).__tetikHourSlot;
+        const slotMessageHelper = (window as any).__tetikSlotMessage;
+        const slot =
+          typeof slotHelper === "function" ? slotHelper() : "open_morning";
 
         // Selamlama
         let greeting = "";
@@ -497,14 +516,22 @@ const pageDescription =
         else greeting = "İyi Sabahlar";
 
         // Detay mesajı
-        const isDay = minutes >= 8 * 60 && minutes < 19 * 60;
+        const isDay = slot === "open_morning" || slot === "open_evening";
         let detail = "";
-        if (isDay) {
+        const slotText =
+          typeof slotMessageHelper === "function"
+            ? slotMessageHelper()
+            : "Su an: Hizli baglanti saati";
+        if (slot === "open_morning" || slot === "open_evening") {
           detail =
-            "Acil bir durum mu? veya bakım ihtiyacınız mı var? İsah ustayı hemen arayabilir veya yazarak bilgi isteyebilirsiniz.";
+            "Acil bir durum mu? Bakim ihtiyaciniz varsa hemen arayin veya WhatsApp'tan yazin. " +
+            slotText +
+            ".";
         } else {
           detail =
-            "Servisimiz 08:00'de açılıyor, dilerseniz WhatsApp üzerinden İsah Usta'ya not bırakabilirsiniz.";
+            "Telefon hatti mesai disinda. WhatsApp'tan not birakin, ilk mesai saatinde donelim. " +
+            slotText +
+            ".";
         }
 
         // Sadece içerik değiştiyse güncelle (loop'a girmesin)

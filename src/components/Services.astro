@@ -192,11 +192,18 @@ const services = [
             `Merhaba, *${serviceTitle}* hizmetiniz hakkında bilgi ve fiyat almak istiyorum.`,
           );
 
-          // Track Event
-          if (typeof (window as any).gtag !== "undefined") {
+          const trackHelper = (window as any).__tetikTrackEvent;
+          if (typeof trackHelper === "function") {
+            trackHelper("service_click", {
+              service_name: serviceTitle,
+              location: "services_list",
+              channel: "whatsapp",
+            });
+          } else if (typeof (window as any).gtag === "function") {
             (window as any).gtag("event", "service_click", {
               service_name: serviceTitle,
-              click_location: "services_list",
+              location: "services_list",
+              channel: "whatsapp",
             });
           }
 

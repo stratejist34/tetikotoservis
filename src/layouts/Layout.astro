@@ -93,6 +93,81 @@ const {
         document.addEventListener(e, loadGA, { once: true, passive: true });
       });
 
+      // Shared hour-slot helper (Europe/Istanbul) + standardized CTA tracking
+      if (!window.__tetikHelpersInitialized) {
+        window.__tetikHelpersInitialized = true;
+
+        window.__tetikNowIstanbul = function () {
+          return new Date(
+            new Date().toLocaleString("en-US", {
+              timeZone: "Europe/Istanbul",
+            }),
+          );
+        };
+
+        window.__tetikHourSlot = function () {
+          const now = window.__tetikNowIstanbul();
+          const minutes = now.getHours() * 60 + now.getMinutes();
+          const businessStart = 8 * 60 + 30; // 08:30
+          const businessEnd = 20 * 60; // 20:00
+
+          if (minutes < businessStart) return "pre_open";
+          if (minutes < 14 * 60) return "open_morning";
+          if (minutes < businessEnd) return "open_evening";
+          return "after_hours";
+        };
+
+        window.__tetikSlotMessage = function () {
+          const slot = window.__tetikHourSlot();
+          if (slot === "pre_open") {
+            return "Mesaj birakin, 08:30'da donelim";
+          }
+          if (slot === "open_morning") {
+            return "Su an: Hizli baglanti saati";
+          }
+          if (slot === "open_evening") {
+            return "Su an: Son randevu araliklari";
+          }
+          return "Su an: Yarin planlamasi acik";
+        };
+
+        window.__tetikGetIntent = function () {
+          const path = window.location.pathname.toLowerCase();
+          if (path.includes("bakim")) return "periyodik_bakim";
+          if (path.includes("triger")) return "triger_degisimi";
+          if (path.includes("ariza") || path.includes("tamir"))
+            return "ariza_onarım";
+          if (path.includes("aku") || path.includes("akuler"))
+            return "aku_servis";
+          if (path.includes("iletişim") || path.includes("iletisim"))
+            return "iletisim_sayfasi";
+          if (path.includes("blog")) return "bilgi_blog";
+          return "genel_servis";
+        };
+
+        window.__tetikTrackEvent = function (eventKey, payload = {}) {
+          if (typeof window.gtag !== "function") return;
+
+          const eventNameMap = {
+            cta_click: "cta_click",
+            cta_intent: "cta_intent",
+            cta_dismiss: "cta_dismiss",
+            service_click: "service_click",
+          };
+
+          const baseParams = {
+            page_path: window.location.pathname,
+            hour_slot: window.__tetikHourSlot(),
+            intent: window.__tetikGetIntent(),
+            brand: sessionStorage.getItem("user_auto_brand") || "genel",
+            device_type: window.innerWidth < 768 ? "mobile" : "desktop",
+          };
+
+          const eventName = eventNameMap[eventKey] || eventKey;
+          window.gtag("event", eventName, { ...baseParams, ...payload });
+        };
+      }
+
       // GLOBAL CLICK INTERCEPTION: Service Region Modal Trigger
       // Guard: tek seferlik listener kaydı (ViewTransitions ile tekrar eklenmesini önle)
       if (!window.__globalClickListenerAdded) {
@@ -134,6 +209,86 @@ const {
           { passive: false },
         );
       }
+
+      // SDH (Strategic Dynamic Heading) Core Logic
+      (function () {
+        const BRAND_MAP = {
+          hyundai: {
+            name: "Hyundai",
+            hook: "Son Sistem Diyagnoz",
+            sub: "17 Yıllık Uzmanlık ile Hyundai Aracınızda Sıfır Hata.",
+            cta: "Hyundai Ustasından Bilgi Al",
+          },
+          kia: {
+            name: "Kia",
+            hook: "Orijinal Parça Güvencesi",
+            sub: "Yetkili Servis Standartlarında Kia Bakım ve Tamir Hizmeti.",
+            cta: "Kia Ustasından Bilgi Al",
+          },
+          toyota: {
+            name: "Toyota",
+            hook: "Ömürlük Bakım Standartı",
+            sub: "Toyota Aracınızın Ömrünü Uzatan Profesyonel Çözümler.",
+            cta: "Toyota Ustasından Bilgi Al",
+          },
+          nissan: {
+            name: "Nissan",
+            hook: "Kusursuz Mekanik Bakım",
+            sub: "Nissan Araçlarınızda Garantili Yedek Parça ve Mekanik Onarım.",
+            cta: "Nissan Ustasından Bilgi Al",
+          },
+        };
+
+        function applySDH() {
+          const path = window.location.pathname.toLowerCase();
+          const search = new URLSearchParams(window.location.search);
+          let brandKey = search.get("marka") || search.get("brand");
+
+          // 1. Path Check
+          if (!brandKey) {
+            Object.keys(BRAND_MAP).forEach((key) => {
+              if (path.includes(key)) brandKey = key;
+            });
+          }
+
+          // 2. Session Persistence
+          if (brandKey && BRAND_MAP[brandKey]) {
+            sessionStorage.setItem("user_auto_brand", brandKey);
+          } else {
+            brandKey = sessionStorage.getItem("user_auto_brand");
+          }
+
+          if (!brandKey || !BRAND_MAP[brandKey]) return;
+
+          const data = BRAND_MAP[brandKey];
+
+          // 3. Apply Changes (Immediate + DOMContentLoaded for safety)
+          const runUpdate = () => {
+            const h1Mark = document.querySelector("[data-dynamic-brand]");
+            const h1Hook = document.querySelector("[data-dynamic-hook]");
+            const subtext = document.querySelector("[data-dynamic-subtext]");
+            const cta = document.querySelector("[data-dynamic-cta]");
+
+            if (h1Mark) h1Mark.textContent = data.name.toUpperCase();
+            if (h1Hook) h1Hook.textContent = data.hook.toUpperCase();
+            if (subtext) subtext.textContent = data.sub;
+            if (cta) {
+              const ctaSpan = cta.querySelector("span");
+              if (ctaSpan) ctaSpan.textContent = data.cta;
+            }
+          };
+
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", runUpdate);
+          } else {
+            runUpdate();
+          }
+          // Astro ViewTransitions support
+          document.addEventListener("astro:page-load", runUpdate);
+        }
+
+        applySDH();
+      })();
     </script>
 
     <!-- Google Fonts - Premium Typography -->

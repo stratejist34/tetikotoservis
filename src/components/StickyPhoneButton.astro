@@ -17,7 +17,31 @@ const whatsappMessage = encodeURIComponent(
     data-tooltips={showTooltips}
     data-first-visit={onlyFirstVisit}
 >
-    <!-- WhatsApp Button (Altta) -->
+    <!-- Telefon Butonu (Üstte) -->
+    <a
+        href={`tel:${phoneNumber}`}
+        class="sticky-btn sticky-phone-btn"
+        aria-label="Hemen Ara"
+        title="Hemen Ara"
+        data-btn-type="phone"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="#ffffff"
+            stroke="none"
+        >
+            <path
+                fill-rule="evenodd"
+                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                clip-rule="evenodd"></path>
+        </svg>
+        <span class="btn-tooltip phone-tooltip" aria-hidden="true"></span>
+    </a>
+
+    <!-- WhatsApp Butonu (Altta) -->
     <a
         href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
         class="sticky-btn sticky-whatsapp-btn"
@@ -27,7 +51,6 @@ const whatsappMessage = encodeURIComponent(
         rel="noopener noreferrer"
         data-btn-type="whatsapp"
     >
-        <!-- Orijinal WhatsApp İkonu -->
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
@@ -55,20 +78,48 @@ const whatsappMessage = encodeURIComponent(
         const whatsappTooltip = wrapper.querySelector(
             ".whatsapp-tooltip",
         ) as HTMLElement;
-        const whatsappBtn = wrapper.querySelector(
-            ".sticky-whatsapp-btn",
+        const phoneTooltip = wrapper.querySelector(
+            ".phone-tooltip",
         ) as HTMLElement;
+
+        // GA4 tracking for desktop sticky buttons
+        const phoneBtn = wrapper.querySelector(".sticky-phone-btn");
+        const whatsappBtn = wrapper.querySelector(".sticky-whatsapp-btn");
+        const trackHelper = (window as any).__tetikTrackEvent;
+
+        phoneBtn?.addEventListener("click", () => {
+            if (typeof trackHelper === "function") {
+                trackHelper("cta_click", {
+                    channel: "phone",
+                    location: "desktop_sticky",
+                });
+            } else if (typeof (window as any).gtag === "function") {
+                (window as any).gtag("event", "cta_click", {
+                    channel: "phone",
+                    location: "desktop_sticky",
+                });
+            }
+        });
+
+        whatsappBtn?.addEventListener("click", () => {
+            if (typeof trackHelper === "function") {
+                trackHelper("cta_click", {
+                    channel: "whatsapp",
+                    location: "desktop_sticky",
+                });
+            } else if (typeof (window as any).gtag === "function") {
+                (window as any).gtag("event", "cta_click", {
+                    channel: "whatsapp",
+                    location: "desktop_sticky",
+                });
+            }
+        });
 
         if (!showTooltips || !whatsappTooltip) return;
 
         // localStorage kontrolü
         const storageKey = "contact_tooltips_shown_v2";
         if (onlyFirstVisit && localStorage.getItem(storageKey)) return;
-
-        // Device Detection (sadece 1 kere)
-        const isIPhone = /iPhone/.test(navigator.userAgent);
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        const deviceType = isIPhone ? "iPhone" : isIOS ? "iPad" : "other";
 
         // Zamanlama ayarları
         const timings = {
@@ -82,45 +133,44 @@ const whatsappMessage = encodeURIComponent(
                 text: "👋 Size nasıl yardımcı olabiliriz?",
                 target: "whatsapp",
             },
+            phone: { text: "📞 Hemen Arayın", target: "phone" },
             footer: { text: "💬 Hemen Fiyat Alın", target: "whatsapp" },
         };
 
         let footerShown = false;
-        let tooltipShowTimes: { [key: string]: number } = {};
-
-        // Analytics tracking helper
-        // Analytics tracking helper (Removed per request)
-        function trackTooltip(message: string, timing: string, target: string) {
-            tooltipShowTimes[target] = Date.now();
-            // tooltip_shown removed
-        }
 
         // Tooltip gösterme fonksiyonu
-        function showTooltip(
+        function showTooltipEl(
             tooltip: HTMLElement,
             text: string,
             duration: number,
-            timing: string,
-            target: string,
         ) {
             tooltip.textContent = text;
             tooltip.classList.add("visible");
-
             setTimeout(() => tooltip.classList.remove("visible"), duration);
         }
 
         // İlk tooltip (WhatsApp)
         setTimeout(() => {
             if (!footerShown) {
-                showTooltip(
+                showTooltipEl(
                     whatsappTooltip,
                     messages.first.text,
                     timings.duration,
-                    "3s",
-                    messages.first.target,
                 );
             }
         }, timings.first);
+
+        // İkinci tooltip (Telefon) — 8 saniye sonra
+        setTimeout(() => {
+            if (!footerShown && phoneTooltip) {
+                showTooltipEl(
+                    phoneTooltip,
+                    messages.phone.text,
+                    timings.duration,
+                );
+            }
+        }, 8000);
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -131,15 +181,12 @@ const whatsappMessage = encodeURIComponent(
                     if (entry.isIntersecting) {
                         stickyWrapper?.classList.add("near-footer");
 
-                        // Tooltip logic for footer intersection
                         if (!footerShown) {
                             footerShown = true;
-                            showTooltip(
+                            showTooltipEl(
                                 whatsappTooltip,
                                 messages.footer.text,
                                 timings.duration,
-                                "footer",
-                                messages.footer.target,
                             );
                         }
                     } else {
@@ -152,6 +199,30 @@ const whatsappMessage = encodeURIComponent(
 
         const footer = document.querySelector("footer");
         if (footer) observer.observe(footer);
+
+        const conflictTargets = document.querySelectorAll(
+            "[data-sticky-conflict]",
+        );
+        if (conflictTargets.length > 0) {
+            const conflictObserver = new IntersectionObserver(
+                (entries) => {
+                    const stickyWrapper = document.querySelector(
+                        ".sticky-contact-wrapper",
+                    );
+                    const hasVisibleConflict = entries.some(
+                        (entry) => entry.isIntersecting,
+                    );
+                    stickyWrapper?.classList.toggle(
+                        "conflict-hidden",
+                        hasVisibleConflict,
+                    );
+                },
+                { threshold: 0.2 },
+            );
+            conflictTargets.forEach((target) =>
+                conflictObserver.observe(target),
+            );
+        }
 
         // Scroll Opacity Logic
         window.addEventListener(
@@ -201,7 +272,7 @@ const whatsappMessage = encodeURIComponent(
         display: none; /* Mobilde gizli, Aksiyon Merkezi ile çakışmayı önlemek için */
         flex-direction: column;
         gap: 10px;
-        opacity: 0.6; /* Default Opacity */
+        opacity: 0.85; /* v2: 0.6 → 0.85 — daha güvenilir görünüm */
         transition:
             opacity 0.3s ease,
             transform 0.3s ease;
@@ -213,11 +284,17 @@ const whatsappMessage = encodeURIComponent(
         opacity: 1;
     }
 
-    /* Footer'a yaklaşınca gizle */
+    /* Footer'a yaklaşınca soluklaştır (v2: opacity 0 → 0.3, tamamen kaybolmaz) */
     .sticky-contact-wrapper.near-footer {
+        opacity: 0.3;
+        pointer-events: none;
+        transform: translateY(10px);
+    }
+
+    .sticky-contact-wrapper.conflict-hidden {
         opacity: 0;
         pointer-events: none;
-        transform: translateY(20px);
+        transform: translateY(12px);
     }
 
     /* Desktop'ta sol altta ve görünür */
@@ -234,10 +311,10 @@ const whatsappMessage = encodeURIComponent(
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 64px; /* User requested 64px */
+        width: 64px;
         height: 64px;
         border-radius: 50%;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5); /* v2: daha derin gölge */
         transition: all 0.3s ease;
         color: #ffffff;
         text-decoration: none;
@@ -246,13 +323,21 @@ const whatsappMessage = encodeURIComponent(
 
     .sticky-btn:hover {
         transform: scale(1.1);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        box-shadow: 0 10px 36px -6px rgba(0, 0, 0, 0.55);
     }
 
     .sticky-btn svg {
         width: 28px;
         height: 28px;
-        stroke: #ffffff;
+    }
+
+    /* Telefon Butonu */
+    .sticky-phone-btn {
+        background-color: #f59e0b; /* amber-500 */
+    }
+
+    .sticky-phone-btn:hover {
+        background-color: #d97706; /* amber-600 */
     }
 
     /* WhatsApp Button */
@@ -264,13 +349,13 @@ const whatsappMessage = encodeURIComponent(
         background-color: #20bd5a;
     }
 
-    /* Tooltips - Mobilde sola, desktop'ta sağa açılır */
+    /* Tooltips - Desktop sağa açılır */
     .btn-tooltip {
         position: absolute;
-        right: 74px; /* Adjusted for 64px button */
-        left: auto;
+        left: 74px;
+        right: auto;
         top: 50%;
-        transform: translateY(-50%) translateX(10px);
+        transform: translateY(-50%) translateX(-10px);
         background: #1e293b;
         color: #fff;
         padding: 10px 16px;
@@ -288,13 +373,13 @@ const whatsappMessage = encodeURIComponent(
     .btn-tooltip::before {
         content: "";
         position: absolute;
-        right: -6px;
-        left: auto;
+        left: -6px;
+        right: auto;
         top: 50%;
         transform: translateY(-50%);
         border: 6px solid transparent;
-        border-left-color: #1e293b;
-        border-right: none;
+        border-right-color: #1e293b;
+        border-left: none;
     }
 
     .btn-tooltip.visible {
@@ -303,41 +388,38 @@ const whatsappMessage = encodeURIComponent(
         transform: translateY(-50%) translateX(0);
     }
 
-    /* Desktop'ta tooltip sağa açılsın */
-    @media (min-width: 768px) {
-        .btn-tooltip {
-            left: 74px; /* Adjusted */
-            right: auto;
-            transform: translateY(-50%) translateX(-10px);
-        }
-
-        .btn-tooltip::before {
-            left: -6px;
-            right: auto;
-            border-right-color: #1e293b;
-            border-left-color: transparent;
-        }
-
-        .btn-tooltip.visible {
-            transform: translateY(-50%) translateX(0);
-        }
+    /* v2: GPU-only Pulse (Pseudo-element + transform + opacity) */
+    .sticky-btn::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        z-index: -1;
     }
 
-    /* Pulse animation for attention */
-    @keyframes pulse-ring {
+    @keyframes pulse-ring-gpu-sticky {
         0% {
-            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            transform: scale(1);
+            opacity: 0.6;
         }
-        70% {
-            box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
-        }
+        80%,
         100% {
-            box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            transform: scale(1.5);
+            opacity: 0;
         }
     }
 
-    .sticky-whatsapp-btn {
-        animation: pulse-ring 2s ease-out infinite;
+    .sticky-phone-btn::after {
+        background-color: rgba(245, 158, 11, 0.5);
+        animation: pulse-ring-gpu-sticky 2.5s cubic-bezier(0.4, 0, 0.6, 1)
+            infinite;
         animation-delay: 1s;
+    }
+
+    .sticky-whatsapp-btn::after {
+        background-color: rgba(37, 211, 102, 0.5);
+        animation: pulse-ring-gpu-sticky 2s cubic-bezier(0.4, 0, 0.6, 1)
+            infinite;
+        animation-delay: 0.5s;
     }
 </style>

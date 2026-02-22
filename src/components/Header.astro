@@ -15,7 +15,7 @@ const menuItems = navigationData.menuItems;
   class="fixed top-0 left-0 w-full z-[9999] transition-all duration-500 bg-[#0f172a]/40 backdrop-blur-2xl border-b border-white/5 overflow-x-clip"
 >
   <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between h-24">
+    <div id="header-inner" class="flex items-center justify-between h-24">
       <!-- Logo with Premium Glow -->
       <a href="/" class="relative z-50 flex items-center gap-3 group">
         <div
@@ -363,28 +363,30 @@ const menuItems = navigationData.menuItems;
     }
   });
 
-  // Smart Header - Hide on Scroll Down, Show on Scroll Up
-  let lastScroll = 0;
+  // Smart Header - color + compact height on scroll
   const header = document.getElementById("main-header");
+  const headerInner = document.getElementById("header-inner");
 
   window.addEventListener(
     "scroll",
     () => {
       const currentScroll = window.pageYOffset;
-      if (!header) return;
+      if (!header || !headerInner) return;
 
       if (currentScroll <= 0) {
         header.style.transform = "translateY(0)";
         header.style.backgroundColor = "rgba(15, 23, 42, 0.4)"; // Navige blue tone with alpha
+        headerInner.style.height = "6rem";
         return;
       }
 
       if (currentScroll > 100) {
         header.style.backgroundColor = "rgba(15, 23, 42, 0.9)"; // More opaque navy blue on scroll
+        headerInner.style.height = "4.75rem";
       } else {
         header.style.backgroundColor = "rgba(15, 23, 42, 0.4)"; // Transparent navy blue at top
+        headerInner.style.height = "6rem";
       }
-      lastScroll = currentScroll;
     },
     { passive: true },
   );
