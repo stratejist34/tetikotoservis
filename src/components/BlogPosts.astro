@@ -80,7 +80,7 @@ const formatDate = (date: Date) => {
       <div class="lg:col-span-7" data-reveal="fade-right">
         <a
           href={`/blog/${featuredPost.slug}`}
-          class="blog-tilt-card group block h-full relative overflow-hidden rounded-2xl"
+          class="blog-tilt-card card-l2 group block h-full relative overflow-hidden"
         >
           <div class="aspect-[4/3] w-full h-full relative overflow-hidden">
             <img
@@ -159,7 +159,7 @@ const formatDate = (date: Date) => {
           sidePosts.map((post, index) => (
             <a
               href={`/blog/${post.slug}`}
-              class="blog-tilt-card group flex gap-6 items-start border-b border-white/10 pb-8 last:border-0 last:pb-0"
+              class="blog-tilt-card card-l1 group flex gap-6 items-start p-4 hover:bg-white/[0.02]"
               style={`--tilt-index: ${index}`}
             >
               <div class="w-32 h-32 md:w-40 md:h-28 flex-shrink-0 rounded-xl overflow-hidden relative">

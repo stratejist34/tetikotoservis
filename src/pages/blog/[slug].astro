@@ -342,14 +342,14 @@ const clientScript = `
                     
                     {/* Table of Contents */}
                     {headings.length > 0 && (
-                        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                        <div class="card-l1 p-6 relative">
                             <h3 class="sidebar-title mb-4 flex items-center gap-2 opacity-80">
                                 <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
                                 İÇİNDEKİLER
                             </h3>
                             <nav class="flex flex-col space-y-3 relative">
                                 <!-- Vertical Line -->
-                                <div class="absolute left-0 top-2 bottom-2 w-px bg-slate-200"></div>
+                                <div class="absolute left-0 top-2 bottom-2 w-px bg-white/10"></div>
                                 
                                 {headings.map(h => (
                                     <a href={`#${h.slug}`} class="toc-link sidebar-link py-1 pl-4 border-l-2 border-transparent -ml-[1px] hover:border-orange-300">
@@ -361,12 +361,12 @@ const clientScript = `
                     )}
 
                     {/* Sidebar CTA */}
-                    <div class="sidebar-cta-card rounded-2xl p-6 text-center">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mx-auto mb-4 text-orange-600">
+                    <div class="card-l2 p-8 text-center border-orange-500/10">
+                        <div class="w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center mx-auto mb-4 text-orange-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
-                        <h4 class="uppercase mb-2">Hızlı Servis İhtiyacı?</h4>
-                        <p class="mb-4 uppercase opacity-70">Aracınızla ilgili acil bir durum mu var? 7/24 bize ulaşabilirsiniz.</p>
+                        <h4 class="text-white font-heading text-lg mb-2 uppercase">Hızlı Servis İhtiyacı?</h4>
+                        <p class="text-slate-400 text-sm mb-6 uppercase opacity-70">Aracınızla ilgili acil bir durum mu var? 7/24 bize ulaşabilirsiniz.</p>
                         <a href="tel:05336157835" class="cta-primary w-full shadow-lg shadow-orange-600/20" data-dynamic-cta>
                             <span>0533 615 78 35</span>
                         </a>
