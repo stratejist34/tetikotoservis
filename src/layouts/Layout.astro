@@ -1,7 +1,6 @@
 ---
 import Header from "../components/Header.astro"; // force redeploy
 import { ViewTransitions } from "astro:transitions";
-import QuickActionBar from "../components/QuickActionBar.astro";
 import StickyPhoneButton from "../components/StickyPhoneButton.astro";
 import iOSCallSheet from "../components/iOSCallSheet.astro";
 
@@ -259,13 +258,13 @@ const {
               cta: "Ücretsiz Şanzıman Teşhisi İçin Ara!",
             },
             "/blog/hyundai-periyodik-bakim-fiyatlari-2025/": {
-              mark: "HYUNDAI",
+              mark: "HYUNDAİ",
               hook: "ŞEFFAF FİYAT GARANTİSİ!",
               sub: "Hyundai Aracınızda Son Sistem Diyagnoz ve Garantiyi Bozmayan Bakım.",
               cta: "Hyundai Bakım Randevusu Al!",
             },
             "/blog/kia-periyodik-bakim-fiyatlari-2026": {
-              mark: "KIA",
+              mark: "KİA",
               hook: "YETKİLİ SERVİS STANDARTLARINDA!",
               sub: "Orijinal Yedek Parça Güvencesiyle Kia Periyodik Bakım ve Onarım Hizmeti.",
               cta: "Kia Ustasından Hızlı Randevu Al!",
@@ -317,8 +316,9 @@ const {
             if (h1Mark)
               h1Mark.textContent = (
                 override ? data.mark : data.name
-              ).toUpperCase();
-            if (h1Hook) h1Hook.textContent = data.hook.toUpperCase();
+              ).toLocaleUpperCase("tr-TR");
+            if (h1Hook)
+              h1Hook.textContent = data.hook.toLocaleUpperCase("tr-TR");
             if (subtext) subtext.textContent = data.sub;
             if (cta) {
               const ctaSpan = cta.querySelector("span");
@@ -339,11 +339,11 @@ const {
       })();
     </script>
 
-    <!-- Google Fonts - Premium Typography -->
+    <!-- Google Fonts - Unified Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Saira:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap&subset=latin,latin-ext"
       rel="stylesheet"
     />
 
@@ -370,7 +370,6 @@ const {
     <link rel="apple-touch-icon" href="/images/favicon/tetikfavicon.png" />
     <!-- Critical CSS for above-the-fold content - Font metrics matched to prevent CLS -->
     <style is:inline>
-      /* Font fallback with matched metrics to prevent CLS */
       @font-face {
         font-family: "ManifoldExtended";
         src: url("/fonts/manifold-extended/ManifoldExtendedCF-Bold.woff2")
@@ -386,18 +385,6 @@ const {
         font-weight: 500;
         font-style: normal;
         font-display: swap;
-      }
-      @font-face {
-        font-family: "Electrolize-fallback";
-        src: local("Arial"), local("Helvetica");
-        ascent-override: 100%;
-        descent-override: 20%;
-      }
-      @font-face {
-        font-family: "Syne-fallback";
-        src: local("Arial"), local("Helvetica");
-        ascent-override: 100%;
-        descent-override: 20%;
       }
       :root {
         --brand-blue: #002c5f;
@@ -585,6 +572,9 @@ const {
         background: #ff5722;
         color: #ffffff !important;
       }
+      .font-manifold {
+        font-family: "ManifoldExtended", sans-serif;
+      }
       .font-heading {
         font-family: "ManifoldExtended", system-ui, sans-serif;
         text-transform: uppercase;
@@ -689,7 +679,6 @@ const {
 
     <StickyPhoneButton />
     <iOSCallSheet></iOSCallSheet>
-    <QuickActionBar />
 
     <script>
       // Defer all animation libraries until well after LCP
@@ -954,6 +943,13 @@ const {
       /* Glass Variant (Only for specific highlights) */
       .card-glass {
         @apply backdrop-blur-lg bg-white/5 border border-white/10 shadow-2xl rounded-2xl;
+      }
+
+      /* Specific Fix: Disable transitions for JS-driven cursor followers to prevent lag */
+      #service-image-floater {
+        transition: none !important;
+        will-change: transform, opacity;
+        z-index: 999999;
       }
     </style>
 

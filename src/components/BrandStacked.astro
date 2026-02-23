@@ -8,7 +8,7 @@ import nissanImageJpg from '/src/assets/images/nissan-micra-servis.jpg';
 const brands = [
   {
     id: 'hyundai',
-    name: 'HYUNDAI',
+    name: 'HYUNDAİ',
     slogan: 'Yenilikçi Teknoloji',
     description: 'i10, i20, Tucson, Elantra ve tüm Hyundai modelleri için yetkili servis kalitesinde bakım.',
     link: '/hyundai-ozel-servis',
@@ -22,7 +22,7 @@ const brands = [
   },
   {
     id: 'kia',
-    name: 'KIA',
+    name: 'KİA',
     slogan: 'İlham Veren Hareket',
     description: 'Sportage, Picanto, Ceed, Stonic dahil tüm Kia modelleri için profesyonel bakım.',
     link: '/kia-ozel-servis',
@@ -48,7 +48,7 @@ const brands = [
   },
   {
     id: 'nissan',
-    name: 'NISSAN',
+    name: 'NİSSAN',
     slogan: 'Heyecan Veren İnovasyon',
     description: 'Qashqai, Juke, Micra ve X-Trail için CVT şanzıman dahil tüm servis işlemleri.',
     link: '/nissan-ozel-servis',
@@ -128,11 +128,6 @@ const brands = [
                 src={brand.image}
                 alt={`${brand.name} özel servis`}
                 class="w-full h-full object-cover transition-transform duration-700 scale-105 group-hover:scale-[1.01]"
-                width={800}
-                height={533}
-                format="avif"
-                quality={45}
-                // ✅ İlk kart erken yüklensin (algı gecikmesini azalt)
                 loading={index === 0 ? "eager" : "lazy"}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
                 widths={[320, 480, 600]}

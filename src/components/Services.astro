@@ -148,6 +148,9 @@ const services = [
 
 <script>
   import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
 
   const servicesSection = document.getElementById("services-section");
   const floater = document.getElementById("service-image-floater");
@@ -166,13 +169,40 @@ const services = [
     window.addEventListener("mousemove", (e) => {
       if (!isHovering) return;
 
-      // Smoothly follow cursor
+      // Snappy cursor following
       gsap.to(floater, {
         x: e.clientX,
         y: e.clientY,
-        duration: 0.8,
-        ease: "power2.out",
+        duration: 0.15,
+        ease: "none",
       });
+    });
+
+    // Section Leave Handler (Safety)
+    servicesSection.addEventListener("mouseleave", () => {
+      isHovering = false;
+      gsap.to(floater, {
+        autoAlpha: 0,
+        scale: 0.8,
+        duration: 0.3,
+        ease: "power2.in",
+      });
+    });
+
+    // Scroll Safety: Hide floater when section is out of view
+
+    ScrollTrigger.create({
+      trigger: servicesSection,
+      start: "top bottom",
+      end: "bottom top",
+      onLeave: () => {
+        isHovering = false;
+        gsap.to(floater, { autoAlpha: 0, duration: 0.2 });
+      },
+      onLeaveBack: () => {
+        isHovering = false;
+        gsap.to(floater, { autoAlpha: 0, duration: 0.2 });
+      },
     });
 
     serviceItems.forEach((item) => {

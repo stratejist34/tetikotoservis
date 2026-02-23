@@ -269,7 +269,7 @@ Tetik Oto olarak tüm bakım işlemlerinde güvence sağlıyoruz:
 - ✅ **İşçilik Garantisi:** 6 ay
 - ✅ **Ücretsiz Kontrol:** 30 gün içinde
 - ✅ **Hata Düzeltme:** Ücretsiz tekrar işlem
-- ✅ **Hızlı Destek:** 7/24 WhatsApp desteği
+- ✅ **Hızlı Destek:** Hızlı WhatsApp desteği
 
 ## Gebze Nissan Micra Müşteri Yorumları
 
@@ -376,7 +376,7 @@ Tetik Oto olarak tüm bakım işlemlerinde güvence sağlıyoruz:
 ## İlgili Hizmetlerimiz
 
 - [Nissan Servis Gebze](/gebze-nissan-servis) - Tüm Nissan modelleri için profesyonel servis
-- [7/24 Yol Yardım](/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv) - Acil yol yardım hizmeti
+- [Acil Yol Yardım](/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv) - Acil yol yardım hizmeti
 - [Gebze Oto Servis](/hizmetlerimiz) - Kapsamlı servis hizmetleri
 - [İletişim](/iletisim) - Bize ulaşın
 

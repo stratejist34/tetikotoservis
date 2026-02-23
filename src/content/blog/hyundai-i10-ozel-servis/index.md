@@ -254,11 +254,11 @@ Tüm **Hyundai i10 onarımlarımıza 6 ay garanti**. Motor işlemlerinde _özel 
 - ✅ **Aynı gün motor bakımı** (randevulu)
 - ✅ _Gebze özel indirimler_ (%15'e varan)
 - ✅ **WhatsApp servis takibi**
-- ✅ _Acil A segmenti yardımı_ (7/24)
+- ✅ _Acil A segmenti yardımı_
 
 ### 💬 Gebze Müşteri Desteği
 
-**Gebze i10 sahipleri** için özel müşteri hizmetleri. A segmenti motor sorunları ve _teknik sorular_ için **7/24 WhatsApp desteği**.
+**Gebze i10 sahipleri** için özel müşteri hizmetleri. A segmenti motor sorunları ve _teknik sorular_ için **Hızlı WhatsApp desteği**.
 
 - 📞 **Acil hat:** 0533 615 78 35
 - 💬 **WhatsApp:** Teknik destek
@@ -374,7 +374,7 @@ B segmenti i20 için özel servis çözümleri
 
 B Segmenti Uzmanı
 
-### ⚡ [7/24 Yol Yardım](/7-24-yol-yardim-gebze-tuzla/)
+### ⚡ [Acil Yol Yardım](/7-24-yol-yardim-gebze-tuzla/)
 
 A segmenti arızaları için acil müdahale hizmeti
 

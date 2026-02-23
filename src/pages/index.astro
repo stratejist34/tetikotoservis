@@ -51,10 +51,12 @@ const pageDescription =
 
 <Layout title={pageTitle} description={pageDescription}>
   <main class="bg-slate-50">
-    <div class="relative overflow-hidden">
+    <div class="relative flex flex-col">
       <Hero />
-      <!-- SkewMarquee bileşeni Hero'nun üzerine bindiriliyor -->
-      <div class="absolute bottom-[-100px] left-0 w-full z-30 overflow-hidden">
+      <!-- SkewMarquee artık akışın (flow) bir parçası, butonları kapatmaz -->
+      <div
+        class="relative -mt-16 md:-mt-24 lg:-mt-32 z-30 overflow-hidden pointer-events-none"
+      >
         <SkewMarquee />
       </div>
     </div>

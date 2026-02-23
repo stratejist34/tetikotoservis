@@ -4,99 +4,98 @@
 
 <script>
   // Client-side script - GSAP dinamik import
-  if (typeof window !== 'undefined') {
-    console.log('RevCounter mounted');
-    
+  if (typeof window !== "undefined") {
+    console.log("RevCounter mounted");
+
     // GSAP ve ScrollTrigger'u dinamik olarak yükle
-    Promise.all([
-      import('gsap'),
-      import('gsap/ScrollTrigger')
-    ]).then(([gsapModule, ScrollTriggerModule]) => {
-      const gsap = gsapModule.gsap;
-      const ScrollTrigger = ScrollTriggerModule.ScrollTrigger;
-      
-      gsap.registerPlugin(ScrollTrigger);
+    Promise.all([import("gsap"), import("gsap/ScrollTrigger")])
+      .then(([gsapModule, ScrollTriggerModule]) => {
+        const gsap = gsapModule.gsap;
+        const ScrollTrigger = ScrollTriggerModule.ScrollTrigger;
 
-      // Elementleri bul
-      const needle = document.querySelector('.rev-counter .needle');
-      const rpmText = document.querySelector('.rev-counter .rpm-text');
-      const gauge = document.querySelector('.rev-counter');
+        gsap.registerPlugin(ScrollTrigger);
 
-      console.log('Elements found:', { needle, rpmText, gauge });
+        // Elementleri bul
+        const needle = document.querySelector(".rev-counter .needle");
+        const rpmText = document.querySelector(".rev-counter .rpm-text");
+        const gauge = document.querySelector(".rev-counter");
 
-      // RPM sayısını güncelleme
-      const updateRPM = (progress: number) => {
-        const rpm = Math.round(progress * 7000 + 1000); // 1000'den 8000'e
-        if (rpmText) {
-          rpmText.textContent = `${Math.floor(rpm / 1000)} RPM`;
-        }
-      };
+        console.log("Elements found:", { needle, rpmText, gauge });
 
-      // ScrollTrigger konfigürasyonu
-      ScrollTrigger.create({
-        trigger: 'body',
-        start: 'top top',
-        end: '300px top',
-        scrub: true,
-        onUpdate: (self) => {
-          // Progress değerine göre iğneyi ve RPM sayısını güncelle
-          const progress = self.progress;
-          if (needle) {
+        // RPM sayısını güncelleme
+        const updateRPM = (progress: number) => {
+          const rpm = Math.round(progress * 7000 + 1000); // 1000'den 8000'e
+          if (rpmText) {
+            rpmText.textContent = `${Math.floor(rpm / 1000)} RPM`;
+          }
+        };
+
+        // ScrollTrigger konfigürasyonu
+        ScrollTrigger.create({
+          trigger: "body",
+          start: "top top",
+          end: "300px top",
+          scrub: true,
+          onUpdate: (self) => {
+            // Progress değerine göre iğneyi ve RPM sayısını güncelle
+            const progress = self.progress;
+            if (needle) {
+              gsap.to(needle, {
+                rotation: -135 + progress * 135,
+                transformOrigin: "50% 50%",
+                ease: "power2.out",
+                duration: 0.1,
+              });
+            }
+            updateRPM(progress);
+          },
+          onEnter: () => {
+            // Scroll başladığında hafif bir "gas sesi" efekti
+            if (rpmText) {
+              rpmText.classList.add("pulsing");
+              setTimeout(() => {
+                if (rpmText) rpmText.classList.remove("pulsing");
+              }, 300);
+            }
+          },
+        });
+
+        // Mouse over interactivity
+        if (gauge && needle) {
+          gauge.addEventListener("mouseenter", () => {
             gsap.to(needle, {
-              rotation: -135 + (progress * 135),
-              transformOrigin: '50% 50%',
-              ease: 'power2.out',
-              duration: 0.1
+              rotation: -45,
+              transformOrigin: "50% 50%",
+              ease: "power2.out",
+              duration: 0.5,
             });
-          }
-          updateRPM(progress);
-        },
-        onEnter: () => {
-          // Scroll başladığında hafif bir "gas sesi" efekti
-          if (rpmText) {
-            rpmText.classList.add('pulsing');
-            setTimeout(() => {
-              if (rpmText) rpmText.classList.remove('pulsing');
-            }, 300);
-          }
+            if (rpmText) {
+              rpmText.textContent = "6 RPM";
+            }
+          });
+
+          gauge.addEventListener("mouseleave", () => {
+            gsap.to(needle, {
+              rotation: -135,
+              transformOrigin: "50% 50%",
+              ease: "power2.in",
+              duration: 0.5,
+            });
+            if (rpmText) {
+              rpmText.textContent = "1 RPM";
+            }
+          });
         }
+
+        // Başlangıç pozisyonu
+        if (needle) {
+          gsap.set(needle, { rotation: -135 });
+        }
+        updateRPM(0);
+      })
+      .catch((error) => {
+        console.error("GSAP yüklenirken hata:", error);
       });
-
-      // Mouse over interactivity
-      if (gauge && needle) {
-        gauge.addEventListener('mouseenter', () => {
-          gsap.to(needle, {
-            rotation: -45,
-            transformOrigin: '50% 50%',
-            ease: 'power2.out',
-            duration: 0.5
-          });
-          if (rpmText) {
-            rpmText.textContent = '6 RPM';
-          }
-        });
-
-        gauge.addEventListener('mouseleave', () => {
-          gsap.to(needle, {
-            rotation: -135,
-            transformOrigin: '50% 50%',
-            ease: 'power2.in',
-            duration: 0.5
-          });
-          if (rpmText) {
-            rpmText.textContent = '1 RPM';
-          }
-        });
-      }
-
-      // Başlangıç pozisyonu
-      if (needle) {
-        gsap.set(needle, { rotation: -135 });
-      }
-      updateRPM(0);
-    }).catch(error => {
-      console.error('GSAP yüklenirken hata:', error);
-    });
   }
 </script>
 
@@ -112,7 +111,7 @@
     z-index: 99999;
     display: block;
   }
-  
+
   .gauge-bg {
     fill: url(#gaugeGradient);
     stroke: rgba(255, 255, 255, 0.15);
@@ -151,7 +150,7 @@
   }
 
   .rpm-text {
-    font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "ManifoldExtended", sans-serif;
     font-weight: 800;
     font-size: 28px;
     fill: #ffffff;
@@ -159,16 +158,16 @@
   }
 
   .gear-text {
-    font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "ManifoldExtended", sans-serif;
     font-weight: 700;
     font-size: 16px;
     fill: rgba(255, 255, 255, 0.9);
   }
 
   .tetik-logo {
-    font-family: 'Bebas Neue', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "ManifoldExtended", sans-serif;
     font-weight: 900;
-    font-size: 20px;
+    font-size: 18px;
     fill: #ffd166;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -181,8 +180,13 @@
 
   /* Animasyon efekti */
   @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
   }
 
   .rpm-text.pulsing {
@@ -191,73 +195,93 @@
 </style>
 
 <div class="rev-counter">
-  <svg xmlns="http://www.w3.org/2000/svg" style="visibility: visible; opacity: 1;">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    style="visibility: visible; opacity: 1;"
+  >
     <defs>
       <!-- Ana gauge gradient -->
       <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#1f2937"/>
-        <stop offset="50%" stop-color="#111827"/>
-        <stop offset="100%" stop-color="#0b1220"/>
+        <stop offset="0%" stop-color="#1f2937"></stop>
+        <stop offset="50%" stop-color="#111827"></stop>
+        <stop offset="100%" stop-color="#0b1220"></stop>
       </linearGradient>
 
       <!-- Center circle gradient -->
       <radialGradient id="centerGradient" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#1f2937"/>
-        <stop offset="70%" stop-color="#0f172a"/>
-        <stop offset="100%" stop-color="#0b1220"/>
+        <stop offset="0%" stop-color="#1f2937"></stop>
+        <stop offset="70%" stop-color="#0f172a"></stop>
+        <stop offset="100%" stop-color="#0b1220"></stop>
       </radialGradient>
 
       <!-- Glass effect gradient -->
       <linearGradient id="glassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="white" stop-opacity="0.3"/>
-        <stop offset="50%" stop-color="white" stop-opacity="0.1"/>
-        <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        <stop offset="0%" stop-color="white" stop-opacity="0.3"></stop>
+        <stop offset="50%" stop-color="white" stop-opacity="0.1"></stop>
+        <stop offset="100%" stop-color="white" stop-opacity="0"></stop>
       </linearGradient>
     </defs>
 
     <!-- Glass effect overlay -->
-    <ellipse class="glass-effect" cx="150" cy="150" rx="120" ry="120" visibility="visible"/>
+    <ellipse
+      class="glass-effect"
+      cx="150"
+      cy="150"
+      rx="120"
+      ry="120"
+      visibility="visible"></ellipse>
 
     <!-- Main gauge arc -->
     <path class="gauge-bg" d="
       M 30 220
       A 120 120 0 0 1 270 220
-    "/>
+    "
+    ></path>
 
     <!-- Red zone background -->
-    <path class="tick red" d="
+    <path
+      class="tick red"
+      d="
       M 250 240
       A 120 120 0 0 1 270 200
-    " stroke-width="12" opacity="0.3"/>
+    "
+      stroke-width="12"
+      opacity="0.3"></path>
 
     <!-- Ticks (0-8) -->
     <!-- 0 -->
-    <line class="tick" x1="30" y1="220" x2="45" y2="220"/>
+    <line class="tick" x1="30" y1="220" x2="45" y2="220"></line>
     <!-- 1 -->
-    <line class="tick" x1="60" y1="240" x2="72" y2="235"/>
+    <line class="tick" x1="60" y1="240" x2="72" y2="235"></line>
     <!-- 2 -->
-    <line class="tick" x1="95" y1="255" x2="105" y2="248"/>
+    <line class="tick" x1="95" y1="255" x2="105" y2="248"></line>
     <!-- 3 -->
-    <line class="tick" x1="135" y1="265" x2="143" y2="258"/>
+    <line class="tick" x1="135" y1="265" x2="143" y2="258"></line>
     <!-- 4 -->
-    <line class="tick" x1="175" y1="265" x2="183" y2="258"/>
+    <line class="tick" x1="175" y1="265" x2="183" y2="258"></line>
     <!-- 5 -->
-    <line class="tick" x1="215" y1="255" x2="225" y2="248"/>
+    <line class="tick" x1="215" y1="255" x2="225" y2="248"></line>
     <!-- 6 -->
-    <line class="tick" x1="250" y1="240" x2="262" y2="235"/>
+    <line class="tick" x1="250" y1="240" x2="262" y2="235"></line>
     <!-- 7 -->
-    <line class="tick red" x1="270" y1="220" x2="270" y2="205"/>
+    <line class="tick red" x1="270" y1="220" x2="270" y2="205"></line>
     <!-- 8 (Redline) -->
-    <line class="tick red" x1="270" y1="200" x2="270" y2="185"/>
+    <line class="tick red" x1="270" y1="200" x2="270" y2="185"></line>
 
     <!-- Needle -->
-    <line class="needle" x1="150" y1="150" x2="150" y2="60"/>
+    <line class="needle" x1="150" y1="150" x2="150" y2="60"></line>
 
     <!-- Needle pivot -->
-    <circle cx="150" cy="150" r="6" fill="#ffd166" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+    <circle
+      cx="150"
+      cy="150"
+      r="6"
+      fill="#ffd166"
+      stroke="rgba(255,255,255,0.5)"
+      stroke-width="2"></circle>
 
     <!-- Center circle -->
-    <circle class="center-circle" cx="150" cy="150" r="20"/>
+    <circle class="center-circle" cx="150" cy="150" r="20"></circle>
 
     <!-- Digital display -->
     <text class="rpm-text" x="150" y="135" text-anchor="middle">1 RPM</text>
@@ -265,6 +289,12 @@
     <text class="tetik-logo" x="150" y="175" text-anchor="middle">TETİK</text>
 
     <!-- Subtle glow -->
-    <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(255,209,102,0.1)" stroke-width="2"/>
+    <circle
+      cx="150"
+      cy="150"
+      r="140"
+      fill="none"
+      stroke="rgba(255,209,102,0.1)"
+      stroke-width="2"></circle>
   </svg>
 </div>

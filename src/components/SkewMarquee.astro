@@ -17,41 +17,41 @@
         <div
           class="marquee-item flex items-center gap-12 px-8 text-6xl md:text-8xl font-button uppercase leading-none tracking-widest"
         >
-          <span class="text-white">HYUNDAI</span>
+          <span class="text-white">HYUNDAİ</span>
           <span class="text-white/70">•</span>
-          <span class="text-transparent stroke-text">KIA</span>
-          <span class="text-white/70">•</span>
-          <span class="text-white">TOYOTA</span>
-          <span class="text-white/70">•</span>
-          <span class="text-transparent stroke-text">NISSAN</span>
-          <span class="text-white/70">•</span>
-          <span class="text-white">HYUNDAI</span>
-          <span class="text-white/70">•</span>
-          <span class="text-transparent stroke-text">KIA</span>
+          <span class="text-transparent stroke-text">KİA</span>
           <span class="text-white/70">•</span>
           <span class="text-white">TOYOTA</span>
           <span class="text-white/70">•</span>
-          <span class="text-transparent stroke-text">NISSAN</span>
+          <span class="text-transparent stroke-text">NİSSAN</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">HYUNDAİ</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">KİA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">TOYOTA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">NİSSAN</span>
           <span class="text-white/70">•</span>
         </div>
         <div
           class="marquee-item flex items-center gap-12 px-8 text-6xl md:text-8xl font-button uppercase leading-none tracking-widest"
         >
-          <span class="text-white">HYUNDAI</span>
+          <span class="text-white">HYUNDAİ</span>
           <span class="text-white/70">•</span>
-          <span class="text-transparent stroke-text">KIA</span>
-          <span class="text-white/70">•</span>
-          <span class="text-white">TOYOTA</span>
-          <span class="text-white/70">•</span>
-          <span class="text-transparent stroke-text">NISSAN</span>
-          <span class="text-white/70">•</span>
-          <span class="text-white">HYUNDAI</span>
-          <span class="text-white/70">•</span>
-          <span class="text-transparent stroke-text">KIA</span>
+          <span class="text-transparent stroke-text">KİA</span>
           <span class="text-white/70">•</span>
           <span class="text-white">TOYOTA</span>
           <span class="text-white/70">•</span>
-          <span class="text-transparent stroke-text">NISSAN</span>
+          <span class="text-transparent stroke-text">NİSSAN</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">HYUNDAİ</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">KİA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-white">TOYOTA</span>
+          <span class="text-white/70">•</span>
+          <span class="text-transparent stroke-text">NİSSAN</span>
           <span class="text-white/70">•</span>
         </div>
       </div>
@@ -221,6 +221,16 @@
   .stroke-text {
     -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.8);
     color: transparent;
+    /* Safari font rendering fix */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .skew-marquee-section {
+    /* GPU acceleration trigger */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 
   /* Marquee bands */
@@ -242,6 +252,9 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 10;
     padding: 1.25rem 0;
+    /* Layer optimization */
+    will-change: transform;
+    transform-style: preserve-3d;
   }
 
   .marquee-band-orange {
@@ -250,6 +263,9 @@
     box-shadow: 0 20px 40px -10px rgba(234, 88, 12, 0.5);
     z-index: 20;
     padding: 0.75rem 0;
+    /* Layer optimization */
+    will-change: transform;
+    transform-style: preserve-3d;
   }
 
   .marquee-content-dark,
@@ -324,6 +340,13 @@
     const baseSpeed = 0.3;
     let currentSpeed = baseSpeed;
 
+    // Performance Check: Düşük performanslı cihaz tespiti
+    const isLowPowerMode = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isMobile = window.innerWidth < 768;
+
     // Dark band (moving left)
     const darkContent = document.querySelectorAll(
       ".marquee-content-dark .marquee-item",
@@ -331,7 +354,7 @@
     if (darkContent.length > 0) {
       darkTimeline.to(darkContent, {
         xPercent: -100,
-        duration: 30,
+        duration: isLowPowerMode ? 45 : 30, // Güç tasarrufunda daha yavaş
         ease: "none",
         immediateRender: true,
       });
@@ -349,11 +372,17 @@
         },
         {
           xPercent: 0,
-          duration: 35,
+          duration: isLowPowerMode ? 50 : 35,
           ease: "none",
           immediateRender: true,
         },
       );
+    }
+
+    // Safari & Low Power Optimization
+    if (isSafari || isLowPowerMode) {
+      // Safari'de scroll velocity etkisini hafiflet (yükü azalt)
+      // ScrollTrigger ivmesini kapat veya minimize et
     }
 
     // Scroll velocity effect - daha hassas
@@ -365,17 +394,20 @@
         // Get scroll velocity (pixels per second)
         const velocity = self.getVelocity();
 
-        // Calculate speed multiplier based on velocity - daha hassas
+        // Calculate speed multiplier based on velocity
         let speedMultiplier = 1;
 
+        // Adaptive Step: Mobilde ve Safari'de ivme etkisini %60 azalt
+        const velocityFactor = isSafari || isMobile ? 800 : 300;
+
         if (velocity > 0) {
-          // Scrolling down - accelerate (%50 daha hızlı tepki)
-          speedMultiplier = 1 + Math.min(Math.abs(velocity) / 300, 8);
+          // Scrolling down - accelerate
+          speedMultiplier =
+            1 + Math.min(Math.abs(velocity) / velocityFactor, 5);
         } else if (velocity < 0) {
           // Scrolling up - decelerate
-          speedMultiplier = 1 - Math.min(Math.abs(velocity) / 800, 0.3);
+          speedMultiplier = 1 - Math.min(Math.abs(velocity) / 1000, 0.4);
         } else {
-          // No scroll - return to base speed
           speedMultiplier = 1;
         }
 

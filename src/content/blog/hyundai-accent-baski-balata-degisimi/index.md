@@ -165,7 +165,7 @@ Tüm Accent debriyaj baskı balata değişimlerimizde:
 - **Ücretsiz araç alma-getirme** (Gebze merkez)
 - _WhatsApp servis takibi_
 - **Öncelikli randevu** (Gebze müşterileri)
-- _7/24 acil yol yardımı_
+- _Acil yol yardımı_
 
 ## Sıkça Sorulan Sorular
 
@@ -283,6 +283,6 @@ Tüm Hyundai modelleri için profesyonel servis
 
 Hyundai genel bakım bilgileri ve rehberi
 
-### ⚡ [7/24 Yol Yardım](/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv/)
+### ⚡ [Acil Yol Yardım](/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv/)
 
 Acil Accent arızaları için yol yardımı
