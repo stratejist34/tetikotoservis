@@ -3,6 +3,7 @@ import Header from "../components/Header.astro"; // force redeploy
 import { ViewTransitions } from "astro:transitions";
 import StickyPhoneButton from "../components/StickyPhoneButton.astro";
 import iOSCallSheet from "../components/iOSCallSheet.astro";
+import QuickActionBar from "../components/QuickActionBar.astro";
 
 interface Props {
   title: string;
@@ -679,6 +680,7 @@ const {
 
     <StickyPhoneButton />
     <iOSCallSheet></iOSCallSheet>
+    <QuickActionBar />
 
     <script>
       // Defer all animation libraries until well after LCP
