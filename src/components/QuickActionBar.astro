@@ -321,7 +321,7 @@
                     id="modal-cancel-btn"
                     class="w-full py-3 text-slate-500 font-medium text-sm hover:text-white transition-colors"
                 >
-                    Vazgeç
+                    Sonra Ara
                 </button>
             </div>
         </div>
@@ -377,40 +377,34 @@
             }
         }
 
-        // Persistence check
-        if (
-            typeof sessionStorage !== "undefined" &&
-            sessionStorage.getItem("region_dismissed") === "true"
-        ) {
-            if (hubContainer) hubContainer.classList.add("force-hidden");
-        }
-
         function dismissForSession() {
             if (typeof sessionStorage !== "undefined") {
-                sessionStorage.setItem("region_dismissed", "true");
+                sessionStorage.setItem("region_modal_shown", "true");
             }
             closeModal();
 
-            if (hubContainer) {
-                hubContainer.style.pointerEvents = "none";
-                hubContainer.style.transition =
-                    "opacity 0.5s ease, transform 0.5s ease";
-                hubContainer.style.opacity = "0";
-                hubContainer.style.transform = "translateY(20px)";
-
-                setTimeout(() => {
-                    hubContainer.classList.add("force-hidden");
-                }, 500);
-            }
-
-            trackEvent("cta_dismiss", {
-                channel: currentAction,
-                location: "quick_action_hub",
-                reason: "user_cancelled_modal_session",
-            });
+            trackEvent(
+                currentAction === "phone" ? "tel_vazgecti" : "whatsapp_vazgecti",
+                { location: "quick_action_hub" },
+            );
         }
 
         function openModal(source = "phone", destinationUrl = null) {
+            // Modal daha önce gösterildiyse direkt hedefe git (hub görünür kalır)
+            if (
+                typeof sessionStorage !== "undefined" &&
+                sessionStorage.getItem("region_modal_shown") === "true"
+            ) {
+                if (destinationUrl) {
+                    if (source === "whatsapp") {
+                        window.open(destinationUrl, "_blank");
+                    } else {
+                        window.location.href = destinationUrl;
+                    }
+                }
+                return;
+            }
+
             if (!modal || !backdrop || !content) {
                 if (destinationUrl) window.location.href = destinationUrl;
                 return;
@@ -471,10 +465,10 @@
             modalHistoryPushed = true;
             window.history.pushState({ modalOpen: true }, "");
 
-            trackEvent("cta_intent", {
-                channel: source,
-                location: "quick_action_hub_modal",
-            });
+            trackEvent(
+                source === "phone" ? "tel_arama_niyeti" : "whatsapp_niyeti",
+                { location: "quick_action_hub" },
+            );
         }
 
         (window as any).openServiceRegionModal = openModal;
@@ -517,10 +511,15 @@
             if (e.target === backdrop) dismissForSession();
         });
         callBtn?.addEventListener("click", () => {
-            trackEvent("cta_click", {
-                channel: currentAction,
-                location: "quick_action_hub_modal",
-            });
+            trackEvent(
+                currentAction === "phone"
+                    ? "telefon_aramasi"
+                    : "whatsapptan_yazanlar",
+                { location: "quick_action_hub_modal" },
+            );
+            if (typeof sessionStorage !== "undefined") {
+                sessionStorage.setItem("region_modal_shown", "true");
+            }
             setTimeout(closeModal, 1000);
         });
 
@@ -563,20 +562,6 @@
         }
 
         const isBusinessHours = applyPrimaryByHour();
-
-        triggerPhone?.addEventListener("click", () => {
-            trackEvent("cta_click", {
-                channel: "phone",
-                location: "quick_action_hub",
-            });
-        });
-
-        triggerWhatsapp?.addEventListener("click", () => {
-            trackEvent("cta_click", {
-                channel: "whatsapp",
-                location: "quick_action_hub",
-            });
-        });
 
         // Tooltip system
         const tooltip = document.getElementById("hub-tooltip");

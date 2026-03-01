@@ -89,13 +89,11 @@ const whatsappMessage = encodeURIComponent(
 
         phoneBtn?.addEventListener("click", () => {
             if (typeof trackHelper === "function") {
-                trackHelper("cta_click", {
-                    channel: "phone",
+                trackHelper("tel_arama_niyeti", {
                     location: "desktop_sticky",
                 });
             } else if (typeof (window as any).gtag === "function") {
-                (window as any).gtag("event", "cta_click", {
-                    channel: "phone",
+                (window as any).gtag("event", "tel_arama_niyeti", {
                     location: "desktop_sticky",
                 });
             }
@@ -103,13 +101,11 @@ const whatsappMessage = encodeURIComponent(
 
         whatsappBtn?.addEventListener("click", () => {
             if (typeof trackHelper === "function") {
-                trackHelper("cta_click", {
-                    channel: "whatsapp",
+                trackHelper("whatsapp_niyeti", {
                     location: "desktop_sticky",
                 });
             } else if (typeof (window as any).gtag === "function") {
-                (window as any).gtag("event", "cta_click", {
-                    channel: "whatsapp",
+                (window as any).gtag("event", "whatsapp_niyeti", {
                     location: "desktop_sticky",
                 });
             }
