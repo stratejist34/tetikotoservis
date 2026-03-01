@@ -113,6 +113,14 @@ import { Image } from "astro:assets";
         Japon &amp; Kore uzmanı. Aynı gün bakım. Orijinal parça.
       </p>
 
+      <!-- Working Hours Status -->
+      <div class="flex justify-end mb-6 animate-fade-right delay-350">
+        <div id="hero-status-badge" class="flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-bold tracking-widest uppercase bg-green-500/10 border-green-500/30 text-green-400">
+          <span id="hero-status-dot" class="w-1.5 h-1.5 rounded-full bg-green-400 animate-ping inline-block"></span>
+          <span id="hero-status-text">Şu an açık — Pzt-Cmt 08:00-18:00</span>
+        </div>
+      </div>
+
       <!-- Action Area -->
       <div
         class="flex flex-col sm:flex-row gap-8 animate-fade-right delay-400 justify-end w-full sm:w-auto"
@@ -310,6 +318,36 @@ import { Image } from "astro:assets";
 </style>
 
 <script>
+  // Çalışma saati durumu — Istanbul timezone
+  (function () {
+    const badge = document.getElementById("hero-status-badge");
+    const dot = document.getElementById("hero-status-dot");
+    const text = document.getElementById("hero-status-text");
+    if (!badge || !text || !dot) return;
+
+    const now = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "Europe/Istanbul" }),
+    );
+    const day = now.getDay(); // 0=Pazar
+    const minutes = now.getHours() * 60 + now.getMinutes();
+    const isOpen = day >= 1 && day <= 6 && minutes >= 8 * 60 && minutes < 18 * 60;
+
+    if (isOpen) {
+      text.textContent = "Şu an açık — Pzt-Cmt 08:00-18:00";
+    } else {
+      badge.className = badge.className
+        .replace("bg-green-500/10 border-green-500/30 text-green-400", "bg-slate-700/30 border-white/10 text-white/40");
+      dot.className = dot.className
+        .replace("bg-green-400 animate-ping", "bg-white/30");
+      const nextOpen = day === 0
+        ? "Yarın 08:00'de açık"
+        : day === 6 && minutes >= 18 * 60
+          ? "Pazartesi 08:00'de açık"
+          : "Yarın 08:00'de açık";
+      text.textContent = nextOpen + " — Şu an mesaj bırakın";
+    }
+  })();
+
   // Simplified Parallax
   const heroBg = document.getElementById("hero-bg");
   if (heroBg) {
