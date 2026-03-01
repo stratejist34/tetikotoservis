@@ -53,10 +53,8 @@ const pageDescription =
   <main class="bg-slate-50">
     <div class="relative flex flex-col">
       <Hero />
-      <!-- SkewMarquee artık akışın (flow) bir parçası, butonları kapatmaz -->
-      <div
-        class="relative -mt-16 md:-mt-24 lg:-mt-32 z-30 overflow-hidden pointer-events-none"
-      >
+      <!-- SkewMarquee: kendi margin-top:-80px ile hero bandını hafifçe keser -->
+      <div class="relative z-40 pointer-events-none">
         <SkewMarquee />
       </div>
     </div>

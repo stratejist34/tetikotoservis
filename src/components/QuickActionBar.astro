@@ -11,10 +11,10 @@
  */
 ---
 
-<!-- DESKTOP BAR: Sadece masaüstü ve tabletlerde görünür -->
+<!-- DESKTOP BAR: Sadece masaüstü ve tabletlerde görünür — Fixed sticky bottom -->
 <div
     id="quick-action-bar-desktop"
-    class="hidden md:block relative z-40 bg-slate-950/90 backdrop-blur-2xl border-y border-white/10"
+    class="hidden md:block fixed bottom-0 left-0 w-full z-[9997] bg-slate-950/95 backdrop-blur-2xl border-t border-white/10 shadow-[0_-8px_32px_-8px_rgba(0,0,0,0.6)]"
 >
     <div class="container mx-auto px-4 py-5">
         <div class="flex items-center justify-center gap-8">
@@ -347,6 +347,7 @@
         const callBtn = document.getElementById("modal-call-btn");
 
         let currentAction = "phone";
+        let currentLocation = "quick_action_hub";
         let modalHistoryPushed = false;
 
         function getHourSlot() {
@@ -386,11 +387,11 @@
 
             trackEvent(
                 currentAction === "phone" ? "tel_vazgecti" : "whatsapp_vazgecti",
-                { location: "quick_action_hub" },
+                { location: currentLocation },
             );
         }
 
-        function openModal(source = "phone", destinationUrl = null) {
+        function openModal(source = "phone", destinationUrl = null, location = "quick_action_hub") {
             // Modal daha önce gösterildiyse direkt hedefe git (hub görünür kalır)
             if (
                 typeof sessionStorage !== "undefined" &&
@@ -412,6 +413,7 @@
             }
 
             currentAction = source;
+            currentLocation = location;
 
             // Update Button Text & Link
             if (callBtn) {
@@ -468,7 +470,7 @@
 
             trackEvent(
                 source === "phone" ? "tel_arama_niyeti" : "whatsapp_niyeti",
-                { location: "quick_action_hub" },
+                { location: currentLocation },
             );
         }
 
@@ -516,7 +518,7 @@
                 currentAction === "phone"
                     ? "telefon_aramasi"
                     : "whatsapptan_yazanlar",
-                { location: "quick_action_hub_modal" },
+                { location: currentLocation + "_modal" },
             );
             if (typeof sessionStorage !== "undefined") {
                 sessionStorage.setItem("region_modal_shown", "true");

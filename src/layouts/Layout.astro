@@ -67,10 +67,21 @@ const {
         dataLayer.push(arguments);
       }
 
+      window.__gaLoaded = false;
       function loadGA() {
+        if (window.__gaLoaded) return;
+        window.__gaLoaded = true;
         var s = document.createElement("script");
         s.src = "https://www.googletagmanager.com/gtag/js?id=G-1ZVX33SCZC";
         s.async = true;
+        s.onload = function () {
+          var q = window.__tetikEventQueue;
+          if (q && q.length) {
+            q.splice(0).forEach(function (item) {
+              window.__tetikTrackEvent(item.eventKey, item.payload);
+            });
+          }
+        };
         document.head.appendChild(s);
         gtag("js", new Date());
         gtag("config", "G-1ZVX33SCZC");
@@ -146,7 +157,11 @@ const {
         };
 
         window.__tetikTrackEvent = function (eventKey, payload = {}) {
-          if (typeof window.gtag !== "function") return;
+          if (!window.__gaLoaded) {
+            window.__tetikEventQueue = window.__tetikEventQueue || [];
+            window.__tetikEventQueue.push({ eventKey: eventKey, payload: payload });
+            return;
+          }
 
           const eventNameMap = {
             tel_arama_niyeti: "tel_arama_niyeti",
@@ -156,6 +171,7 @@ const {
             whatsapptan_yazanlar: "whatsapptan_yazanlar",
             whatsapp_vazgecti: "whatsapp_vazgecti",
             service_click: "service_click",
+            scroll_depth: "scroll_depth",
           };
 
           const baseParams = {
@@ -169,6 +185,28 @@ const {
           const eventName = eventNameMap[eventKey] || eventKey;
           window.gtag("event", eventName, { ...baseParams, ...payload });
         };
+      }
+
+      // Scroll Depth Tracking — once per page load
+      if (!window.__tetikScrollDepthInit) {
+        window.__tetikScrollDepthInit = true;
+        window.__tetikScrollDepths = { 25: false, 50: false, 75: false, 100: false };
+        window.addEventListener(
+          "scroll",
+          function () {
+            var scrollable =
+              document.documentElement.scrollHeight - window.innerHeight;
+            if (scrollable <= 0) return;
+            var pct = Math.round((window.scrollY / scrollable) * 100);
+            [25, 50, 75, 100].forEach(function (d) {
+              if (!window.__tetikScrollDepths[d] && pct >= d) {
+                window.__tetikScrollDepths[d] = true;
+                window.__tetikTrackEvent("scroll_depth", { depth_percent: d });
+              }
+            });
+          },
+          { passive: true },
+        );
       }
 
       // GLOBAL CLICK INTERCEPTION: Service Region Modal Trigger
@@ -206,7 +244,8 @@ const {
             ) {
               e.preventDefault();
               const type = href.startsWith("tel:") ? "phone" : "whatsapp";
-              window.openServiceRegionModal(type, href);
+              var loc = link.closest("#quick-action-bar-desktop") ? "desktop_quick_bar" : "page";
+              window.openServiceRegionModal(type, href, loc);
             }
           },
           { passive: false },
@@ -677,7 +716,7 @@ const {
     class="font-sans antialiased text-slate-800 bg-slate-900 selection:bg-orange-500 selection:text-white"
   >
     <Header />
-    <main transition:animate="slide" style="margin-top: 0; padding-top: 0;">
+    <main transition:animate="slide" class="md:pb-24" style="margin-top: 0; padding-top: 0;">
       <slot />
     </main>
 
