@@ -5,6 +5,8 @@ metaTitle: 'Gebze Kia XCeed Servisi | Crossover Uzmanı | Tetik Otomotiv'
 metaDescription: 'Tuzla, Gebze, Pendik ve Kurtköy bölgesinde Kia XCeed araçlarınız için garantili özel servis. T-GDI turbo motor bakımı, PHEV sistem kontrolü ve periyodik bakım.'
 image: '/images/kia-xceed-servis.jpg'
 color: 'red'
+ratingValue: 4.9
+ratingCount: 52
 features:
   - 'T-GDI Turbo Motor Bakımı'
   - 'PHEV Sistem Kontrolü'
@@ -12,11 +14,11 @@ features:
   - 'Periyodik Bakım'
 faqs:
   - question: 'Kia XCeed T-GDI turbo motoru ne sıklıkla bakım ister?'
-    answer: 'T-GDI turbo motorlarda tam sentetik yağ ile 10.000-15.000 km aralığında bakım önerilir. Turbo şanzımanı ve intercooler bağlantıları da periyodik kontrole dahil edilir.'
+    answer:  "T-GDI turbo motorlarda tam sentetik yağ ile 10.000-15.000 km aralığında bakım önerilir. Turbo şanzımanı ve intercooler bağlantıları da periyodik kontrole dahil edilir."
   - question: 'XCeed PHEV versiyonuna bakım yapıyor musunuz?'
-    answer: 'Evet, XCeed PHEV''in hibrit yüksek gerilim sistemi, batarya paketi ve şarj bileşenlerine özel teçhizatımızla bakım yapıyoruz.'
+    answer:  "Evet, XCeed PHEV''in hibrit yüksek gerilim sistemi, batarya paketi ve şarj bileşenlerine özel teçhizatımızla bakım yapıyoruz."
   - question: 'Kia XCeed''in hangi yıl modellerine hizmet veriyorsunuz?'
-    answer: '2019 ve sonrası tüm Kia XCeed modellerine hizmet veriyoruz. 1.0 T-GDI, 1.4 T-GDI ve 1.6 GDI PHEV motor tiplerine hakimiz.'
+    answer:  "2019 ve sonrası tüm Kia XCeed modellerine hizmet veriyoruz. 1.0 T-GDI, 1.4 T-GDI ve 1.6 GDI PHEV motor tiplerine hakimiz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Kia XCeed Özel Servis Hizmetleri

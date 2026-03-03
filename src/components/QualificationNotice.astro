@@ -1,0 +1,45 @@
+---
+import { serviceScope } from "../lib/serviceScope";
+
+interface Props {
+  tone?: "soft" | "strong";
+}
+
+const { tone = "soft" } = Astro.props;
+const isStrong = tone === "strong";
+
+const text = isStrong
+  ? serviceScope.notAuthorizedCopyStrong
+  : serviceScope.notAuthorizedCopySoft;
+---
+
+<div class:list={["qualification-notice", isStrong ? "strong" : "soft"]}>
+  <p>{text}</p>
+</div>
+
+<style>
+  .qualification-notice {
+    border-radius: 14px;
+    padding: 0.8rem 0.95rem;
+    margin: 1rem 0;
+    line-height: 1.45;
+    font-size: 0.95rem;
+  }
+
+  .qualification-notice p {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .qualification-notice.soft {
+    background: #fff8ed;
+    border: 1px solid #fed7aa;
+    color: #7c2d12;
+  }
+
+  .qualification-notice.strong {
+    background: #fee2e2;
+    border: 1px solid #fca5a5;
+    color: #7f1d1d;
+  }
+</style>

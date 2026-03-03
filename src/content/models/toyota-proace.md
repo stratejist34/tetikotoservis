@@ -12,11 +12,11 @@ features:
   - 'Yüksek Kilometre Bakımı'
 faqs:
   - question: 'Proace DPF temizliği yapıyor musunuz?'
-    answer: 'Evet, Proace dizel motorlarda sık görülen DPF (Dizel Partikül Filtresi) tıkanıklığı için profesyonel temizlik ve rejenerasyon hizmeti sunuyoruz.'
+    answer:  "Evet, Proace dizel motorlarda sık görülen DPF (Dizel Partikül Filtresi) tıkanıklığı için profesyonel temizlik ve rejenerasyon hizmeti sunuyoruz."
   - question: 'Yüksek kilometre bakımı yapıyor musunuz?'
-    answer: 'Evet, ticari araçlar için yüksek kilometre bakım programı uyguluyoruz. Motor revizyonu ve şanzıman bakımı dahil.'
+    answer:  "Evet, ticari araçlar için yüksek kilometre bakım programı uyguluyoruz. Motor revizyonu ve şanzıman bakımı dahil."
   - question: 'Hangi Proace modellerine servis veriyorsunuz?'
-    answer: 'Proace tüm motor seçeneklerine (Dizel) ve versiyonlarına profesyonel servis hizmeti veriyoruz.'
+    answer:  "Proace tüm motor seçeneklerine (Dizel) ve versiyonlarına profesyonel servis hizmeti veriyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Toyota Proace Özel Servis Hizmetleri

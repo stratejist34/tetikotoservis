@@ -5,6 +5,8 @@ metaTitle: 'Gebze Kia Sportage Servisi | GDI & CRDi Motor Uzmanı'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Kia Sportage araçlarınız için garantili özel servis. GDI motor, LPG bakımı, 4x4 sistem ve periyodik bakım hizmeti.'
 image: '/images/avifs/kia-sportage-ozel-servis-1.avif'
 color: 'red'
+ratingValue: 4.9
+ratingCount: 87
 features:
   - 'GDI Motor Uzmanlığı'
   - 'LPG Subap Ayarı'
@@ -12,13 +14,13 @@ features:
   - 'Elektronik Arıza Tespiti'
 faqs:
   - question: 'Sportage GDI motorlarda LPG uyumu nasıldır?'
-    answer: 'GDI motorlar direkt enjeksiyonlu olduğu için sıvı sistem veya karma sistem LPG kitleri ile uyumludur. Ancak düzenli subap ayarı ve ateşleme sistemi kontrolü şarttır.'
+    answer:  "GDI motorlar direkt enjeksiyonlu olduğu için sıvı sistem veya karma sistem LPG kitleri ile uyumludur. Ancak düzenli subap ayarı ve ateşleme sistemi kontrolü şarttır."
   - question: 'Dizel Sportage partikül temizliği yapıyor musunuz?'
-    answer: 'Evet, CRDi motorlu Sportage modellerinde sıkça görülen DPF tıkanıklığı için makine ile %99 oranında temizlik yapıyoruz.'
+    answer:  "Evet, CRDi motorlu Sportage modellerinde sıkça görülen DPF tıkanıklığı için makine ile %99 oranında temizlik yapıyoruz."
   - question: '4x4 sistem arızası nasıl anlaşılır?'
-    answer: 'Virajlarda kasma, arkadan gelen uğultu veya göstergede 4WD ikaz lambası yanması durumunda diferansiyel veya kavrama ünitesi kontrol edilmelidir.'
+    answer:  "Virajlarda kasma, arkadan gelen uğultu veya göstergede 4WD ikaz lambası yanması durumunda diferansiyel veya kavrama ünitesi kontrol edilmelidir."
   - question: 'Periyodik bakımda hangi yağ kullanıyorsunuz?'
-    answer: 'Kia üretici onaylı Shell Helix veya Castrol tam sentetik motor yağlarını kullanıyoruz.'
+    answer:  "Kia üretici onaylı Shell Helix veya Castrol tam sentetik motor yağlarını kullanıyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Kia Sportage Özel Servis Hizmetleri

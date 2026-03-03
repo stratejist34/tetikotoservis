@@ -5,6 +5,8 @@ metaTitle: 'Gebze Hyundai i20 Servisi | Periyodik Bakım & Tamir'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Hyundai i20 araçlarınız için garantili özel servis. 1.2, 1.4 ve 1.0 Turbo motor uzmanlığı. Orijinal parça ve şeffaf fiyat.'
 image: '/images/avifs/hyundai-i20-servis.avif'
 color: 'blue'
+ratingValue: 4.9
+ratingCount: 84
 features:
   - '1.4 MPI Motor Uzmanlığı'
   - 'DCT Şanzıman Bakımı'
@@ -12,13 +14,13 @@ features:
   - 'Klima Gazı Dolumu'
 faqs:
   - question: 'Hyundai i20 periyodik bakım kaç km’de yapılır?'
-    answer: 'Benzinli modellerde her 15.000 km veya yılda bir, dizel modellerde ise 10.000 km veya yılda bir bakım yapılmalıdır.'
+    answer:  "Benzinli modellerde her 15.000 km veya yılda bir, dizel modellerde ise 10.000 km veya yılda bir bakım yapılmalıdır."
   - question: 'i20 triger kayışı ne zaman değişir?'
-    answer: 'Hyundai i20 modellerinde triger değişimi genellikle 60.000 km - 90.000 km aralığında veya 4 yılda bir önerilir. Zincirli modellerde ses yapmadığı sürece değişim periyodu daha uzundur.'
+    answer:  "Hyundai i20 modellerinde triger değişimi genellikle 60.000 km - 90.000 km aralığında veya 4 yılda bir önerilir. Zincirli modellerde ses yapmadığı sürece değişim periyodu daha uzundur."
   - question: 'DCT şanzıman yağı değişimi yapıyor musunuz?'
-    answer: 'Evet, 1.0 Turbo ve 1.4 motorlarda bulunan DCT otomatik şanzımanların yağ değişimini orijinal ekipmanla yapıyoruz.'
+    answer:  "Evet, 1.0 Turbo ve 1.4 motorlarda bulunan DCT otomatik şanzımanların yağ değişimini orijinal ekipmanla yapıyoruz."
   - question: 'Orijinal parça kullanıyor musunuz?'
-    answer: 'Müşteri tercihine göre %100 orijinal Hyundai (Mobis) parçalar veya garantili OEM yedek parçalar kullanıyoruz.'
+    answer:  "Müşteri tercihine göre %100 orijinal Hyundai (Mobis) parçalar veya garantili OEM yedek parçalar kullanıyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Hyundai i20 Özel Servis Hizmetleri

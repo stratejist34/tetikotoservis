@@ -5,6 +5,8 @@ metaTitle: 'Gebze Kia Rio Servisi | Benzinli Motor Uzmanı | Tetik Otomotiv'
 metaDescription: 'Tuzla, Gebze, Pendik ve Kurtköy bölgesinde Kia Rio araçlarınız için garantili özel servis. Periyodik bakım, motor revizyonu ve elektronik arıza tespiti.'
 image: '/images/avifs/kia-rio-servis.avif'
 color: 'red'
+ratingValue: 4.9
+ratingCount: 54
 features:
   - 'Benzinli Motor Bakımı'
   - 'Yakıt Sistemi Temizliği'
@@ -12,11 +14,11 @@ features:
   - 'Periyodik Bakım'
 faqs:
   - question: 'Kia Rio periyodik bakımı ne sıklıkla yapılmalı?'
-    answer: 'Tam sentetik yağ ile 15.000 km veya yılda bir, yarı sentetik yağ ile ise 10.000 km aralığında periyodik bakım önerilir.'
+    answer:  "Tam sentetik yağ ile 15.000 km veya yılda bir, yarı sentetik yağ ile ise 10.000 km aralığında periyodik bakım önerilir."
   - question: 'Rio''da yakıt tüketimi artarsa ne yapmalı?'
-    answer: 'Yakıt filtresi tıkanıklığı, oksijen sensörü arızası veya enjektör kirliliği tüketimi artırabilir. Arıza tespit cihazımızla 30 dakikada teşhis yapıyoruz.'
+    answer:  "Yakıt filtresi tıkanıklığı, oksijen sensörü arızası veya enjektör kirliliği tüketimi artırabilir. Arıza tespit cihazımızla 30 dakikada teşhis yapıyoruz."
   - question: 'Kia Rio''nun hangi nesil modellerine bakıyorsunuz?'
-    answer: 'JB, UB ve YB kasa kodlu tüm Kia Rio nesillerine hizmet veriyoruz. Orijinal ve OEM yedek parça garantisi sunuyoruz.'
+    answer:  "JB, UB ve YB kasa kodlu tüm Kia Rio nesillerine hizmet veriyoruz. Orijinal ve OEM yedek parça garantisi sunuyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Kia Rio Özel Servis Hizmetleri

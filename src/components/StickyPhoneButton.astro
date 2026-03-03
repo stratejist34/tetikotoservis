@@ -1,12 +1,14 @@
----
+﻿---
+import { serviceScope } from "../lib/serviceScope";
+
 interface Props {
     showTooltips?: boolean;
     onlyFirstVisit?: boolean;
 }
 
 const { showTooltips = true, onlyFirstVisit = true } = Astro.props;
-const phoneNumber = "05336157835";
-const whatsappNumber = "905336157835";
+const phoneNumber = serviceScope.phone;
+const whatsappNumber = serviceScope.whatsappNumber;
 const whatsappMessage = encodeURIComponent(
     "Merhaba, araç servisi hakkında bilgi almak istiyorum",
 );
@@ -17,7 +19,7 @@ const whatsappMessage = encodeURIComponent(
     data-tooltips={showTooltips}
     data-first-visit={onlyFirstVisit}
 >
-    <!-- Telefon Butonu (Üstte) -->
+    <!-- Telefon Butonu (Ustte) -->
     <a
         href={`tel:${phoneNumber}`}
         class="sticky-btn sticky-phone-btn"
@@ -45,8 +47,8 @@ const whatsappMessage = encodeURIComponent(
     <a
         href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
         class="sticky-btn sticky-whatsapp-btn"
-        aria-label="WhatsApp ile iletişime geç"
-        title="WhatsApp'tan yazın"
+        aria-label="WhatsApp ile iletisime gec"
+        title="WhatsApp'tan yazin"
         target="_blank"
         rel="noopener noreferrer"
         data-btn-type="whatsapp"
@@ -86,8 +88,13 @@ const whatsappMessage = encodeURIComponent(
         const phoneBtn = wrapper.querySelector(".sticky-phone-btn");
         const whatsappBtn = wrapper.querySelector(".sticky-whatsapp-btn");
         const trackHelper = (window as any).__tetikTrackEvent;
+        const shouldDeferIntentToModal = () =>
+            typeof sessionStorage !== "undefined" &&
+            sessionStorage.getItem("region_modal_qualified") !== "true" &&
+            typeof (window as any).openServiceRegionModal === "function";
 
         phoneBtn?.addEventListener("click", () => {
+            if (shouldDeferIntentToModal()) return;
             if (typeof trackHelper === "function") {
                 trackHelper("tel_arama_niyeti", {
                     location: "desktop_sticky",
@@ -100,6 +107,7 @@ const whatsappMessage = encodeURIComponent(
         });
 
         whatsappBtn?.addEventListener("click", () => {
+            if (shouldDeferIntentToModal()) return;
             if (typeof trackHelper === "function") {
                 trackHelper("whatsapp_niyeti", {
                     location: "desktop_sticky",
@@ -113,11 +121,11 @@ const whatsappMessage = encodeURIComponent(
 
         if (!showTooltips || !whatsappTooltip) return;
 
-        // localStorage kontrolü
+        // localStorage kontrolu
         const storageKey = "contact_tooltips_shown_v2";
         if (onlyFirstVisit && localStorage.getItem(storageKey)) return;
 
-        // Zamanlama ayarları
+        // Zamanlama ayarlari
         const timings = {
             first: 3000,
             duration: 4000,
@@ -129,13 +137,13 @@ const whatsappMessage = encodeURIComponent(
                 text: "👋 Size nasıl yardımcı olabiliriz?",
                 target: "whatsapp",
             },
-            phone: { text: "📞 Hemen Arayın", target: "phone" },
-            footer: { text: "💬 Hemen Fiyat Alın", target: "whatsapp" },
+            phone: { text: "📞 Hemen arayın", target: "phone" },
+            footer: { text: "💬 Hemen fiyat alın", target: "whatsapp" },
         };
 
         let footerShown = false;
 
-        // Tooltip gösterme fonksiyonu
+        // Tooltip gosterme fonksiyonu
         function showTooltipEl(
             tooltip: HTMLElement,
             text: string,
@@ -146,7 +154,7 @@ const whatsappMessage = encodeURIComponent(
             setTimeout(() => tooltip.classList.remove("visible"), duration);
         }
 
-        // İlk tooltip (WhatsApp)
+        // Ilk tooltip (WhatsApp)
         setTimeout(() => {
             if (!footerShown) {
                 showTooltipEl(
@@ -157,7 +165,7 @@ const whatsappMessage = encodeURIComponent(
             }
         }, timings.first);
 
-        // İkinci tooltip (Telefon) — 8 saniye sonra
+        // Ikinci tooltip (Telefon) - 8 saniye sonra
         setTimeout(() => {
             if (!footerShown && phoneTooltip) {
                 showTooltipEl(
@@ -236,7 +244,7 @@ const whatsappMessage = encodeURIComponent(
             { passive: true },
         );
 
-        // İlk ziyaret olarak işaretle
+        // Ä°lk ziyaret olarak iÅŸaretle
         if (onlyFirstVisit) {
             localStorage.setItem(storageKey, "true");
         }
@@ -265,22 +273,22 @@ const whatsappMessage = encodeURIComponent(
         right: 20px;
         bottom: 20px;
         z-index: 9999;
-        display: none; /* Mobilde gizli, Aksiyon Merkezi ile çakışmayı önlemek için */
+        display: none; /* Mobilde gizli, Aksiyon Merkezi ile Ã§akÄ±ÅŸmayÄ± Ã¶nlemek iÃ§in */
         flex-direction: column;
         gap: 10px;
-        opacity: 0.85; /* v2: 0.6 → 0.85 — daha güvenilir görünüm */
+        opacity: 0.85; /* v2: 0.6 â†’ 0.85 â€” daha gÃ¼venilir gÃ¶rÃ¼nÃ¼m */
         transition:
             opacity 0.3s ease,
             transform 0.3s ease;
     }
 
-    /* Scroll sonrası veya hover'da tam opaklık */
+    /* Scroll sonrasÄ± veya hover'da tam opaklÄ±k */
     .sticky-contact-wrapper.scrolled,
     .sticky-contact-wrapper:hover {
         opacity: 1;
     }
 
-    /* Footer'a yaklaşınca soluklaştır (v2: opacity 0 → 0.3, tamamen kaybolmaz) */
+    /* Footer'a yaklaÅŸÄ±nca soluklaÅŸtÄ±r (v2: opacity 0 â†’ 0.3, tamamen kaybolmaz) */
     .sticky-contact-wrapper.near-footer {
         opacity: 0.3;
         pointer-events: none;
@@ -293,7 +301,7 @@ const whatsappMessage = encodeURIComponent(
         transform: translateY(12px);
     }
 
-    /* Desktop'ta sol altta ve görünür — fixed desktop bar'ın üstünde */
+    /* Desktop'ta sol altta ve gÃ¶rÃ¼nÃ¼r â€” fixed desktop bar'Ä±n Ã¼stÃ¼nde */
     @media (min-width: 768px) {
         .sticky-contact-wrapper {
             display: flex;
@@ -310,7 +318,7 @@ const whatsappMessage = encodeURIComponent(
         width: 64px;
         height: 64px;
         border-radius: 50%;
-        box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5); /* v2: daha derin gölge */
+        box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5); /* v2: daha derin gÃ¶lge */
         transition: all 0.3s ease;
         color: #ffffff;
         text-decoration: none;
@@ -345,7 +353,7 @@ const whatsappMessage = encodeURIComponent(
         background-color: #20bd5a;
     }
 
-    /* Tooltips - Desktop sağa açılır */
+    /* Tooltips - Desktop saÄŸa aÃ§Ä±lÄ±r */
     .btn-tooltip {
         position: absolute;
         left: 74px;

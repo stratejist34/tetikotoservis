@@ -5,6 +5,8 @@ metaTitle: 'Gebze Nissan Qashqai Servisi | CVT & dCi Motor Uzmanı'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Nissan Qashqai (J10, J11, J12) özel servisi. CVT şanzıman tamiri, dCi motor bakımı ve orijinal yedek parça.'
 image: '/images/avifs/nissan-qashqai-ozel-servis.avif'
 color: 'slate'
+ratingValue: 4.9
+ratingCount: 79
 features:
   - 'CVT Şanzıman Revizyonu'
   - 'Turbo Hortum Değişimi'
@@ -12,13 +14,13 @@ features:
   - 'Elektronik El Freni Tamiri'
 faqs:
   - question: 'Qashqai CVT şanzıman titreme yapıyor, ne yapmalıyım?'
-    answer: 'CVT şanzımanda kalkışta titreme veya devir dalgalanması, yağ basınç kaybı veya kayış deformasyonu belirtisidir. Acil kontrol gerektirir.'
+    answer:  "CVT şanzımanda kalkışta titreme veya devir dalgalanması, yağ basınç kaybı veya kayış deformasyonu belirtisidir. Acil kontrol gerektirir."
   - question: '1.5 dCi motor triger değişimi ne zaman?'
-    answer: 'Renault-Nissan ortak yapımı 1.5 dCi motorlarda triger seti değişimi 4 yıl veya 80.000 km de bir (hangisi önce dolarsa) yapılmalıdır.'
+    answer:  "Renault-Nissan ortak yapımı 1.5 dCi motorlarda triger seti değişimi 4 yıl veya 80.000 km de bir (hangisi önce dolarsa) yapılmalıdır."
   - question: 'Turbo hortumu patlaması kronik mi?'
-    answer: 'J10 ve J11 kasalarda turbo intercooler hortumu zamanla yırtılabilir. Güçlendirilmiş orijinal hortum ile değişim sağlıyoruz.'
+    answer:  "J10 ve J11 kasalarda turbo intercooler hortumu zamanla yırtılabilir. Güçlendirilmiş orijinal hortum ile değişim sağlıyoruz."
   - question: 'Start-Stop arızası neden olur?'
-    answer: 'Genellikle akü voltajının düşmesi veya nötr konum sensörü arızası nedeniyle Start-Stop devre dışı kalır.'
+    answer:  "Genellikle akü voltajının düşmesi veya nötr konum sensörü arızası nedeniyle Start-Stop devre dışı kalır."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Nissan Qashqai Özel Servis Hizmetleri

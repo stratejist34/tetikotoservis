@@ -12,11 +12,11 @@ features:
   - 'Klima Servisi'
 faqs:
   - question: 'Verso periyodik bakım ne zaman yapılmalı?'
-    answer: 'Toyota Verso için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. MPV segmenti için özel bakım programı uygulanır.'
+    answer:  "Toyota Verso için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. MPV segmenti için özel bakım programı uygulanır."
   - question: 'Hangi Verso modellerine servis veriyorsunuz?'
-    answer: 'Verso 1.6, 1.8 ve 2.0 benzinli modeller ile D-4D dizel versiyonlarına profesyonel servis hizmeti veriyoruz.'
+    answer:  "Verso 1.6, 1.8 ve 2.0 benzinli modeller ile D-4D dizel versiyonlarına profesyonel servis hizmeti veriyoruz."
   - question: 'Klima bakımı yapıyor musunuz?'
-    answer: 'Evet, Verso için klima gazı dolumu, kompresör tamiri ve dezenfeksiyon hizmeti sunuyoruz.'
+    answer:  "Evet, Verso için klima gazı dolumu, kompresör tamiri ve dezenfeksiyon hizmeti sunuyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Toyota Verso Özel Servis Hizmetleri

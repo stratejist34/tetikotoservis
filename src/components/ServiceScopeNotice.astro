@@ -1,0 +1,40 @@
+﻿---
+import { serviceScope } from "../lib/serviceScope";
+
+const regions = serviceScope.regions.join(", ");
+---
+
+<section class="service-scope-notice" aria-label="Hizmet kapsami bildirimi">
+  <div class="service-scope-content">
+    Özel Servis (Yetkili Servis Değiliz) • Hizmet Bölgemiz: {regions}
+  </div>
+</section>
+
+<style>
+  .service-scope-notice {
+    background: rgba(2, 6, 23, 0.92);
+    border-top: 1px solid rgba(248, 113, 113, 0.35);
+    border-bottom: 1px solid rgba(248, 113, 113, 0.35);
+    color: #fecaca;
+    position: relative;
+    z-index: 30;
+  }
+
+  .service-scope-content {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0.55rem 1rem;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.35;
+  }
+
+  @media (min-width: 768px) {
+    .service-scope-content {
+      font-size: 0.84rem;
+      padding: 0.6rem 1.25rem;
+    }
+  }
+</style>

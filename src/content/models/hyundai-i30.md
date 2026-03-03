@@ -12,13 +12,13 @@ features:
   - 'Elektronik Sistem'
 faqs:
   - question: 'i30 periyodik bakım ne zaman yapılmalı?'
-    answer: 'Hyundai i30 için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. DCT şanzımanlı modellerde ek olarak şanzıman bakımı yapılır.'
+    answer:  "Hyundai i30 için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. DCT şanzımanlı modellerde ek olarak şanzıman bakımı yapılır."
   - question: 'DCT şanzıman bakımı yapıyor musunuz?'
-    answer: 'Evet, i30 DCT şanzımanların özel yağını makine ile değiştiriyor ve şanzıman sağlığını kontrol ediyoruz.'
+    answer:  "Evet, i30 DCT şanzımanların özel yağını makine ile değiştiriyor ve şanzıman sağlığını kontrol ediyoruz."
   - question: 'Hangi i30 modellerine servis veriyorsunuz?'
-    answer: 'i30 Hatchback, i30 Wagon ve i30 N modellerine profesyonel servis hizmeti veriyoruz.'
+    answer:  "i30 Hatchback, i30 Wagon ve i30 N modellerine profesyonel servis hizmeti veriyoruz."
   - question: 'i30 N modelleri için özel bakım var mı?'
-    answer: 'Evet, i30 N performans modelleri için özel motor bakımı, fren sistemi kontrolü ve performans optimizasyonu hizmeti sunuyoruz.'
+    answer:  "Evet, i30 N performans modelleri için özel motor bakımı, fren sistemi kontrolü ve performans optimizasyonu hizmeti sunuyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Hyundai i30 Özel Servis Hizmetleri

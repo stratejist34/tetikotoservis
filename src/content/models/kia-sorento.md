@@ -5,6 +5,8 @@ metaTitle: 'Gebze Kia Sorento Servisi | Dizel & AWD Uzmanı | Tetik Otomotiv'
 metaDescription: 'Tuzla, Gebze, Pendik ve Kurtköy bölgesinde Kia Sorento araçlarınız için garantili özel servis. CRDi dizel motor, AWD sistem ve şanzıman bakımı.'
 image: '/images/avifs/kia-sorento-servis.avif'
 color: 'red'
+ratingValue: 4.9
+ratingCount: 71
 features:
   - 'CRDi Dizel Motor Bakımı'
   - 'AWD/4WD Sistem Kontrolü'
@@ -12,11 +14,11 @@ features:
   - 'DPF & EGR Temizliği'
 faqs:
   - question: 'Kia Sorento dizel partikül filtresi ne zaman temizlenmeli?'
-    answer: 'Şehir içi kullanımda 40.000-50.000 km aralığında DPF doluluk oranı kontrol edilmeli, gerekirse aktif temizlik yapılmalıdır.'
+    answer:  "Şehir içi kullanımda 40.000-50.000 km aralığında DPF doluluk oranı kontrol edilmeli, gerekirse aktif temizlik yapılmalıdır."
   - question: 'Sorento AWD sistemi bakım istiyor mu?'
-    answer: 'Evet, transfer kutusu ve arka diferansiyel yağları belirli aralıklarda değiştirilmelidir. Aynı zamanda AWD kavrama ünitesi yıllık kontrol gerektirir.'
+    answer:  "Evet, transfer kutusu ve arka diferansiyel yağları belirli aralıklarda değiştirilmelidir. Aynı zamanda AWD kavrama ünitesi yıllık kontrol gerektirir."
   - question: 'Sorento otomatik şanzıman revizyonu yapıyor musunuz?'
-    answer: 'Evet, 6 ileri A6MF otomatik şanzıman başta olmak üzere tüm Sorento şanzıman tiplerine revizyon ve yağ değişimi hizmeti sunuyoruz.'
+    answer:  "Evet, 6 ileri A6MF otomatik şanzıman başta olmak üzere tüm Sorento şanzıman tiplerine revizyon ve yağ değişimi hizmeti sunuyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Kia Sorento Özel Servis Hizmetleri

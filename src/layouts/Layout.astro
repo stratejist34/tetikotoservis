@@ -4,6 +4,7 @@ import { ViewTransitions } from "astro:transitions";
 import StickyPhoneButton from "../components/StickyPhoneButton.astro";
 import iOSCallSheet from "../components/iOSCallSheet.astro";
 import QuickActionBar from "../components/QuickActionBar.astro";
+import ServiceScopeNotice from "../components/ServiceScopeNotice.astro";
 
 interface Props {
   title: string;
@@ -164,12 +165,19 @@ const {
           }
 
           const eventNameMap = {
+            phone_intent: "phone_intent",
+            whatsapp_intent: "whatsapp_intent",
             tel_arama_niyeti: "tel_arama_niyeti",
             telefon_aramasi: "telefon_aramasi",
             tel_vazgecti: "tel_vazgecti",
             whatsapp_niyeti: "whatsapp_niyeti",
             whatsapptan_yazanlar: "whatsapptan_yazanlar",
             whatsapp_vazgecti: "whatsapp_vazgecti",
+            region_modal_opened: "region_modal_opened",
+            region_filter_passed: "region_filter_passed",
+            region_filter_rejected: "region_filter_rejected",
+            qualified_phone_call: "qualified_phone_call",
+            qualified_whatsapp_click: "qualified_whatsapp_click",
             service_click: "service_click",
             scroll_depth: "scroll_depth",
           };
@@ -180,6 +188,8 @@ const {
             intent: window.__tetikGetIntent(),
             brand: sessionStorage.getItem("user_auto_brand") || "genel",
             device_type: window.innerWidth < 768 ? "mobile" : "desktop",
+            region_scope: "tpgk",
+            service_type: "ozel_servis_not_authorized",
           };
 
           const eventName = eventNameMap[eventKey] || eventKey;
@@ -209,6 +219,16 @@ const {
         );
       }
 
+      window.__tetikScrollDepthPct = function () {
+        var scrollable =
+          document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable <= 0) return 0;
+        return Math.max(
+          0,
+          Math.min(100, Math.round((window.scrollY / scrollable) * 100)),
+        );
+      };
+
       // GLOBAL CLICK INTERCEPTION: Service Region Modal Trigger
       // Guard: tek seferlik listener kaydı (ViewTransitions ile tekrar eklenmesini önle)
       if (!window.__globalClickListenerAdded) {
@@ -221,11 +241,8 @@ const {
 
             // Bu bileşenler kendi iç mantığını yönetiyor, atla
             if (
-              link.classList.contains("sticky-btn") ||
               link.closest("#quick-action-hub-mobile") ||
-              link.closest("#region-modal") ||
-              link.closest("#ios-call-sheet") ||
-              link.classList.contains("sheet-action")
+              link.closest("#region-modal")
             )
               return;
 
@@ -238,14 +255,72 @@ const {
               href.includes("wa.me") ||
               href.includes("whatsapp.com");
 
-            if (
-              isContactLink &&
-              typeof window.openServiceRegionModal === "function"
-            ) {
-              e.preventDefault();
+            if (isContactLink) {
               const type = href.startsWith("tel:") ? "phone" : "whatsapp";
-              var loc = link.closest("#quick-action-bar-desktop") ? "desktop_quick_bar" : "page";
-              window.openServiceRegionModal(type, href, loc);
+              const ctaPosition =
+                link.dataset.ctaPosition ||
+                (link.closest("#quick-action-bar-desktop")
+                  ? "sticky"
+                  : link.closest(".sticky-contact-wrapper")
+                    ? "sticky"
+                    : link.closest("footer")
+                      ? "footer"
+                      : "hero");
+              const ctaVariant = link.dataset.ctaVariant || "v1";
+              var loc = link.closest("#quick-action-bar-desktop")
+                ? "desktop_quick_bar"
+                : link.closest(".sticky-contact-wrapper")
+                  ? "desktop_sticky"
+                  : link.closest("#ios-call-sheet")
+                    ? "ios_sheet"
+                    : "page";
+              const scrollDepthPct =
+                typeof window.__tetikScrollDepthPct === "function"
+                  ? window.__tetikScrollDepthPct()
+                  : 0;
+
+              const trackingPayload = {
+                location: loc,
+                cta_position: ctaPosition,
+                cta_variant: ctaVariant,
+                scroll_depth_pct: scrollDepthPct,
+              };
+
+              if (typeof window.__tetikTrackEvent === "function") {
+                window.__tetikTrackEvent(
+                  type === "phone" ? "phone_intent" : "whatsapp_intent",
+                  trackingPayload,
+                );
+              }
+
+              const isQualified =
+                typeof sessionStorage !== "undefined" &&
+                sessionStorage.getItem("region_modal_qualified") === "true";
+
+              if (isQualified) {
+                if (typeof window.__tetikTrackEvent === "function") {
+                  window.__tetikTrackEvent(
+                    type === "phone"
+                      ? "qualified_phone_call"
+                      : "qualified_whatsapp_click",
+                    { ...trackingPayload, location: loc + "_direct" },
+                  );
+                  // Backward compatibility events
+                  window.__tetikTrackEvent(
+                    type === "phone" ? "telefon_aramasi" : "whatsapptan_yazanlar",
+                    { ...trackingPayload, location: loc + "_direct" },
+                  );
+                }
+                return;
+              }
+
+              if (typeof window.openServiceRegionModal === "function") {
+                e.preventDefault();
+                window.openServiceRegionModal(type, href, loc, {
+                  ...trackingPayload,
+                  intent_tracked: true,
+                });
+              }
             }
           },
           { passive: false },
@@ -386,7 +461,7 @@ const {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap&subset=latin,latin-ext"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Kanit:wght@800;900&family=Manrope:wght@400;500;600;700;800&family=Teko:wght@600;700&display=swap&subset=latin,latin-ext"
       rel="stylesheet"
     />
 
@@ -413,23 +488,18 @@ const {
     <link rel="apple-touch-icon" href="/images/favicon/tetikfavicon.png" />
     <!-- Critical CSS for above-the-fold content - Font metrics matched to prevent CLS -->
     <style is:inline>
-      @font-face {
-        font-family: "ManifoldExtended";
-        src: url("/fonts/manifold-extended/ManifoldExtendedCF-Bold.woff2")
-          format("woff2");
-        font-weight: bold;
-        font-style: normal;
-        font-display: swap;
-      }
-      @font-face {
-        font-family: "ManifoldExtended";
-        src: url("/fonts/manifold-extended/ManifoldExtendedCF-Medium.woff2")
-          format("woff2");
-        font-weight: 500;
-        font-style: normal;
-        font-display: swap;
-      }
       :root {
+        --font-body: "Manrope", system-ui, -apple-system, sans-serif;
+        --font-heading-readable: var(--font-body);
+        
+        /* Font Seçenekleri (Otomotiv & Teknik Estetik) */
+        --font-archivo: "Archivo Black", var(--font-heading-readable);
+        --font-kanit: "Kanit", var(--font-heading-readable);
+        --font-teko: "Teko", var(--font-heading-readable);
+
+        /* Aktif Display Fontu (Buradan Değiştirebilirsiniz) */
+        --font-display: var(--font-archivo);
+        --font-display-alt: var(--font-kanit);
         --brand-blue: #002c5f;
         --brand-orange: #f97316;
         --brand-red: #eb0a1e;
@@ -455,11 +525,12 @@ const {
         scroll-behavior: smooth;
       }
       body {
-        font-family: "Manrope", system-ui, sans-serif;
-        font-size: 18px;
+        font-family: var(--font-body);
+        font-size: 17px;
         line-height: 1.7;
         color: #2a2a2a;
         background: #020617;
+        text-rendering: optimizeLegibility;
       }
       /* Mobile Typography Audit Fixes */
       @media (max-width: 768px) {
@@ -481,89 +552,40 @@ const {
       /* Global Headings Mobile Rescale */
       @media (max-width: 768px) {
         h1,
-        .h1 {
-          font-size: 24px !important;
-          line-height: 1.2 !important;
-          letter-spacing: -0.01em !important;
-          margin-bottom: 16px !important;
-        }
-        h2,
-        .h2 {
-          font-size: 18px !important;
-          line-height: 1.3 !important;
-          margin-bottom: 12px !important;
-        }
-        h3,
-        .h3 {
-          font-size: 16px !important;
-          line-height: 1.4 !important;
-        }
-      }
-
-      /* List Hierarchy (Hanging Indent) */
-      ol,
-      ul {
-        padding-left: 24px;
-        margin-bottom: 24px;
-      }
-      ol li,
-      ul li {
-        padding-left: 8px;
-        margin-bottom: 16px;
-      }
-      /* Ensure nested strong tags break line for readability if needed */
-      ol li strong,
-      ul li strong {
-        display: block;
-        margin-bottom: 4px;
-        color: #0a0a0a;
-      }
-      ol li p,
-      ul li p {
-        margin-top: 8px;
-        padding-left: 0;
-      }
-
-      /* Lead Text */
-      .lead-text {
-        font-size: 20px;
-        font-weight: 450;
-        line-height: 1.65;
-        color: #1a1a1a;
-      }
-
-      /* Global Headings */
-      h1,
       .h1 {
-        font-family: "ManifoldExtended", sans-serif;
-        font-size: clamp(24px, 4.5vw, 42px);
-        font-weight: 700;
-        line-height: 1.15;
-        letter-spacing: -0.01em;
+        font-family: var(--font-display);
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
         text-transform: uppercase;
       }
 
       h2,
       .h2 {
-        font-family: "ManifoldExtended", sans-serif;
-        font-size: clamp(20px, 3.5vw, 28px);
-        font-weight: 600;
-        line-height: 1.3;
+        font-family: var(--font-heading-readable);
+        font-size: clamp(20px, 2.2vw, 28px);
+        font-weight: 650;
+        line-height: 1.25;
         letter-spacing: -0.01em;
       }
 
       h3,
       .h3 {
-        font-family: "ManifoldExtended", sans-serif;
-        font-size: clamp(18px, 2.5vw, 22px);
-        font-weight: 600;
-        line-height: 1.4;
-        letter-spacing: 0;
+        font-family: var(--font-heading-readable);
+        font-size: clamp(16px, 1.6vw, 20px);
+        font-weight: 650;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+      }
+
+      .accent-heading {
+        color: var(--brand-orange) !important;
       }
 
       /* CTA Buttons */
       .cta-primary {
-        font-family: "ManifoldExtended", sans-serif;
+        font-family: var(--font-heading-readable);
         font-size: 16px;
         font-weight: 700;
         line-height: 1;
@@ -596,7 +618,7 @@ const {
       }
 
       .cta-secondary {
-        font-family: "ManifoldExtended", sans-serif;
+        font-family: var(--font-heading-readable);
         font-size: 16px;
         font-weight: 600;
         letter-spacing: 0.03em;
@@ -616,20 +638,20 @@ const {
         color: #ffffff !important;
       }
       .font-manifold {
-        font-family: "ManifoldExtended", sans-serif;
+        font-family: var(--font-heading-readable);
       }
       .font-heading {
-        font-family: "ManifoldExtended", system-ui, sans-serif;
+        font-family: var(--font-heading-readable);
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
       .font-hero {
-        font-family: "ManifoldExtended", sans-serif;
+        font-family: var(--font-heading-readable);
         font-weight: bold;
         letter-spacing: 0.02em;
       }
       .font-hero-alt {
-        font-family: "ManifoldExtended", sans-serif;
+        font-family: var(--font-heading-readable);
         font-weight: 500;
         letter-spacing: 0.03em;
       }
@@ -716,6 +738,7 @@ const {
     class="font-sans antialiased text-slate-800 bg-slate-900 selection:bg-orange-500 selection:text-white"
   >
     <Header />
+    <ServiceScopeNotice />
     <main transition:animate="slide" class="md:pb-24" style="margin-top: 0; padding-top: 0;">
       <slot />
     </main>

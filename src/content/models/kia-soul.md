@@ -5,6 +5,8 @@ metaTitle: 'Gebze Kia Soul Servisi | Kentsel SUV Uzmanı | Tetik Otomotiv'
 metaDescription: 'Tuzla, Gebze, Pendik ve Kurtköy bölgesinde Kia Soul araçlarınız için garantili özel servis. Benzinli motor bakımı, elektronik arıza tespiti ve periyodik bakım.'
 image: '/images/avifs/kia-soul-servis.avif'
 color: 'red'
+ratingValue: 4.9
+ratingCount: 48
 features:
   - 'Benzinli Motor Bakımı'
   - 'Elektronik Arıza Tespiti'
@@ -12,11 +14,11 @@ features:
   - 'Periyodik Bakım'
 faqs:
   - question: 'Kia Soul periyodik bakımı kaç km''de yapılmalı?'
-    answer: 'Kia Soul için tam sentetik yağ kullanımında 15.000 km veya yılda bir periyodik bakım önerilir. Hava ve yakıt filtreleri aynı anda kontrol edilir.'
+    answer:  "Kia Soul için tam sentetik yağ kullanımında 15.000 km veya yılda bir periyodik bakım önerilir. Hava ve yakıt filtreleri aynı anda kontrol edilir."
   - question: 'Soul''un süspansiyonu sık sorun çıkarır mı?'
-    answer: 'Kia Soul''un benzersiz tasarımı nedeniyle ağırlık merkezi yüksektir; stabilizatör rotilleri ve amortisörler yakın takip gerektirir. Düzenli kontrol arızaları önler.'
+    answer:  "Kia Soul''un benzersiz tasarımı nedeniyle ağırlık merkezi yüksektir; stabilizatör rotilleri ve amortisörler yakın takip gerektirir. Düzenli kontrol arızaları önler."
   - question: 'Hangi Kia Soul nesillerine bakım yapıyorsunuz?'
-    answer: 'AM, PS ve SK3 kasa kodlu tüm Kia Soul nesillerine hizmet veriyoruz. Orijinal Kia/Hyundai Mobis yedek parça garantisi sunuyoruz.'
+    answer:  "AM, PS ve SK3 kasa kodlu tüm Kia Soul nesillerine hizmet veriyoruz. Orijinal Kia/Hyundai Mobis yedek parça garantisi sunuyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Kia Soul Özel Servis Hizmetleri

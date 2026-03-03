@@ -27,6 +27,8 @@ const {
   color,
   faqs,
   features,
+  ratingValue,
+  ratingCount,
 } = entry.data;
 
 // Logo Map (Marka logoları)
@@ -95,6 +97,8 @@ const breadcrumbItems = [
     title={metaTitle}
     description={metaDescription}
     url={`https://hyundaiservisim.com/modeller/${entry.slug}`}
+    ratingValue={ratingValue}
+    ratingCount={ratingCount}
   />
   <BreadcrumbSchema items={breadcrumbItems} />
   {faqs && <FAQSchema faqs={faqs} />}

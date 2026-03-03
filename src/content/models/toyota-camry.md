@@ -12,11 +12,11 @@ features:
   - 'Elektronik Sistem'
 faqs:
   - question: 'Camry hibrit bakımı farklı mı?'
-    answer: 'Evet, Camry Hybrid modellerde ek olarak yüksek voltaj bataryası, inverter soğutma suyu ve hibrit filtre temizliği yapılmalıdır.'
+    answer:  "Evet, Camry Hybrid modellerde ek olarak yüksek voltaj bataryası, inverter soğutma suyu ve hibrit filtre temizliği yapılmalıdır."
   - question: 'Hangi Camry modellerine servis veriyorsunuz?'
-    answer: 'Camry 2.5 ve 3.5 benzinli modeller ile hibrit versiyonlarına profesyonel servis hizmeti veriyoruz.'
+    answer:  "Camry 2.5 ve 3.5 benzinli modeller ile hibrit versiyonlarına profesyonel servis hizmeti veriyoruz."
   - question: 'Periyodik bakım ne zaman yapılmalı?'
-    answer: 'Camry için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. Üst segment için özel bakım programı uygulanır.'
+    answer:  "Camry için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. Üst segment için özel bakım programı uygulanır."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Toyota Camry Özel Servis Hizmetleri

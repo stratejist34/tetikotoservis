@@ -1,0 +1,219 @@
+---
+import {
+  buildWhatsappLink,
+  isBusinessHours,
+  normalizeBrandKey,
+  normalizeServiceIntent,
+  serviceScope,
+  getHourSlot,
+} from "../lib/serviceScope";
+
+interface ContextProps {
+  brand?: string;
+  page_intent?: string;
+  service_intent?: string;
+}
+
+interface Props {
+  variant?: "call" | "wa" | "combo";
+  ctaPosition?: "inline" | "hero" | "sticky" | "footer";
+  ctaVariant?: "v1" | "v2" | "v3";
+  context?: ContextProps;
+}
+
+const {
+  variant = "combo",
+  ctaPosition = "inline",
+  ctaVariant = "v1",
+  context = {},
+} = Astro.props;
+
+const brand = normalizeBrandKey(context.brand);
+const serviceIntent = normalizeServiceIntent(context.service_intent || context.page_intent);
+const waHref = buildWhatsappLink(brand, serviceIntent);
+const callHref = `tel:${serviceScope.phone}`;
+const regionText = serviceScope.regions.join(", ");
+
+const variantText = {
+  v1: {
+    heading: "Hemen arayıp net fiyat aralığını sor",
+    micro:
+      "Model, kilometre ve ilçeyi söyle; uygunluk varsa fiyat aralığını hemen netleştirelim.",
+  },
+  v2: {
+    heading: "WhatsApp’tan yaz — model/kilometreye göre söyleyelim",
+    micro:
+      "Kısa bir mesajla aracını paylaş, yazılı fiyat aralığı ve süre bilgisini hızlıca iletelim.",
+  },
+  v3: {
+    heading: "Bölgen uygunsa 30 saniyede randevu netleştirelim",
+    micro: `${regionText} içindeysen en hızlı aksiyon için doğrudan bağlanabilirsin.`,
+  },
+};
+
+const text = variantText[ctaVariant];
+const serverPrimary = isBusinessHours(getHourSlot()) ? "phone" : "whatsapp";
+---
+
+<section
+  class="inline-cta"
+  data-inline-cta
+  data-inline-cta-mode={variant}
+  data-primary={serverPrimary}
+  data-cta-position={ctaPosition}
+  data-cta-variant={ctaVariant}
+>
+  <h3>{text.heading}</h3>
+  <p>{text.micro}</p>
+
+  <div class="cta-actions">
+    <a
+      href={callHref}
+      class="cta-btn cta-phone"
+      data-cta-action="phone"
+      data-cta-position={ctaPosition}
+      data-cta-variant={ctaVariant}
+      data-cta-brand={brand}
+      data-cta-service-intent={serviceIntent}
+    >
+      <span>📞 Hemen ara: {serviceScope.phoneDisplay}</span>
+    </a>
+    <a
+      href={waHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="cta-btn cta-whatsapp"
+      data-cta-action="whatsapp"
+      data-cta-position={ctaPosition}
+      data-cta-variant={ctaVariant}
+      data-cta-brand={brand}
+      data-cta-service-intent={serviceIntent}
+    >
+      <span>💬 WhatsApp: "Model/Yıl / Km / İlçe / Şikayet" diye yaz</span>
+    </a>
+  </div>
+</section>
+
+<script>
+  function setInlinePrimaryState() {
+    const blocks = document.querySelectorAll("[data-inline-cta]");
+    if (!blocks.length) return;
+
+    const hourSlotHelper = (window as any).__tetikHourSlot;
+    const slot =
+      typeof hourSlotHelper === "function" ? hourSlotHelper() : "open_morning";
+    const phonePrimary = slot === "open_morning" || slot === "open_evening";
+
+    blocks.forEach((block) => {
+      const phoneBtn = block.querySelector(".cta-phone");
+      const waBtn = block.querySelector(".cta-whatsapp");
+      if (!phoneBtn || !waBtn) return;
+
+      block.setAttribute("data-primary", phonePrimary ? "phone" : "whatsapp");
+      const mode = block.getAttribute("data-inline-cta-mode") || "combo";
+
+      if (mode === "call") {
+        (phoneBtn as HTMLElement).style.display = "inline-flex";
+        (waBtn as HTMLElement).style.display = "none";
+        return;
+      }
+      if (mode === "wa") {
+        (phoneBtn as HTMLElement).style.display = "none";
+        (waBtn as HTMLElement).style.display = "inline-flex";
+        return;
+      }
+
+      (phoneBtn as HTMLElement).style.display = "inline-flex";
+      (waBtn as HTMLElement).style.display = "inline-flex";
+    });
+  }
+
+  if (!(window as any).__inlineCtaPrimaryInit) {
+    (window as any).__inlineCtaPrimaryInit = true;
+    setInlinePrimaryState();
+    document.addEventListener("astro:page-load", setInlinePrimaryState);
+  } else {
+    setInlinePrimaryState();
+  }
+</script>
+
+<style>
+  .inline-cta {
+    margin: 1.4rem 0;
+    padding: 1rem;
+    border-radius: 16px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+  }
+
+  .inline-cta h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.35;
+    color: #111827;
+  }
+
+  .inline-cta p {
+    margin: 0.45rem 0 0 0;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: #334155;
+  }
+
+  .cta-actions {
+    margin-top: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.72rem 0.95rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1.25;
+    flex: 1 1 220px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta-btn:active {
+    transform: translateY(1px);
+  }
+
+  .cta-phone {
+    background: #ea580c;
+    color: #ffffff;
+    border: 1px solid #ea580c;
+  }
+
+  .cta-whatsapp {
+    background: #ffffff;
+    color: #0f766e;
+    border: 1px solid #99f6e4;
+  }
+
+  .inline-cta[data-primary="phone"] .cta-phone {
+    box-shadow: 0 8px 18px rgba(234, 88, 12, 0.24);
+  }
+
+  .inline-cta[data-primary="phone"] .cta-whatsapp {
+    opacity: 0.9;
+  }
+
+  .inline-cta[data-primary="whatsapp"] .cta-whatsapp {
+    box-shadow: 0 8px 18px rgba(15, 118, 110, 0.2);
+    background: #14b8a6;
+    color: #ffffff;
+    border-color: #14b8a6;
+  }
+
+  .inline-cta[data-primary="whatsapp"] .cta-phone {
+    opacity: 0.92;
+  }
+</style>

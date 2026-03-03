@@ -1,0 +1,105 @@
+---
+import { normalizeBrandKey, serviceScope } from "../lib/serviceScope";
+
+interface Props {
+  brand?: string;
+}
+
+const { brand = "genel" } = Astro.props;
+const brandKey = normalizeBrandKey(brand);
+
+const brandLabelMap: Record<string, string> = {
+  hyundai: "Hyundai",
+  kia: "Kia",
+  toyota: "Toyota",
+  nissan: "Nissan",
+  genel: "Servis",
+};
+
+const brandLabel = brandLabelMap[brandKey] ?? "Servis";
+const regionShortText = serviceScope.regions.join("/");
+
+const links = serviceScope.regions.map((district) => {
+  const districtSlug =
+    district.toLowerCase() === "kurtköy"
+      ? "kurtkoy"
+      : district.toLowerCase();
+
+  const href =
+    brandKey === "genel"
+      ? `/${districtSlug}-servis`
+      : `/${districtSlug}-${brandKey}-servis`;
+
+  return {
+    label: `${district} ${brandLabel} Servis`,
+    href,
+  };
+});
+---
+
+<section class="district-links">
+  <h3>{regionShortText} içindeysen direkt bağlan</h3>
+  <p>
+    İlçene göre hızlı sayfaya geç, konum ve uygunluk bilgisini doğrudan
+    netleştirelim.
+  </p>
+  <div class="district-grid">
+    {
+      links.map((link) => (
+        <a href={link.href} class="district-btn">
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .district-links {
+    margin-top: 1.6rem;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #ffffff;
+  }
+
+  .district-links h3 {
+    margin: 0;
+    font-size: 1.02rem;
+    color: #111827;
+  }
+
+  .district-links p {
+    margin: 0.45rem 0 0 0;
+    color: #475569;
+    font-size: 0.92rem;
+  }
+
+  .district-grid {
+    margin-top: 0.85rem;
+    display: grid;
+    gap: 0.55rem;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .district-btn {
+    min-height: 46px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #1e293b;
+    font-weight: 700;
+    font-size: 0.86rem;
+    text-align: center;
+    padding: 0.55rem 0.7rem;
+    background: #f8fafc;
+  }
+
+  .district-btn:hover {
+    border-color: #fb923c;
+    color: #9a3412;
+  }
+</style>

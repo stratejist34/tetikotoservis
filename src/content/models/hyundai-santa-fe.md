@@ -12,13 +12,13 @@ features:
   - 'DPF Temizliği'
 faqs:
   - question: 'Santa Fe DPF temizliği yapıyor musunuz?'
-    answer: 'Evet, Santa Fe dizel motorlarda sık görülen DPF (Dizel Partikül Filtresi) tıkanıklığı için profesyonel temizlik ve rejenerasyon hizmeti sunuyoruz.'
+    answer:  "Evet, Santa Fe dizel motorlarda sık görülen DPF (Dizel Partikül Filtresi) tıkanıklığı için profesyonel temizlik ve rejenerasyon hizmeti sunuyoruz."
   - question: '4x4 sistem bakımı yapıyor musunuz?'
-    answer: 'Evet, Santa Fe 4x4 modellerde aktarma organları, diferansiyel ve transfer kutusu bakımı yapıyoruz.'
+    answer:  "Evet, Santa Fe 4x4 modellerde aktarma organları, diferansiyel ve transfer kutusu bakımı yapıyoruz."
   - question: 'Hangi Santa Fe modellerine servis veriyorsunuz?'
-    answer: 'Santa Fe 2.0 T-GDI benzinli, 2.0 CRDi ve 2.2 CRDi dizel modeller ile 4x2 ve 4x4 versiyonlarına profesyonel servis hizmeti veriyoruz.'
+    answer:  "Santa Fe 2.0 T-GDI benzinli, 2.0 CRDi ve 2.2 CRDi dizel modeller ile 4x2 ve 4x4 versiyonlarına profesyonel servis hizmeti veriyoruz."
   - question: 'Periyodik bakım ne zaman yapılmalı?'
-    answer: 'Santa Fe için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. SUV segmenti için özel bakım programı uygulanır.'
+    answer:  "Santa Fe için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. SUV segmenti için özel bakım programı uygulanır."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Hyundai Santa Fe Özel Servis Hizmetleri

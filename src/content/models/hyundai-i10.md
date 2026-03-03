@@ -5,6 +5,8 @@ metaTitle: 'Gebze Hyundai i10 Servisi | Periyodik Bakım & Tamir'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Hyundai i10 araçlarınız için garantili özel servis. AMT şanzıman robotu, baskı balata ve periyodik bakım uzmanlığı.'
 image: '/images/avifs/Hyundai-i10-Ozel-Servis-e1751888118271.avif'
 color: 'blue'
+ratingValue: 4.9
+ratingCount: 73
 features:
   - 'AMT Şanzıman Robotu Tamiri'
   - '1.0 & 1.2 Motor Bakımı'
@@ -12,13 +14,13 @@ features:
   - 'Fren Sistemi Bakımı'
 faqs:
   - question: 'Hyundai i10 AMT vites sorunları nelerdir?'
-    answer: 'i10 yarı otomatik (AMT) modellerde zamanla vites geçişlerinde sarsıntı, "N" konumuna düşme veya robot yağı kaçağı görülebilir. Robot revizyonu ve kalibrasyonu ile çözüyoruz.'
+    answer:  "i10 yarı otomatik (AMT) modellerde zamanla vites geçişlerinde sarsıntı, \"N\" konumuna düşme veya robot yağı kaçağı görülebilir. Robot revizyonu ve kalibrasyonu ile çözüyoruz."
   - question: 'i10 triger kayışı mı zincir mi?'
-    answer: 'Yeni nesil i10 modellerinin (1.0 ve 1.2 motorlar) çoğu zincirli triger sistemine sahiptir. Zincir değişimi genellikle 150.000 km civarında veya ses yapmaya başladığında gerekir.'
+    answer:  "Yeni nesil i10 modellerinin (1.0 ve 1.2 motorlar) çoğu zincirli triger sistemine sahiptir. Zincir değişimi genellikle 150.000 km civarında veya ses yapmaya başladığında gerekir."
   - question: 'Periyodik bakım ne kadar sürer?'
-    answer: 'Standart periyodik bakım (yağ, filtreler, kontroller) ortalama 45-60 dakika sürmektedir. Randevu alarak beklemeden işlem yaptırabilirsiniz.'
+    answer:  "Standart periyodik bakım (yağ, filtreler, kontroller) ortalama 45-60 dakika sürmektedir. Randevu alarak beklemeden işlem yaptırabilirsiniz."
   - question: 'LPG li i10 bakımı yapıyor musunuz?'
-    answer: 'Evet, LPG li araçların motor subap ayarları ve ateşleme sistemi kontrollerini de yapıyoruz.'
+    answer:  "Evet, LPG li araçların motor subap ayarları ve ateşleme sistemi kontrollerini de yapıyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Hyundai i10 Özel Servis Hizmetleri

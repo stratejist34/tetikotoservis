@@ -12,13 +12,13 @@ features:
   - '4x4 Sistem Bakımı'
 faqs:
   - question: 'IX35 DPF temizliği yapıyor musunuz?'
-    answer: 'Evet, IX35 dizel motorlarda sık görülen DPF (Dizel Partikül Filtresi) tıkanıklığı için profesyonel temizlik ve rejenerasyon hizmeti sunuyoruz.'
+    answer:  "Evet, IX35 dizel motorlarda sık görülen DPF (Dizel Partikül Filtresi) tıkanıklığı için profesyonel temizlik ve rejenerasyon hizmeti sunuyoruz."
   - question: '4x4 sistem bakımı yapıyor musunuz?'
-    answer: 'Evet, IX35 4x4 modellerde aktarma organları, diferansiyel ve transfer kutusu bakımı yapıyoruz.'
+    answer:  "Evet, IX35 4x4 modellerde aktarma organları, diferansiyel ve transfer kutusu bakımı yapıyoruz."
   - question: 'Hangi IX35 modellerine servis veriyorsunuz?'
-    answer: 'IX35 2.0 benzinli, 2.0 CRDi ve 1.7 CRDi dizel modeller ile 4x2 ve 4x4 versiyonlarına profesyonel servis hizmeti veriyoruz.'
+    answer:  "IX35 2.0 benzinli, 2.0 CRDi ve 1.7 CRDi dizel modeller ile 4x2 ve 4x4 versiyonlarına profesyonel servis hizmeti veriyoruz."
   - question: 'Periyodik bakım ne zaman yapılmalı?'
-    answer: 'IX35 için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. SUV segmenti için özel bakım programı uygulanır.'
+    answer:  "IX35 için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. SUV segmenti için özel bakım programı uygulanır."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Hyundai IX35 Özel Servis Hizmetleri

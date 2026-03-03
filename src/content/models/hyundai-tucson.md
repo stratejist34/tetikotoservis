@@ -5,6 +5,8 @@ metaTitle: 'Gebze Hyundai Tucson Servisi | Periyodik Bakım & Mekanik'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Hyundai Tucson (ix35) araçlarınız için garantili özel servis. GDI Turbo, CRDi motor, 4x4 sistem ve DCT şanzıman uzmanlığı.'
 image: '/images/avifs/hyundai-tucson-servis.avif'
 color: 'blue'
+ratingValue: 4.9
+ratingCount: 95
 features:
   - '1.6 T-GDI & CRDi Uzmanlığı'
   - '4x4 Diferansiyel Bakımı'
@@ -12,13 +14,13 @@ features:
   - 'DCT Kavrama Değişimi'
 faqs:
   - question: 'Tucson DCT şanzıman ısınma sorunu çözümü nedir?'
-    answer: 'Yoğun trafikte ısınan kuru tip DCT şanzımanlar için yazılım güncellemesi ve gerekirse kavrama seti değişimi ile kalıcı çözüm sunuyoruz.'
+    answer:  "Yoğun trafikte ısınan kuru tip DCT şanzımanlar için yazılım güncellemesi ve gerekirse kavrama seti değişimi ile kalıcı çözüm sunuyoruz."
   - question: 'Dizel Tucson DPF temizliği yapıyor musunuz?'
-    answer: 'Evet, özellikle şehir içi kullanılan 1.6 CRDi motorlarda tıkanan Dizel Partikül Filtresi (DPF) için makine ile profesyonel temizlik ve rejenerasyon yapıyoruz.'
+    answer:  "Evet, özellikle şehir içi kullanılan 1.6 CRDi motorlarda tıkanan Dizel Partikül Filtresi (DPF) için makine ile profesyonel temizlik ve rejenerasyon yapıyoruz."
   - question: '4x4 sistem bakımı ne zaman yapılır?'
-    answer: 'Tucson 4x4 modellerinde arazi şanzımanı (transfer kutusu) ve arka diferansiyel yağlarının her 60.000 km de bir kontrol edilip değiştirilmesi gerekir.'
+    answer:  "Tucson 4x4 modellerinde arazi şanzımanı (transfer kutusu) ve arka diferansiyel yağlarının her 60.000 km de bir kontrol edilip değiştirilmesi gerekir."
   - question: 'Tucson ağır bakımında neler değişir?'
-    answer: 'Ağır bakımda V kayışı seti, gergi bilyaları, antifriz, fren hidroliği ve şanzıman yağı gibi ömürlü parçalar yenilenir.'
+    answer:  "Ağır bakımda V kayışı seti, gergi bilyaları, antifriz, fren hidroliği ve şanzıman yağı gibi ömürlü parçalar yenilenir."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Hyundai Tucson Özel Servis Hizmetleri

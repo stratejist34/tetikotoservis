@@ -7,6 +7,10 @@ import Footer from '../../components/Footer.astro';
 import BlogPostingSchema from '../../components/BlogPostingSchema.astro';
 import FAQSchema from '../../components/FAQSchema.astro';
 import BreadcrumbSchema from '../../components/BreadcrumbSchema.astro';
+import KiaSportagePriceContent from '../../components/blog-cro/KiaSportagePriceContent.astro';
+import ToyotaCorollaPriceContent from '../../components/blog-cro/ToyotaCorollaPriceContent.astro';
+import HyundaiBakimPriceContent from '../../components/blog-cro/HyundaiBakimPriceContent.astro';
+import { serviceScope } from '../../lib/serviceScope';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog', ({ data }) => {
@@ -22,6 +26,15 @@ const { slug } = Astro.params;
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 
+const croContentSlugs = {
+  'kia-sportage-periyodik-bakim-fiyatlari-2026': true,
+  'toyota-corolla-periyodik-bakim-fiyatlari-2026': true,
+  'hyundai-periyodik-bakim-fiyatlari-2026': true,
+} as const;
+const hasManagedCROContent = Boolean(
+  slug && Object.prototype.hasOwnProperty.call(croContentSlugs, slug),
+);
+
 // Schema URL & Breadcrumb
 const currentUrl = `${Astro.site || 'https://hyundaiservisim.com'}/blog/${slug}`;
 const breadcrumbItems = [
@@ -31,7 +44,7 @@ const breadcrumbItems = [
 ];
 
 // TOC Extraction Logic (Server Side)
-const headings = [];
+let headings = [];
 const content = await entry.body;
 const lines = content.split('\n');
 
@@ -47,6 +60,32 @@ for (const line of lines) {
       .trim();
     headings.push({ depth: 2, slug, text });
   }
+}
+
+if (slug === 'kia-sportage-periyodik-bakim-fiyatlari-2026') {
+  headings = [
+    { depth: 2, slug: '2026-sportage-bakim-fiyat-araligi', text: '2026 Sportage bakım fiyat aralığı' },
+    { depth: 2, slug: 'ne-kadar-surer-ne-zaman-teslim-edilir', text: 'Ne kadar sürer, ne zaman teslim edilir?' },
+    { depth: 2, slug: 'en-cok-sorulan-3-kritik-soru', text: 'En çok sorulan 3 kritik soru' },
+    { depth: 2, slug: 'karar-vermeden-once-kisa-dogrulama', text: 'Karar vermeden önce kısa doğrulama' },
+  ];
+}
+
+if (slug === 'toyota-corolla-periyodik-bakim-fiyatlari-2026') {
+  headings = [
+    { depth: 2, slug: '2026-corolla-bakim-fiyat-araligi', text: '2026 Corolla bakım fiyat aralığı' },
+    { depth: 2, slug: 'islem-sureleri', text: 'İşlem süreleri' },
+    { depth: 2, slug: 'karari-hizlandiran-3-net-cevap', text: 'Kararı hızlandıran 3 net cevap' },
+  ];
+}
+
+if (slug === 'hyundai-periyodik-bakim-fiyatlari-2026') {
+  headings = [
+    { depth: 2, slug: '2026-hyundai-bakim-fiyat-araligi', text: '2026 Hyundai bakım fiyat aralığı' },
+    { depth: 2, slug: 'sure-beklentisi', text: 'Süre beklentisi' },
+    { depth: 2, slug: 'en-kritik-3-soru', text: 'En kritik 3 soru' },
+    { depth: 2, slug: 'uygun-musteriysen-hizlica-devam-edelim', text: 'Uygun müşteriysen hızlıca devam edelim' },
+  ];
 }
 
 // CSS & Script Variables
@@ -110,7 +149,6 @@ const clientScript = `
 
     /* Prose Headings Override for Contrast & Proximity */
     .prose h2 {
-      color: #E64A19 !important; /* High Contrast Orange */
       margin-bottom: 0.6em !important; /* Gestalt Proximity: Closer to content */
     }
     .prose h2 + p {
@@ -119,7 +157,7 @@ const clientScript = `
 
     /* Sidebar Typography */
     .sidebar-title {
-      font-family: "ManifoldExtended", sans-serif;
+      font-family: var(--font-display);
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -148,7 +186,7 @@ const clientScript = `
       border: 1px solid #FFECB3;
     }
     .sidebar-cta-card h4 {
-      font-family: "ManifoldExtended", sans-serif;
+      font-family: var(--font-display);
       font-size: 18px !important;
       font-weight: 700;
       color: #1a1a1a;
@@ -298,7 +336,17 @@ const clientScript = `
                     prose-img:rounded-2xl prose-img:shadow-lg
                     prose-strong:text-slate-900
                     prose-p:leading-relaxed">
-                    <Content />
+                    {hasManagedCROContent ? (
+                      slug === 'kia-sportage-periyodik-bakim-fiyatlari-2026' ? (
+                        <KiaSportagePriceContent />
+                      ) : slug === 'toyota-corolla-periyodik-bakim-fiyatlari-2026' ? (
+                        <ToyotaCorollaPriceContent />
+                      ) : (
+                        <HyundaiBakimPriceContent />
+                      )
+                    ) : (
+                      <Content />
+                    )}
                 </article>
 
                 {/* Tags */}
@@ -315,6 +363,7 @@ const clientScript = `
                 )}
 
                 {/* In-Article CTA */}
+                {!hasManagedCROContent && (
                 <div class="mt-16 bg-slate-900 rounded-2xl p-8 md:p-10 text-center relative overflow-hidden group">
                     <div class="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5 group-hover:scale-105 transition-transform duration-700"></div>
                     <div class="relative z-10">
@@ -325,14 +374,14 @@ const clientScript = `
                             Küçük bir ses veya titreşim, büyük bir arızanın habercisi olabilir. Gecikmeden önlem alın.
                         </p>
                         <div class="flex flex-col sm:flex-row justify-center gap-3">
-                            <a href="tel:05336157835" class="cta-primary shadow-lg shadow-orange-600/20" data-dynamic-cta>
+                            <a href={`tel:${serviceScope.phone}`} class="cta-primary shadow-lg shadow-orange-600/20" data-dynamic-cta>
                                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                                 <span>Ustanıza Danışın</span>
                             </a>
-                            <!-- Secondary CTA Removed for Peak-End Rule -->
                         </div>
                     </div>
                 </div>
+                )}
 
             </div>
 
@@ -361,16 +410,18 @@ const clientScript = `
                     )}
 
                     {/* Sidebar CTA */}
+                    {!hasManagedCROContent && (
                     <div class="card-l2 p-8 text-center border-orange-500/10">
                         <div class="w-12 h-12 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center mx-auto mb-4 text-orange-600">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
                         <h4 class="text-white font-heading text-lg mb-2 uppercase">Hızlı Servis İhtiyacı?</h4>
                         <p class="text-slate-400 text-sm mb-6 uppercase opacity-70">Aracınızla ilgili acil bir durum mu var? Bize ulaşabilirsiniz.</p>
-                        <a href="tel:05336157835" class="cta-primary w-full shadow-lg shadow-orange-600/20" data-dynamic-cta>
-                            <span>0533 615 78 35</span>
+                        <a href={`tel:${serviceScope.phone}`} class="cta-primary w-full shadow-lg shadow-orange-600/20" data-dynamic-cta>
+                            <span>{serviceScope.phoneDisplay}</span>
                         </a>
                     </div>
+                    )}
 
                 </div>
             </aside>

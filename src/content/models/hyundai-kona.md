@@ -12,13 +12,13 @@ features:
   - '4x4 Sistem Bakımı'
 faqs:
   - question: 'Kona elektrikli bakımı farklı mı?'
-    answer: 'Evet, Kona Electric modellerde ek olarak yüksek voltaj bataryası, şarj sistemi ve elektrik motoru kontrolleri yapılmalıdır.'
+    answer:  "Evet, Kona Electric modellerde ek olarak yüksek voltaj bataryası, şarj sistemi ve elektrik motoru kontrolleri yapılmalıdır."
   - question: 'Kona periyodik bakım ne zaman yapılmalı?'
-    answer: 'Hyundai Kona için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. Elektrikli modellerde bakım periyotları farklıdır.'
+    answer:  "Hyundai Kona için periyodik bakım 15.000 km veya 1 yılda bir yapılmalıdır. Elektrikli modellerde bakım periyotları farklıdır."
   - question: 'Hangi Kona modellerine servis veriyorsunuz?'
-    answer: 'Kona 1.0 T-GDI, 1.6 T-GDI benzinli, 1.6 CRDi dizel ve Kona Electric modellerine profesyonel servis hizmeti veriyoruz.'
+    answer:  "Kona 1.0 T-GDI, 1.6 T-GDI benzinli, 1.6 CRDi dizel ve Kona Electric modellerine profesyonel servis hizmeti veriyoruz."
   - question: '4x4 sistem bakımı yapıyor musunuz?'
-    answer: 'Evet, Kona 4x4 modellerde aktarma organları ve diferansiyel bakımı yapıyoruz.'
+    answer:  "Evet, Kona 4x4 modellerde aktarma organları ve diferansiyel bakımı yapıyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Hyundai Kona Özel Servis Hizmetleri

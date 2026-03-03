@@ -5,6 +5,8 @@ metaTitle: 'Gebze Toyota Corolla Servisi | Hibrit & Benzinli Uzman'
 metaDescription: 'Tuzla, Gebze, Pendik, Kurtköy bölgesinde Toyota Corolla bakım ve onarım servisi. Hibrit batarya, MMT/CVT şanzıman ve motor mekanik uzmanlığı.'
 image: '/images/corolla.webp'
 color: 'red'
+ratingValue: 4.9
+ratingCount: 106
 features:
   - 'Hibrit Batarya Testi'
   - 'CVT Şanzıman Yağı'
@@ -12,13 +14,13 @@ features:
   - 'Dizel DPF Temizliği'
 faqs:
   - question: 'Corolla hibrit bakımı farklı mı?'
-    answer: 'Evet, hibrit modellerde ek olarak yüksek voltaj bataryası, inverter soğutma suyu ve hibrit filtre temizliği yapılmalıdır.'
+    answer:  "Evet, hibrit modellerde ek olarak yüksek voltaj bataryası, inverter soğutma suyu ve hibrit filtre temizliği yapılmalıdır."
   - question: 'MMT şanzıman arızası tamir edilir mi?'
-    answer: 'Eski kasa Corolla larda bulunan MMT yarı otomatik şanzımanların robot mekanizması ve baskı balatasını garantili olarak tamir ediyoruz.'
+    answer:  "Eski kasa Corolla larda bulunan MMT yarı otomatik şanzımanların robot mekanizması ve baskı balatasını garantili olarak tamir ediyoruz."
   - question: 'CVT şanzıman yağı değişmeli mi?'
-    answer: 'Multidrive S (CVT) şanzımanların yağı, üretici her ne kadar "ömürlük" dese de, şanzıman sağlığı için her 60.000 km de bir değiştirilmelidir.'
+    answer:  "Multidrive S (CVT) şanzımanların yağı, üretici her ne kadar \"ömürlük\" dese de, şanzıman sağlığı için her 60.000 km de bir değiştirilmelidir."
   - question: 'Dizel Corolla yağ eksiltme sorunu var mı?'
-    answer: 'D-4D motorların bazı serilerinde görülen yağ eksiltme sorunu için segman değişimi ve motor revizyonu hizmeti veriyoruz.'
+    answer:  "D-4D motorların bazı serilerinde görülen yağ eksiltme sorunu için segman değişimi ve motor revizyonu hizmeti veriyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Toyota Corolla Özel Servis Hizmetleri

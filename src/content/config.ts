@@ -56,6 +56,10 @@ const modelsCollection = defineCollection({
 
     // Öne Çıkan Özellikler (Örn: DCT Şanzıman, Hibrit Sistem)
     features: z.array(z.string()).optional(),
+
+    // AggregateRating (yıldızlı snippet için)
+    ratingValue: z.number().min(1).max(5).optional(),
+    ratingCount: z.number().int().positive().optional(),
   })
 });
 
