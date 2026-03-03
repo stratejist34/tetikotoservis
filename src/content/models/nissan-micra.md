@@ -21,6 +21,14 @@ faqs:
     answer:  "Nissan Micra 1.0 SCe motoru zincir sistemi kullanmaktadır. Zincirli sistemlerde belirli bir değişim zorunluluğu yoktur; ancak motor yağı düzenli değiştirilmezse zincir ve kasnak erken aşınabilir. Motor soğukken \"tak tak\" veya \"zıngır zıngır\" sesi geliyorsa zincir gerginliğini kontrol ettirmeniz önerilir. Tetik Otomotiv''de triger zinciri ses ve gerilim kontrolü periyodik bakım paketine dahildir."
   - question: 'Nissan Micra''da start/stop sistemi çalışmıyor, ne yapmalıyım?'
     answer:  "Micra''nın start/stop sistemi çalışmıyorsa ilk kontrol edilmesi gereken 12V yardımcı bataryadır. Batarya doluluk oranı %75''in altına düştüğünde sistem otomatik olarak devre dışı kalır. Bunun yanı sıra alternatör arızası, ısı sensörü hatası veya kapı/emniyet kemeri sensör sorunları da sistemi devre dışı bırakabilir. Tetik Otomotiv''de elektronik sistem diagnostiği ile sorun kısa sürede tespit edilmekte ve çözüme kavuşturulmaktadır."
+  - question: 'Nissan Micra CVT şanzıman yağı ne zaman değiştirilmeli?'
+    answer: "Nissan Micra CVT şanzımanlı modellerde şanzıman yağı 60.000 km veya 4 yılda bir kontrol edilmeli, bozulduysa NS-3 veya eşdeğeri CVT sıvısıyla değiştirilmelidir. CVT şanzımanda titreme, sarsıntı veya güç aktarımında gecikme yaşanıyorsa yağ kirliliği veya kayış-kasnak aşınması söz konusu olabilir. Erken müdahale şanzımanın komple değişimini önler. Tetik Otomotiv'de CVT yağ analizi ve değişimi servis paketi kapsamında uygulanmaktadır."
+  - question: 'Nissan Micra süspansiyon bakımı ne zaman yapılmalı?'
+    answer: "Nissan Micra ön MacPherson süspansiyon sistemi 60.000 km'de kapsamlı olarak kontrol edilmelidir. Ön amortisörler, stabilizatör rotları ve rotil başlıkları en sık yıpranan parçalardır. Sürüşte takırtı veya direksiyon boşluğu süspansiyon sorununa işaret eder. Tetik Otomotiv'de süspansiyon muayenesinin ardından dört tekerlekli rot-balans hizalaması uygulanmaktadır."
+  - question: 'Nissan Micra klima sistemi bakımı ne sıklıkla yapılmalı?'
+    answer: "Nissan Micra kliması yıllık kontrol önerilmektedir. Klima gazı R-134a ile çalışan sistemde gaz kaçağı tespiti elektronik dedektörle yapılmaktadır. Kabin (polen) filtresi her 15.000 km veya yılda bir değiştirilmelidir. Tetik Otomotiv'de klima gazı kontrolü, gaz dolumu, kabin filtresi değişimi ve klima dezenfeksiyonu hizmeti verilmektedir."
+  - question: 'Nissan Micra servisi için servis bölgesi nereyi kapsıyor?'
+    answer: "Tetik Otomotiv yalnızca Tuzla, Pendik, Gebze ve Kurtköy bölgesine hizmet veren özel bir servisdir; yetkili Nissan servisi değiliz. Bu sayede yetkili servis fiyatlarının altında, garantili ve kişisel bir hizmet sunabiliyoruz. Bölge dışından araç kabul etmiyoruz; randevu almadan önce bulunduğunuz ilçeyi belirtmenizi rica ediyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Nissan Micra Özel Servis Hizmetleri

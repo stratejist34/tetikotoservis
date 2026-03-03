@@ -21,6 +21,14 @@ faqs:
     answer:  "CVT şanzımanda titreme, kayış-kasnak aşınmasının veya yağ bozulmasının belirtisi olabilir. Ayrıca şanzıman yazılım güncellemesiyle giderilebilen adaptasyon sorunları da sarsıntıya neden olabilir. Tetik Otomotiv''de CVT yağ analizi, adaptasyon sıfırlama ve mekanik kontrol dahil kapsamlı CVT tanısı yapıyoruz. Erken müdahale şanzımanın tamamen yenilenmesini önleyebilir."
   - question: 'Toyota C-HR''da fren pedalı titriyor, nedeni ne olabilir?'
     answer:  "Fren pedalındaki titreme en yaygın olarak ön fren disklerinin çarpıklığından kaynaklanır. C-HR''ın hibrit modeli rejeneratif frenleme kullandığından disk ve balata aşınma düzeni benzinli araçlardan farklıdır. Diskler uzun süre az kullanıldığında paslanma ve düzensiz aşınma oluşabilir. Tetik Otomotiv''de disk yüzey taşlama veya değişim seçenekleriyle bu sorun kalıcı olarak giderilmektedir."
+  - question: 'Toyota C-HR kaç nesil var ve hangi kasa kodları bulunuyor?'
+    answer: "Toyota C-HR iki nesil olarak üretilmiştir. ZYX10/ZYX11 kasası (2016-2023): 1.2T (8NR-FTS) turbo benzinli ve 1.8 Hibrit (2ZR-FXE) seçenekleriyle piyasaya çıkmıştır; Türkiye'de her iki versiyon da satılmıştır. İkinci nesil AX10 kasası (2023-günümüz) bazı pazarlarda yenilenmiş hibrit sistemiyle devam etmektedir. Tetik Otomotiv'de birinci nesil ZYX10/ZYX11 modellere bakım verilmektedir."
+  - question: 'Toyota C-HR 1.8 hibrit inverter soğutma suyu ne zaman değiştirilmeli?'
+    answer: "Toyota C-HR 1.8 Hibrit modelinde standart motor soğutma suyu (Toyota Super Long Life Coolant / pink) 5 yılda bir veya 100.000 km'de değiştirilmelidir. Hibrit inverter devresinde kullanılan ayrı soğutma sıvısı (FL-22 inverter coolant) da aynı aralıkta kontrol edilerek yenilenmesi önerilir. Inverter soğutma sıvısının ihmal edilmesi inverterin aşırı ısınmasına ve performans düşüşüne yol açabilir. Tetik Otomotiv'de her iki soğutma sistemi aynı seansta kontrol edilmektedir."
+  - question: 'Toyota C-HR periyodik bakım fiyatları 2026 ne kadar?'
+    answer: "Toyota C-HR periyodik bakım maliyeti motor tipine ve seçilen parça kalitesine göre değişmektedir. 1.2T turbo benzinli standart bakım 1.800-3.000 TL, 1.8 Hibrit modelde 2.000-3.500 TL arasında seyredebilir. Güncel fiyat aralıkları için /blog/toyota-corolla-periyodik-bakim-fiyatlari-2026 sayfamıza bakabilirsiniz. Randevu sırasında araç geçmişinize göre net yazılı teklif verilmektedir."
+  - question: 'Toyota C-HR servisi için servis bölgesi nereyi kapsıyor?'
+    answer: "Tetik Otomotiv yalnızca Tuzla, Pendik, Gebze ve Kurtköy bölgesine hizmet veren özel bir servisdir; yetkili Toyota servisi değiliz. Bu sayede yetkili Toyota servislerinin fiyatlarının altında, garantili ve kişisel bir hizmet sunabiliyoruz. Bölge dışından araç kabul etmiyoruz; randevu almadan önce bulunduğunuz ilçeyi belirtmenizi rica ediyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Toyota C-HR Özel Servis Hizmetleri

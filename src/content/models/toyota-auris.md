@@ -21,6 +21,14 @@ faqs:
     answer:  "Motor yönetim lambası yanması, güç kaybı, aşırı yakıt tüketimi ve egzozdan yoğun duman DPF tıkanıklığının belirtileridir. Arıza tespit cihazıyla DPF basınç farkı ölçümü yaparak tıkanıklık derecesini belirliyoruz; aktif rejenerasyon, kimyasal temizlik veya ultrasonik yıkama seçeneklerinden uygun olanı uyguluyoruz."
   - question: 'Auris 1.33 Dual VVT-i motoru kaç km''de bakım istiyor ve hangi yağ kullanılmalı?'
     answer:  "Auris 1.33 Dual VVT-i motorunda her 15.000 km veya 1 yılda bir motor yağı ve filtresi değiştirilmelidir. Bu motor tipi yağ kalitesine oldukça duyarlıdır; üretici onaylı 5W-30 tam sentetik yağ kullanımını kesinlikle öneriyoruz. VVT-i sistemindeki çamur birikimini önlemek için yağ değişim süresini aşmayın."
+  - question: 'Toyota Auris kaç nesil var ve hangi kasa kodları bulunuyor?'
+    answer: "Toyota Auris iki nesil olarak üretilmiştir: E150 kasası (2007-2012) 1.33 (1NR-FE), 1.6 (1ZR-FE) benzinli; 2.0 D-4D (1AD-FTV) dizel ve 1.8 Hibrit (2ZR-FXE) seçenekleriyle; E180 kasası (2013-2018) 1.33 (1NR-FE), 1.6 (1ZR-FE) benzinli; 1.4 D-4D (1ND-TV) dizel ve 1.8 Hibrit (2ZR-FXE) seçenekleriyle. Türkiye'de her iki nesil de yaygındır. Tetik Otomotiv'de tüm Auris nesillerine bakım verilmektedir."
+  - question: 'Toyota Auris 1.4/2.0 D-4D triger kayışı kaç km''de değiştirilmeli?'
+    answer: "Toyota Auris 1.4 D-4D (1ND-TV) motorunda triger kayışı 90.000 km veya 5 yılda bir, 2.0 D-4D (1AD-FTV) motorunda ise 100.000 km veya 5 yılda bir değiştirilmesi zorunludur. Kayış seti değiştirilirken gergi bilyası ve su pompası aynı seansta yenilenmesi uzun vadede maliyet avantajı sağlar. Triger kayışının kopması motor hasarına doğrudan yol açar; zamanında bakım kritik önem taşır."
+  - question: 'Toyota Auris periyodik bakım fiyatları 2026 ne kadar?'
+    answer: "Toyota Auris periyodik bakım maliyeti motor tipine ve seçilen parça kalitesine göre değişmektedir. 1.6 benzinli standart bakım 1.500-2.500 TL, 1.8 Hibrit modelde 1.800-3.000 TL, 1.4/2.0 D-4D dizel modelde 1.800-3.200 TL arasında seyredebilir. Güncel fiyat aralıkları için /blog/toyota-corolla-periyodik-bakim-fiyatlari-2026 sayfamıza bakabilirsiniz. Randevu sırasında araç geçmişinize göre net yazılı teklif verilmektedir."
+  - question: 'Toyota Auris servisi için servis bölgesi nereyi kapsıyor?'
+    answer: "Tetik Otomotiv yalnızca Tuzla, Pendik, Gebze ve Kurtköy bölgesine hizmet veren özel bir servisdir; yetkili Toyota servisi değiliz. Bu sayede yetkili Toyota servislerinin fiyatlarının altında, garantili ve kişisel bir hizmet sunabiliyoruz. Bölge dışından araç kabul etmiyoruz; randevu almadan önce bulunduğunuz ilçeyi belirtmenizi rica ediyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Toyota Auris Özel Servis Hizmetleri
