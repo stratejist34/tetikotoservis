@@ -21,6 +21,14 @@ faqs:
     answer:  "Nissan X-Trail''de kullanılan MR20DD motoru için önerilen yağ değişim aralığı 15.000 km veya 12 aydır. Doğrudan enjeksiyon ve turbo sistemi nedeniyle yağın kalitesi motor ömrü için kritiktir; 5W-30 veya 5W-40 tam sentetik yağ tercih edilmelidir. Düşük seviyeli yağ kullanımı, özellikle direkt enjeksiyonlu motorlarda giriş subabı karbon birikimini hızlandırır. Tetik Otomotiv''de her bakımda karbon birikimi riski de değerlendirilmektedir."
   - question: 'X-Trail''de dört çeker sistem çalışmıyor, ne yapmalıyım?'
     answer:  "e-4WD sisteminin çalışmaması genellikle bir sensör hatası, arka motor sürücüsü arızası veya arka diferansiyel sıvısı eksikliğinden kaynaklanır. Kontrol panelinde \"4WD\" veya ilgili uyarı lambası yanıyorsa aracı güvenli şekilde durdurup diagnostik kontrolü yaptırmanız gerekir. Tetik Otomotiv''de Nissan''a özel diagnostik ekipmanlarıyla e-4WD sistemi kapsamlı biçimde test edilmekte, arıza doğru biçimde tespit edilmektedir."
+  - question: 'Nissan X-Trail hangi kasa kodlarında üretildi?'
+    answer: "Nissan X-Trail üç nesil olarak üretilmiştir: T30 kasası (2000–2006) 2.0/2.5 benzinli ve 2.2 dCi dizel seçenekleriyle; T31 kasası (2007–2013) 2.0/2.5 benzinli, 2.0 dCi dizel ve elektronik el freni sistemiyle; T32 kasası (2013–günümüz) MR20DD 2.0 benzinli veya 2.5 QR25DE, e-4WD elektrikli arka aks sistemiyle. Türkiye'de en yaygın T31 ve T32 nesilleridir. Tetik Otomotiv'de tüm X-Trail nesillerine bakım verilmektedir."
+  - question: 'Nissan X-Trail süspansiyon bakımı ne zaman yapılmalı?'
+    answer: "Nissan X-Trail ön MacPherson ve arka çoklu kol süspansiyon bileşenleri 60.000 km'de kapsamlı olarak kontrol edilmelidir. SUV kullanımı nedeniyle stabilizatör rotları, alt kol burçları ve rotil başlıkları ön plana çıkan yıpranma noktalarıdır. Virajlarda metalik ses, direksiyon boşluğu veya araç çekişi süspansiyon sorununu işaret eder. Tetik Otomotiv'de muayenenin ardından dört tekerlekli rot-balans hizalaması uygulanmaktadır."
+  - question: 'Nissan X-Trail periyodik bakım fiyatları 2026 ne kadar?'
+    answer: "Nissan X-Trail periyodik bakım maliyeti motor tipine ve seçilen parça kalitesine göre değişmektedir. MR20DD 2.0 benzinli standart bakım 1.800–3.000 TL aralığında seyredebilir; AWD/e-4WD sistemi diferansiyel yağ kontrolü eklendiğinde fiyat artabilir. Randevu sırasında araç geçmişinize göre net yazılı teklif verilmektedir; onayınız alınmadan hiçbir işlem başlatılmaz."
+  - question: 'Nissan X-Trail servisi için servis bölgesi nereyi kapsıyor?'
+    answer: "Tetik Otomotiv yalnızca Tuzla, Pendik, Gebze ve Kurtköy bölgesine hizmet veren özel bir servisdir; yetkili Nissan servisi değiliz. Bu sayede yetkili Nissan servislerinin fiyatlarının altında, garantili ve kişisel bir hizmet sunabiliyoruz. Bölge dışından araç kabul etmiyoruz; randevu almadan önce bulunduğunuz ilçeyi belirtmenizi rica ediyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Nissan X-Trail Özel Servis Hizmetleri

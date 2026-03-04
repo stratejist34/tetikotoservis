@@ -21,6 +21,14 @@ faqs:
     answer:  "Toyota Yaris için fabrika önerisi 15.000 km veya 12 ayda bir periyodik bakımdır. Bakım kapsamında motor yağı ve filtresi, hava filtresi, yakıt filtresi, triger/kayış kontrolü, fren sistemi ve lastik kontrolü yapılır. Tuzla ve Gebze bölgesindeki Tetik Otomotiv servisimizde Toyota standartlarında bakım gerçekleştiriyoruz."
   - question: 'Yaris''te klima soğutmuyor, ne yapmalıyım?'
     answer:  "Klimanın soğutmaması genellikle gaz eksikliği, kompresör arızası veya yoğunlaştırıcı kirliliğinden kaynaklanır. Hibrit modellerde elektrikli kompresör arızası da yaygın bir nedendir. Tetik Otomotiv''de klima gaz dolumu, sızdırmazlık testi ve kompresör kontrolü dahil kapsamlı klima bakımı yapıyoruz. Hibrit modellerin elektrikli klima kompresörü konusunda özel deneyimimiz bulunmaktadır."
+  - question: 'Toyota Yaris hangi kasa kodlarında üretildi?'
+    answer: "Toyota Yaris dört nesil olarak üretilmiştir: P10 kasası (1999–2005) 1.0/1.3 benzinli; P20 kasası (2005–2011) 1.0/1.3/1.5 benzinli ve 1.4 D-4D dizel; XP130 kasası (2011–2020) 1.0/1.33 benzinli, 1.5 Hibrit (1NZ-FXE) ve 1.4 D-4D dizel; XP210 kasası (2020–günümüz) 1.5 benzinli (M15A-FKS) ve 1.5 Hibrit (M15A-FXE, TNGA platformu). Türkiye'de en yaygın XP130 ve XP210 nesilleridir. Tetik Otomotiv'de tüm Yaris nesillerine bakım verilmektedir."
+  - question: 'Toyota Yaris motor yağı olarak hangi viskozite önerilir?'
+    answer: "Toyota Yaris XP210 kasa 1.5 Hibrit (M15A-FXE) için 0W-16 veya 0W-20 tam sentetik yağ (ACEA A1/B1, Toyota Genuine) 15.000 km'de değiştirilmelidir. XP130 kasa 1.5 Hibrit (1NZ-FXE) için 5W-30 veya 0W-20 tam sentetik yağ uygundur. 1.0/1.33 benzinli motorlar için 5W-30 tam sentetik (API SN/SP) 15.000 km'de önerilir. Hibrit motorlarda doğru viskozite Atkinson çevrimi verimliliğini doğrudan etkiler. Tetik Otomotiv'de Toyota onaylı yağlar kullanılmaktadır."
+  - question: 'Toyota Yaris triger sistemi zincir mi kayış mı?'
+    answer: "Toyota Yaris XP130 ve XP210 kasalardaki benzinli/hibrit motorlar (1NZ-FXE, M15A-FXE) zincir tabanlı triger sistemiyle donatılmıştır; teorik olarak araç ömrü boyunca dayanır ancak düzenli yağ değişimi zorunludur. Eski nesil 1.4 D-4D (1ND-TV) dizel motorlarda ise triger kayışı bulunmakta olup 90.000 km veya 5 yılda bir değiştirilmesi zorunludur. Soğuk start seslerinde veya rölantide zincir sesi geliyorsa zincir gergi mekanizması kontrol ettirilmelidir."
+  - question: 'Toyota Yaris servisi için servis bölgesi nereyi kapsıyor?'
+    answer: "Tetik Otomotiv yalnızca Tuzla, Pendik, Gebze ve Kurtköy bölgesine hizmet veren özel bir servisdir; yetkili Toyota servisi değiliz. Bu sayede yetkili Toyota servislerinin fiyatlarının altında, garantili ve kişisel bir hizmet sunabiliyoruz. Bölge dışından araç kabul etmiyoruz; randevu almadan önce bulunduğunuz ilçeyi belirtmenizi rica ediyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Toyota Yaris Özel Servis Hizmetleri

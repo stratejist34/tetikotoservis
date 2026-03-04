@@ -21,6 +21,14 @@ faqs:
     answer:  "Toyota RAV4 AWD modellerde ön diferansiyel yağı (aktarma organı) 40.000-50.000 km aralığında kontrol edilmeli, gerektiğinde değiştirilmelidir. RAV4 Hybrid''de arka E-Four sisteminin ayrıca yağ gerektirmediğini, ancak dişli kutusu sıvısının 80.000 km''de kontrol edilmesinin önerildiğini belirtmek gerekir. Tetik Otomotiv''de RAV4''ün tüm aktarma organları eksiksiz kontrol edilmektedir."
   - question: 'Toyota RAV4''te motor uyarı lambası yandı, ne yapmalıyım?'
     answer:  "Motor uyarı lambası (MIL) yandığında aracı hemen durdurmak gerekmez, ancak en kısa sürede diagnostik kontrolü yaptırılmalıdır. RAV4 Hybrid modellerinde bu uyarı hibrit sistem, emisyon (O2 sensörü, EGR) veya katalitik konvertör kaynaklı olabilir. Tetik Otomotiv''de Toyota''ya özel Techstream yazılımıyla hata kodları okunarak sorunun kaynağı kesin olarak belirlenmektedir. Sorunu erken tespit etmek onarım maliyetini önemli ölçüde düşürür."
+  - question: 'Toyota RAV4 hangi kasa kodlarında üretildi?'
+    answer: "Toyota RAV4 beş nesil olarak üretilmiştir: XA10 (1994–2000), XA20 (2000–2005), XA30 (2005–2012) 2.0/2.4 benzinli ve 2.0/2.2 D-4D dizel; XA40 (2012–2018) 2.0/2.5 benzinli ve 2.0/2.2 D-4D dizel; XA50 (2018–günümüz) 2.0 benzinli ve 2.5 Hybrid (A25A-FXS + E-Four AWD). Türkiye'de en yaygın XA40 ve XA50 nesilleridir. Tetik Otomotiv'de tüm RAV4 nesillerine bakım verilmektedir."
+  - question: 'Toyota RAV4 Hybrid invertör soğutma suyu ne zaman değiştirilmeli?'
+    answer: "Toyota RAV4 Hybrid modellerinde invertör soğutma suyu (Toyota FL-22 veya muadili) ilk değişimde 100.000 km veya 10 yılda bir, sonrasında her 50.000 km'de değiştirilmelidir. İnvertör soğutma sistemi motor soğutma sisteminden bağımsız olup yalnızca hibrit güç elektroniğini soğutur; ihmal edilmesi invertör ve motor-jeneratör arızasına zemin hazırlayabilir. Tetik Otomotiv'de her hibrit bakımında invertör soğutma sıvısı seviyesi ve rengi kontrol edilmektedir."
+  - question: 'Toyota RAV4 periyodik bakım fiyatları 2026 ne kadar?'
+    answer: "Toyota RAV4 periyodik bakım maliyeti motor tipine göre değişmektedir. 2.0 benzinli standart bakım 2.000–3.500 TL, 2.5 Hybrid modelde 2.500–4.000 TL aralığında seyredebilir. Güncel fiyat aralıkları için /blog/toyota-corolla-periyodik-bakim-fiyatlari-2026 sayfamıza bakabilirsiniz. Randevu sırasında araç geçmişinize göre net yazılı teklif verilmektedir; onayınız alınmadan hiçbir işlem başlatılmaz."
+  - question: 'Toyota RAV4 servisi için servis bölgesi nereyi kapsıyor?'
+    answer: "Tetik Otomotiv yalnızca Tuzla, Pendik, Gebze ve Kurtköy bölgesine hizmet veren özel bir servisdir; yetkili Toyota servisi değiliz. Bu sayede yetkili Toyota servislerinin fiyatlarının altında, garantili ve kişisel bir hizmet sunabiliyoruz. Bölge dışından araç kabul etmiyoruz; randevu almadan önce bulunduğunuz ilçeyi belirtmenizi rica ediyoruz."
 ---
 
 ## Tuzla, Gebze, Pendik, Kurtköy Toyota RAV4 Özel Servis Hizmetleri
