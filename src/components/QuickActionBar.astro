@@ -618,6 +618,26 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
             });
         });
 
+        // Desktop action bar: modal intercept (Hemen Sor, Motor Arızası, Periyodik Bakım)
+        const desktopBar = document.getElementById("quick-action-bar-desktop");
+        if (desktopBar) {
+            const desktopItems = desktopBar.querySelectorAll(".quick-action-item");
+            desktopItems.forEach((item) => {
+                const action = item.dataset.action;
+                const source = action === "Hemen Sor" ? "phone" : "whatsapp";
+                item.addEventListener("click", (e) => {
+                    if (!isQualifiedSession() && modal) {
+                        e.preventDefault();
+                        openModal(source, item.href, "desktop_action_bar", {
+                            cta_position: "bottom_bar",
+                            cta_label: action || "",
+                            scroll_depth_pct: getScrollDepthPct(),
+                        });
+                    }
+                });
+            });
+        }
+
         closeX?.addEventListener("click", () => dismissModalByChoice("close_icon"));
         cancelBtn?.addEventListener("click", () => dismissModalByChoice("cancel_button"));
         rejectBtn?.addEventListener("click", () => dismissModalByChoice("out_of_scope"));

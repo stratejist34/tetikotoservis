@@ -93,8 +93,17 @@ const whatsappMessage = encodeURIComponent(
             sessionStorage.getItem("region_modal_qualified") !== "true" &&
             typeof (window as any).openServiceRegionModal === "function";
 
-        phoneBtn?.addEventListener("click", () => {
-            if (shouldDeferIntentToModal()) return;
+        phoneBtn?.addEventListener("click", (e) => {
+            if (shouldDeferIntentToModal()) {
+                e.preventDefault();
+                (window as any).openServiceRegionModal(
+                    "phone",
+                    (phoneBtn as HTMLAnchorElement).href,
+                    "desktop_sticky",
+                    { cta_position: "sticky_left" },
+                );
+                return;
+            }
             if (typeof trackHelper === "function") {
                 trackHelper("tel_arama_niyeti", {
                     location: "desktop_sticky",
@@ -106,8 +115,17 @@ const whatsappMessage = encodeURIComponent(
             }
         });
 
-        whatsappBtn?.addEventListener("click", () => {
-            if (shouldDeferIntentToModal()) return;
+        whatsappBtn?.addEventListener("click", (e) => {
+            if (shouldDeferIntentToModal()) {
+                e.preventDefault();
+                (window as any).openServiceRegionModal(
+                    "whatsapp",
+                    (whatsappBtn as HTMLAnchorElement).href,
+                    "desktop_sticky",
+                    { cta_position: "sticky_left" },
+                );
+                return;
+            }
             if (typeof trackHelper === "function") {
                 trackHelper("whatsapp_niyeti", {
                     location: "desktop_sticky",
