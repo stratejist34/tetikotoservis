@@ -128,12 +128,43 @@ const serverPrimary = isBusinessHours(getHourSlot()) ? "phone" : "whatsapp";
     });
   }
 
+  function attachModalIntercept() {
+    document.querySelectorAll("[data-inline-cta] .cta-btn").forEach((btn) => {
+      const el = btn as HTMLAnchorElement;
+      if (el.dataset.modalAttached) return;
+      el.dataset.modalAttached = "1";
+
+      const source = el.dataset.ctaAction === "phone" ? "phone" : "whatsapp";
+
+      el.addEventListener("click", (e) => {
+        const openModal = (window as any).openServiceRegionModal;
+        const isQualified =
+          typeof sessionStorage !== "undefined" &&
+          sessionStorage.getItem("region_modal_qualified") === "true";
+        if (typeof openModal === "function" && !isQualified) {
+          e.preventDefault();
+          e.stopPropagation();
+          openModal(source, el.href, "inline_cta", {
+            cta_position: el.dataset.ctaPosition || "inline",
+            cta_variant: el.dataset.ctaVariant || "v1",
+            cta_brand: el.dataset.ctaBrand || "",
+          });
+        }
+      });
+    });
+  }
+
+  function initInlineCta() {
+    setInlinePrimaryState();
+    attachModalIntercept();
+  }
+
   if (!(window as any).__inlineCtaPrimaryInit) {
     (window as any).__inlineCtaPrimaryInit = true;
-    setInlinePrimaryState();
-    document.addEventListener("astro:page-load", setInlinePrimaryState);
+    initInlineCta();
+    document.addEventListener("astro:page-load", initInlineCta);
   } else {
-    setInlinePrimaryState();
+    initInlineCta();
   }
 </script>
 
