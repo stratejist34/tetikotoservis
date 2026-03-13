@@ -29,9 +29,7 @@ const menuItems = navigationData.menuItems;
           id="header-logo"
           src="/images/tetik-web-logo.webp"
           alt="Tetik Otomotiv Logo"
-          class="h-9 w-auto relative z-10 group-hover:scale-105 transition-all duration-500"
-          width="150"
-          height="40"
+          class="h-11 w-auto relative z-10 group-hover:scale-105 transition-all duration-500"
         />
       </a>
 
@@ -406,18 +404,18 @@ const menuItems = navigationData.menuItems;
       if (currentScroll <= 0) {
         header.style.backgroundColor = "rgba(2, 6, 23, 0.4)";
         headerInner.style.height = "5rem"; // h-20
-        headerLogo.style.height = "2.25rem"; // h-9
+        headerLogo.style.height = "2.75rem"; // h-11
         return;
       }
 
       if (currentScroll > 50) {
         header.style.backgroundColor = "rgba(2, 6, 23, 0.95)";
         headerInner.style.height = "3.5rem"; // reduced height
-        headerLogo.style.height = "1.75rem"; // h-7
+        headerLogo.style.height = "2rem"; // h-8
       } else {
         header.style.backgroundColor = "rgba(2, 6, 23, 0.4)";
         headerInner.style.height = "5rem";
-        headerLogo.style.height = "2.25rem";
+        headerLogo.style.height = "2.75rem";
       }
     },
     { passive: true },
