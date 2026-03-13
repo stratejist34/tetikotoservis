@@ -239,25 +239,6 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
             id="modal-content"
             class="w-full max-w-sm bg-[#0f172a] border border-white/10 rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 scale-90 opacity-0 pointer-events-auto relative"
         >
-            <!-- Close Button -->
-            <button
-                id="modal-close-xf"
-                class="absolute top-4 right-4 z-10 text-slate-400 hover:text-white p-2"
-            >
-                <svg
-                    class="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-
             <!-- Icon -->
             <div class="pt-8 pb-4 flex justify-center">
                 <div
@@ -283,12 +264,10 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
 
             <div class="px-6 pb-2 text-center">
                 <h3 class="text-xl font-bold text-white mb-2">
-                    Önemli Bilgilendirme
+                    Önce Bölgenizi Doğrulayın
                 </h3>
                 <p class="text-slate-400 text-sm leading-relaxed px-2">
-                    Hizmet bölgemiz sadece <strong class="text-white"
-                        >{modalRegionText}</strong
-                    > ve çevresidir.
+                    Sadece <strong class="text-white">{modalRegionText}</strong> bölgesindeki araçlara hizmet veriyoruz. Lütfen devam etmeden önce bölgenizi seçin.
                 </p>
             </div>
 
@@ -336,17 +315,11 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
 
                 <button
                     id="modal-reject-btn"
-                    class="w-full py-3 text-amber-300 font-medium text-sm hover:text-amber-200 transition-colors"
+                    class="w-full py-3.5 rounded-xl border border-slate-600 text-slate-300 font-medium text-sm hover:border-slate-400 hover:text-white transition-colors"
                 >
-                    Bölge Dışındayım / Yetkili Servis Arıyorum
+                    Bölge Dışındayım — Başka Servis Arıyorum
                 </button>
 
-                <button
-                    id="modal-cancel-btn"
-                    class="w-full py-3 text-slate-500 font-medium text-sm hover:text-white transition-colors"
-                >
-                    Vazgeç
-                </button>
             </div>
         </div>
     </div>
@@ -365,8 +338,6 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
         const modal = document.getElementById("region-modal");
         const backdrop = document.getElementById("modal-backdrop");
         const content = document.getElementById("modal-content");
-        const closeX = document.getElementById("modal-close-xf");
-        const cancelBtn = document.getElementById("modal-cancel-btn");
         const rejectBtn = document.getElementById("modal-reject-btn");
         const confirmBtn = document.getElementById("modal-confirm-btn");
 
@@ -590,13 +561,13 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
         }
 
         window.addEventListener("popstate", (e) => {
+            // Push state again to block back-button modal bypass.
             if (
                 modal &&
                 !modal.classList.contains("hidden") &&
                 modalHistoryPushed
             ) {
-                modalHistoryPushed = false;
-                closeModal();
+                window.history.pushState({ modalOpen: true }, "");
             }
         });
 
@@ -638,12 +609,8 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
             });
         }
 
-        closeX?.addEventListener("click", () => dismissModalByChoice("close_icon"));
-        cancelBtn?.addEventListener("click", () => dismissModalByChoice("cancel_button"));
         rejectBtn?.addEventListener("click", () => dismissModalByChoice("out_of_scope"));
-        backdrop?.addEventListener("click", (e) => {
-            if (e.target === backdrop) dismissModalByChoice("backdrop");
-        });
+        // Backdrop click intentionally disabled — modal requires an explicit choice.
 
         confirmBtn?.addEventListener("click", () => {
             setQualifiedSession();

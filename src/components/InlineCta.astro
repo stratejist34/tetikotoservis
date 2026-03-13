@@ -141,7 +141,7 @@ const serverPrimary = isBusinessHours(getHourSlot()) ? "phone" : "whatsapp";
         const isQualified =
           typeof sessionStorage !== "undefined" &&
           sessionStorage.getItem("region_modal_qualified") === "true";
-        if (typeof openModal === "function" && !isQualified) {
+        if (typeof openModal === "function" && isQualified === false) {
           e.preventDefault();
           e.stopPropagation();
           openModal(source, el.href, "inline_cta", {
