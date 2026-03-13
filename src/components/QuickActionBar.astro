@@ -335,9 +335,8 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
             "hub-whatsapp-btn",
         ) as HTMLAnchorElement;
 
-        const modal = document.getElementById("region-modal");
-        const backdrop = document.getElementById("modal-backdrop");
-        const content = document.getElementById("modal-content");
+        // Outer-scope modal ref for popstate/desktop-bar checks (openModal/closeModal re-query fresh)
+        let modal = document.getElementById("region-modal");
         const rejectBtn = document.getElementById("modal-reject-btn");
         const confirmBtn = document.getElementById("modal-confirm-btn");
 
@@ -444,6 +443,12 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
             location = "quick_action_hub",
             meta: Record<string, any> = {},
         ) {
+            // Fresh DOM queries every call — avoids stale refs if init ran before DOM was ready
+            const modal = document.getElementById("region-modal");
+            const backdrop = document.getElementById("modal-backdrop");
+            const content = document.getElementById("modal-content");
+            const confirmBtn = document.getElementById("modal-confirm-btn");
+
             // Qualified sessions bypass modal directly.
             if (isQualifiedSession()) {
                 trackQualifiedContact(source, location, "direct", meta);
@@ -550,12 +555,15 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
         (window as any).openServiceRegionModal = openModal;
 
         function closeModal() {
-            if (!modal || !backdrop || !content) return;
-            backdrop.classList.add("opacity-0");
-            content.classList.remove("scale-100", "opacity-100");
-            content.classList.add("scale-90", "opacity-0");
+            const m = document.getElementById("region-modal");
+            const bd = document.getElementById("modal-backdrop");
+            const ct = document.getElementById("modal-content");
+            if (!m || !bd || !ct) return;
+            bd.classList.add("opacity-0");
+            ct.classList.remove("scale-100", "opacity-100");
+            ct.classList.add("scale-90", "opacity-0");
             setTimeout(() => {
-                modal.classList.add("hidden");
+                m.classList.add("hidden");
                 document.body.style.overflow = "";
             }, 300);
         }
