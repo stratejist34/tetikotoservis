@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add src/content/models/kia-soul.md src/content/models/kia-xceed.md)",
+      "Bash(git add src/pages/kia-ozel-servis.astro src/content/models/kia-niro.md src/content/models/kia-rio.md src/content/models/kia-sorento.md)",
+      "Bash(cat src/pages/blog/[slug].astro)",
+      "Bash(wc -w src/components/blog-cro/*.astro)",
+      "Bash(sed 's/<[^>]*>//g')",
+      "Bash(npm run build)",
+      "Bash(git commit:*)",
+      "Bash(git push origin master)",
+      "Bash(wc -w:*)"
+    ]
+  }
+}
