@@ -226,7 +226,7 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
             const minutes = now.getHours() * 60 + now.getMinutes();
             if (minutes < 8 * 60 + 30) return "pre_open";
             if (minutes < 14 * 60) return "open_morning";
-            if (minutes < 20 * 60) return "open_evening";
+            if (minutes < 18 * 60) return "open_evening";
             return "after_hours";
         }
 
@@ -498,8 +498,7 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
             const slot = getHourSlot();
             const isBusinessHours =
                 slot === "open_morning" || slot === "open_evening";
-            const shouldHidePhone =
-                slot === "pre_open" || slot === "after_hours";
+            const isClosed = slot === "pre_open" || slot === "after_hours";
 
             triggerPhone.classList.remove(
                 "hub-primary",
@@ -511,7 +510,7 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
                 "hub-primary-whatsapp",
                 "hub-secondary",
             );
-            triggerPhone.classList.toggle("hidden", shouldHidePhone);
+            triggerPhone.classList.toggle("hidden", isClosed);
 
             const phoneText = triggerPhone.querySelector(".hub-text-open");
 
@@ -519,30 +518,57 @@ const waGenelHref = `https://wa.me/${serviceScope.whatsappNumber}?text=${waMessa
                 triggerPhone.classList.add("hub-primary", "hub-primary-phone");
                 triggerWhatsapp.classList.add("hub-secondary");
                 if (phoneText) phoneText.textContent = "HEMEN ARA";
-            } else {
+            } else if (!isClosed) {
                 triggerWhatsapp.classList.add(
                     "hub-primary",
                     "hub-primary-whatsapp",
                 );
                 triggerPhone.classList.add("hub-secondary");
-                if (phoneText) phoneText.textContent = "MESAI SAATINDE ARA";
+                if (phoneText) phoneText.textContent = "SABAH İÇİN ARA";
             }
-            return isBusinessHours;
+
+            if (isClosed) {
+                triggerPhone.classList.add("opacity-50", "grayscale");
+                triggerWhatsapp.classList.add("opacity-50", "grayscale");
+                if (phoneText) phoneText.textContent = "KAPALIYIZ";
+                
+                triggerPhone.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    alert("Şu an hizmet saatleri dışındayız. Lütfen 08:30 - 18:00 saatleri aralığında iletişime geçin.");
+                });
+                
+                triggerWhatsapp.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    alert("Şu an hizmet saatleri dışındayız. Lütfen 08:30 - 18:00 saatleri aralığında iletişime geçin.");
+                });
+            }
+
+            return { isBusinessHours, isClosed, slot };
         }
 
-        const isBusinessHours = applyPrimaryByHour();
+        const { isBusinessHours, isClosed, slot } = applyPrimaryByHour() || { isBusinessHours: true, isClosed: false, slot: "open_morning" };
 
         // Tooltip system
         const tooltip = document.getElementById("hub-tooltip");
         const tooltipText = document.getElementById("tooltip-text");
         const slotMessageHelper = window.__tetikSlotMessage;
+        
         const slotPrimaryMessage =
             typeof slotMessageHelper === "function"
                 ? slotMessageHelper()
-                : isBusinessHours
-                  ? "Su an: Hizli baglanti saati"
-                  : "Su an: Yarin planlamasi acik";
-        const activePhrases = isBusinessHours
+                : isClosed
+                  ? "Mesai Saatleri: 08:30 - 18:00"
+                  : isBusinessHours
+                    ? "Su an: Hizli baglanti saati"
+                    : "Su an: Yarin planlamasi acik";
+        const activePhrases = isClosed 
+            ? [
+                "Şu An Kapalıyız",
+                "Mesai Saatleri: 08:30 - 18:00"
+              ]
+            : isBusinessHours
             ? [
                   "Hemen Ara - 30 sn'de bağlan",
                   "WhatsApp'tan Fiyat Al",

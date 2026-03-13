@@ -89,5 +89,7 @@ export default defineConfig({
     // ========================================
     '/hyundai-periyodik-bakim-servisi': '/hizmetlerimiz',
     '/hizmetler/periyodik-bakim': '/hizmetlerimiz',
+    '/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv': '/',
+    '/7-24-yol-yardim': '/',
   },
 });

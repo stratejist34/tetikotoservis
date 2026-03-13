@@ -374,12 +374,6 @@ B segmenti i20 için özel servis çözümleri
 
 B Segmenti Uzmanı
 
-### ⚡ [Acil Yol Yardım](/7-24-yol-yardim-gebze-tuzla/)
-
-A segmenti arızaları için acil müdahale hizmeti
-
-Acil i10 Yardımı
-
 ### 🛠️ [Gebze Oto Tamircisi](/gebze-oto-tamircisi/)
 
 Genel otomotiv tamiri ve kapsamlı onarım

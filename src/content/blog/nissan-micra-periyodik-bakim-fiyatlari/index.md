@@ -376,7 +376,6 @@ Tetik Oto olarak tüm bakım işlemlerinde güvence sağlıyoruz:
 ## İlgili Hizmetlerimiz
 
 - [Nissan Servis Gebze](/gebze-nissan-servis) - Tüm Nissan modelleri için profesyonel servis
-- [Acil Yol Yardım](/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv) - Acil yol yardım hizmeti
 - [Gebze Oto Servis](/hizmetlerimiz) - Kapsamlı servis hizmetleri
 - [İletişim](/iletisim) - Bize ulaşın
 

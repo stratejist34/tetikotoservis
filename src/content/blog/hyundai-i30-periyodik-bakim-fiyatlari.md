@@ -264,7 +264,6 @@ En yeni i30 modelleri için güncel teknoloji servis deneyimi.
 - **Ücretsiz araç alma-getirme** (Gebze merkez)
 - _WhatsApp servis takibi_
 - **Öncelikli randevu** (Gebze müşterileri)
-- _Acil yol yardımı_
 
 <div class="cta-box">
   <strong>📋 Hemen Fiyat Teklifi ve Randevu</strong>
@@ -374,8 +373,4 @@ Tüm Hyundai modelleri için profesyonel servis
 ### 🔧 [Hyundai Periyodik Bakım](/blog/hyundai-periyodik-bakim-servisi/)
 
 Hyundai genel bakım bilgileri ve rehberi
-
-### ⚡ [Acil Yol Yardım](/7-24-yol-yardim-gebze-tuzla-tetik-otomotiv/)
-
-Acil i30 arızaları için yol yardımı
 
